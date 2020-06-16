@@ -1,4 +1,4 @@
-# Introduction
+# Course Introduction
 
   - Take me to the [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808050)
 
