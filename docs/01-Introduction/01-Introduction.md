@@ -21,9 +21,9 @@
    - YAML
    - Setting up a basic lab environment with VirtualBox
    
-**`Note`**: If you are a beginner we highly recommend "Kubenetes for the Absolute Beginners" Hands-On course
+#### If you are a beginner we highly recommend Kubenetes for the Absolute Beginners Hands-On course
 
-      - Take me to the [Kubenetes for the Absolute Beginners Hands-On Course](https://kodekloud.com/courses/enrolled/316262)
+   - Take me to the [Kubenetes for the Absolute Beginners Hands-On Course](https://kodekloud.com/courses/enrolled/316262)
       
 
       
