@@ -103,7 +103,9 @@ The objectives of this course are aligned to match the **`Certified Kubernetes A
 
 CKA exam is a practical hands-on exam it is very important to practice what you learn. Which is why we build a custom solution that will give you access to a **`Real Kubernetes Environment`** right in your browser along with **`Quiz Portal`**
   
+## Kubernetes the hardway
 
+   - Take me to [Kubernetes The Hardway on VirtualBox](https://github.com/mmumshad/kubernetes-the-hard-way)
 
 
       
