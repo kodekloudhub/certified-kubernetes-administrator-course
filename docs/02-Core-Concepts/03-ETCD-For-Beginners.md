@@ -56,7 +56,7 @@
         $ ./etcdctl
         ```
         
-        ![etcdctl]!(../../images/etcdctl.PNG)
+        ![etcdctl](../../images/etcdctl.PNG)
         
          
        
