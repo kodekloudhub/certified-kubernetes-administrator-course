@@ -26,6 +26,18 @@ In this section, we will take a look at kube-controller-manager.
    ![other-controllers](../../images/other-controllers.PNG)
    
    
-   
+  ## Installing Kube-Controller-Manager
+  - When you install kube-controller-manager the different controllers will get installed as well.
+  - Download the kube-controller-manager binary from the kubernetes release page.
+    - For example: You can download kube-controller-manager v1.13.0 here [kube-controller-manager](https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kube-controller-manager)
+      ```
+      $ wget https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kube-controller-manager
+      ```
+  - By default all controllers are enabled, but you can choose to enable specific one from **`kube-controller-manager.service`**
+    ```
+    $ cat /etc/systemd/system/kube-controller-manager.service
+    ```
+    
+    
    
      
