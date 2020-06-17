@@ -10,38 +10,38 @@
  ## What is a ETCD?
      - ETCD is a distributed reliable key-value store that is simple, secure & Fast.
      
- ## What is a Key-Value Store>
-     - Traditionally, databases have been in tabular format, you must have heared about SQL or Relational databases. They store data in rows and columns
+## What is a Key-Value Store
+   - Traditionally, databases have been in tabular format, you must have heared about SQL or Relational databases. They store data in rows and columns
        
-       ![relational-dbs](../../images/relational-dbs.PNG)
+     ![relational-dbs](../../images/relational-dbs.PNG)
      
-     - A Key-Value Store stores information in a Key and Value format.
+   - A Key-Value Store stores information in a Key and Value format.
        
-       ![key-value](../../images/key-value.PNG)
+     ![key-value](../../images/key-value.PNG)
+      
+     ![key-value1](../../images/key-value1.PNG)
        
-       ![key-value1](../../images/key-value1.PNG)
+     ![key-value2](../../images/key-value2.PNG)
        
-       ![key-value2](../../images/key-value2.PNG)
+     ![key-value3](../../images/key-value3.PNG)
        
-       ![key-value3](../../images/key-value3.PNG)
-       
-  ## Install ETCD
-     - Its easy to install and get started with **`ETCD`**.
-       - Download the relevant binary for your operating system from github releases page (https://github.com/etcd-io/etcd/releases)
-         ```
-         For Example: To download ETCD V3.3.11, run the below curl command
+## Install ETCD
+   - Its easy to install and get started with **`ETCD`**.
+     - Download the relevant binary for your operating system from github releases page (https://github.com/etcd-io/etcd/releases)
+       ```
+       For Example: To download ETCD V3.3.11, run the below curl command
          
-         $ https://github.com/etcd-io/etcd/releases/download/v3.3.11/etcd-v3.3.11-linux-amd64.tar.gz
-         ```
-       - Extract it.
-         ```
-         $ tar xvzf etcd-v3.3.11-linux-amd64.tar.gz 
-         ```
-       - Run the ETCD Service
-         ```
-         $ ./etcd
-         ```
-      - When you start **`ETCD`** it will by default listens on port **`2379`**
+       $ https://github.com/etcd-io/etcd/releases/download/v3.3.11/etcd-v3.3.11-linux-amd64.tar.gz
+       ```
+     - Extract it.
+       ```
+       $ tar xvzf etcd-v3.3.11-linux-amd64.tar.gz 
+       ```
+     - Run the ETCD Service
+       ```
+       $ ./etcd
+       ```
+     - When you start **`ETCD`** it will by default listens on port **`2379`**
       - The default client that comes with **`ETCD`** is the **`etcdct`** client. You can use it to store and retrieve key-value pairs.
         ```
         Syntax: To Store a Key-Value pair
