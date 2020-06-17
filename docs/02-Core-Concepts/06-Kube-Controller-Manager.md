@@ -43,7 +43,7 @@ In this section, we will take a look at kube-controller-manager.
   ```
   $ kubectl get pods -n kube-system
   ```
-  ![kube-controller-manager](../../images/kube-controller-manager.PNG)
+  ![kube-controller-manager0](../../images/kube-controller-manager0.PNG)
   
 ## View kube-controller-manager options - kubeadm
 - You can see the options within the pod located at **`/etc/kubernetes/manifests/kube-controller-manager.yaml`**
