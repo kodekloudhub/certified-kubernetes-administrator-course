@@ -10,6 +10,9 @@ In this section, we will take a look at ETCD role in kubernetes
 ## Setup - Manual
 - If you setup your cluster from scratch then you deploy **`ETCD`** by downloading ETCD Binaries yourself
 - Installing Binaries and Configuring ETCD as a service in your master node yourself.
+  ```
+  $ wget -q --https-only "https://github.com/etcd-io/etcd/releases/download/v3.3.11/etcd-v3.3.11-linux-amd64.tar.gz"
+  ```
 
   ![etcd](../../images/etcd.PNG)
   
