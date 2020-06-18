@@ -28,22 +28,22 @@ In this section, we will take a look at PODS.
   
   ![pod3](../../images/pod3.PNG)
   
-## PODs (Docker Example)
+## Docker Example (Docker Link)
   
   ![pod4](../../images/pod4.PNG)
   
 ## How to deploy pods?
-- Lets now take a look the same docker example above to create a nginx pod using **`kubectl`**.
+Lets now take a look to create a nginx pod using **`kubectl`**.
 
-To deploy a docker container by creating a POD.
-```
-$ kubectl run nginx --image nginx
-```
+- To deploy a docker container by creating a POD.
+  ```
+  $ kubectl run nginx --image nginx
+  ```
 
-To get the list of pods
-```
-$ kubectl get pods
-```
+- To get the list of pods
+  ```
+  $ kubectl get pods
+  ```
 
  ![kubectl](../../images/kubectl.PNG)
 
