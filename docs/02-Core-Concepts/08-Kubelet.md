@@ -4,10 +4,10 @@
 In this section we will take a look at kubelet.
 
 #### Kubelet is the sole point of contact for the kubernetes cluster
-- The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, thats the job of the kubelet.
-- The kubelet will create the pods on the nodes, the scheduler only decides which pods goes where.
-- The create or delete the pods on the nodes as instructred by scheduler on the master.
-- The kubelet in the kubernets worker node, registers the node with the kubernetes cluster.
+- The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, thats the job of the **`kubelet`**.
+- The **`kubelet`** will create the pods on the nodes, the scheduler only decides which pods goes where.
+- The kubelet create or delete the pods on the nodes as instructred by scheduler on the master.
+- The kubelet in the kubernetes worker node, registers the node with the kubernetes cluster.
 
   ![kubelet](../../images/kubelet.PNG)
   
