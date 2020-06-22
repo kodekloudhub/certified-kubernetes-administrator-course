@@ -10,8 +10,11 @@ In this section, we will take a look at the below
 ## What is a Replica and Why do we need a replication controller?
 - The Replication Controller helps us run multiple instances of a single pod in a kubernetes cluster thus providing **`high availablility`**.
 - Even if you have a single pod, the replication controller can help by automatically bringing up new pod when the existing one fails. Thus the replication controller ensures that the specified number of pods are running at all times, even if it is just 1 or 100.
+
   ![rc](../../images/rc.PNG)
-- Another reason we need replication is to create multiple pods to share the load across them - **`Load Balancing & Scaling`**
+  
+- Another reason we need replication is to create multiple pods to share the load across them - **`Load Balancing & Scaling`**.
+
   ![rc1](../../images/rc1.PNG).
   
 ## Difference between ReplicaSet and Replication Controller
@@ -41,6 +44,7 @@ In this section, we will take a look at the below
 ## Creating a ReplicaSet
   
 ## ReplicaSet Defination File
+
    ![rs](../../images/rs.PNG)
    
 #### ReplicaSet requires a selector defination when compare to Replicaton Controller.
