@@ -80,7 +80,7 @@ In this section, we will take a look at the below
   ```
   $ kubectl scale --replicas=6 -f replicaset-defination.yaml
   ```
-  - Thrid way is to use **`kubectl scale`** command with type and name
+  - Third way is to use **`kubectl scale`** command with type and name
   ```
   $ kubectl scale --replicas=6 replicaset myapp-replicaset
   ```
