@@ -72,19 +72,16 @@ In this section, we will take a look at the below
   
 ## How to scale replicaset
 - There are multiple ways to scale replicaset
-  1. First way is to update the number of replicas in the replicaset-defination.yaml defination file. E.g replicas: 6 and then run 
+  - First way is to update the number of replicas in the replicaset-defination.yaml defination file. E.g replicas: 6 and then run 
   ```
   $ kubectl apply -f replicaset-defination.yaml
   ```
-  1. Second way is to use **`kubectl scale`** command.
+  - Second way is to use **`kubectl scale`** command.
   ```
   $ kubectl scale --replicas=6 -f replicaset-defination.yaml
   ```
-  1. Thrid way is to use **`kubectl scale`** command with type and name
+  - Thrid way is to use **`kubectl scale`** command with type and name
   ```
   $ kubectl scale --replicas=6 replicaset myapp-replicaset
   ```
   ![rs2](../../images/rs2.PNG)
-  
-  
-  
