@@ -19,7 +19,7 @@ In this section, we will take a look at the below
   
 ## Difference between ReplicaSet and Replication Controller
 - **`Replication Controller`** is the older technology that is being replaced by a **`ReplicaSet`**.
-- ReplicaSet is the new way to setup replication.
+- **`ReplicaSet`** is the new way to setup replication.
 
 ## Creating a Replication Controller
 
