@@ -4,7 +4,7 @@
 In this section, we will take a look at kubernetes deployments
 
 Deployment is a kubernetes object. 
-- The Deployment provides us with the capability to upgrade the underline instances seemlessly using **`Rolling updates`**, **Undo Changes`** and **`Pause`** and **`Resume Changes`** as required.
+- The Deployment provides us with the capability to upgrade the underline instances seemlessly using **`Rolling updates`**, **`Undo Changes`** and **`Pause`** and **`Resume Changes`** as required.
   
   ![deployment](../../images/deployment.PNG)
   
