@@ -53,9 +53,10 @@ Solutions to the deploments practice test
    ```
    $ kubectl create -f deployment-defination-1.yaml
    ```
-1. Run the command **`kubectl run httpd-frontend --image=httpd:2.4-alpine --replicas=3`**
+1. Run the command below command
    ```
-   $ kubectl run httpd-frontend --image=httpd:2.4-alpine --replicas=3
+   $ kubectl create deployment httpd-frontend --image=httpd:2.4-alpine 
+   $ kubectl scale deplyoment httpd-frontend --replicas=3
    ```
 
 Take me to [Deployment Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/16416761) 
