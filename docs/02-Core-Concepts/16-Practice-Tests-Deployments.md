@@ -57,3 +57,5 @@ Solutions to the deploments practice test
    ```
    $ kubectl run httpd-frontend --image=httpd:2.4-alpine --replicas=3
    ```
+
+Take me to [Deployment Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/16416761) 
