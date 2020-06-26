@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
             vb.memory = 2048
             vb.cpus = 2
         end
-        node.vm.hostname = "master"
+        node.vm.hostname = "kubemaster"
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
         node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
 
@@ -80,7 +80,7 @@ Vagrant.configure("2") do |config|
   (1..NUM_WORKER_NODE).each do |i|
     config.vm.define "worker-#{i}" do |node|
         node.vm.provider "virtualbox" do |vb|
-            vb.name = "worker-#{i}"
+            vb.name = "kubenode0#{i}"
             vb.memory = 2048
             vb.cpus = 2
         end
