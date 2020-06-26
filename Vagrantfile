@@ -55,10 +55,10 @@ Vagrant.configure("2") do |config|
 
   # Provision Master Nodes
   (1..NUM_MASTER_NODE).each do |i|
-      config.vm.define "master" do |node|
+      config.vm.define "kubemaster" do |node|
         # Name shown in the GUI
         node.vm.provider "virtualbox" do |vb|
-            vb.name = "master"
+            vb.name = "kubemaster"
             vb.memory = 2048
             vb.cpus = 2
         end
@@ -78,13 +78,13 @@ Vagrant.configure("2") do |config|
 
   # Provision Worker Nodes
   (1..NUM_WORKER_NODE).each do |i|
-    config.vm.define "worker-#{i}" do |node|
+    config.vm.define "kubenode0#{i}" do |node|
         node.vm.provider "virtualbox" do |vb|
             vb.name = "kubenode0#{i}"
             vb.memory = 2048
             vb.cpus = 2
         end
-        node.vm.hostname = "worker-#{i}"
+        node.vm.hostname = "kubenode0#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
                 node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
 
