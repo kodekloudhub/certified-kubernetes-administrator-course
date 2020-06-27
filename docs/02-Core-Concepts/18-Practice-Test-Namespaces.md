@@ -27,3 +27,5 @@ Solutions to practice test for namespaces
    ```
    Host Name: db-service.dev.svc.cluster.local and Host Port: 3306
    ```
+
+Take me to [Practice Test Solutions](https://kodekloud.com/courses/539883/lectures/16416900)
