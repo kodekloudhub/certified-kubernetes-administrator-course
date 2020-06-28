@@ -38,6 +38,9 @@
     ```
     kubectl logs web -f --previous
     ```
+    
+    ![db](../../images/db.PNG)
+
 
   #### Hands on Labs
 
