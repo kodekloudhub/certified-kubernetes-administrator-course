@@ -22,4 +22,4 @@
   - Please note that the difficulty level may not be the same as in the actual exam
    
    
-  - I want to understand what Lightning Lab is, [Let's Understand](https://kodekloud.com/courses/539883/lectures/14559515)
+  - I want to understand what Lightning Lab is, [Let's Explore](https://kodekloud.com/courses/539883/lectures/14559515)
