@@ -29,3 +29,8 @@ In this section we will take a look at kubelet.
   ```
   
   ![kubelet2](../../images/kubelet2.PNG)
+
+K8s Reference Docs:
+- https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/
+- https://kubernetes.io/docs/concepts/overview/components/
+- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/kubelet-integration/
