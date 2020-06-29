@@ -7,3 +7,10 @@ In this section, we will take a look at the below
 - API Primitives
 - Services & Other Network Primitives
 
+k8s reference docs:
+- https://kubernetes.io/docs/concepts/overview/kubernetes-api/
+- https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
+- https://kubernetes.io/docs/concepts/architecture/
+- https://kubernetes.io/docs/concepts/overview/components/
+- https://kubernetes.io/docs/concepts/services-networking/
+
