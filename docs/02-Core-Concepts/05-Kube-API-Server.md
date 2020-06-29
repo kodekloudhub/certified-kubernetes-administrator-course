@@ -57,3 +57,10 @@ In this section, we will talk about kube-apiserver in kubernetes
   $ ps -aux |grep kube-apiserver
   ```
   ![kube-apiserver4](../../images/kube-apiserver4.PNG)
+
+K8s Reference Docs:
+- https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/
+- https://kubernetes.io/docs/concepts/overview/components/
+- https://kubernetes.io/docs/concepts/overview/kubernetes-api/
+- https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/
+- https://kubernetes.io/docs/tasks/administer-cluster/access-cluster-api/
