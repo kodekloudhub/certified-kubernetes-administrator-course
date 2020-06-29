@@ -84,9 +84,12 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
   ```
   ![ns13](../../images/ns13.PNG)
   
-  
-  
-  
+K8s Reference Docs:
+- https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+- https://kubernetes.io/docs/tasks/administer-cluster/namespaces-walkthrough/
+- https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
+- https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/
+- https://kubernetes.io/docs/tasks/access-application-cluster/list-all-running-container-images/
   
   
   
