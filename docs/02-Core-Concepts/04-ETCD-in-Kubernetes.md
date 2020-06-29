@@ -36,3 +36,9 @@ In this section, we will take a look at ETCD role in kubernetes
    - In a high availability environment, you will have multiple master nodes in your cluster that will have multiple ETCD Instances spread across the master nodes.
    - Make sure etcd instances know each other by setting the right parameter in the **`etcd.service`** configuration. The **`--initial-cluster`** option where you need to specify the different instances of the etcd service.
      ![etcd-ha](../../images/etcd-ha.PNG)
+
+K8s Reference Docs:
+- https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
+- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/setup-ha-etcd-with-kubeadm/
+- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#stacked-control-plane-and-etcd-nodes
+- https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/#external-etcd-nodes
