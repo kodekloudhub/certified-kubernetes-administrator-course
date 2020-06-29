@@ -1,7 +1,7 @@
 # ETCD for Beginners
   - Take me to the [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808166)
 
-  In this section, we will take a quick look at introduction to ECTD for beginners. 
+  In this section, we will take a quick look at introduction to ETCD for beginners. 
   - What is ETCD?
   - What is a Key-Value Store?
   - How to get started quickly with ETCD?
