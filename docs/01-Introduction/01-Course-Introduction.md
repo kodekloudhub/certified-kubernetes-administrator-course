@@ -10,8 +10,6 @@
    - Demos
    - Quizzes
    - Practice Questions
-   - Slack Channel
-     - Take me to [Slack Group URL](https://join.slack.com/t/kodekloud/shared_invite/zt-e3r1l9hz-Zkz4Iwe~llLsea9UWWzwog)
    - Q & A Section
    
 ## Pre-Requisites
@@ -106,10 +104,3 @@ CKA exam is a practical hands-on exam it is very important to practice what you 
 ## Kubernetes the hardway
 
    - Take me to [Kubernetes The Hardway on VirtualBox](https://github.com/mmumshad/kubernetes-the-hard-way)
-
-
-      
-
-      
-      
-
