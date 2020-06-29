@@ -85,3 +85,7 @@ In this section, we will take a look at the below
   $ kubectl scale --replicas=6 replicaset myapp-replicaset
   ```
   ![rs2](../../images/rs2.PNG)
+
+K8s Reference Docs:
+- https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+- https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/
