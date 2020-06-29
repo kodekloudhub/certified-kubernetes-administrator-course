@@ -43,4 +43,10 @@ In this section, we will take a look at kube-scheduler.
   $ ps -aux |grep kube-scheduler
   ```
   ![kube-scheduler5](../../images/kube-scheduler5.PNG)
+  
+  K8s Reference Docs:
+  - https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/
+  - https://kubernetes.io/docs/concepts/scheduling-eviction/kube-scheduler/
+  - https://kubernetes.io/docs/concepts/overview/components/
+  - https://kubernetes.io/docs/tasks/extend-kubernetes/configure-multiple-schedulers/
     
