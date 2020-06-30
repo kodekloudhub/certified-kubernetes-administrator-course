@@ -3,7 +3,7 @@
   
 In this section we will take a look at **`services`** in kuberentes
 
-Services
+## Services
 - Kubernetes Services enables communication between various components within an outside of the application.
 - Kubernetes Services helps us connect applications together with other applications or users.
 - Services enables frontend applications to be made available to endusers. It helps communications between **`backend`** and **`frontend`** pods and it helps to establish connecivity to an **`external datasource`**
