@@ -14,11 +14,11 @@ Services
 
 ## External Communication
 - So, we deployed our **`POD`** having a **`web application`** on it. How do we as an **`external user`** access the **`web page`**?
-  - From the node
+  - From the node (Able to reach the application as expected)
   
     ![srv2](../../images/srv2.PNG)
     
-  - From outside world
+  - From outside world (This should be our expectation, without something in the middle it will not reach the application)
   
     ![srv3](../../images/srv3.PNG)
     
