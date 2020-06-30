@@ -37,8 +37,8 @@
   ```
   $ kubectl create -f service-defination-1.yaml
   ```
-- 
 
+#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/16603611)
 
 
 
