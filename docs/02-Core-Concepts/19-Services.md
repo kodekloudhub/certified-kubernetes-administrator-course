@@ -76,4 +76,8 @@ In this section we will take a look at **`services`** in kuberentes
     
  1. LoadBalancer
     - Where provisions a **`loadbalancer`** for our application in supported cloud providers.
+    
+K8s Reference Docs:
+- https://kubernetes.io/docs/concepts/services-networking/service/
+- https://kubernetes.io/docs/tutorials/kubernetes-basics/expose/expose-intro/
 
