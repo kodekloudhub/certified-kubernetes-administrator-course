@@ -13,7 +13,9 @@ Services
 #### Let's look at some other aspects of networking
 
 ## External Communication
+
 - So, we deployed our **`POD`** having a **`web application`** on it. How do we as an **`external user`** access the **`web page`**?
+
   - From the node (Able to reach the application as expected)
   
     ![srv2](../../images/srv2.PNG)
@@ -29,9 +31,10 @@ Services
   - This type of service is know as a **`Node Port`** service, because the service listens to a pod on the node and forward requests to the POD.
     
  ## Service Types
- There are 3 types of service types in kubernetes
  
-    ![srv-types](../../images/srv-types.PNG)
+ #### There are 3 types of service types in kubernetes
+ 
+   ![srv-types](../../images/srv-types.PNG)
  
  1. NodePort
     - Where the services makes an internal POD accessable on a POD on the NODE.
