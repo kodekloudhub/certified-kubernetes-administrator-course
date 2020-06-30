@@ -26,7 +26,7 @@ Services
     
     ![srv4](../../images/srv4.PNG)
 
-    - This type of service is know as a **`Node Port`** service, because the service listens to a pod on the node and forward requests to the POD.
+  - This type of service is know as a **`Node Port`** service, because the service listens to a pod on the node and forward requests to the POD.
     
  ## Service Types
  There are 3 types of service types in kubernetes
@@ -38,38 +38,39 @@ Services
       
       ![srvnp](../../images/srvnp.PNG)
       
-      To connect the service to the pod
+      #### To connect the service to the pod
       
       ![srvnp1](../../images/srvnp1.PNG)
       
-      To create the service
+      #### To create the service
       ```
       $ kubectl create -f service-defination.yaml
       ```
       
-      To list the services
+      #### To list the services
       ```
       $ kubectl get services
       ```
       
-      To access the application from CLI instead of web browser
+      #### To access the application from CLI instead of web browser
       ```
       $ curl http://192.168.1.2:30008
       ```
       
       ![srvnp2](../../images/srvnp2.PNG)
 
-      A service with multiple pods
+      #### A service with multiple pods
       
       ![srvnp3](../../images/srvnp3.PNG)
       
-      When Pods are distributed across multiple nodes
+      #### When Pods are distributed across multiple nodes
      
       ![srvnp4](../../images/srvnp4.PNG)
      
             
  1. ClusterIP
     - In this case the service creates a **`Virtual IP`** inside the cluster to enable communication between different services such as a set of frontend servers to a set of backend servers.
+    
  1. LoadBalancer
     - Where provisions a **`loadbalancer`** for our application in supported cloud providers.
 
