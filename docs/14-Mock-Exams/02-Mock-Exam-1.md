@@ -28,6 +28,7 @@
 
   2. Run below command which create a pod with labels
 
+     <details>
      
      ```
      kubectl run messaging --image=redis:alpine --labels=tier=msg
@@ -38,6 +39,7 @@
   3. Run below command to create namespace
      
      <details>
+     
      ```
      kubectl create namespace apx-x9984574
      ```
