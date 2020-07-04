@@ -5,7 +5,7 @@
   #### Solution to the Mock Exam 1
 
   1. Apply below Manifests
-
+  <details>
   ```
   apiVersion: v1
   kind: Pod
@@ -23,6 +23,7 @@
     restartPolicy: Always
   status: {}
   ```
+  </details>
 
   2. Run below command which create a pod with labels
 
