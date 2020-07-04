@@ -6,7 +6,7 @@
 
    1. Use Below Commands Step-by-step as mentioned
 
-      </details>
+      <details>
    
       ```
       Master Node:
@@ -38,7 +38,7 @@
       ```
       kubectl -n admin2406 get deployment -o custom-columns=DEPLOYMENT:.metadata.name,CONTAINER_IMAGE:.spec.template.spec.   containers[].image,READY_REPLICAS:.status.readyReplicas,NAMESPACE:.metadata.namespace --sort-by=.metadata.name > /opt/   admin2406_data
       ```
-      <details>
+      </details>
 
    3. Use below command and fix the issue
 
@@ -49,10 +49,10 @@
 
       Change port from 2379 to 6443 using below command
       
-      ```
-      vi /root/kubeconfig
-      ```
-      
+        ```
+        vi /root/kubeconfig
+        ```
+
       Now replace the port 2379 with 6443
       
       Run:
