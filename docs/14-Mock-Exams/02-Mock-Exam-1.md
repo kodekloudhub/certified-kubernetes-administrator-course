@@ -28,15 +28,20 @@
 
   2. Run below command which create a pod with labels
 
-  ```
-  kubectl run messaging --image=redis:alpine --labels=tier=msg
-  ```
+     
+     ```
+     kubectl run messaging --image=redis:alpine --labels=tier=msg
+     ```
+     </details>
 
+ 
   3. Run below command to create namespace
-
-  ```
-  kubectl create namespace apx-x9984574
-  ```
+     
+     <details>
+     ```
+     kubectl create namespace apx-x9984574
+     ```
+     </details>
 
   4. Use the below command which will redirect the o/p
 
