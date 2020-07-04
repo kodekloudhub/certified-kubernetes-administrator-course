@@ -51,7 +51,7 @@ How are labels and selectors are used in kubernetes?
 
   ![lse](../../images/lse.PNG)
 
-How do you specify lables?
+How do you specify labels?
  
  ![lpod](../../images/lpod.PNG)
  
