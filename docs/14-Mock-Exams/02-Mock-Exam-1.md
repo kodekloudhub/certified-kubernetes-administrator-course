@@ -66,34 +66,34 @@
 
   6. Apply below manifests
 
-    <details>
+     <details>
 
-    ```
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      creationTimestamp: null
-      labels:
-        app: hr-web-app
-      name: hr-web-app
-    spec:
-      replicas: 2
-      selector:
-        matchLabels:
+      ```
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        creationTimestamp: null
+        labels:
           app: hr-web-app
-      strategy: {}
-      template:
-        metadata:
-          creationTimestamp: null
-          labels:
+        name: hr-web-app
+      spec:
+        replicas: 2
+        selector:
+          matchLabels:
             app: hr-web-app
-        spec:
-          containers:
-          - image: kodekloud/webapp-color
-            name: webapp-color
-            resources: {}
-    status: {}
-    ```
+        strategy: {}
+        template:
+          metadata:
+            creationTimestamp: null
+            labels:
+              app: hr-web-app
+          spec:
+            containers:
+            - image: kodekloud/webapp-color
+              name: webapp-color
+              resources: {}
+      status: {}
+      ```
     </details>
 
   7. To Create a Static pod, copy it to the static-pods folder in this case it is /etc/kubernetes/manifests
