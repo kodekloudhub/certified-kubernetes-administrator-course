@@ -94,7 +94,7 @@
               resources: {}
       status: {}
       ```
-    </details>
+     </details>
 
   7. To Create a Static pod, copy it to the static-pods folder in this case it is /etc/kubernetes/manifests
 
