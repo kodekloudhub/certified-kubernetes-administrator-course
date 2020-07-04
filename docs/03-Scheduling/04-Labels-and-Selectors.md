@@ -6,7 +6,7 @@ In this section, we will take a look at **`Labels and Selectors`**
 Labels and Selectors are standard methods to group things together.
 - Lets say you have set of different species 
   
-  ![labels-animals](../../images/labels-animals.PNG)
+  ![lables-animals](../../images/labels-animals.PNG)
   
 - A user wants to filter them based on different criteria such as based on  **`Class`** or **`Kind`** or **`Color`**
 
