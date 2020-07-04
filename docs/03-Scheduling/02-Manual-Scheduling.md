@@ -23,8 +23,9 @@ In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on
     ![sc3](../../images/sc3.PNG)
     
     
-    
-    
+K8s Reference Docs:
+- https://kubernetes.io/docs/reference/using-api/api-concepts/
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodename
     
     
    
