@@ -49,9 +49,7 @@
 
       Change port from 2379 to 6443 using below command
       
-        ```
-        vi /root/kubeconfig
-        ```
+      vi /root/kubeconfig
 
       Now replace the port 2379 with 6443
       
