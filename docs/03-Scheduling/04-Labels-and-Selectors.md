@@ -24,7 +24,7 @@ Labels and Selectors are standard methods to group things together.
   
 #### Labels are properties attach to each item.
 
-  ![labels-ckc](../../images/ckc.PNG)
+  ![labels-ckc](../../images/labels-ckc.PNG)
   
 #### Selectors help you to filter these items
  
