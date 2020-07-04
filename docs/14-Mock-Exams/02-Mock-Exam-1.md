@@ -53,7 +53,7 @@
      ```
      kubectl get nodes -o json > /opt/outputs/nodes-z3444kd9.json
      ```
-     <details>
+     </details>
 
   5. Execute below command which will expose the pod on port 6379
 
@@ -62,7 +62,7 @@
      ```
      kubectl expose pod messaging --port=6379 --name messaging-service
      ```
-     <details>
+     </details>
 
   6. Apply below manifests
 
