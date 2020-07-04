@@ -10,7 +10,7 @@ In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on
   - The scheduler goes throught all the pods and looks for those that do not have this property set. Those are the candidates for scheduling. It then identifies the right node for the POD, by running the scheduling algorithm.
   - Once identified it schedules the POD on the node by setting the nodeName property to the name of the node by creating a binding object.
   
-    ![sc1](../../images/sc1.PNG)
+    ![sc1](../../images/sc1.png)
     
 ## No Scheduler
   - So, if there is no scheduler to monitor and schedule nodes, what happens? The pods continue to be in a pending state. 
