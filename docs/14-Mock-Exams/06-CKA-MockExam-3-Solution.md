@@ -1,6 +1,6 @@
 # Mock Exam 3 Solution
 
-  Is it tough? Want to see the solution ? [Solution](https://kodekloud.com/courses/539883/lectures/11459153)
+  Is it tough? Want to see the [solution](https://kodekloud.com/courses/539883/lectures/11459153) ?
 
 1. Run the below Command for Solution 
 
