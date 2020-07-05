@@ -2,13 +2,13 @@
 
   I want to see the [Solution](https://kodekloud.com/courses/539883/lectures/11459075)
 
-  1. 
+  1. Run the below Command for Solution
 
     <details>
 
-    ```
-    ETCDCTL_API=3 etcdctl snapshot save --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --endpoints=127.0.0.1:2379 /tmp/etcd-backup.db
-    ```
+     ```
+     ETCDCTL_API=3 etcdctl snapshot save --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --endpoints=127.0.0.1:2379 /tmp/etcd-backup.db
+     ```
     </details>
 
   2. 
