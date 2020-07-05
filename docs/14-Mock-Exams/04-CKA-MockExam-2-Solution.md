@@ -142,7 +142,7 @@
      kubectl set image deployment/nginx-deploy nginx-deploy=nginx=1.17 --record
      kubectl rollout history deployment nginx-deploy
      ```
-     <details>
+     </details>
   
   6. Run the below Command for Solution
 
