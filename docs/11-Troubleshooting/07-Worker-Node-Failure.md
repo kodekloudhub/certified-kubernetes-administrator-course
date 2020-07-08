@@ -12,7 +12,7 @@
     kubectl describe node worker-1
     ```
 
-    ![ns](../../images/ns.PNG)
+    ![wrk](../../images/wrk.PNG)
 
 
   - Check the possible **`CPU`** and **`MEMORY`**  using **`top`** and **`df -h`** 
@@ -30,7 +30,7 @@
     ```
     sudo journalctl –u kubelet
     ```
-    ![kubelet](../../images/kubelet.PNG)
+    ![kublet](../../images/kublet.PNG)
   
     
   - Check the **`kubelet`** Certificates, they are not expired, and in the right group and issued by the right CA.
