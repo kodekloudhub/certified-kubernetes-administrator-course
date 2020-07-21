@@ -42,7 +42,7 @@ In this section, we will take a look at taints and tolerations.
        effect: "NoSchedule"
      ```
     
-    ![tp](../../images/tp.PNG)
+  ![tp](../../images/tp.PNG)
     
 
 #### Taints and Tolerations does not tell the pod to go to a particular node. Instead, it tells the node to only accept pods with certain tolerations.
