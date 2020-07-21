@@ -6,7 +6,7 @@ In this section, we will take a look at Node Selectors in Kubernetes
 #### We add new property called Node Selector to the spec section and specify the label.
 - The scheduler uses these labels to match and identify the right node to place the pods on.
 
-  ![nsel](../../images/nsel.PNG]
+![nsel](../../images/nsel.PNG]
   
 - To label nodes
 
@@ -19,19 +19,19 @@ In this section, we will take a look at Node Selectors in Kubernetes
   $ kubectl label nodes node-1 size=Large
   ```
   
-  ![ln](../../images/ln.PNG]
+![ln](../../images/ln.PNG]
   
 - To create a pod defination
   ```
   $ kubectl create -f pod-defination.yml
   ```
   
-  ![nsel](../../images/nsel.PNG]
+![nsel](../../images/nsel.PNG]
   
 ## Node Selector - Limitations
 - We used a single label and selector to achieve our goal here. But what if our requirement is much more complex.
   
-  ![nsl](../../images/nsl.PNG]
+![nsl](../../images/nsl.PNG]
  
 - For this we have **`Node Affinity and Anti Affinity`**
   
