@@ -18,16 +18,17 @@ In this section, we will take a look at taints and tolerations.
   ```
   $ kubectl taint nodes <node-name> key=value:taint-effect
   ```
-  
+ 
+  Example
   ```
   $ kubectl taint nodes node1 app=blue:NoSchedule
   ```
   
 - The taint effect defines what would happen to the pods if they do not tolerate the taint.
 - There are 3 taint effects
-  - NoSchedule: Which means the pods will not be scheduled on the node.
-  - PreferNoSchedule: Which means the system will try to avoid placing a pod on the node but that is not guaranteed.
-  - NoExecute: which means that new pods will not be scheduled on the node and the existing pods on the node, if any, will be evicted if they do not tolerate the taint. These pods my have been scheduled on the node before the taint was applied to the node.
+  - **`NoSchedule`**: Which means the pods will not be scheduled on the node.
+  - **`PreferNoSchedule`**: Which means the system will try to avoid placing a pod on the node but that is not guaranteed.
+  - **`NoExecute`**: which means that new pods will not be scheduled on the node and the existing pods on the node, if any, will be evicted if they do not tolerate the taint. These pods my have been scheduled on the node before the taint was applied to the node.
   
   ![tn](../../images/tn.PNG)
   
