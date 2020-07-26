@@ -10,7 +10,9 @@
 
         ```
          kubectl delete svc mysql -n alpha
- 
+        ```
+        
+        ```
          apiVersion: v1
          kind: Service
          metadata:
