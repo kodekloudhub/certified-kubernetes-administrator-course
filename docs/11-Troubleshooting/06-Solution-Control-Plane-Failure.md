@@ -13,11 +13,7 @@
         ```
 
         ```
-        cd /etc/kubernetes/manifests/
- 
-        vi kube-scheduler.yaml
-
-        :%s/kube-schedulerrrr/kube-scheduler
+        sed -i 's/kube-schedulerrrr/kube-scheduler/g' /etc/kubernetes/manifests/kube-scheduler.yaml
         ```
        </details>
 
