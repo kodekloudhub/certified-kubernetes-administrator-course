@@ -6,7 +6,7 @@
 
     1. Check Solution 
 
-       <details>
+      <details>
 
         ```
         kubectl delete svc mysql -n alpha
@@ -31,7 +31,7 @@
         status:
           loadBalancer: {}
         ```   
-       </details>
+      </details>
 
     2. Check Solution
 
