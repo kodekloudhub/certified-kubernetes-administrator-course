@@ -6,32 +6,30 @@
 
     1. Check Solution 
 
-      <details>
+       <details>
 
         ```
-        kubectl delete svc mysql -n alpha
-        ```
-
-        ```
-        apiVersion: v1
-        kind: Service
-        metadata:
-          name: mysql-service
-          namespace: alpha
-        spec:
-          clusterIP: 10.110.6.201
-          ports:
-          - port: 3306
-            protocol: TCP
-            targetPort: 3306
-          selector:
-            name: mysql
-          sessionAffinity: None
-          type: ClusterIP
-        status:
-          loadBalancer: {}
+         kubectl delete svc mysql -n alpha
+ 
+         apiVersion: v1
+         kind: Service
+         metadata:
+           name: mysql-service
+           namespace: alpha
+         spec:
+           clusterIP: 10.110.6.201
+           ports:
+           - port: 3306
+             protocol: TCP
+             targetPort: 3306
+           selector:
+             name: mysql
+           sessionAffinity: None
+           type: ClusterIP
+         status:
+           loadBalancer: {}
         ```   
-      </details>
+       </details>
 
     2. Check Solution
 
