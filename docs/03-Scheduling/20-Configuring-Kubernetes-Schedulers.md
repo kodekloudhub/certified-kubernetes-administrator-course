@@ -4,3 +4,8 @@
 In this section, we will take a look at configuring kubernetes schedulers.
 
 ![ks](../../images/ks.PNG)
+
+## References
+
+![ref](../../images/ref.PNG)
+
