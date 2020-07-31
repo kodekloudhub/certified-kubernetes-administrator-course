@@ -2,4 +2,30 @@
   - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816597)
   
 Solutions to practice test - multiple schedulers
-- 
+- Run the command 'kubectl get pods --namespace=kube-system'
+  ```
+  $ kubectl get pods --namespace=kube-system
+  ```
+- Run the command 'kubectl describe pod kube-scheduler-master --namespace=kube-system'
+  ```
+  $ kubectl describe pod kube-scheduler-master --namespace=kube-system
+  ```
+- Use the file at /etc/kubernetes/manifests/kube-scheduler.yaml to create your own scheduler. View answer file at /var/answers
+  ```
+  $ kubectl create -f my-scheduler.yaml
+  ```
+- Set schedulerName property on pod specification to the name of the new scheduler. File is located at /root/nginx-pod.yaml
+  ```
+  master $ grep schedulerName /root/nginx-pod.yaml
+  schedulerName: my-scheduler
+  
+  $ kubectl create -f /root/nginx-pod.yaml
+  ```
+
+
+
+
+
+
+
+
