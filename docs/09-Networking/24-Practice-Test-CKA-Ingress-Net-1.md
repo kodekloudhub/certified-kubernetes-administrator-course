@@ -123,49 +123,49 @@
 
   14. Check the Solution
 
-      <details>
-
+      </details>
+ 
+        ```
+        kubectl edit ingress --namespace app-space
+ 
+        Change the path from /watch to /stream
+    
+        OR
+ 
+        apiVersion: v1
+        items:
+        - apiVersion: extensions/v1beta1
+          kind: Ingress
+          metadata:
+            annotations:
+              nginx.ingress.kubernetes.io/rewrite-target: /
+              nginx.ingress.kubernetes.io/ssl-redirect: "false"
+            name: ingress-wear-watch
+            namespace: app-space
+          spec:
+            rules:
+            - http:
+                paths:
+                - backend:
+                    serviceName: wear-service
+                    servicePort: 8080
+                  path: /wear
+                  pathType: ImplementationSpecific
+                - backend:
+                    serviceName: video-service
+                    servicePort: 8080
+                  path: /stream
+                  pathType: ImplementationSpecific
+          status:
+            loadBalancer:
+              ingress:
+              - {}
+        kind: List
+        metadata:
+          resourceVersion: ""
+          selfLink: ""
        ```
-       kubectl edit ingress --namespace app-space
-
-       Change the path from /watch to /stream
-   
-       OR
-
-       apiVersion: v1
-       items:
-       - apiVersion: extensions/v1beta1
-         kind: Ingress
-         metadata:
-           annotations:
-             nginx.ingress.kubernetes.io/rewrite-target: /
-             nginx.ingress.kubernetes.io/ssl-redirect: "false"
-           name: ingress-wear-watch
-           namespace: app-space
-         spec:
-           rules:
-           - http:
-               paths:
-               - backend:
-                   serviceName: wear-service
-                   servicePort: 8080
-                 path: /wear
-                 pathType: ImplementationSpecific
-               - backend:
-                   serviceName: video-service
-                   servicePort: 8080
-                 path: /stream
-                 pathType: ImplementationSpecific
-         status:
-           loadBalancer:
-             ingress:
-             - {}
-       kind: List
-       metadata:
-         resourceVersion: ""
-         selfLink: ""
-       ```
-    </details>
+      </details>
 
   15. Check the Solution
 
