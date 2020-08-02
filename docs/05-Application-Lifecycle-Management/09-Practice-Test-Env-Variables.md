@@ -54,6 +54,9 @@ Solutions to practice test env variables
   $ kubectl create -f new-webapp.yaml
   ``` 
 
-  
+- View the changes to the web application UI by clicking on the 'Webapp Color' Tab above your terminal.
+
+
+
 
 
