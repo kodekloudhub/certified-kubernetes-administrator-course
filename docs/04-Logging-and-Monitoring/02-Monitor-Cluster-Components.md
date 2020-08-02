@@ -51,7 +51,7 @@ In this section, we will take a look at monitoring kubernetes cluster
   ```
 - View performance metrics of pod
   ```
-  $ kubeclt top pod
+  $ kubectl top pod
   ```
   
   ![view](../../images/view.PNG)
