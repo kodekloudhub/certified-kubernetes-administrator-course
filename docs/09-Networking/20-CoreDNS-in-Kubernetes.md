@@ -91,62 +91,62 @@
 
   10. Check the Solution
 
-     <details>
+      <details>
 
-      ```
-      web-service
-      ```
-     </details>
+       ```
+       web-service
+       ```
+      </details>
 
   11. Check the Solution
 
-     <details>
-
-      ```
-      web-serivce.default.pod
-      ```
-     </details>
+      <details>
+ 
+       ```
+       web-serivce.default.pod
+       ```
+      </details>
 
   12. Check the Solution
 
-     <details>
-
-      ```
-      web-service.payroll
-      ```
-     </details>
+      <details>
+ 
+       ```
+       web-service.payroll
+       ```
+      </details>
 
   13. Check the Solution
 
-     <details>
-
-      ```
-      web-service.payroll.svc.cluster
-      ```
-     </details>
+      <details>
+ 
+       ```
+       web-service.payroll.svc.cluster
+       ```
+      </details>
 
   14. Check the Solution
 
-     <details>
-
-      ```
-      kubectl edit deploy webapp
-
-      Search for DB_Host and Change the DB_Host from mysql to mysql.payroll
-
-      spec:
-        containers:
-        - env:
-          - name: DB_Host
-            value: mysql.payroll
-      ```
-     </details>
-
+      <details>
+ 
+       ```
+       kubectl edit deploy webapp
+ 
+       Search for DB_Host and Change the DB_Host from mysql to mysql.payroll
+ 
+       spec:
+         containers:
+         - env:
+           - name: DB_Host
+             value: mysql.payroll
+       ```
+      </details>
+ 
   15. Check the Solution
 
-     <details>
-
-      ```
-      kubectl exec -it hr nslookup mysql.payroll > /root/nslookup.out
-      ```
-     </details>
+      <details>
+ 
+       ```
+       kubectl exec -it hr nslookup mysql.payroll > /root/nslookup.out
+       ```
+      </details>
