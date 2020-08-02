@@ -1,6 +1,6 @@
-# Practice Test Networking Weave
+# Practice Test Service Networking
 
-  Take me to [Lab](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9816785)
+  Take me to [Lab](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9816800)
 
   #### Solution 
 
@@ -9,7 +9,7 @@
      <details>
 
       ```
-      4
+      172.17.0.0/16
       ```
      </details>
 
@@ -18,7 +18,7 @@
      <details>
 
       ```
-      weave
+      10.32.0.0/12
       ```
      </details>
 
@@ -27,7 +27,7 @@
      <details>
 
       ```
-      4
+      10.96.0.0/12
       ```
      </details>
 
@@ -36,7 +36,7 @@
      <details>
 
       ```
-      One on every node
+      2
       ```
      </details>
 
@@ -45,7 +45,7 @@
      <details>
 
       ```
-      weave
+      iptables
       ```
      </details>
 
@@ -54,15 +54,7 @@
      <details>
 
       ```
-      10.X.X.X
+      using daemonset
       ```
      </details>
 
-  7. Check the Solution
-
-     <details>
-
-      ```
-      10.38.0.0
-      ```
-     </details>
