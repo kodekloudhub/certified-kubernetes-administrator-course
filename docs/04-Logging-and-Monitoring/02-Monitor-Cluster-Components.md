@@ -42,7 +42,7 @@ In this section, we will take a look at monitoring kubernetes cluster
   ```
 - Deploy the metric server
   ```
-  $ kubeclt create -f metric-server/deploy/1.8+/
+  $ kubectl create -f metric-server/deploy/1.8+/
   ```
   
 - View the cluster performance
