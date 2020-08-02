@@ -1,5 +1,5 @@
 # Commands and Arguments in Kubernetes
-  - Take me to [Videp Tutorial](https://kodekloud.com/courses/539883/lectures/9808202)
+  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808202)
 
 In this section, we will take a look at commands and arguments in kubernetes
 
