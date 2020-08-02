@@ -50,7 +50,7 @@ In this section, we will take a look at rolling updates and rollback in a deploy
   
 ## Rollback
   
-  ![rb](../.../imags/rb.PNG)
+  ![rb](../.../images/rb.PNG)
   
 - To undo a change
   ```
@@ -74,9 +74,4 @@ $ kubectl rollout undo deployment/myapp-deployment
 ```
 
 ![sum](../../images/sum.PNG)
-  
-
-  
-
  
-
