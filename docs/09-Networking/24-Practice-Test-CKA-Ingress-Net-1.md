@@ -123,7 +123,7 @@
 
   14. Check the Solution
 
-      </details>
+      <details>
  
         ```
         kubectl edit ingress --namespace app-space

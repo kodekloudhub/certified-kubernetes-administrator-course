@@ -125,7 +125,7 @@
 
   8. Check the Solution
 
-     <detail>
+     <details>
 
       ```
       apiVersion: extensions/v1beta1
