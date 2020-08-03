@@ -19,7 +19,23 @@
  
   ![opt](../../images/opt.PNG)
   
+## Upgrading a Cluster
+- Upgrading a cluster involves 2 major steps
+  - First, you upgrade your master nodes. Components in the master nodes will go down briefly during upgrade. All workloads hosted on the worker nodes continue to serve users as normal.
+  - Then you upgrade the worker nodes.
+  
+#### There are different strategies that are available to upgrade the worker nodes
+- One is to upgrade all at once. But then your pods will be down and users will not be able to access the applications.
+  ![stg1](../../images/stg1.PNG)
+- Second one is to upgrade one node at a time. 
+  ![stg2](../../images/stg2.PNG)
+- Third one would be to add new nodes to the cluster
+  ![stg3](../../images/stg3.PNG)
+  
+#### kubeadm - Upgrade
 
+
+  
   
   
   
