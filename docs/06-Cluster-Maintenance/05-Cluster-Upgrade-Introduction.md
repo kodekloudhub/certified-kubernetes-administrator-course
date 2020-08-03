@@ -33,7 +33,17 @@
   ![stg3](../../images/stg3.PNG)
   
 #### kubeadm - Upgrade
-
+- kubeadm has an upgrade command that helps in upgrading clusters.
+  ```
+  $ kubeadm upgrade plan
+  ```
+  ![kube1](../../images/kube1.PNG)
+  
+- Upgrade kubeadm from v1.11 to v1.12
+  ```
+  $ apt-get upgrade -y kubeadm=1.12.0-00
+  ```
+- 
 
   
   
