@@ -37,7 +37,7 @@
   ```
   $ kubeadm upgrade plan
   ```
-  ![kube1](../../images/kube1.PNG)
+  ![kube1](../../images/kube1.png)
   
 - Upgrade kubeadm from v1.11 to v1.12
   ```
