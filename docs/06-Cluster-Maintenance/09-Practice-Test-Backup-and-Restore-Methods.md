@@ -32,9 +32,8 @@ Solutions to practice test - Backup and Restore Methods
   All of the above
   ```
 - Luckily we took a backup. Restore the original state of the cluster using the backup file. 
-  ```
-  View answer file at [etcd-backup-and-restore](https://github.com/mmumshad/kubernetes-the-hard-way/blob/master/practice-questions-answers/cluster-maintenance/backup-etcd/etcd-backup-and-restore.md#3-restore-etcd-snapshot-to-a-new-folder)
-  ```
+  - View answer file at [etcd-backup-and-restore](https://github.com/mmumshad/kubernetes-the-hard-way/blob/master/practice-questions-answers/cluster-maintenance/backup-etcd/etcd-backup-and-restore.md#3-restore-etcd-snapshot-to-a-new-folder)
+  
   
 
 #### Take me to [Solutions to Practice Tests Video Tutorial](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/14450164)
