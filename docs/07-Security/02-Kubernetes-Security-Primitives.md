@@ -34,6 +34,8 @@ In this section, we will take a look at kubernetes security primitives
 ## TLS Certificates
 - All communication with the cluster, between the various components such as the ETCD Cluster, kube-controller-manager, scheduler, api server, as well as those running on the working nodes such as the kubelet and kubeproxy is secured using TLS encryption.
 
+ ![tls](../../images/tls.PNG)
+ 
 ## Network Policies
 What about communication between applications within the cluster?
 - By default all PODS can access all other PODs within the cluster.
