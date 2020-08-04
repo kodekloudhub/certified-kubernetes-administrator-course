@@ -32,7 +32,7 @@
 - Third one would be to add new nodes to the cluster
   ![stg3](../../images/stg3.PNG)
   
-#### kubeadm - Upgrade
+## kubeadm - Upgrade master node
 - kubeadm has an upgrade command that helps in upgrading clusters.
   ```
   $ kubeadm upgrade plan
@@ -43,8 +43,61 @@
   ```
   $ apt-get upgrade -y kubeadm=1.12.0-00
   ```
-- 
+- Upgrade the cluster
+  ```
+  $ kubeadm upgrade apply v1.12.0
+  ```
+- If you run the 'kubectl get nodes' command, you will see the older version. This is beceause in the output of the command it is showing the versions of kubelets on each of these nodes registered with the API Server and not the version of API Server iteself  
+  ```
+  $ kubectl get nodes
+  ```
+  
+  ![kubeu](../../images/kubeu.PNG)
+  
+- Upgrade 'kubelet' on the master node
+  ```
+  $ apt-get upgrade kubelet=1.12.0-00
+  ```
+- Restart the kubelet
+  ```
+  $ systemctl restart kubelet
+  ```
+- Run 'kubectl get nodes' to verify
+  ```
+  $ kubectl get nodes
+  ```
+  
+  ![kubeu1](../../images/kubeu1.PNG)
+ 
+## kubeadm - Upgrade worker nodes
+  
+- From master node, run 'kubectl drain' command to move the workloads to other nodes
+  ```
+  $ kubectl drain node-1
+  ```
+- Upgrade kubeadm and kubelet packages
+  ```
+  $ apt-get upgrade -y kubeadm=1.12.0-00
+  $ apt-get upgrade -y kubelet=1.12.0-00
+  ```
+- Update the node configuration for the new kubelet version
+  ```
+  $ kubeadm upgrade node config --kubelet-version v1.12.0
+  ```
+- Restart the kubelet service
+  ```
+  $ systemctl restart kubelet
+  ```
+- Mark the node back to schedulable
+  ```
+  $ kubectl uncordorn node-1
+  ```
+  
+  ![kubeu2](../../images/kubeu2.PNG)
+  
+- Upgrade all worker nodes in the same way
 
+  ![kubeu3](../../images/kubeu3.PNG)
   
   
   
