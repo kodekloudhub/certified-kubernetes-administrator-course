@@ -75,14 +75,10 @@ In this section, we will take a look at TLS certificate creation in kubernetes
 
    ![kctl1](../../images/kctl1.PNG)
    
-   ![kctl2](../../images/kctl2.PNG)
-   
 ## Kubectl Nodes (Client Cert)
 
-   ![kctl3](../../images/kctl3.PNG)
+   ![kctl2](../../images/kctl2.PNG)
    
-   ![kctl4](../../images/kctl4.PNG)
-
    
    
   
