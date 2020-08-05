@@ -65,13 +65,6 @@ In this section, we will take a look at authentication in a kubernetes cluster
 ## Note
  
  ![note](../../images/note.PNG)
- 
-  
-  
-  
-  
-  
-- 
   
   
   
