@@ -69,21 +69,4 @@ In this section, we will take a look at kubeconfig in kubernetes
   ![kc12](../../images/kc12.PNG)
   
   ![kc11](../../images/kc11.PNG)
-  
-  
-
  
-  
- 
- 
-- 
-  
-  
-  
-  
-  
-    
-
-
-
-
