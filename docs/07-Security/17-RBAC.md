@@ -29,6 +29,9 @@ In this section, we will take a look at RBAC
 
   ![rbac1](../../images/rbac1.PNG)
   
+
+## View RBAC
+  
 - To list roles
   ```
   $ kubectl get roles
@@ -67,11 +70,11 @@ In this section, we will take a look at RBAC
   $ kubectl auth can-i create pods --as dev-user --namespace test
   ```
   
-  ![rbac4](../../images/rbac4.PNG)
+  ![rbac5](../../images/rbac5.PNG)
   
 ## Resource Names
 - Note on resource names we just saw how you can provide access to users for resources like pods within the namespace.
 - You can go one level down and allow access to specific resources alone.
     
-  ![rbac5](../../images/rbac5.PNG)
+  ![rbac4](../../images/rbac4.PNG)
   
