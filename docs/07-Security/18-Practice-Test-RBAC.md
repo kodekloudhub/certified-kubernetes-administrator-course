@@ -42,5 +42,10 @@ Solutions to practice test - RBAC
   ```
   $ kubectl get roles,rolebindings -n blue
   $ kubectl describe role developer -n blue
+  $ kubectl edit role developer -n blue (update the resourceNames)
   ```
-- 
+- View the answer file located at /var/answers/dev-user-deploy.yaml
+  ```
+  $ kubectl create -f /var/answers/dev-user-deploy.yaml
+  ```
+  
