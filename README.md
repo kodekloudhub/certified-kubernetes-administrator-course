@@ -84,7 +84,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [12.Multi-Containers-PODs](docs/05-Application-Lifecycle-Management/12.Multi-Containers-PODs.md)
   - [13-Practice-Test-Multi-Container-Pods](docs/05-Application-Lifecycle-Management/13-Practice-Test-Multi-Container-Pods.md)
   - [14-Multi-Container-Pods-Design-Patterns](docs/05-Application-Lifecycle-Management/14-Multi-Container-Pods-Design-Patterns.md)
-  - [15. Init-Containers](docs/05-Application-Lifecycle-Management/15. Init-Containers.md)
+  - [15.Init-Containers](docs/05-Application-Lifecycle-Management/15.Init-Containers.md)
   - [16-Practice-Test-Init-Containers](docs/05-Application-Lifecycle-Management/16-Practice-Test-Init-Containers.md)
   - [17.Self-Healing-Applications](docs/05-Application-Lifecycle-Management/17.Self-Healing-Applications.md)
   - [18.Download-Presentation-Deck](docs/05-Application-Lifecycle-Management/18.Download-Presentation-Deck.md)
