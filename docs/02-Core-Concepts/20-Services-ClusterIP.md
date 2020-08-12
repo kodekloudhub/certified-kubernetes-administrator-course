@@ -17,6 +17,20 @@ In this section we will take a look at **`services - ClusterIP`** in kubernetes
   
 #### To create a service of type ClusterIP
 ```
+apiVersion: v1
+kind: Service
+metadata:
+ name: back-end
+spec:
+ types: ClusterIP
+ ports:
+ - targetPort: 80
+   port: 80
+ selector:
+   app: myapp
+   type: back-end
+```
+```
 $ kubectl create -f service-defination.yaml
 ```
 
