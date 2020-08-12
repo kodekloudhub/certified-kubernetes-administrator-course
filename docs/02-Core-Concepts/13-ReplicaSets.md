@@ -118,19 +118,7 @@ In this section, we will take a look at the below
 ## How to scale replicaset
 - There are multiple ways to scale replicaset
   - First way is to update the number of replicas in the replicaset-defination.yaml defination file. E.g replicas: 6 and then run 
-  ```
-  $ kubectl apply -f replicaset-defination.yaml
-  ```
-  - Second way is to use **`kubectl scale`** command.
-  ```
-  $ kubectl scale --replicas=6 -f replicaset-defination.yaml
-  ```
-  - Third way is to use **`kubectl scale`** command with type and name
-  ```
-  $ kubectl scale --replicas=6 replicaset myapp-replicaset
-  ```
-  ![rs2](../../images/rs2.PNG)
-```
+ ```
     apiVersion: apps/v1
     kind: ReplicaSet
     metadata:
@@ -153,7 +141,20 @@ In this section, we will take a look at the below
      selector:
        matchLabels:
         type: front-end
- ```
+```
+
+  ```
+  $ kubectl apply -f replicaset-defination.yaml
+  ```
+  - Second way is to use **`kubectl scale`** command.
+  ```
+  $ kubectl scale --replicas=6 -f replicaset-defination.yaml
+  ```
+  - Third way is to use **`kubectl scale`** command with type and name
+  ```
+  $ kubectl scale --replicas=6 replicaset myapp-replicaset
+  ```
+  ![rs2](../../images/rs2.PNG)
 K8s Reference Docs:
 - https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 - https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/
