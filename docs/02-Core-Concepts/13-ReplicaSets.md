@@ -26,7 +26,7 @@ In this section, we will take a look at the below
 ## Replication Controller Defination File
   
    ![rc2](../../images/rc2.PNG)
-  - Replication Controller Defination
+  
     ```
     apiVersion: v1
     kind: ReplicationController
@@ -61,6 +61,30 @@ In this section, we will take a look at the below
     $ kubectl get pods
     ```
     ![rc3](../../images/rc3.PNG)
+    ```
+    apiVersion: v1
+    kind: ReplicationController
+    metadata:
+      name: myapp-rc
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+     template:
+        metadata:
+          name: myapp-pod
+          labels:
+            app: myapp
+            type: front-end
+        spec:
+         containers:
+         - name: nginx-container
+           image: nginx
+     replicas: 3
+     selector:
+       matchLabels:
+        type: front-end
+     ```
     
 ## Creating a ReplicaSet
   
