@@ -45,6 +45,19 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
   ![ns8](../../images/ns8.PNG)
   
 - Here we have a pod defination file, when we create a pod with pod-defination file, the pod is created in the default namespace.
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+     app: myapp
+     type: front-end
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+ ```
   ```
   $ kubectl create -f pod-defination.yaml
   ```
@@ -55,10 +68,31 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
   ![ns9](../../images/ns9.PNG)
 
 - If you want to make sure that this pod gets you created in the **`dev`** env all the time, even if you don't specify in the command line, you can move the **`--namespace`** defination into the pod-defination file.
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  namespace: dev
+  labels:
+     app: myapp
+     type: front-end
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+ ```
   
   ![ns10](../../images/ns10.PNG)
   
 - To create a new namespace, create a namespace defination as shown below and then run **`kubectl create`**
+```
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev
+```
+
   ```
   $ kubectl create -f namespace-dev.yaml
   ```
