@@ -50,7 +50,7 @@ In this section we will take a look at **`services`** in kuberentes
          port: 80
          nodePort: 30008
 ```
-      ![srvnp](../../images/srvnp.PNG)
+     ![srvnp](../../images/srvnp.PNG)
       
       #### To connect the service to the pod
 ```
@@ -69,7 +69,7 @@ In this section we will take a look at **`services`** in kuberentes
          type: front-end
 ```
 
-      ![srvnp1](../../images/srvnp1.PNG)
+    ![srvnp1](../../images/srvnp1.PNG)
       
       #### To create the service
       ```
