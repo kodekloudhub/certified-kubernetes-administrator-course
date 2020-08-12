@@ -52,7 +52,7 @@ How are labels and selectors are used in kubernetes?
   ![lse](../../images/lse.PNG)
 
 How do you specify labels?
-    ```
+   ```
     apiVersion: v1
     kind: Pod
     metadata:
@@ -66,7 +66,7 @@ How do you specify labels?
        image: simple-webapp
        ports:
        - containerPort: 8080
-    ```
+   ```
  ![lpod](../../images/lpod.PNG)
  
 Once the pod is created, to select the pod with labels run the below command
@@ -75,7 +75,7 @@ $ kubectl get pods --selector app=App1
 ```
 
 Kubernetes use labels to connect different objects together
-    ```
+   ```
     apiVersion: apps/v1
     kind: ReplicaSet
     metadata:
@@ -97,7 +97,7 @@ Kubernetes use labels to connect different objects together
         containers:
         - name: simple-webapp
           image: simple-webapp   
-    ```
+   ```
 
   ![lrs](../../images/lrs.PNG)
 
