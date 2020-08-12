@@ -9,7 +9,21 @@ In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on
   - Every POD has a field called NodeName that by default is not set. You don't typically specify this field when you create the manifest file, kubernetes adds it automatically.
   - The scheduler goes throught all the pods and looks for those that do not have this property set. Those are the candidates for scheduling. It then identifies the right node for the POD, by running the scheduling algorithm.
   - Once identified it schedules the POD on the node by setting the nodeName property to the name of the node by creating a binding object.
-  
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+     name: nginx
+     labels:
+      name: nginx
+    spec:
+     containers:
+     - name: nginx
+       image: nginx
+       ports:
+       - containerPort: 8080
+     nodeName: node02
+    ```
     ![sc1](../../images/sc1.png)
     
 ## No Scheduler
@@ -19,7 +33,30 @@ In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on
     ![sc2](../../images/sc2.PNG)
     
   - Another way to assign a node to an existing pod is to create a binding object and send a post request to the pod binding API. In the binding object you specify a target node with the name of the node.
-    
+    ```
+    apiVersion: v1
+    kind: Binding
+    metadata:
+      name: nginx
+    target:
+      apiVersion: v1
+      kind: Node
+      name: node02
+    ```
+    ```
+    apiVersion: v1
+    kind: Pod
+    metadata:
+     name: nginx
+     labels:
+      name: nginx
+    spec:
+     containers:
+     - name: nginx
+       image: nginx
+       ports:
+       - containerPort: 8080
+    ```
     ![sc3](../../images/sc3.PNG)
     
     
