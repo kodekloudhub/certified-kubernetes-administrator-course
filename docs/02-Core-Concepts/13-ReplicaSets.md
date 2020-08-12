@@ -15,7 +15,7 @@ In this section, we will take a look at the below
   
 - Another reason we need replication is to create multiple pods to share the load across them - **`Load Balancing & Scaling`**.
 
-  ![rc1](../../images/rc1.PNG).
+  ![rc1](../../images/rc1.PNG)
   
 ## Difference between ReplicaSet and Replication Controller
 - **`Replication Controller`** is the older technology that is being replaced by a **`ReplicaSet`**.
@@ -26,7 +26,28 @@ In this section, we will take a look at the below
 ## Replication Controller Defination File
   
    ![rc2](../../images/rc2.PNG)
-   
+  - Replication Controller Defination
+    ```
+    apiVersion: v1
+    kind: ReplicationController
+    metadata:
+      name: myapp-rc
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+     template:
+        metadata:
+          name: myapp-pod
+          labels:
+            app: myapp
+            type: front-end
+        spec:
+         containers:
+         - name: nginx-container
+           image: nginx
+     replicas: 3
+     ```
   - To Create the replication controller
     ```
     $ kubectl create -f rc-defination.yaml
