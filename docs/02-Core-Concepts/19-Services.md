@@ -38,7 +38,7 @@ In this section we will take a look at **`services`** in kuberentes
  
  1. NodePort
     - Where the services makes an internal POD accessable on a POD on the NODE.
-```
+      ```
       apiVersion: v1
       kind: Service
       metadata:
@@ -49,11 +49,11 @@ In this section we will take a look at **`services`** in kuberentes
        - targetPort: 80
          port: 80
          nodePort: 30008
-```
+      ```
      ![srvnp](../../images/srvnp.PNG)
       
       #### To connect the service to the pod
-```
+      ```
       apiVersion: v1
       kind: Service
       metadata:
@@ -67,7 +67,7 @@ In this section we will take a look at **`services`** in kuberentes
        selector:
          app: myapp
          type: front-end
-```
+        ```
 
     ![srvnp1](../../images/srvnp1.PNG)
       
