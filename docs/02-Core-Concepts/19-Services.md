@@ -67,7 +67,7 @@ In this section we will take a look at **`services`** in kuberentes
        selector:
          app: myapp
          type: front-end
-        ```
+       ```
 
     ![srvnp1](../../images/srvnp1.PNG)
       
