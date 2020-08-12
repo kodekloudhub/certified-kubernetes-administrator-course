@@ -61,11 +61,18 @@ In this section, we will take a look at the below
     $ kubectl get pods
     ```
     ![rc3](../../images/rc3.PNG)
-    ```
+    
+## Creating a ReplicaSet
+  
+## ReplicaSet Defination File
+
+   ![rs](../../images/rs.PNG)
+
+```
     apiVersion: v1
     kind: ReplicationController
     metadata:
-      name: myapp-rc
+      name: myapp-replicaset
       labels:
         app: myapp
         type: front-end
@@ -84,14 +91,7 @@ In this section, we will take a look at the below
      selector:
        matchLabels:
         type: front-end
-     ```
-    
-## Creating a ReplicaSet
-  
-## ReplicaSet Defination File
-
-   ![rs](../../images/rs.PNG)
-   
+ ```
 #### ReplicaSet requires a selector defination when compare to Replicaton Controller.
    
   - To Create the replicaset
@@ -130,7 +130,30 @@ In this section, we will take a look at the below
   $ kubectl scale --replicas=6 replicaset myapp-replicaset
   ```
   ![rs2](../../images/rs2.PNG)
-
+```
+    apiVersion: v1
+    kind: ReplicationController
+    metadata:
+      name: myapp-replicaset
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+     template:
+        metadata:
+          name: myapp-pod
+          labels:
+            app: myapp
+            type: front-end
+        spec:
+         containers:
+         - name: nginx-container
+           image: nginx
+     replicas: 6
+     selector:
+       matchLabels:
+        type: front-end
+ ```
 K8s Reference Docs:
 - https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
 - https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/
