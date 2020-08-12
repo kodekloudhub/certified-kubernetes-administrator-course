@@ -27,7 +27,7 @@ In this section, we will take a look at the below
   
    ![rc2](../../images/rc2.PNG)
   
-    ```
+```
     apiVersion: v1
     kind: ReplicationController
     metadata:
@@ -47,7 +47,7 @@ In this section, we will take a look at the below
          - name: nginx-container
            image: nginx
      replicas: 3
-     ```
+```
   - To Create the replication controller
     ```
     $ kubectl create -f rc-defination.yaml
@@ -69,8 +69,8 @@ In this section, we will take a look at the below
    ![rs](../../images/rs.PNG)
 
 ```
-    apiVersion: v1
-    kind: ReplicationController
+    apiVersion: apps/v1
+    kind: ReplicaSet
     metadata:
       name: myapp-replicaset
       labels:
@@ -131,8 +131,8 @@ In this section, we will take a look at the below
   ```
   ![rs2](../../images/rs2.PNG)
 ```
-    apiVersion: v1
-    kind: ReplicationController
+    apiVersion: apps/v1
+    kind: ReplicaSet
     metadata:
       name: myapp-replicaset
       labels:
