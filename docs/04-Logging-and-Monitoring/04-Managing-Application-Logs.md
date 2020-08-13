@@ -10,7 +10,16 @@ In this section, we will take a look at managing application logs
 ![ld1](../../images/ld1.PNG)
  
 #### Logs - Kubernetes
-
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: event-simulator-pod
+spec:
+  containers:
+  - name: event-simulator
+    image: kodekloud/event-simulator
+```
  ![logs](../../images/logs.PNG)
  
 - To view the logs
@@ -25,5 +34,6 @@ In this section, we will take a look at managing application logs
 
   ![logs1](../../images/logs1.PNG)
   
-
+#### K8s Reference Docs
+- https://kubernetes.io/blog/2015/06/cluster-level-logging-with-kubernetes/
  
