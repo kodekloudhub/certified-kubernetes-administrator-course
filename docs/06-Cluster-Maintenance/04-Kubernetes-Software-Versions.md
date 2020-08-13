@@ -30,7 +30,10 @@ $ kubectl get nodes
  
 #### References
 
- ![r4](../../images/r4.PNG)
+ - https://github.com/kubernetes/community/blob/master/contributors/design-proposals/release/versioning.md
+ - https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/api-group.md
+ - https://blog.risingstack.com/the-history-of-kubernetes/
+ - https://kubernetes.io/docs/setup/release/version-skew-policy/
  
  
 
