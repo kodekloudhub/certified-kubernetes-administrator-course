@@ -5,7 +5,18 @@ In this section, we will take a look at Node Selectors in Kubernetes
 
 #### We add new property called Node Selector to the spec section and specify the label.
 - The scheduler uses these labels to match and identify the right node to place the pods on.
-  
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+   name: myapp-pod
+  spec:
+   containers:
+   - name: data-processor
+     image: data-processor
+   nodeSelector:
+    size: Large
+  ```
 ![nsel](../../images/nsel.PNG)
   
 - To label nodes
@@ -22,6 +33,18 @@ In this section, we will take a look at Node Selectors in Kubernetes
 ![ln](../../images/ln.PNG)
   
 - To create a pod defination
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+   name: myapp-pod
+  spec:
+   containers:
+   - name: data-processor
+     image: data-processor
+   nodeSelector:
+    size: Large
+  ```
   ```
   $ kubectl create -f pod-defination.yml
   ```
