@@ -58,7 +58,10 @@ In this section, we will take a look at Node Selectors in Kubernetes
  
 - For this we have **`Node Affinity and Anti Affinity`**
   
-  
+#### K8s Reference Docs
+- https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector
+
+
 
 
 
