@@ -17,7 +17,7 @@ In this section, we will take a look at multiple schedulers
   ![das](../../images/das.PNG)
   
 ## Deploy additional scheduler - kubeadm
-
+   
   ![dask](../../images/dask.PNG)
   
   - To create a scheduler pod
@@ -33,7 +33,17 @@ In this section, we will take a look at multiple schedulers
 
 ## Use the Custom Scheduler
 - Create a pod defination file and add new section called **`schedulerName`** and specify the name of the new scheduler
-
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: nginx
+  spec:
+    containers:
+    - image: nginx
+      name: nginx
+    schedulerName: my-custom-scheduler
+  ```
   ![cs](../../images/cs.png)
   
 - To create a pod definaton
@@ -59,5 +69,6 @@ In this section, we will take a look at multiple schedulers
   ```
   ![cs2](../../images/cs2.PNG)
   
-
+#### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/extend-kubernetes/configure-multiple-schedulers/
   
