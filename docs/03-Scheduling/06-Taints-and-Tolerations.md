@@ -35,6 +35,14 @@ In this section, we will take a look at taints and tolerations.
 ## Tolerations
    - Tolerations are added to pods and it can be added by adding a **`tolerations`** section in pod defination.
      ```
+     apiVersion: v1
+     kind: Pod
+     metadata:
+      name:   myapp-pod
+    spec:
+      containers:
+      - name: nginx-container
+        image: nginx
      tolerations:
      - key: "app"
        operator: "Equal"
@@ -56,5 +64,6 @@ In this section, we will take a look at taints and tolerations.
  ![tntm](../../images/tntm.PNG)
   
      
-
+#### K8s Reference Docs
+- https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
 
