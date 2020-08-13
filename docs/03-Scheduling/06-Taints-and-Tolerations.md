@@ -38,7 +38,7 @@ In this section, we will take a look at taints and tolerations.
      apiVersion: v1
      kind: Pod
      metadata:
-      name:   myapp-pod
+      name: myapp-pod
      spec:
       containers:
       - name: nginx-container
