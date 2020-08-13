@@ -5,9 +5,9 @@ In this section, we will take a look at managing application logs
 
 #### Let us start with logging in docker
 
- ![ld](../..images/ld.PNG)
+![ld](../..images/ld.PNG)
  
- ![ld1](../..images/ld1.PNG)
+![ld1](../..images/ld1.PNG)
  
 #### Logs - Kubernetes
 
