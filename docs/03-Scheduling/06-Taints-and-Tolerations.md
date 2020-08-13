@@ -39,7 +39,7 @@ In this section, we will take a look at taints and tolerations.
      kind: Pod
      metadata:
       name:   myapp-pod
-    spec:
+     spec:
       containers:
       - name: nginx-container
         image: nginx
