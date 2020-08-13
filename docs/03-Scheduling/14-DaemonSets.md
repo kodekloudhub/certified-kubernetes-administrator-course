@@ -20,7 +20,47 @@ In this section, we will take a look at DaemonSets.
 ## DaemonSets - Defination
 - Creating a DaemonSet is similar to the ReplicaSet creation process.
 - For DaemonSets, we start with apiVersion, kind as **`DaemonSets`** instead of **`ReplicaSet`**, metadata and spec. 
+  ```
+  apiVersion: apps/v1
+  kind: Replicaset
+  metadata:
+    name: monitoring-daemon
+    labels:
+      app: nginx
+  spec:
+    selector:
+      matchLabels:
+        app: monitoring-agent
+    template:
+      metadata:
+       labels:
+         app: monitoring-agent
+      spec:
+        containers:
+        - name: monitoring-agent
+          image: monitoring-agent
+  ```
   
+  ```
+  apiVersion: apps/v1
+  kind: DaemonSet
+  metadata:
+    name: monitoring-daemon
+    labels:
+      app: nginx
+  spec:
+    selector:
+      matchLabels:
+        app: monitoring-agent
+    template:
+      metadata:
+       labels:
+         app: monitoring-agent
+      spec:
+        containers:
+        - name: monitoring-agent
+          image: monitoring-agent
+  ```
   ![dsd](../../images/dsd.PNG)
   
 - To create a daemonset from a defination file
@@ -43,6 +83,5 @@ In this section, we will take a look at DaemonSets.
 
   ![ds2](../../images/ds2.PNG)
 
-  
-  
-  
+#### K8s Reference Docs
+- https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/#writing-a-daemonset-spec
