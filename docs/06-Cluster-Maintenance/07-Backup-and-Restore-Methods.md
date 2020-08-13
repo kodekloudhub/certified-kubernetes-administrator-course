@@ -13,7 +13,19 @@ In this section, we will take a look at backup and restore methods
   ![rci](../../images/rci.PNG)
 
 - Declarative Way (Preferred approach)
- 
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: myapp-pod
+    labels:
+      app: myapp
+      type: front-end
+  spec:
+    containers:
+    - name: nginx-container
+      image: nginx
+  ```
  ![rcd](../../images/rcd.PNG)
  
 - A good practice is to store resource configurations on source code repositories like github.
@@ -39,6 +51,9 @@ In this section, we will take a look at backup and restore methods
 - You can take a snapshot of the etcd database by using **`etcdctl`** utility snapshot save command.
   ```
   $ ETCDCTL_API=3 etcdctl snapshot save snapshot.db
+  ```
+  ```
+  $  ETCDCTL_API=3 etcdctl snapshot status snapshot.db
   ```
   ![be1](../../images/be1.PNG)
   
@@ -73,6 +88,8 @@ $ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kuber
 
   ![erest](../../images/erest.PNG)
   
-  
+#### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/
+
 
  
