@@ -34,7 +34,7 @@ In this section, we will take a look at multiple schedulers
 ## Use the Custom Scheduler
 - Create a pod defination file and add new section called **`schedulerName`** and specify the name of the new scheduler
 
-  ![cs](../../images/cs.PNG)
+  ![cs](../../images/cs.png)
   
 - To create a pod definaton
   ```
