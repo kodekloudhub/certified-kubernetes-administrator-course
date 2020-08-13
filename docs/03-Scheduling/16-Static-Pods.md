@@ -47,3 +47,6 @@ In this section, we will take a look at Static Pods
 
    ![spvsds](../../images/spvsds.PNG)
   
+
+#### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/configure-pod-container/static-pod/
