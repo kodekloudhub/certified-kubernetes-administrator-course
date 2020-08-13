@@ -27,3 +27,5 @@ In this section, we will take a look at os upgrades.
   ![drain](../../images/drain.PNG)
   
   
+#### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
