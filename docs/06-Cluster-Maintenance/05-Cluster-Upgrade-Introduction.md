@@ -102,7 +102,7 @@
 
 #### K8s Reference Docs
 - https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
-
+- https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/
   
   
   
