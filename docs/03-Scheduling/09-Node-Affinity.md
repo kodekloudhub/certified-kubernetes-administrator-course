@@ -102,4 +102,5 @@ In this section, we will talk about "Node Affinity" feature in kubernetes.
   ![nats1](../../images/nats1.PNG)
   
 #### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/
 - https://kubernetes.io/blog/2017/03/advanced-scheduling-in-kubernetes/
