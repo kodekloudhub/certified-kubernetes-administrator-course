@@ -99,6 +99,10 @@
 
   ![kubeu3](../../images/kubeu3.PNG)
   
+
+#### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
+
   
   
   
