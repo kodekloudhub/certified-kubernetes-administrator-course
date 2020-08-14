@@ -65,7 +65,5 @@ In this section, we will take a look at commands and arguments in docker
 
   ![entry1](../../images/entry1.PNG)
 
-
-  
-
-  
+#### K8s Reference Docs
+- https://docs.docker.com/engine/reference/builder/#cmd
