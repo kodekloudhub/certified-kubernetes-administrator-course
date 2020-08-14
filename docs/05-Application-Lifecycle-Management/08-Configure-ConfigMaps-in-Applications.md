@@ -19,6 +19,16 @@ In this section, we will take a look at configuring configmaps in applications
     ![cmi](../../images/cmi.PNG)
     
   - The Declarative way
+    
+    ```
+    apiVersion: v1
+    kind: ConfigMap
+    metadata:
+     name: app-config
+    data:
+     APP_COLOR: blue
+     APP_MODE: prod
+    ```
     ```
     Create a config map defination file and run the 'kubectl create` command to deploy it.
     $ kubectl create -f config-map.yaml
@@ -41,6 +51,30 @@ In this section, we will take a look at configuring configmaps in applications
  ## ConfigMap in Pods
  - Inject configmap in pod
    ```
+   apiVersion: v1
+   kind: Pod
+   metadata:
+     name: simple-webapp-color
+   spec:
+    containers:
+    - name: simple-webapp-color
+      image: simple-webapp-color
+      ports:
+      - containerPort: 8080
+      envFrom:
+      - configMapRef:
+          name: app-config
+   ```
+   ```
+   apiVersion: v1
+   kind: ConfigMap
+   metadata:
+     name: app-config
+   data:
+     APP_COLOR: blue
+     APP_MODE: prod
+   ```
+   ```
    $ kubectl create -f pod-defination.yaml
    ```
   
@@ -52,7 +86,7 @@ In this section, we will take a look at configuring configmaps in applications
  
    ![cmp1](../../images/cmp1.PNG)
    
- 
-   
-   
-   
+ #### K8s Reference Docs
+ - https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/
+ - https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#define-container-environment-variables-using-configmap-data
+ - https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/#create-configmaps-from-files
