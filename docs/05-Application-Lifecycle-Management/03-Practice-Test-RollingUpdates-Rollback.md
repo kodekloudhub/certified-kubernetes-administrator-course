@@ -50,15 +50,3 @@ Solutions to practice test - rolling updates and rollback
 - Execute the script at /root/curl-test.sh.
 
 #### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/13290086)
-
-
-
-  
-
-
-  
-
-
-
-
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13290086)
