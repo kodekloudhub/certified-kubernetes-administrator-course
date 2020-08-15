@@ -41,7 +41,8 @@ In this section, we will take a look how to view certificates in a kubernetes cl
   ```
   ![hrd6](../../images/hrd6.PNG)
   
-  
+#### K8s Reference Docs
+- https://kubernetes.io/docs/setup/best-practices/certificates/#certificate-paths
   
   
 
