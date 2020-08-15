@@ -27,6 +27,20 @@ In this section, we will take a look at how to manage certificates and certifica
   ```
 - Sends the request to the administrator and the adminsitrator takes the key and creates a CSR object, with kind as "CertificateSigningRequest" and a encoded "jane.csr"
   ```
+  apiVersion: certificates.k8s.io/v1beta1
+  kind: CertificateSigningRequest
+  metadata:
+    name: jane
+  spec:
+    groups:
+    - system:authenticated
+    usages:
+    - digital signature
+    - key encipherment
+    - server auth
+    request:
+      <certificate-goes-here>
+  ```
   $ cat jane.csr |base64 
   $ kubectl create -f jane.yaml
   ```
@@ -59,7 +73,9 @@ In this section, we will take a look at how to manage certificates and certifica
   ![csr4](../../images/csr4.PNG)
   
   
-
+#### K8s Reference Docs
+- https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/
+- https://kubernetes.io/docs/tasks/tls/managing-tls-in-a-cluster/
  
   
 
