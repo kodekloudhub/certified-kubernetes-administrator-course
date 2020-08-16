@@ -37,9 +37,12 @@ In this section, we will take a look at cluster roles
   $ kubectl create -f cluster-admin-role-binding.yaml
   ```
   
-  ![cr](../../images/cr.PNG)
+ ![cr](../../images/cr.PNG)
   
 - You can create a cluster role for namespace resources as well. When you do that user will have access to these resources across all namespaces.
-- 
+
+#### K8s Reference Docs
+- https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole
+- https://kubernetes.io/docs/reference/access-authn-authz/rbac/#command-line-utilities
   
   
