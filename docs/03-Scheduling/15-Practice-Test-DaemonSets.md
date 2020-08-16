@@ -3,28 +3,57 @@
   
 Solutions to practice test daemonsets
 - Run the command kubectl get daemonsets --all-namespaces
+  
+  <details>
+
   ```
   $ kubectl get daemonsets --all-namespaces
   ```
+  </details>
+
 - Run the command kubectl get daemonsets --all-namespaces
+
+  <details>
+
   ```
   $ kubectl get daemonsets --all-namespaces
   ```
+  </details>
+
 - Run the command kubectl get all --all-namespaces and identify the types
+
+  <details>
+
   ```
   $ kubectl get all --all-namespaces
   ```
+  </details>
+
 - Run the command kubectl describe daemonset kube-proxy --namespace=kube-system
+
+  <details>
+
   ```
   $ kubectl describe daemonset kube-proxy --namespace=kube-system
   ```
+  </details>
+
 - Run the command kubectl describe daemonset kube-flannel-ds-amd64 --namespace=kube-system
+
+  <details>
+
   ```
   $ kubectl describe daemonset kube-flannel-ds-amd64 --namespace=kube-system
   ```
+  </details>
+
 - Create a daemonset
 
+  <details>
+
 vi ds.yaml
+
+
 ```
 apiVersion: apps/v1
 kind: DaemonSet
@@ -51,11 +80,17 @@ spec:
       - name: elasticsearch
         image: k8s.gcr.io/fluentd-elasticsearch:1.20
 ```
+</details>
+
 To create the daemonset and list the daemonsets and pods
+
+<details>
+
 ```
 $ kubectl create -f ds.yaml
 $ kubectl get ds -n kube-system
 $ kubectl get pod -n kube-system|grep elasticsearch
 ```
+</details>
 
 #### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/16603698)
