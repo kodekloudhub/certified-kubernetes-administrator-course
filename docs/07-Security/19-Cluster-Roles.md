@@ -33,11 +33,35 @@ In this section, we will take a look at cluster roles
 - The cluster role binding object links the user.
 - Create a cluster role or cluster role binding with kubectl command
   ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: cluster-administrator
+  rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["nodes"]
+    verbs: ["get", "list", "delete", "create"]
+  ```
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: cluster-admin-role-binding
+  subjects:
+  - kind: User
+    name: cluster-admin
+    apiGroup: rbac.authorization.k8s.io
+  roleRef:
+    kind: ClusterRole
+    name: cluster-administrator
+    apiGroup: rbac.authorization.k8s.io
+  ```
+  ```
   $ kubectl create -f cluster-admin-role.yaml
   $ kubectl create -f cluster-admin-role-binding.yaml
   ```
   
- ![cr](../../images/cr.PNG)
+ ![cr1](../../images/cr1.PNG)
   
 - You can create a cluster role for namespace resources as well. When you do that user will have access to these resources across all namespaces.
 
