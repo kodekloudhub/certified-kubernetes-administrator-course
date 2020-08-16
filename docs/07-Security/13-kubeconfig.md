@@ -72,3 +72,4 @@ In this section, we will take a look at kubeconfig in kubernetes
  
 #### K8s Reference Docs
 - https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
+- https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#config
