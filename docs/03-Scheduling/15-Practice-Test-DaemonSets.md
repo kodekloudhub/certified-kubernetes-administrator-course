@@ -46,10 +46,10 @@ Solutions to practice test daemonsets
   $ kubectl describe daemonset kube-flannel-ds-amd64 --namespace=kube-system
   ```
   </details>
-
+    
 - Create a daemonset
 
-  <details>
+<details>
 
 vi ds.yaml
 
