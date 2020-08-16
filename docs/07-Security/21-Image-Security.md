@@ -4,6 +4,17 @@
 In this section we will take a look at image security
 
 # Image
+   
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: nginx-pod
+  spec:
+    containers:
+    - name: nginx
+      image: nginx
+  ```
   
   ![img1](../../images/img1.PNG)
   
@@ -30,7 +41,19 @@ In this section we will take a look at image security
     --docker-email=registry-user@org.com
   ```
 - We then specify the secret inside our pod defination file under the imagePullSecret section 
-  
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: nginx-pod
+  spec:
+    containers:
+    - name: nginx
+      image: private-registry.io/apps/internal-app
+    imagePullSecrets:
+    - name: regcred
+  ```
   ![prvr1](../../images/prvr1.PNG)
   
-  
+  #### K8s Reference Docs
+  - https://kubernetes.io/docs/concepts/containers/images/
