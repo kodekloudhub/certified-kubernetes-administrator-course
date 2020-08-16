@@ -42,11 +42,7 @@ In this section, we will take a look at API Groups in kubernetes
 
   ![api10](../../images/api10.PNG)
 
-  
-  
-
-  
-  
-    
-    
- 
+#### K8s Reference Docs
+- https://kubernetes.io/docs/concepts/overview/kubernetes-api/
+- https://kubernetes.io/docs/reference/using-api/api-concepts/
+- https://kubernetes.io/docs/tasks/extend-kubernetes/http-proxy-access-api/
