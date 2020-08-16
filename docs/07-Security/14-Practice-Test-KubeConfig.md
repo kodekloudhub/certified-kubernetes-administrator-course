@@ -109,8 +109,7 @@ Solutions to the practice test - kubeconfig
   
 - The path to certificate is incorrect in the kubeconfig file. Fix it. All users certificates are stored at /etc/kubernetes/pki/users
   
-  <details>
-  ```
+ <details>
   $ kubectl get pods
   master $ ls
   dev-user.crt  dev-user.csr  dev-user.key
@@ -121,8 +120,7 @@ Solutions to the practice test - kubeconfig
   /etc/kubernetes/pki/users/dev-user
   master $ kubectl get pods
   No resources found in default namespace.
-  ```
-  </details>
+ </details>
 
 
 
