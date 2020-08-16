@@ -90,4 +90,4 @@ Solutions to practice test - init-containers
   Update the orange.yaml with correct sleep command and recreate the pod
   $ kubectl create -f orange.yaml
   ```
-  </details>
+ </details>
