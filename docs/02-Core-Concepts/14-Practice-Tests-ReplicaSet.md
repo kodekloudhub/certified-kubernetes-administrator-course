@@ -133,7 +133,7 @@
    ```
    </details>
 
-1. Run the command *8`kubectl edit replicaset new-replica-set`**, modify the replicas and then save the file.
+1. Run the command **`kubectl edit replicaset new-replica-set`**, modify the replicas and then save the file.
    
    <details>
 
