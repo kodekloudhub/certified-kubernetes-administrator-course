@@ -39,20 +39,20 @@
   kind: NetworkPolicy
   metadata:
    name: db-policy
-spec:
-  podSelector:
-    matchLabels:
-      role: db
-  policyTypes:
-  - Ingress
-  ingress:
-  - from:
-    - podSelector:
-        matchLabels:
-          role: api-pod
-    ports:
-    - protocol: TCP
-      port: 3306
+  spec:
+    podSelector:
+      matchLabels:
+        role: db
+    policyTypes:
+    - Ingress
+    ingress:
+    - from:
+      - podSelector:
+          matchLabels:
+            role: api-pod
+      ports:
+      - protocol: TCP
+        port: 3306
   ```
   $ kubectl create -f policy-defination.yaml
   ```
