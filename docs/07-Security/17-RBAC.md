@@ -26,7 +26,33 @@ In this section, we will take a look at RBAC
   $ kubectl create -f devuser-developer-binding.yaml
   ```
 - Also note that the roles and role bindings fall under the scope of namespace.
-
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    name: developer
+  rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["pods"]
+    verbs: ["get", "list", "update", "delete", "create"]
+  - apiGroups: [""]
+    resources: ["ConfigMap"]
+    verbs: ["create"]
+  ```
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: RoleBinding
+  metadata:
+    name: devuser-developer-binding
+  subjects:
+  - kind: User
+    name: dev-user # "name" is case sensitive
+    apiGroup: rbac.authorization.k8s.io
+  roleRef:
+    kind: Role
+    name: developer
+    apiGroup: rbac.authorization.k8s.io
+  ```
   ![rbac1](../../images/rbac1.PNG)
   
 
@@ -75,6 +101,20 @@ In this section, we will take a look at RBAC
 ## Resource Names
 - Note on resource names we just saw how you can provide access to users for resources like pods within the namespace.
 - You can go one level down and allow access to specific resources alone.
-    
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: Role
+  metadata:
+    name: developer
+  rules:
+  - apiGroups: [""] # "" indicates the core API group
+    resources: ["pods"]
+    verbs: ["get", "update", "create"]
+    resourceNames: ["blue", "orange"]
+  ```  
   ![rbac4](../../images/rbac4.PNG)
   
+#### K8s Reference Docs
+- https://kubernetes.io/docs/reference/access-authn-authz/rbac/
+- https://kubernetes.io/docs/reference/access-authn-authz/rbac/#command-line-utilities
+- 
