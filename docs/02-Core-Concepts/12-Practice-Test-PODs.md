@@ -31,19 +31,19 @@
 
    <details>
 
-   ```
-   $ kubectl describe pod newpods
-   ```
+    ```
+    $ kubectl describe pod newpods
+    ```
    </details>
 
 1. Run the command **`kubectl describe pod newpods`** or **`kubectl get pods -o wide`** look under the containers section.
 
-  <details>
+   <details>
 
-   ```
-   $ kubectl describe pod newpods
-   ```
-  </details>
+    ```
+    $ kubectl describe pod newpods
+    ```
+   </details>
 
 1. Run the command **`kubectl describe pod webapp`** and look under the Containers section (or) Run **`kubectl get pods`** and look under the READY section
 
