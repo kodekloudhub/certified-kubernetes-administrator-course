@@ -117,4 +117,3 @@ In this section, we will take a look at RBAC
 #### K8s Reference Docs
 - https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 - https://kubernetes.io/docs/reference/access-authn-authz/rbac/#command-line-utilities
-- 
