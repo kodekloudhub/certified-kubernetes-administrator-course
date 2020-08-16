@@ -35,6 +35,25 @@
  
 - To create a network policy
   ```
+  apiVersion: networking.k8s.io/v1
+  kind: NetworkPolicy
+  metadata:
+   name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          role: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
+  ```
   $ kubectl create -f policy-defination.yaml
   ```
   
@@ -46,7 +65,9 @@
  
  ![note1](../../images/note1.PNG)
  
- 
+#### K8s Reference Docs
+- https://kubernetes.io/docs/concepts/services-networking/network-policies/
+- https://kubernetes.io/docs/tasks/administer-cluster/declare-network-policy/
  
   
   
