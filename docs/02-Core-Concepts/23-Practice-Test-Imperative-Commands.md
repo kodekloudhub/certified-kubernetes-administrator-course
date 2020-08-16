@@ -85,6 +85,6 @@ Solutions for Practice Test - Imperative Commands
   ```
   $ kubectl run httpd --image=httpd:alpine --port=80 --expose
   ```
-  <details>
+  </details>
 
   
