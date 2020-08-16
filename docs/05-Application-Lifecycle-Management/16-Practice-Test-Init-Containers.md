@@ -30,7 +30,6 @@ Solutions to practice test - init-containers
 - Check the reason field of the initContainer
   
   <details>
-  
   ```
   $ kubectl describe pod blue
   ```
@@ -39,7 +38,6 @@ Solutions to practice test - init-containers
 - Run the command kubectl describe pod purple
   
   <details>
-  
   ```
   $ kubectl describe pod purple
   ```
@@ -56,7 +54,6 @@ Solutions to practice test - init-containers
 - Check the commands used in the initContainers. The first one sleeps for 600 seconds (10 minutes) and the second one sleeps for 1200 seconds (20 minutes)
   
   <details>
-  
   ```
   $ kubectl describe pod purple
   ```
