@@ -70,3 +70,5 @@ In this section, we will take a look at kubeconfig in kubernetes
   
   ![kc11](../../images/kc11.PNG)
  
+#### K8s Reference Docs
+- https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
