@@ -46,11 +46,13 @@
   </details>
 
 1. Run the command **`kubectl describe pod webapp`** and look under the Containers section (or) Run **`kubectl get pods`** and look under the READY section
+
    <details>
 
    ```
    $ kubectl describe pod webapp
    ```
+   
    </details>
 
 1. Run the command **`kubectl describe pod webapp`** and look under the containers section.
