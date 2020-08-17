@@ -28,7 +28,7 @@ In this section, we will take a look at authorization in kubernetes
 - The kubelet also reports to the kube-apiserver with information about the node such as its status.
 - These requests are handled by a special authorizer known as **`Node Authorizer`**
 
-  ![node](../../images/node.PNG)
+  ![node-auth](../../images/node-auth.PNG)
   
 ## ABAC
 - ABAC is where you associate a user or group of users with a set of permissions (eg. dev-user can view, create and delete pods).
