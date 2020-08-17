@@ -9,7 +9,32 @@ Deployment is a kubernetes object.
   ![deployment](../../images/deployment.PNG)
   
 #### How do we create deployment?
-- As with the previous components we created a defination file, the content of the deployment defination file is similar to **`replicaset`** defination file. Except with the **`kind`** which is now going to be **Deployment`**.
+- As with the previous components we created a defination file, the content of the deployment defination file is similar to **`replicaset`** defination file. Except with the **`kind`** which is now going to be **`Deployment`**.
+
+```
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: myapp-deployment
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+     template:
+        metadata:
+          name: myapp-pod
+          labels:
+            app: myapp
+            type: front-end
+        spec:
+         containers:
+         - name: nginx-container
+           image: nginx
+     replicas: 3
+     selector:
+       matchLabels:
+        type: front-end
+ ```
 - Once the file is ready, create the deployment using deployment defination file
   ```
   $ kubectl create -f deployment-defination.yaml
