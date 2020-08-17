@@ -20,7 +20,7 @@ spec:
   - name: event-simulator
     image: kodekloud/event-simulator
 ```
- ![logs](../../images/logs.PNG)
+ ![logs-k8s](../../images/logs-k8s.png)
  
 - To view the logs
   ```
