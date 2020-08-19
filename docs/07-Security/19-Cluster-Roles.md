@@ -29,9 +29,6 @@ In this section, we will take a look at cluster roles
   
 ## Cluster Roles and Cluster Role Bindings
 - Cluster Roles are roles except they are for a cluster scoped resources. Kind as **`CLusterRole`** 
-- The resources are nodes then create the cluster role
-- The cluster role binding object links the user.
-- Create a cluster role or cluster role binding with kubectl command
   ```
   apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
