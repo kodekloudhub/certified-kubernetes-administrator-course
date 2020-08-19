@@ -5,14 +5,9 @@ In this section, we will take a look at how to manage certificates and certifica
 
 ## CA (Certificate Authority)
 - The CA is really just the pair of key and certificate files that we have generated, whoever gains access to these pair of files can sign any certificate for the kubernetes environment.
-- They can create as many users they want, put whatever privileges they want. These files needs to be protected and stored in a safe environment.
-- As of now we have placed all the certificates on master node, so the master node is our CA server.
 
 #### Kubernetes has a built-in certificates API that can do this for you. 
 - With the certificate API, we now send a certificate signing request (CSR) directly to kubernetes through an API call.
-- This time when an administrator receives a CSR instead of logging into the master node and signing the certificate by himself, he creates a kubernetes API object called CSR.
-- Once the object is created, all CSR can be seen by administrators of the cluster.
-- The request can be reviewed and approved easily using kubectl commands.
    
   ![csr](../../images/csr.PNG)
    
