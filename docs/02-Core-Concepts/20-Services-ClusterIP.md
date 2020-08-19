@@ -5,8 +5,6 @@ In this section we will take a look at **`services - ClusterIP`** in kubernetes
          
 ## ClusterIP
 - In this case the service creates a **`Virtual IP`** inside the cluster to enable communication between different services such as a set of frontend servers to a set of backend servers.
-- A full stack web application typically has different kinds of pods hosting different parts of an application. You may have number of pods running a **`frontend`** web servers, another set of pods running a **`backend`** server and a set of pods running a key-value store like **`redis`** etc.
-  - The web frontend servers needs to communicate with the backend servers need to communicate with the databases, redis servers etc.
     
     ![srvc1](../../images/srvc1.PNG)
     
