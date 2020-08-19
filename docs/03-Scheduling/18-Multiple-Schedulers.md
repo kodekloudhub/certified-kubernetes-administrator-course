@@ -4,7 +4,6 @@
 In this section, we will take a look at multiple schedulers
 
 ## Custom Schedulers
-- You can write your own kubernets scheduler program, package it and deploy it as the default scheduler or as an additional scheduler in the kubernetes cluster. 
 - You kubernetes cluster can schedule multiple schedulers at the same time.
 
   ![ms](../../images/ms.PNG)
