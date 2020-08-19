@@ -7,15 +7,7 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
 - This namespace is the **`default`** namespace in kuberntes. It is automatically created when kubernetes is setup initially.
 
   ![ns](../../images/ns.PNG)
-  
-- Kubernetes creates a set of pods and services for its internal purpose such as those requried by networking solutions, the DNS solutions etc. To isolate this from the user and to prevent you from accidently deleting and modifying the services, kubernetes creates them in another namespace(created at cluster startup) named **`kube-system`**.
-
-  ![ns1](../../images/ns1.PNG)
-  
-- A third namespace created by kubernetes automatically is called **`kube-public`**. This is where resources that should be made available to user are created.
  
-  ![ns2](../../images/ns2.PNG)
-
 - You can create your own namespaces as well.
 
   ![ns3](../../images/ns3.PNG)
@@ -138,9 +130,5 @@ K8s Reference Docs:
 - https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
 - https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/
 - https://kubernetes.io/docs/tasks/access-application-cluster/list-all-running-container-images/
-  
-  
-  
-  
   
   
