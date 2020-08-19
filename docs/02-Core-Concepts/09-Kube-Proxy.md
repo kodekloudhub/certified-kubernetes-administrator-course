@@ -5,8 +5,6 @@ In this section, we will take a look at kube-proxy.
 
 Within Kubernetes Cluster, every pod can reach every other pod, this is accomplish by deploying a pod networking cluster to the cluster. 
 - Kube-Proxy is a process that runs on each node in the kubernetes cluster.
-- The job of the kube-proxy is to look for new services and everytime a new service is created it creates the appropriate rules on each node to forward traffic to those services to the backend pods.
-  - One way it does is through **`IPTABLES`** rules.
   
   ![kube-proxy](../../images/kube-proxy.PNG)
   
