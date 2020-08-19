@@ -8,7 +8,6 @@ In this section, we will take a look at the below
 #### Controllers are brain behind kubernetes
 
 ## What is a Replica and Why do we need a replication controller?
-- The Replication Controller helps us run multiple instances of a single pod in a kubernetes cluster thus providing **`high availablility`**.
 
   ![rc](../../images/rc.PNG)
   
