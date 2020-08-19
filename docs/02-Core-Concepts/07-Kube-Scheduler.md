@@ -10,7 +10,7 @@ In this section, we will take a look at kube-scheduler.
   
 #### Why do you need a Scheduler?
 
-    ![kube-scheduler2](../../images/kube-scheduler2.PNG)
+  ![kube-scheduler2](../../images/kube-scheduler2.PNG)
     
 ## Install kube-scheduler - Manual
 - Download the kubescheduler binary from the kubernetes release pages [kube-scheduler](https://storage.googleapis.com/kubernetes-release/release/v1.13.0/bin/linux/amd64/kube-scheduler). For example: To download kube-scheduler v1.13.0, Run the below command.
