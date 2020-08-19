@@ -34,15 +34,7 @@ In this section we will take a look at Resource Limits
         memory: "1Gi"
         cpu: "1"
   ```
-  ![rr-pod](../../images/rr-pod.PNG)
-  
-## Resource - CPU
-
-   ![rsc](../../images/rsc.PNG)
-
-## Resource - Memory
-
-   ![rsm](../../images/rsm.PNG)
+  ![rr-pod](../../images/rr-pod.PNG) 
    
 ## Resources - Limits
 - By default, k8s sets resource limits to 1 CPU and 512Mi of memory
