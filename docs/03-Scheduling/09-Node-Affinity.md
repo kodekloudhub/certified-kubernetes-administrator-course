@@ -81,9 +81,6 @@ In this section, we will talk about "Node Affinity" feature in kubernetes.
   
   ![na2](../../images/na2.PNG)
   
-- What if node affinity could not match a node with a given expression. In this case, what if no nodes with the label called size say we had the labels and the pods are scheduled. 
-- What if someone changes the label on the node at a future point in time? Will the pod continue to stay on the Node?
-- All of this is answered by the long sentence like property under node affinity which happens to be the type of node affinity defines the behaviour of the scheduler with respect to  node affinity and the stages in the lifecycle of the pod.
 
 ## Node Affinity Types
 - Available
