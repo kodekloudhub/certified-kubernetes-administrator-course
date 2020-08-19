@@ -3,24 +3,7 @@
   
 In this section, we will take a look at **`Labels and Selectors`**
 
-Labels and Selectors are standard methods to group things together.
-- Lets say you have set of different species 
-  
-  ![lables-animals](../../images/lables-animals.PNG)
-  
-- A user wants to filter them based on different criteria such as based on  **`Class`** or **`Kind`** or **`Color`**
-
-  ![lc](../../images/lc.PNG)
-  ![lk](../../images/lk.PNG)
-  ![lco](../../images/lco.PNG)
-  
-- And not just group, you want to filter them based on a criteria such a all **`Green Color - Animals`**
-
-  ![lg](../../images/lg.PNG)
-  
-- With multiple criteria such as **`Green Color and that is also a Bird`**
-
-  ![lg](../../images/lg.PNG)
+####Labels and Selectors are standard methods to group things together.
   
 #### Labels are properties attach to each item.
 
@@ -35,22 +18,6 @@ How are labels and selectors are used in kubernetes?
   
   ![ls](../../images/ls.PNG)
   
-- To group objects by thier types
-
-  ![lt](../../images/lt.PNG)
-  
-- View objects by applicaton
-  
-  ![la](../../images/la.PNG)
-  
-- To group objects by thier function
- 
-  ![lf](../../images/lf.PNG)
- 
-- To filter specific objects
-
-  ![lse](../../images/lse.PNG)
-
 How do you specify labels?
    ```
     apiVersion: v1
