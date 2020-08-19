@@ -5,10 +5,6 @@ In this section we will take a look at Resource Limits
 
 #### Let us take a look at 3 node kubernetes cluster.
 - Each node has a set of CPU, Memory and Disk resources available.
-- Every pod consumes a set of resources 
-- Whenever a POD is placed on a Node, it consumes resources available to that node.
-- Kubernetes scheduler that decides which node a pod goes to. The scheduler takes into consideration, the amount of resources requrired by a POD and those available on the Node.
-- If the node has no sufficient resources, the scheduler avoids placing the POD on the node instead places the pod on one where sufficient resources are available if there is no sufficient resources available on any of the nodes
 - If there is no sufficient resources available on any of the nodes, kubernetes holds the scheduling the pod. You will see the pod in pending state. If you look at the events, you will see the reason as insufficient CPU.
   
   ![rl](../../images/rl.PNG)
@@ -82,8 +78,6 @@ In this section we will take a look at Resource Limits
   
 ## Exceed Limtis
 - what happens when a pod tries to exceed resources beyond its limits?
- - In case of CPU, kubernetes **`throttle`** the CPU so that it doesn't go beyond the specified limit.
- - However this is not the case with memory, a container can use more memory resources than its limit. So, if a pod consumes more memory than its limit **`constantly`** then the pod will be terminated.
 
    ![el](../../images/el.PNG)
    
