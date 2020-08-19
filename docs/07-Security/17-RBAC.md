@@ -4,12 +4,10 @@
 In this section, we will take a look at RBAC
 
 ## How do we create a role?
-- So we create a role defination file with the API version set to **`rbac.authorization.k8s.io/v1`** and kind set to **`Role`**
 - Each role has 3 sections
   - apiGroups
   - resources
   - verbs
-- We can add multiple rules for a single role.
 - create the role with kubectl command
   ```
   $ kubectl create -f developer-role.yaml
@@ -17,10 +15,6 @@ In this section, we will take a look at RBAC
 
 ## The next step is to link the user to that role.
 - For this we create another object called **`RoleBinding`**. This role binding object links a user object to a role.
-- The kind is **`RoleBinding`**
-- It has 2 sections
-  - subjects - where we specify the user details.
-  - roleRef  - where we provide the details of the role we created.
 - create the role binding using kubectl command
   ```
   $ kubectl create -f devuser-developer-binding.yaml
@@ -100,7 +94,6 @@ In this section, we will take a look at RBAC
   
 ## Resource Names
 - Note on resource names we just saw how you can provide access to users for resources like pods within the namespace.
-- You can go one level down and allow access to specific resources alone.
   ```
   apiVersion: rbac.authorization.k8s.io/v1
   kind: Role
