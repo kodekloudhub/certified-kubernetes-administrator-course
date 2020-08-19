@@ -13,13 +13,6 @@ In this section, we will take a look at kubeconfig in kubernetes
   ```
   $ kubectl get pods --kubeconfig config
   ```
-- By default, the kubectl tool looks for a file named config under a directory **`.kube`** under the users home directory. So if you create the kubeconfig file there, you don't have to specify the path explicitly in the kubectl command.
-  ```
-  $ kubectl get pods
-  ```
-  ![kc2](../../images/kc2.PNG)
-  
-  ![kc3](../../images/kc3.PNG)
   
 ## Kubeconfig File
 - The kubeconfig file has 3 sections
@@ -57,8 +50,6 @@ In this section, we will take a look at kubeconfig in kubernetes
   ![kc8](../../images/kc8.PNG)
   
 ## What about namespaces?
-- For example, each cluster may be configured with multiple namespaces within it.
-- The context section in the kubeconfig file can take additional field called namespace. This way, when you switch to this context, you will automatically be in that namespace.
 
   ![kc9](../../images/kc9.PNG)
  
