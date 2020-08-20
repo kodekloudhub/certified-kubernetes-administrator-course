@@ -133,6 +133,8 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [26-Practice-Test-Network-Policies](docs/07-Security/26-Practice-Test-Network-Policies.md)
   - [27-kubectx-and-kubens-commands](docs/07-Security/27-kubectx-and-kubens-commands.md)
   - [28-Download-Presentation-Deck](docs/07-Security/28-Download-Presentation-Deck.md)
+
+
 - [08-Security](docs/08-Security)
 
   - [01-Storage-Section-Introduction](docs/08-Storage/01-Storage-Section-Introduction.md)
@@ -146,6 +148,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [09-Using-PVC-in-PODs](docs/08-Storage/09-Using-PVC-in-PODs.md)
   - [10-Practice-Test-Persistent-Volume-Claims](docs/08-Storage/10-Practice-Test-Persistent-Volume-Claims.md)
   - [11-Download-Presentation-Deck](docs/08-Storage/11-Download-Presentation-Deck.md)
+
 
 - [09-Networking](docs/09-Networking)
   
@@ -175,6 +178,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [24-Practice-Test-CKA-Ingress-Net-1](docs/09-Networking/24-Practice-Test-CKA-Ingress-Net-1.md)
   - [25-Practice-Test-CKA-Ingress-Net-2](docs/09-Networking/25-Practice-Test-CKA-Ingress-Net-2.md)
   - [26-Dowload-Presentation-Deck](docs/09-Networking/26-Dowload-Presentation-Deck.md)
+
 
 - [10-Install](docs/10-Install)
   
@@ -209,6 +213,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [30-Solution-Install-a-K8s-cluster-kubeadm](docs/10-Install/30-Solution-Install-a-K8s-cluster-kubeadm.md)
   - [31-Download-Presentation-Deck](docs/10-Install/21-Download-Presentation-Deck.md)
 
+
 - [11-Troubleshooting](docs/11-Troubleshooting)
   
   - [01-Troubelshooting-Section-Introduction](docs/11-Troubleshooting/01-Troubelshooting-Section-Introduction.md)
@@ -221,6 +226,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [08-Practice-Test-Worker-Node-Failure](docs/11-Troubleshooting/08-Practice-Test-Worker-Node-Failure.md)
   - [09-Solution-Worker-Node-Failure](docs/11-Troubleshooting/09-Solution-Worker-Node-Failure.md)
 
+
 - [12-Other-Topics](docs/12-Other-Topics)
   
   - [01-Labs-JSON-PATH](docs/12-Other-Topics/01-Labs-JSON-PATH.md)
@@ -228,10 +234,12 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [03-Advance-Kubectl-Commands](docs/12-Other-Topics/03-Advance-Kubectl-Commands.md)
   - [04-Practice-Test-Advance-Kubectl-Commands](docs/12-Other-Topics/04-Practice-Test-Advance-Kubectl-Commands.md)
 
+
 - [13-Lightning-Labs](docs/13-Lightning-Labs)
   
   - [01-Lightning-Labs-Introduction](docs/13-Lightning-Labs/01-Lightning-Labs-Introduction.md)
   - [02-Lightning-Lab-1](docs/13-Lightning-Labs/02-Lightning-Lab-1.md)
+  
 
 - [14-Mock-Exams](docs/14-Mock-Exams)
   
