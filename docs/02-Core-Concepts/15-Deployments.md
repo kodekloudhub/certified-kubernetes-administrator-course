@@ -3,13 +3,11 @@
 
 In this section, we will take a look at kubernetes deployments
 
-Deployment is a kubernetes object. 
-- The Deployment provides us with the capability to upgrade the underline instances seemlessly using **`Rolling updates`**, **`Undo Changes`** and **`Pause`** and **`Resume Changes`** as required.
+#### Deployment is a kubernetes object. 
   
-  ![deployment](../../images/deployment.PNG)
+ ![deployment](../../images/deployment.PNG)
   
 #### How do we create deployment?
-- As with the previous components we created a defination file, the content of the deployment defination file is similar to **`replicaset`** defination file. Except with the **`kind`** which is now going to be **`Deployment`**.
 
 ```
     apiVersion: apps/v1
@@ -65,9 +63,3 @@ K8s Reference Docs:
 - https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-intro/
 - https://kubernetes.io/docs/concepts/cluster-administration/manage-deployment/
 - https://kubernetes.io/docs/concepts/overview/working-with-objects/kubernetes-objects/
-  
-  
-  
-  
-  
- 

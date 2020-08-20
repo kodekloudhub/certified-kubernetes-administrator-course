@@ -13,8 +13,6 @@ In this section, we will take a look at security context
  
 ## Kubernetes Security
 - You may choose to configure the security settings at a container level or at a pod level.
-- If you configure it at a pod level the settings will carry over all the containers within the pod.
-- If you configure it at both the pod and the container the settings on the container will override the settings on the pod.
 
  ![ksec](../../images/ksec.PNG)
 

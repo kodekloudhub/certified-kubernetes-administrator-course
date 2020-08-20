@@ -33,18 +33,17 @@ In this section, we will take a look at backup and restore methods
   ![rcd1](../../images/rcd1.PNG)
 
 ## Backup - Resource Configs
-- A better approach to backing up resource configuration is to use query the kube-apiserver using 'kubectl' or by accessing the API server directly and save all resource configurations for all objects created on the cluster has a copy.
+
   ```
   $ kubectl get all --all-namespaces -o yaml > all-deploy-services.yaml (only for few resource groups)
   ```
+
 - There are many other resource groups that must be considered. There are tools like **`ARK`** or now called **`Velero`** by Heptio that can do this for you.
 
   ![brc](../../images/brc.PNG)
   
 ## Backup - ETCD
-- The ETCD cluster stores information about the state of our cluster. So information about the cluster itself, the nodes and every other resources as created within the cluster are store here.
 - So, instead of backing up resources as before, you may choose to backup the ETCD cluster itself. 
-- While configuring ETC, we have configured where all the data would be stored in the data directory (/var/lib/etcd)
   
   ![be](../../images/be.PNG)
   

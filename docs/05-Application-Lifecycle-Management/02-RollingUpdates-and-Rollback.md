@@ -4,9 +4,6 @@
 In this section, we will take a look at rolling updates and rollback in a deployment
 
 ## Rollout and Versioning in a Deployment
-- When you first create a deployment it first create a rollout. A new rollout creates a new deployment revision (eg. v1)
-- In the future, when the application is upgraded meaning when the container version is upgraded to a new one a new rollout is trigged and a new deploymnent revision is created named v2.
-- This helps us keep track of the changes made to our deployment and enables us to rollback to a previous version of deployment if necessary.
 
   ![rollv](../../images/rollv.PNG)
   

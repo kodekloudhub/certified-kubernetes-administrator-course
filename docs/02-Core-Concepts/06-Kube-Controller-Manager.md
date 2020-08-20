@@ -9,9 +9,6 @@ In this section, we will take a look at kube-controller-manager.
 
 ## Node Controller
    - Responsible for monitoring the state of the Nodes and taking necessary actions to keep the application running. 
-   - It does that with the help of kube-apiserver. Node Controller checks the status of the Nodes for every **`5 seconds`**. 
-   - If a node is unreachable, Node Controller waits for **`40 seconds`** before marking it unreachable. 
-   - After a node is marked as unreachable it gives it **`5 minutes`** to come backup.
   
    ![node-controller](../../images/node-controller.PNG)
    

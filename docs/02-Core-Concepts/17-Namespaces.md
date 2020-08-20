@@ -7,32 +7,10 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
 - This namespace is the **`default`** namespace in kuberntes. It is automatically created when kubernetes is setup initially.
 
   ![ns](../../images/ns.PNG)
-  
-- Kubernetes creates a set of pods and services for its internal purpose such as those requried by networking solutions, the DNS solutions etc. To isolate this from the user and to prevent you from accidently deleting and modifying the services, kubernetes creates them in another namespace(created at cluster startup) named **`kube-system`**.
-
-  ![ns1](../../images/ns1.PNG)
-  
-- A third namespace created by kubernetes automatically is called **`kube-public`**. This is where resources that should be made available to user are created.
  
-  ![ns2](../../images/ns2.PNG)
-
 - You can create your own namespaces as well.
 
   ![ns3](../../images/ns3.PNG)
-
-- Each of these namespaces can have its own set of **`policies`** that define who can do what.
-
-  ![ns4](../../images/ns4.PNG)
-  
-- You can also assign quota of resources to each of these namespaces. That way each namespace is guaranteed a certain amount and does not use more than it's allowed limit.
-
-  ![ns5](../../images/ns5.PNG)
-  
-- Going back to the default namespace that we have been working on, just like how members of a house refer to each other by their first names, the resources within a namespace can refer to each other simply by thier names. A resource in one namespace can also reach a resource of another namespace as well.
-  
-  ![ns6](../../images/ns6.PNG)
-  
-  ![ns7](../../images/ns7.PNG)
   
 - To list the pods in default namespace
   ```
@@ -138,9 +116,5 @@ K8s Reference Docs:
 - https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
 - https://kubernetes.io/docs/tasks/administer-cluster/manage-resources/quota-memory-cpu-namespace/
 - https://kubernetes.io/docs/tasks/access-application-cluster/list-all-running-container-images/
-  
-  
-  
-  
   
   

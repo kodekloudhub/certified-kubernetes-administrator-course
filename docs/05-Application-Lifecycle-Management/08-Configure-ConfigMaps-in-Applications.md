@@ -4,9 +4,6 @@
 In this section, we will take a look at configuring configmaps in applications
 
 ## ConfigMaps
-- We can take env information out of the pod defination file and manage it centrally using configuration Maps.
-- ConfigMaps are used to pass configuration data in the form of key-value pair in kubernetes.
-- When a pod is created inject the config map into the pod. So, the key-value pair that are available as environment variables for the application hosted inside container in the pod.
 - There are 2 phases involved in configuring ConfigMaps. 
   - First, create the configMaps
   - Second, Inject then into the pod.
