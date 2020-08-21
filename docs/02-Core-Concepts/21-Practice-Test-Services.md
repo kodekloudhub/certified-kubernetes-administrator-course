@@ -1,0 +1,90 @@
+# Practice Test - Services
+  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816583)
+
+#### Solutions to Practice test - Services
+
+- Run the command **`kubectl get services`** and count the number of services.
+  
+  <details>
+
+  ```
+  $ kubectl get services
+  ```
+  </details>
+
+- Run the command **`kubectl get services`** and look at the Type column
+
+  <details>
+
+  ```
+  $ kubectl get services
+  ```
+  </details>
+
+- Run the command **`kubectl describe service`** and look at TargetPort.
+
+  <details>
+
+  ```
+  $ kubectl describe service|grep TargetPort
+  ```
+  </details>
+
+- Run the command **`kubectl describe service`** and look at Labels
+
+  <details>
+
+  ```
+  $ kubectl describe service
+  ```
+  </details>
+
+- Run the command **`kubectl describe service`** and look at Endpoints
+  
+  <details>
+
+  ```
+  $ kubectl describe service
+  ```
+  </details>
+
+- Run the command **`kubectl get deployment`** and count the number of pods.
+
+  <details>
+
+  ```
+  $ kubectl get deployment
+  ```
+  </details>
+
+- Run the command **`kubectl describe deployment`** and look under the containers section.
+
+  <details>
+
+  ```
+  $ kubectl describe deployment
+  ```
+  </details>
+
+- Try to access the Web Application UI using the tab simple-webapp-ui above the terminal.
+
+- Update the given values in the service definition file and create the service.
+
+  <details>
+
+  ```
+  $ kubectl create -f service-defination-1.yaml
+  ```
+  </details>
+
+
+#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/16603611)
+
+
+
+
+
+
+
+
+ 
