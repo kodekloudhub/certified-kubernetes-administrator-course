@@ -1,4 +1,4 @@
-# Certified Kuberentes Administartor (CKA) Course
+# Certified Kubernetes Administrator (CKA) Course
 
 These are notes from the [Certified Kubernetes Administrator Course](https://kodekloud.com/courses/enrolled/539883) hosted on KodeKloud.
 
