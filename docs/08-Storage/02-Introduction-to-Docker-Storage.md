@@ -1,6 +1,7 @@
 # Introduction to Docker Storage
 
   - Take me to [lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13350395)
+  
 In this section, we will take a look at **Docker storage**.
 
 - To understand storage in the container orchestration tools like **Kubernetes**, It is important to first understand how storage works with containers. Understanding how storage works with **Docker** first and getting all the basics right will later make it so much easier to understand how it works in **Kubernetes**.
