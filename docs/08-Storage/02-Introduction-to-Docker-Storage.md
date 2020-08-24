@@ -10,11 +10,11 @@ In this section, we will take a look at **Docker storage**.
 
 ## Docker Storage
 
-- There are two concepts comes into the docker, Storage drivers and Volume driver plugins. 
+- There are two concepts comes into the docker, Storage drivers and Volume drivers plugins. 
 
 ![class-1](../../images/class1.PNG)
 
-##### We will discuss about Storage drivers.
+#### We will first discuss about Storage drivers.
 
 #### Docker Reference Docs
 
