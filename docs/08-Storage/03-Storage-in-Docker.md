@@ -1,6 +1,6 @@
 # Storage in Docker
 
-  - Take me to [lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13350400)
+  - Take me to [Lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13350400)
 
 In this section, we will take a look at docker **Storage driver and Filesystem**.
 
