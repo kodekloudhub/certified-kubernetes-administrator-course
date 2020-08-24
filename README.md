@@ -135,7 +135,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [28-Download-Presentation-Deck](docs/07-Security/28-Download-Presentation-Deck.md)
 
 
-- [08-Security](docs/08-Security)
+- [08-Storage](docs/08-Storage)
 
   - [01-Storage-Section-Introduction](docs/08-Storage/01-Storage-Section-Introduction.md)
   - [02-Introduction-to-Docker-Storage](docs/08-Storage/02-Introduction-to-Docker-Storage.md)
