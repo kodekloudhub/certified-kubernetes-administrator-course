@@ -37,3 +37,4 @@ volumes:
 - https://kubernetes.io/docs/concepts/storage/volumes/
 - https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/
 - https://unofficial-kubernetes.readthedocs.io/en/latest/concepts/storage/volumes/
+- https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#volume-v1-core
