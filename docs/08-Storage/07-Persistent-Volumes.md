@@ -34,7 +34,9 @@ In this section, we will take a look at **Persistent Volumes**
   $ kubectl get pv
   NAME      CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS      CLAIM   STORAGECLASS   REASON   AGE
   pv-vol1   1Gi        RWO            Retain           Available                                   3min
-
+  
+  $ kubectl delete pv pv-vol1
+  persistentvolume "pv-vol1" deleted
   ```
 
 #### Kubernetes Persistent Volumes
