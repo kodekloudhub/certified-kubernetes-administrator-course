@@ -1,8 +1,8 @@
 # Practice Test CoreDNS in Kubernetes
 
-  Take me to [Lab](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9816800)
+  - Take me to [Lab](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9816800)
 
-  #### Solution 
+#### Solution 
 
   1. Check the Solution
 
@@ -147,6 +147,6 @@
       <details>
  
        ```
-       kubectl exec -it hr nslookup mysql.payroll > /root/nslookup.out
+       kubectl exec -it hr -- nslookup mysql.payroll > /root/nslookup.out
        ```
       </details>
