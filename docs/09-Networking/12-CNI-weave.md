@@ -42,6 +42,15 @@ weave-net-tb9tz                           2/2     Running            0          
 $ kubectl logs weave-net-tb9tz weave -n kube-system 
 ```
 
+## View the default route in the Pod
+
+```
+$ kubectl run test --image=busybox --command -- sleep 4500
+pod/test created
+
+$ kubectl exec test -- ip route
+default via 10.244.1.1 dev eth0
+```
 
 
 #### References Docs
