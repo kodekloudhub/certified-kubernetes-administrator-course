@@ -24,10 +24,6 @@ spec:
     app: nginx
 ```
 
-![net-5](../../images/net5.PNG)
-
-
-
 - NodePort
 
 ```
@@ -46,9 +42,27 @@ spec:
     app: nginx
 ```
 
-![net-6](../../images/net6.PNG)
+## To create the service 
 
+```
+$ kubectl create -f clusterIP.yaml
 
+$ kubectl create -f nodeportIP.yaml
+```
+
+## To get the Additional Information
+
+```
+$ kubectl get pods -o wide
+
+```
+
+## To get the Service
+
+```
+$ kubectl get service
+
+```
 
 #### References Docs
 
