@@ -32,6 +32,6 @@ spec:
 #### Reference Docs
 
 - https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/annotations/
-- https://github.com/kubernetes/ingress-nginx/blob/master/docs/troubleshooting.md
 - https://kubernetes.github.io/ingress-nginx/examples/
 - https://kubernetes.github.io/ingress-nginx/examples/rewrite/
+- https://github.com/kubernetes/ingress-nginx/blob/master/docs/troubleshooting.md
