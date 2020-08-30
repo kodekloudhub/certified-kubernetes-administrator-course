@@ -1,152 +1,141 @@
-# CoreDNS in kubernetes
+# CoreDNS in Kubernetes
 
-  Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808285)
+  - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808285)
 
-  #### Solution 
+In this section, we will take a look at **CoreDNS in the Kubernetes**
 
-  1. Check the Solution
 
-     <details>
+## To view the Pod
 
-      ```
-      CoreDNS
-      ```
-     </details>
-  
-  2. Check the Solution
+```
+$ kubectl get pods -n kube-system
+NAME                                      READY   STATUS    RESTARTS   AGE
+coredns-66bff467f8-2vghh                  1/1     Running   0          53m
+coredns-66bff467f8-t5nzm                  1/1     Running   0          53m
+```
 
-     <details>
+## To view the Deployment
 
-      ```
-      2
-      ```
-     </details>
+```
+$ kubectl get deployment -n kube-system
+NAME                      READY   UP-TO-DATE   AVAILABLE   AGE
+coredns                   2/2     2            2           53m
+```
 
-  3. Check the Solution
+## To view the configmap of CoreDNS
 
-     <details>
+```
+$ kubectl get configmap -n kube-system
+NAME                                 DATA   AGE
+coredns                              1      52m
+```
 
-      ```
-      10.96.0.10
-      ```
-     </details>
+## CoreDNS Configuration File
 
-  4. Check the Solution
+```
+$ kubectl describe cm coredns -n kube-system
 
-     <details>
+Corefile:
+---
+.:53 {
+    errors
+    health {       lameduck 5s
+    }
+    ready
+    kubernetes cluster.local in-addr.arpa ip6.arpa {
+       pods insecure
+       fallthrough in-addr.arpa ip6.arpa
+       ttl 30
+    }
+    prometheus :9153
+    forward . /etc/resolv.conf
+    cache 30
+    loop
+    reload
+}
+```
 
-      ```
-      /etc/coredns/Corefile
+## To view the Service 
 
-      OR
+```
+$ kubectl get service -n kube-system
+NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)                  AGE
+kube-dns   ClusterIP   10.96.0.10   <none>        53/UDP,53/TCP,9153/TCP   62m
+```
 
-      kubectl -n kube-system describe deployments.apps coredns | grep -A2 Args | grep Corefile
-      ```
-     </details>
+## To view Configuration into the kubelet 
 
-  5. Check the Solution
+```
+$ cat /var/lib/kubelet/config.yaml | grep -A2  clusterDNS
+clusterDNS:
+- 10.96.0.10
+clusterDomain: cluster.local
 
-     <details>
+```
 
-      ```
-      Configured as a ConfigMapObject
-      ```
-     </details>
+## To view the fully qualified domain name
 
-  6. Check the Solution
+- With the `host` command, we will get fully qualified domain name (FQDN).
 
-     <details>
+```
+$ host web-service
+web-service.default.svc.cluster.local has address 10.106.112.101
 
-      ```
-      CoreDNS
-      ```
-     </details>
+$ host web-service.default
+web-service.default.svc.cluster.local has address 10.106.112.101
 
-  7. Check the Solution
+$ host web-service.default.svc
+web-service.default.svc.cluster.local has address 10.106.112.101
 
-     <details>
+$ host web-service.default.svc.cluster.local
+web-service.default.svc.cluster.local has address 10.106.112.101
+```
 
-      ```
-      coredns
-      ```
-     </details>
+## To view the `/etc/resolv.conf` file
 
-  8. Check the Solution
+```
+$ kubectl run -it --rm --restart=Never test-pod --image=busybox -- cat /etc/resolv.conf
+nameserver 10.96.0.10
+search default.svc.cluster.local svc.cluster.local cluster.local
+options ndots:5
+pod "test-pod" deleted
+```
 
-     <details>
+## Resolve the Pod 
 
-      ```
-      cluster.local
-      ```
-     </details>
+```
+$ kubectl get pods -o wide
+NAME      READY   STATUS    RESTARTS   AGE     IP           NODE     NOMINATED NODE   READINESS GATES
+test-pod   1/1     Running   0          11m     10.244.1.3   node01   <none>           <none>
+nginx      1/1     Running   0          10m     10.244.1.4   node01   <none>           <none>
 
-  9. Check the Solution
+$ kubectl exec -it test-pod -- nslookup 10-244-1-4.default.pod.cluster.local
+Server:    10.96.0.10
+Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
 
-     <details>
+Name:      10-244-1-4.default.pod.cluster.local
+Address 1: 10.244.1.4 
+```
 
-      ```
-      Ok
-      ```
-     </details>
+## Resolve the Service
 
-  10. Check the Solution
+```
+$ kubectl get service
+NAME          TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
+kubernetes    ClusterIP   10.96.0.1        <none>        443/TCP   85m
+web-service   ClusterIP   10.106.112.101   <none>        80/TCP    9m
 
-      <details>
+$ kubectl exec -it test-pod -- nslookup web-service.default.svc.cluster.local
+Server:    10.96.0.10
+Address 1: 10.96.0.10 kube-dns.kube-system.svc.cluster.local
 
-       ```
-       web-service
-       ```
-      </details>
+Name:      web-service.default.svc.cluster.local
+Address 1: 10.106.112.101 web-service.default.svc.cluster.local
 
-  11. Check the Solution
+```
 
-      <details>
- 
-       ```
-       web-serivce.default.pod
-       ```
-      </details>
 
-  12. Check the Solution
+#### References Docs
 
-      <details>
- 
-       ```
-       web-service.payroll
-       ```
-      </details>
-
-  13. Check the Solution
-
-      <details>
- 
-       ```
-       web-service.payroll.svc.cluster
-       ```
-      </details>
-
-  14. Check the Solution
-
-      <details>
- 
-       ```
-       kubectl edit deploy webapp
- 
-       Search for DB_Host and Change the DB_Host from mysql to mysql.payroll
- 
-       spec:
-         containers:
-         - env:
-           - name: DB_Host
-             value: mysql.payroll
-       ```
-      </details>
- 
-  15. Check the Solution
-
-      <details>
- 
-       ```
-       kubectl exec -it hr nslookup mysql.payroll > /root/nslookup.out
-       ```
-      </details>
+- https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#services
+- https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pods
