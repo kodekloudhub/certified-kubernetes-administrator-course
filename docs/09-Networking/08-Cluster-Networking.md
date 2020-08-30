@@ -2,6 +2,11 @@
 
   - Take me to [Lecture](https://kodekloud.com/courses/539883/lectures/9808288)
 
+In this section, we will take a look at **Pre-requisite of the Cluster Networking**
+
+- Set the unique hostname.
+- Get the IP addr of the system (master and worker node).
+- Check the Ports.
 
 ## IP and Hostname
 
