@@ -37,3 +37,4 @@ $ netstat -nltp
 #### References Docs
 
 - https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#check-required-ports
+- https://kubernetes.io/docs/concepts/cluster-administration/networking/
