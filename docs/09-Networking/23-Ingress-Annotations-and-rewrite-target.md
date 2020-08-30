@@ -2,7 +2,7 @@
 
   - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/14102889)
 
-In this section, we will take a look at "Ingress annotations and rewrite-target"
+In this section, we will take a look at **Ingress annotations and rewrite-target**
 
 - Different Ingress controllers have different options to customize the way it works. Nginx Ingress Controller has many options but we will take a look into the one of the option "Rewrite Target" option.
 
