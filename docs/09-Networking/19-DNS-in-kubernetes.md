@@ -39,6 +39,7 @@ Name:      10-244-1-3.apps.pod.cluster.local
 Address 1: 10.244.1.3
 pod "test" deleted
 
+# Accessing with curl command
 $ kubectl run -it nginx-test --image=nginx --rm --restart=Never -- curl -Is http://10-244-1-3.default.pod.cluster.local
 HTTP/1.1 200 OK
 Server: nginx/1.19.2
@@ -80,7 +81,7 @@ Address 1: 10.96.120.174 nginx-service.apps.svc.cluster.local
 pod "test" deleted
 
 # Accessing with curl command
-$ kubectl run -it nginx-test --image=nginx --rm --restart=Never -- curl http://nginx-service.default.svc.cluster.local
+$ kubectl run -it nginx-test --image=nginx --rm --restart=Never -- curl -Is http://nginx-service.default.svc.cluster.local
 HTTP/1.1 200 OK
 Server: nginx/1.19.2
 
