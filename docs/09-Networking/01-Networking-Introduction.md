@@ -6,7 +6,11 @@ In this section, we will take a look at **Networking Section**
 
 - Prerequisite 
     - Switching, Routing and Gateways
+      - Switching
+      - Routing
+      - Default Gateway
     - DNS
+      - DNS Configuration on Linux
     - CoreDNS
     - Network Namespace
     - Docker Networking
