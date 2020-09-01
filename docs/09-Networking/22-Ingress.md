@@ -73,6 +73,8 @@ serviceaccount/ingress-serviceaccount created
 ## Service Type - NodePort
 
 ```
+# service-Nodeport.yaml
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -90,6 +92,16 @@ spec:
     name: https
   selector:
     name: nginx-ingress
+```
+
+- Create a service
+```
+$ kubectl create -f service-Nodeport.yaml
+```
+- To get the service
+
+```
+$ kubectl get service
 ```
 
 ## Ingress Resources
