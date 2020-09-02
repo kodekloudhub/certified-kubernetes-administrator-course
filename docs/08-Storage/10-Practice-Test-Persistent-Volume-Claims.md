@@ -1,8 +1,8 @@
 # Practice Test Persistent Volume Claims
 
-  Lets do the [Labs](https://kodekloud.com/courses/539883/lectures/9816679)
+  Lets do the [Labs](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9816679)
 
-  #### Solution
+#### Solution
 
   1. Check the Solution
 

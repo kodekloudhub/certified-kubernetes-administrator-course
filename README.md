@@ -135,7 +135,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [28-Download-Presentation-Deck](docs/07-Security/28-Download-Presentation-Deck.md)
 
 
-- [08-Security](docs/08-Security)
+- [08-Storage](docs/08-Storage)
 
   - [01-Storage-Section-Introduction](docs/08-Storage/01-Storage-Section-Introduction.md)
   - [02-Introduction-to-Docker-Storage](docs/08-Storage/02-Introduction-to-Docker-Storage.md)
@@ -148,6 +148,8 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [09-Using-PVC-in-PODs](docs/08-Storage/09-Using-PVC-in-PODs.md)
   - [10-Practice-Test-Persistent-Volume-Claims](docs/08-Storage/10-Practice-Test-Persistent-Volume-Claims.md)
   - [11-Download-Presentation-Deck](docs/08-Storage/11-Download-Presentation-Deck.md)
+  - [12-Storage-Class](docs/08-Storage/12-Storage-Class.md)
+  - [13-Practice-Test-Storage-Class](docs/08-Storage/13-Practice-Test-Storage-Class.md)
 
 
 - [09-Networking](docs/09-Networking)
