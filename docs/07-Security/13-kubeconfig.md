@@ -30,7 +30,7 @@ In this section, we will take a look at kubeconfig in kubernetes
   ```
 - You can specify the kubeconfig file with kubectl config view with "--kubeconfig" flag
   ```
-  $ kubectl config veiw --kubeconfig=my-custom-config
+  $ kubectl config view --kubeconfig=my-custom-config
   ```
   
   ![kc6](../../images/kc6.PNG)
