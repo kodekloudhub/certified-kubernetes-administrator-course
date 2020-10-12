@@ -31,7 +31,7 @@ In this section, we will take a look at taints and tolerations.
   ![tn](../../images/tn.PNG)
   
 ## Tolerations
-   - Tolerations are added to pods and it can be added by adding a **`tolerations`** section in pod defination.
+   - Tolerations are added to pods and it can be added by adding a **`tolerations`** section in pod definition.
      ```
      apiVersion: v1
      kind: Pod

@@ -66,7 +66,7 @@ In this section we will take a look at **`services`** in kuberentes
       
       #### To create the service
       ```
-      $ kubectl create -f service-defination.yaml
+      $ kubectl create -f service-definition.yaml
       ```
       
       #### To list the services

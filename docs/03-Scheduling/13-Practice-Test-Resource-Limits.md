@@ -40,7 +40,7 @@ Solutions to practice test - resource limtis
   ```
   </details>
 
-  Update the elephant.yaml pod defination with the resource memory limits to 20Mi
+  Update the elephant.yaml pod definition with the resource memory limits to 20Mi
   
   <details>
 

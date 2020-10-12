@@ -103,12 +103,12 @@ Solutions to the deploments practice test
    ```
    </details>
 
-1. The value for **`kind`** is incorrect. It should be **`Deployment`** with a capital **`D`**. Update the deployment defination and create the deployment.
+1. The value for **`kind`** is incorrect. It should be **`Deployment`** with a capital **`D`**. Update the deployment definition and create the deployment.
 
    <details>
 
    ```
-   $ kubectl create -f deployment-defination-1.yaml
+   $ kubectl create -f deployment-definition-1.yaml
    ```
    </details>
 

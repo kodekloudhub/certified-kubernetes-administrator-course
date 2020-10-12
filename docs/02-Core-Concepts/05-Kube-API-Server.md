@@ -27,7 +27,7 @@ In this section, we will talk about kube-apiserver in kubernetes
   ![kube-apiserver1](../../images/kube-apiserver1.PNG)
    
 ## View kube-apiserver options - Kubeadm
-- You can see the options with in the pod defination file located at **`/etc/kubernetes/manifests/kube-apiserver.yaml`**
+- You can see the options with in the pod definition file located at **`/etc/kubernetes/manifests/kube-apiserver.yaml`**
   ```
   $ cat /etc/kubernetes/manifests/kube-apiserver.yaml
   ```

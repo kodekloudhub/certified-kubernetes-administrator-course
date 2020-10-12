@@ -27,7 +27,7 @@ In this section, we will take a look at kube-scheduler.
   ```
   $ kubectl get pods -n kube-system
   ```
-- You can see the options for kube-scheduler in pod defination file that is located at **`/etc/kubernetes/manifests/kube-scheduler.yaml`**
+- You can see the options for kube-scheduler in pod definition file that is located at **`/etc/kubernetes/manifests/kube-scheduler.yaml`**
   ```
   $ cat /etc/kubernetes/manifests/kube-scheduler.yaml
   ```

@@ -33,9 +33,9 @@ In this section, we will take a look at kubernetes deployments
        matchLabels:
         type: front-end
  ```
-- Once the file is ready, create the deployment using deployment defination file
+- Once the file is ready, create the deployment using deployment definition file
   ```
-  $ kubectl create -f deployment-defination.yaml
+  $ kubectl create -f deployment-definition.yaml
   ```
 - To see the created deployment
   ```

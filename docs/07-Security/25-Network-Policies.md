@@ -54,7 +54,7 @@
       - protocol: TCP
         port: 3306
   ```
-  $ kubectl create -f policy-defination.yaml
+  $ kubectl create -f policy-definition.yaml
   ```
   
   ![npol3](../../images/npol3.PNG)

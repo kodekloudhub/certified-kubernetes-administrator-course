@@ -32,7 +32,7 @@ In this section, we will take a look at Node Selectors in Kubernetes
   
 ![ln](../../images/ln.PNG)
   
-- To create a pod defination
+- To create a pod definition
   ```
   apiVersion: v1
   kind: Pod
@@ -46,7 +46,7 @@ In this section, we will take a look at Node Selectors in Kubernetes
     size: Large
   ```
   ```
-  $ kubectl create -f pod-defination.yml
+  $ kubectl create -f pod-definition.yml
   ```
   
 ![nsel](../../images/nsel.PNG)

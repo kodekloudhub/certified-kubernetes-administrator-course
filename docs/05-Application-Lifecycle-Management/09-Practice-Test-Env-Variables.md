@@ -86,7 +86,7 @@ Solutions to practice test env variables
   ```
   $ kubectl get pods webapp-color -o yaml > new-webapp.yaml
   $ kubectl delete pods webapp-color
-   Update pod defination file, under spec.containers section update the below.
+   Update pod definition file, under spec.containers section update the below.
   - envFrom:
     - configMapRef:
        name: webapp-config-map
