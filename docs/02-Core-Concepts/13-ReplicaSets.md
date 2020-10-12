@@ -60,7 +60,7 @@ In this section, we will take a look at the below
     
 ## Creating a ReplicaSet
   
-## ReplicaSet Defination File
+## ReplicaSet Definition File
 
    ![rs](../../images/rs.PNG)
 
