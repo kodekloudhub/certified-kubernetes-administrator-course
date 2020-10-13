@@ -36,7 +36,7 @@ In this section, we will take a look at configuring configmaps in applications
  - To view configMaps
    ```
    $ kubectl get configmaps (or)
-   $ kubeclt get cm
+   $ kubectl get cm
    ```
  - To describe configmaps
    ```

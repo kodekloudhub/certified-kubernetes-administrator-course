@@ -43,7 +43,7 @@ In this section, we will take a look at kubernetes deployments
   ```
 - The deployment automatically creates a **`ReplicaSet`**. To see the replicasets
   ```
-  $ kubeclt get replicaset
+  $ kubectl get replicaset
   ```
 - The replicasets ultimately creates **`PODs`**. To see the PODs
   ```

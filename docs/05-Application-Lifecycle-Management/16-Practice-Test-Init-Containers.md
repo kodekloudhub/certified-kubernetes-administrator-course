@@ -64,7 +64,7 @@ Solutions to practice test - init-containers
   <details>
   ```
   $ kubectl get pod red -o yaml > red.yaml
-  $ kubeclt delete pod red
+  $ kubectl delete pod red
   ```
   </details>
   
