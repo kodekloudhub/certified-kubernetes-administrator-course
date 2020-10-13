@@ -5,7 +5,7 @@ In this section, we will take a look at **`Labels and Selectors`**
 
 #### Labels and Selectors are standard methods to group things together.
   
-#### Labels are properties attach to each item.
+#### Labels are properties attached to each item.
 
   ![labels-ckc](../../images/labels-ckc.PNG)
   
