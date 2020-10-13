@@ -52,7 +52,7 @@ In this section, we will take a look at rolling updates and rollback in a deploy
       type: front-end       
   ```
   ```
-  $ kubectl apply -f deployment-defination.yaml
+  $ kubectl apply -f deployment-definition.yaml
   ```
 - Alternate way to update a deployment say for example for updating an image.
   ```
@@ -84,9 +84,9 @@ In this section, we will take a look at rolling updates and rollback in a deploy
   ```
 ## Summarize kubectl commands
 ```
-$ kubectl create -f deployment-defination.yaml
+$ kubectl create -f deployment-definition.yaml
 $ kubectl get deployments
-$ kubectl apply -f deployment-defination.yaml
+$ kubectl apply -f deployment-definition.yaml
 $ kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
 $ kubectl rollout status deployment/myapp-deployment
 $ kubectl rollout history deployment/myapp-deployment

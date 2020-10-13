@@ -73,7 +73,7 @@
   <details>
 
   ```
-  $ kubectl create -f service-defination-1.yaml
+  $ kubectl create -f service-definition-1.yaml
   ```
   </details>
 

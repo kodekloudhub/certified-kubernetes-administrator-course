@@ -22,7 +22,8 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
   ```
   ![ns8](../../images/ns8.PNG)
   
-- Here we have a pod defination file. When we create a pod with pod-defination file, the pod is created in the default namespace.
+- Here we have a pod definition file, when we create a pod with pod-definition file, the pod is created in the default namespace.
+
 ```
 apiVersion: v1
 kind: Pod
@@ -37,15 +38,15 @@ spec:
     image: nginx
  ```
   ```
-  $ kubectl create -f pod-defination.yaml
+  $ kubectl create -f pod-definition.yaml
   ```
-- To create the pod with the pod-defination file in another namespace, use the **`--namespace`** option.
+- To create the pod with the pod-definition file in another namespace, use the **`--namespace`** option.
   ```
-  $ kubectl create -f pod-defination.yaml --namespace=dev
+  $ kubectl create -f pod-definition.yaml --namespace=dev
   ```
   ![ns9](../../images/ns9.PNG)
 
-- If you want to make sure that this pod gets created in the **`dev`** env all the time, even if you don't specify in the command line, you can move the **`--namespace`** defination into the pod-defination file.
+- If you want to make sure that this pod gets you created in the **`dev`** env all the time, even if you don't specify in the command line, you can move the **`--namespace`** definition into the pod-definition file.
 ```
 apiVersion: v1
 kind: Pod
@@ -63,7 +64,7 @@ spec:
   
   ![ns10](../../images/ns10.PNG)
   
-- To create a new namespace, create a namespace defination as shown below and then run **`kubectl create`**
+- To create a new namespace, create a namespace definition as shown below and then run **`kubectl create`**
 ```
 apiVersion: v1
 kind: Namespace
@@ -90,7 +91,7 @@ metadata:
   ```
   ![ns12](../../images/ns12.PNG)
   
-- To limit resources in a namespace, create a resource quota. To create one start with **`ResourceQuota`** defination file.
+- To limit resources in a namespace, create a resource quota. To create one start with **`ResourceQuota`** definition file.
 ```
 apiVersion: v1
 kind: ResourceQuota

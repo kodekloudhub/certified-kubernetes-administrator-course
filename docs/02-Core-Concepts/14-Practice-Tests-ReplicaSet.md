@@ -96,12 +96,12 @@
    ```
    </details>
 
-   Update the replicaset defination file with correct version and create a replicaset
+   Update the replicaset definition file with correct version and create a replicaset
     
    <details>
 
    ```
-   $ kubectl create -f replicaset-defination-1.yaml
+   $ kubectl create -f replicaset-definition-1.yaml
    ```
    </details>
 
@@ -109,8 +109,8 @@
    <details>
 
    ```
-   Selector matchLabels should match with POD labels - Update the replicaset-defination-2.yaml
-   $ kubectl create -f replicaset-defination-2.yaml
+   Selector matchLabels should match with POD labels - Update the replicaset-definition-2.yaml
+   $ kubectl create -f replicaset-definition-2.yaml
    ```
    </details>
 

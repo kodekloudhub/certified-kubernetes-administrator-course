@@ -15,7 +15,7 @@ In this section, we will take a look at DaemonSets.
   
   ![ds-ucn](../../images/ds-ucn.PNG)
   
-## DaemonSets - Defination
+## DaemonSets - Definition
 - Creating a DaemonSet is similar to the ReplicaSet creation process.
 - For DaemonSets, we start with apiVersion, kind as **`DaemonSets`** instead of **`ReplicaSet`**, metadata and spec. 
   ```
@@ -61,9 +61,9 @@ In this section, we will take a look at DaemonSets.
   ```
   ![dsd](../../images/dsd.PNG)
   
-- To create a daemonset from a defination file
+- To create a daemonset from a definition file
   ```
-  $ kubectl create -f daemon-set-defination.yaml
+  $ kubectl create -f daemon-set-definition.yaml
   ```
 
 ## View DaemonSets

@@ -40,7 +40,7 @@ In this section we will take a look at image security
     --docker-password=registry-password \
     --docker-email=registry-user@org.com
   ```
-- We then specify the secret inside our pod defination file under the imagePullSecret section 
+- We then specify the secret inside our pod definition file under the imagePullSecret section 
   ```
   apiVersion: v1
   kind: Pod

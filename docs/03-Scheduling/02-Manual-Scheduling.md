@@ -25,7 +25,7 @@ In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on
     ![sc1](../../images/sc1.png)
     
 ## No Scheduler
-  - You can manually assign pods to node itself. Well without a scheduler, to schedule pod is to set **`nodeName`** property in your pod defination file while creating a pod.
+  - You can manually assign pods to node itself. Well without a scheduler, to schedule pod is to set **`nodeName`** property in your pod definition file while creating a pod.
     
     ![sc2](../../images/sc2.PNG)
     

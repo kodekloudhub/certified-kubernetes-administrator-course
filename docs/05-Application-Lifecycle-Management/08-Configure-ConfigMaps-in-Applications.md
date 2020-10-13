@@ -27,7 +27,7 @@ In this section, we will take a look at configuring configmaps in applications
      APP_MODE: prod
     ```
     ```
-    Create a config map defination file and run the 'kubectl create` command to deploy it.
+    Create a config map definition file and run the 'kubectl create` command to deploy it.
     $ kubectl create -f config-map.yaml
     ```
     ![cmd1](../../images/cmd1.PNG)
@@ -72,7 +72,7 @@ In this section, we will take a look at configuring configmaps in applications
      APP_MODE: prod
    ```
    ```
-   $ kubectl create -f pod-defination.yaml
+   $ kubectl create -f pod-definition.yaml
    ```
   
    ![cmp](../../images/cmp.PNG)

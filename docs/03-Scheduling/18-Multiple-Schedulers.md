@@ -31,7 +31,7 @@ In this section, we will take a look at multiple schedulers
   ```
 
 ## Use the Custom Scheduler
-- Create a pod defination file and add new section called **`schedulerName`** and specify the name of the new scheduler
+- Create a pod definition file and add new section called **`schedulerName`** and specify the name of the new scheduler
   ```
   apiVersion: v1
   kind: Pod
@@ -47,7 +47,7 @@ In this section, we will take a look at multiple schedulers
   
 - To create a pod definaton
   ```
-  $ kubectl create -f pod-defination.yaml
+  $ kubectl create -f pod-definition.yaml
   ```
 - To list pods
   ```

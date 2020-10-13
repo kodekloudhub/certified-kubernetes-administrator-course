@@ -14,7 +14,7 @@ In this section we will take a look at Resource Limits
   
   ![rr](../../images/rr.PNG)
   
-- If your application within the pod requires more than the default resources, you need to set them in the pod defination file.
+- If your application within the pod requires more than the default resources, you need to set them in the pod definition file.
 
   ```
   apiVersion: v1
@@ -41,7 +41,7 @@ In this section we will take a look at Resource Limits
   
   ![rsl](../../images/rsl.PNG)
   
-- You can set the resource limits in the pod defination file.
+- You can set the resource limits in the pod definition file.
   
   ```
   apiVersion: v1
