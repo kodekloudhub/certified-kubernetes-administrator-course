@@ -4,7 +4,7 @@
 In this section, we will take a look at **`Namespaces`**
 
 So far in this course we have created **`Objects`** such as **`PODs`**, **`Deployments`** and **`Services`** in our cluster. Whatever we have been doing we have been doing in a **`NAMESPACE`**.
-- This namespace is the **`default`** namespace in kuberntes. It is automatically created when kubernetes is setup initially.
+- This namespace is the **`default`** namespace in kubernetes. It is automatically created when kubernetes is setup initially.
 
   ![ns](../../images/ns.PNG)
  
@@ -23,6 +23,7 @@ So far in this course we have created **`Objects`** such as **`PODs`**, **`Deplo
   ![ns8](../../images/ns8.PNG)
   
 - Here we have a pod definition file, when we create a pod with pod-definition file, the pod is created in the default namespace.
+
 ```
 apiVersion: v1
 kind: Pod
