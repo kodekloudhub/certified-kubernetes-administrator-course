@@ -56,7 +56,7 @@ In this section, we will take a look at rolling updates and rollback in a deploy
   ```
 - Alternate way to update a deployment say for example for updating an image.
   ```
-  $ kubectl set image deplyoment/myapp-deployment nginx=nginx:1.9.1
+  $ kubectl set image deployment/myapp-deployment nginx=nginx:1.9.1
   ```
   ![ka](../../images/ka.PNG)
   
@@ -78,7 +78,7 @@ In this section, we will take a look at rolling updates and rollback in a deploy
   ```
   
 ## kubectl create
-- To create a deplyoment
+- To create a deployment
   ```
   $ kubectl create deployment nginx --image=nginx
   ```
