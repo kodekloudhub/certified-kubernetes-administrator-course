@@ -29,7 +29,7 @@ spec:
 - If there are multiple containers in a pod then you must specify the name of the container explicitly in the command.
   ```
   $ kubectl logs -f <pod-name> <container-name>
-  $ kubeclt logs -f even-simulator-pod event-simulator
+  $ kubectl logs -f even-simulator-pod event-simulator
   ```
 
   ![logs1](../../images/logs1.PNG)
