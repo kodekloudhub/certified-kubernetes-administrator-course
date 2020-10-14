@@ -3,10 +3,10 @@
   
 In this section, we will take a look at Static Pods
 
-#### How do you provide a pod definition file to the kubelet without a kube-api server?
+#### How do you provide a pod definition file to the kubelet without a kube-apiserver?
 - You can configure the kubelet to read the pod definition files from a directory on the server designated to store information about pods.
 
-## Confgure Static Pod
+## Configure Static Pod
 - The designated directory can be any directory on the host and the location of that directory is passed in to the kubelet as an option while running the service.
   - The option is named as **`--pod-manifest-path`**.
   
@@ -34,7 +34,7 @@ In this section, we will take a look at Static Pods
   
   ![sp5](../../images/sp5.PNG)
   
-## StaticPods vs DaemonSets
+## Static Pods vs DaemonSets
 
    ![spvsds](../../images/spvsds.PNG)
   
