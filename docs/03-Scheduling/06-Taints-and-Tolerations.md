@@ -41,11 +41,11 @@ In this section, we will take a look at taints and tolerations.
       containers:
       - name: nginx-container
         image: nginx
-     tolerations:
-     - key: "app"
-       operator: "Equal"
-       value: "blue"
-       effect: "NoSchedule"
+      tolerations:
+      - key: "app"
+        operator: "Equal"
+        value: "blue"
+        effect: "NoSchedule"
      ```
     
   ![tp](../../images/tp.PNG)
