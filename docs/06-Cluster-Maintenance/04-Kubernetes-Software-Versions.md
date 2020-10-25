@@ -12,7 +12,7 @@ $ kubectl get nodes
 #### Let's take a closer look at the version number
 - It consists of 3 parts
   - First is the major version
-  - Second is the minior version
+  - Second is the minor version
   - Finally, the patch version
   
   ![mmp](../../images/mmp.PNG)
