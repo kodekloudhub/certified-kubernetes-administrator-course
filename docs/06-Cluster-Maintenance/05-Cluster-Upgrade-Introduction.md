@@ -4,7 +4,7 @@
 #### Is it mandatory for all of the kubernetes components to have the same versions?
 - No, The components can be at different release versions.
   
-#### At any time, kubernets supports only up to the recent 3 minor versions
+#### At any time, kubernetes supports only up to the recent 3 minor versions
 - The recommended approach is to upgrade one minor version at a time.
   
   ![up2](../../images/up2.PNG)
@@ -39,7 +39,7 @@
   ```
   $ kubeadm upgrade apply v1.12.0
   ```
-- If you run the 'kubectl get nodes' command, you will see the older version. This is beceause in the output of the command it is showing the versions of kubelets on each of these nodes registered with the API Server and not the version of API Server iteself  
+- If you run the 'kubectl get nodes' command, you will see the older version. This is because in the output of the command it is showing the versions of kubelets on each of these nodes registered with the API Server and not the version of API Server itself  
   ```
   $ kubectl get nodes
   ```
@@ -82,7 +82,7 @@
   ```
 - Mark the node back to schedulable
   ```
-  $ kubectl uncordorn node-1
+  $ kubectl uncordon node-1
   ```
   
   ![kubeu2](../../images/kubeu2.PNG)
