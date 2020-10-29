@@ -176,8 +176,8 @@
      ```
      kubectl run nginx-resolver --image=nginx
      kubectl expose pod nginx-resolver --name=nginx-resolver-service --port=80 --tartget-port=80 --type=ClusterIP
-     kubectl run test-nslookup --image=busybox:1.28 --rm -it -- nslookup nginx-resolver-service
-     kubectl run test-nslookup --image=busybox:1.28 --rm -it -- nslookup nginx-resolver-service > /root/nginx.svc
+     kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup nginx-resolver-service
+     kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup nginx-resolver-service > /root/nginx.svc
  
      Get the IP of the nginx-resolver pod and replace the dots(.) with hyphon(-) which will be used below.
  
