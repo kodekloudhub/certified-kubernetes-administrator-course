@@ -231,7 +231,7 @@ $ ping 192.168.15.1
 
 > On the ns
 ```
-$ ip netns exec blue ping 192.168.1.3
+$ ip netns exec blue ping 192.168.1.1
 Connect: Network is unreachable
 
 $ ip netns exec blue route
@@ -241,12 +241,12 @@ $ ip netns exec blue ip route add 192.168.1.0/24 via 192.168.15.5
 # Check the IP Address of the host
 $ ip a
 
-$ ip netns exec blue ping 192.168.1.3
-PING 192.168.1.3 (192.168.1.3) 56(84) bytes of data.
+$ ip netns exec blue ping 192.168.1.1
+PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
 
 $ iptables -t nat -A POSTROUTING -s 192.168.15.0/24 -j MASQUERADE
 
-$ ip netns exec blue ping 192.168.1.3
+$ ip netns exec blue ping 192.168.1.1
 
 $ ip netns exec blue ping 8.8.8.8
 
