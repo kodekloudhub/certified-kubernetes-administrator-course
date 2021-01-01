@@ -175,7 +175,7 @@
  
      ```
      kubectl run nginx-resolver --image=nginx
-     kubectl expose pod nginx-resolver --name=nginx-resolver-service --port=80 --tartget-port=80 --type=ClusterIP
+     kubectl expose pod nginx-resolver --name=nginx-resolver-service --port=80 --target-port=80 --type=ClusterIP
      kubectl run test-nslookup --image=busybox:1.28 --rm -it -- nslookup nginx-resolver-service
      kubectl run test-nslookup --image=busybox:1.28 --rm -it -- nslookup nginx-resolver-service > /root/nginx.svc
  
