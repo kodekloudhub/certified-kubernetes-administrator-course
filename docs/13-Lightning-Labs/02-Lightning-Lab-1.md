@@ -25,12 +25,13 @@
       On Worker Node:-
 
       apt-get install kubeadm=1.19.0-00
-      kubeadm upgrade node --kubelet-version v1.19.0
+      kubeadm upgrade node --kubelet-version=v1.19.0
       apt-get install kubelet=1.19.0-00
       systemctl daemon-reload
       systemctl restart kubelet     
+
+      Back on Master Node:-
       
-      Back on Master Node:
       kubectl uncordon node01
       kubectl get pods -o wide | grep gold (make sure this is scheduled on master node)
       ```
@@ -41,7 +42,7 @@
       <details>
    
       ```
-      kubectl -n admin2406 get deployment -o custom-columns=DEPLOYMENT:.metadata.name,CONTAINER_IMAGE:.spec.template.spec.   containers[].image,READY_REPLICAS:.status.readyReplicas,NAMESPACE:.metadata.namespace --sort-by=.metadata.name > /opt/   admin2406_data
+      kubectl -n admin2406 get deployment -o custom-columns=DEPLOYMENT:.metadata.name,CONTAINER_IMAGE:.spec.template.spec.containers[].image,READY_REPLICAS:.status.readyReplicas,NAMESPACE:.metadata.namespace --sort-by=.metadata.name > /opt/admin2406_data
       ```
       </details>
 

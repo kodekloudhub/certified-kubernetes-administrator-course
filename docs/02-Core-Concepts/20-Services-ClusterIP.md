@@ -29,7 +29,7 @@ spec:
    type: back-end
 ```
 ```
-$ kubectl create -f service-defination.yaml
+$ kubectl create -f service-definition.yaml
 ```
 
 #### To list the services

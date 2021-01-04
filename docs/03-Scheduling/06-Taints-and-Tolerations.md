@@ -5,7 +5,7 @@ In this section, we will take a look at taints and tolerations.
 - Pod to node relationship and how you can restrict what pods are placed on what nodes.
 
 #### Taints and Tolerations are used to set restrictions on what pods can be scheduled on a node. 
-- Pods which are tolerant to the particular taint node will only get scheduled on that node.
+- Only pods which are tolerant to the particular taint on a node will get scheduled on that node.
 
   ![tandt](../../images/tandt.PNG)
   
@@ -31,7 +31,7 @@ In this section, we will take a look at taints and tolerations.
   ![tn](../../images/tn.PNG)
   
 ## Tolerations
-   - Tolerations are added to pods and it can be added by adding a **`tolerations`** section in pod defination.
+   - Tolerations are added to pods by adding a **`tolerations`** section in pod definition.
      ```
      apiVersion: v1
      kind: Pod
@@ -41,17 +41,17 @@ In this section, we will take a look at taints and tolerations.
       containers:
       - name: nginx-container
         image: nginx
-     tolerations:
-     - key: "app"
-       operator: "Equal"
-       value: "blue"
-       effect: "NoSchedule"
+      tolerations:
+      - key: "app"
+        operator: "Equal"
+        value: "blue"
+        effect: "NoSchedule"
      ```
     
   ![tp](../../images/tp.PNG)
     
 
-#### Taints and Tolerations does not tell the pod to go to a particular node. Instead, it tells the node to only accept pods with certain tolerations.
+#### Taints and Tolerations do not tell the pod to go to a particular node. Instead, they tell the node to only accept pods with certain tolerations.
 - To see this taint, run the below command
   ```
   $ kubectl describe node kubemaster |grep Taint

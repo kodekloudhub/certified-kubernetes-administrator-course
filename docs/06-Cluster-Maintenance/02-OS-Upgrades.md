@@ -12,11 +12,11 @@ In this section, we will take a look at os upgrades.
   $ kubectl drain node-1
   ```
 - The node is also cordoned or marked as unschedulable.
-- When the node is back online after a maintenance, it is still unschedulable. You then need to uncordorn it.
+- When the node is back online after a maintenance, it is still unschedulable. You then need to uncordon it.
   ```
-  $ kubectl uncordorn node-1
+  $ kubectl uncordon node-1
   ```
-- There is also another command called cordorn. Cordorn simply marks a node unschedulable. Unlike drain it does not terminate or move the pods on an existing node.
+- There is also another command called cordon. Cordon simply marks a node unschedulable. Unlike drain it does not terminate or move the pods on an existing node.
 
   ![drain](../../images/drain.PNG)
   

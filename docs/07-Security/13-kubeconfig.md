@@ -44,7 +44,7 @@ In this section, we will take a look at kubeconfig in kubernetes
   
 - kubectl config help
   ```
-  $ kubeclt config -h
+  $ kubectl config -h
   ```
   
   ![kc8](../../images/kc8.PNG)

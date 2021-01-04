@@ -43,8 +43,8 @@ Solutions to Practice Test - Scheduling
   <details>
 
   ```
-  $ vi replicaset-defination.yaml
-  $ kubectl create -f replicaset-defination.yaml
+  $ vi replicaset-definition.yaml
+  $ kubectl create -f replicaset-definition.yaml
   ```
   </details>
 

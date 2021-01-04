@@ -3,9 +3,9 @@
   
 In this section, we will take a look at **`Labels and Selectors`**
 
-####Labels and Selectors are standard methods to group things together.
+#### Labels and Selectors are standard methods to group things together.
   
-#### Labels are properties attach to each item.
+#### Labels are properties attached to each item.
 
   ![labels-ckc](../../images/labels-ckc.PNG)
   
@@ -41,7 +41,7 @@ Once the pod is created, to select the pod with labels run the below command
 $ kubectl get pods --selector app=App1
 ```
 
-Kubernetes use labels to connect different objects together
+Kubernetes uses labels to connect different objects together
    ```
     apiVersion: apps/v1
     kind: ReplicaSet

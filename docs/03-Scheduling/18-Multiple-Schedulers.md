@@ -4,7 +4,7 @@
 In this section, we will take a look at multiple schedulers
 
 ## Custom Schedulers
-- You kubernetes cluster can schedule multiple schedulers at the same time.
+- Your kubernetes cluster can schedule multiple schedulers at the same time.
 
   ![ms](../../images/ms.PNG)
   
@@ -31,7 +31,7 @@ In this section, we will take a look at multiple schedulers
   ```
 
 ## Use the Custom Scheduler
-- Create a pod defination file and add new section called **`schedulerName`** and specify the name of the new scheduler
+- Create a pod definition file and add new section called **`schedulerName`** and specify the name of the new scheduler
   ```
   apiVersion: v1
   kind: Pod
@@ -45,9 +45,9 @@ In this section, we will take a look at multiple schedulers
   ```
   ![cs](../../images/cs.png)
   
-- To create a pod definaton
+- To create a pod definition
   ```
-  $ kubectl create -f pod-defination.yaml
+  $ kubectl create -f pod-definition.yaml
   ```
 - To list pods
   ```

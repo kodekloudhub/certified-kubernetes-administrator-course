@@ -1,10 +1,10 @@
 # Kubernetes Services
   - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808156)
   
-In this section we will take a look at **`services`** in kuberentes
+In this section we will take a look at **`services`** in kubernetes
 
 ## Services
-- Kubernetes Services enables communication between various components within an outside of the application.
+- Kubernetes Services enables communication between various components within and outside of the application.
 
   ![srv1](../../images/srv1.PNG)
   
@@ -30,7 +30,7 @@ In this section we will take a look at **`services`** in kuberentes
    ![srv-types](../../images/srv-types.PNG)
  
  1. NodePort
-    - Where the services makes an internal POD accessable on a POD on the NODE.
+    - Where the service makes an internal POD accessible on a POD on the NODE.
       ```
       apiVersion: v1
       kind: Service
@@ -66,7 +66,7 @@ In this section we will take a look at **`services`** in kuberentes
       
       #### To create the service
       ```
-      $ kubectl create -f service-defination.yaml
+      $ kubectl create -f service-definition.yaml
       ```
       
       #### To list the services
@@ -94,7 +94,7 @@ In this section we will take a look at **`services`** in kuberentes
     - In this case the service creates a **`Virtual IP`** inside the cluster to enable communication between different services such as a set of frontend servers to a set of backend servers.
     
  1. LoadBalancer
-    - Where provisions a **`loadbalancer`** for our application in supported cloud providers.
+    - Where the service provisions a **`loadbalancer`** for our application in supported cloud providers.
     
 K8s Reference Docs:
 - https://kubernetes.io/docs/concepts/services-networking/service/

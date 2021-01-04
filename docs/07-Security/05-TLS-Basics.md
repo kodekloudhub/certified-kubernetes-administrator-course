@@ -4,7 +4,7 @@
 In this section, we will take a look at TLS Basics
 
 ## Certificate
-- A certificate is used to gurantee trust between 2 parties during a transaction.
+- A certificate is used to guarantee trust between 2 parties during a transaction.
 - Example: when a user tries to access web server, tls certificates ensure that the communication between them is encrypted.
 
   ![cert1](../../images/cert1.PNG)
@@ -16,7 +16,7 @@ In this section, we will take a look at TLS Basics
   ![cert2](../../images/cert2.PNG)
   
 ## Asymmetric Encryption
-- Instead of using single key to encrpyt and decrypt data, asymmetric encryption uses a pair of keys, a private key and a public key.
+- Instead of using single key to encrypt and decrypt data, asymmetric encryption uses a pair of keys, a private key and a public key.
 
   ![cert3](../../images/cert3.PNG)
   
@@ -29,12 +29,12 @@ In this section, we will take a look at TLS Basics
 
 #### How do you look at a certificate and verify if it is legit?
 - who signed and issued the certificate.
-- If you generate the certificate then you will have it sign it by yourself, that is known as self-signed certificate.
+- If you generate the certificate then you will have it sign it by yourself; that is known as self-signed certificate.
 
   ![cert7](../../images/cert7.PNG)
   
 #### How do you generate legitimate certificate? How do you get your certificates singed by someone with authority?
-- That's where **`Certificate Authority (CA)`** comes in for you. some of the popular ones are symantic, DigiCert, Comodo, GlobalSign etc.
+- That's where **`Certificate Authority (CA)`** comes in for you. Some of the popular ones are Symantec, DigiCert, Comodo, GlobalSign etc.
 
   ![cert8](../../images/cert8.PNG)
   

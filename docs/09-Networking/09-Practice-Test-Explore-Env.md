@@ -1,8 +1,8 @@
 # Practice Test Explore Env
 
-  Take me to [Lab](https://kodekloud.com/courses/539883/lectures/9816753)
+  - Take me to [Lab](https://kodekloud.com/courses/539883/lectures/9816753)
 
-  #### Solution
+#### Solution
 
   1. Check the Solution
 

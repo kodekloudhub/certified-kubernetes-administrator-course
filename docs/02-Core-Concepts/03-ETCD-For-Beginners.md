@@ -18,12 +18,6 @@
    - A Key-Value Store stores information in a Key and Value format.
        
      ![key-value](../../images/key-value.PNG)
-      
-     ![key-value1](../../images/key-value1.PNG)
-       
-     ![key-value2](../../images/key-value2.PNG)
-       
-     ![key-value3](../../images/key-value3.PNG)
        
 ## Install ETCD
    - Its easy to install and get started with **`ETCD`**.

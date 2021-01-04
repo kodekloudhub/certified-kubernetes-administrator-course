@@ -19,7 +19,7 @@ In this section, we will take a look at the below
 
 ## Creating a Replication Controller
 
-## Replication Controller Defination File
+## Replication Controller Definition File
   
    ![rc2](../../images/rc2.PNG)
   
@@ -46,7 +46,7 @@ In this section, we will take a look at the below
 ```
   - To Create the replication controller
     ```
-    $ kubectl create -f rc-defination.yaml
+    $ kubectl create -f rc-definition.yaml
     ```
   - To list all the replication controllers
     ```
@@ -60,7 +60,7 @@ In this section, we will take a look at the below
     
 ## Creating a ReplicaSet
   
-## ReplicaSet Defination File
+## ReplicaSet Definition File
 
    ![rs](../../images/rs.PNG)
 
@@ -88,11 +88,11 @@ In this section, we will take a look at the below
        matchLabels:
         type: front-end
  ```
-#### ReplicaSet requires a selector defination when compare to Replicaton Controller.
+#### ReplicaSet requires a selector definition when compare to Replicaton Controller.
    
   - To Create the replicaset
     ```
-    $ kubectl create -f replicaset-defination.yaml
+    $ kubectl create -f replicaset-definition.yaml
     ```
   - To list all the replicaset
     ```
@@ -112,7 +112,7 @@ In this section, we will take a look at the below
   
 ## How to scale replicaset
 - There are multiple ways to scale replicaset
-  - First way is to update the number of replicas in the replicaset-defination.yaml defination file. E.g replicas: 6 and then run 
+  - First way is to update the number of replicas in the replicaset-definition.yaml definition file. E.g replicas: 6 and then run 
  ```
     apiVersion: apps/v1
     kind: ReplicaSet
@@ -139,11 +139,11 @@ In this section, we will take a look at the below
 ```
 
   ```
-  $ kubectl apply -f replicaset-defination.yaml
+  $ kubectl apply -f replicaset-definition.yaml
   ```
   - Second way is to use **`kubectl scale`** command.
   ```
-  $ kubectl scale --replicas=6 -f replicaset-defination.yaml
+  $ kubectl scale --replicas=6 -f replicaset-definition.yaml
   ```
   - Third way is to use **`kubectl scale`** command with type and name
   ```
