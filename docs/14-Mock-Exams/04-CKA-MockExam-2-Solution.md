@@ -2,7 +2,7 @@
 
   I want to see the [Solution](https://kodekloud.com/courses/539883/lectures/11459075)
   
-  1. Run the below Command for Solution
+  1. Run the below command for solution:
 
      <details>
 
@@ -11,7 +11,7 @@
      ```
      </details>
 
-  2. Run the below Command for Solution
+  2. Run the below command for solution:
 
      <details>
  
@@ -41,7 +41,7 @@
      ```
      </details>
  
-  3. Run the below Command for Solution
+  3. Run the below command for solution:
 
      <details>
 
@@ -62,7 +62,7 @@
      ```
      </details>
 
-  4. Run the below Command for Solution
+  4. Run the below command for solution:
 
      <details>
      
@@ -101,7 +101,7 @@
      ```
      </details>
 
-  5. Run the below Command for Solution
+  5. Run the below command for solution:
 
      <details>
  
@@ -110,7 +110,7 @@
      ```
      kubectl run nginx-deploy --image=nginx:1.16 --replicas=1 --record
      kubectl rollout history deployment nginx-deploy
-     kubectl set image deployment/nginx-deploy nginx-deploy=nginx=1.17 --record
+     kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
      kubectl rollout history deployment nginx-deploy
      ```
  
@@ -148,7 +148,7 @@
      ```
      </details>
   
-  6. Run the below Command for Solution
+  6. Run the below command for solution:
 
      <details>
  
@@ -176,7 +176,7 @@
   
      </details>
  
-  7. Run the below Command for Solution
+  7. Run the below command for solution:
 
      <details>
  
@@ -195,7 +195,7 @@
  
      </details>
 
-  8. Run the below Command for Solution
+  8. Run the below command for solution:
 
      <details>
  
