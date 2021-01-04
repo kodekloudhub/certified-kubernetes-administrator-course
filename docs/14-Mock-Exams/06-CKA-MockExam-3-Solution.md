@@ -2,7 +2,7 @@
 
   Is it tough? Want to see the [solution](https://kodekloud.com/courses/539883/lectures/11459153) ?
 
-1. Run the below Command for Solution 
+1. Run the below command for solution: 
 
      <details>
 
@@ -29,7 +29,7 @@
      ```
      </details>
 
-2. Run the below Command for Solution 
+2. Run the below command for solution: 
 
      <details>
  
@@ -38,7 +38,7 @@
      ```
      </details>
  
-3. Run the below Command for Solution  
+3. Run the below command for solution:  
  
      <details>
  
@@ -64,7 +64,7 @@
      ```
      </details>
  
-4. Run the below Command for Solution
+4. Run the below command for solution:
  
      <details>
      
@@ -83,7 +83,7 @@
      ```
      </details>
  
-5. Run the below Command for Solution  
+5. Run the below command for solution:  
  
      <details>
  
@@ -106,7 +106,7 @@
      ```
      </details>
    
-6. Run the below Command for Solution 
+6. Run the below command for solution: 
  
      <details>
  
@@ -144,7 +144,7 @@
      ```
      </details>
  
-7. Run the below Command for Solution 
+7. Run the below command for solution: 
  
      <details>
  
@@ -154,7 +154,7 @@
      ```
      </details>
 
-8. Run the below Command for Solution
+8. Run the below command for solution:
 
      <details>
 
@@ -167,7 +167,7 @@
      ```
      </details>
 
-9. Run the below Command for Solution
+9. Run the below command for solution:
    
      <details>
      
