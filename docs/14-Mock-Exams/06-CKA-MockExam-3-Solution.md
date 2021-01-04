@@ -96,7 +96,7 @@
      spec:
        podSelector:
          matchLabels:
-           role: np-test-1
+           run: np-test-1
        policyTypes:
        - Ingress
        ingress:
@@ -177,4 +177,3 @@
      </details>
 
 
-     
