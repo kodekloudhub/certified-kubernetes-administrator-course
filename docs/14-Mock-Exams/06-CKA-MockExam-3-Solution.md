@@ -34,7 +34,7 @@
      <details>
  
      ```
-     kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}' > /root/node_ips
+     kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}' > /root/CKA/node_ips
      ```
      </details>
  
@@ -114,6 +114,14 @@
      kubectl taint node node01 env_type=production:NoSchedule
      ```
 
+     Deploy `dev-redis` pod and to ensure that workloads are not scheduled to this `node01` worker node.
+     ```
+     kubectl run dev-redis --image=redis:alpine
+
+     kubectl get pods -owide
+     ```
+
+     Deploy new pod `prod-redis` with toleration to be scheduled on `node01` worker node.
      ```
      apiVersion: v1
      kind: Pod
@@ -124,10 +132,15 @@
        - name: prod-redis
          image: redis:alpine
        tolerations:
-       - effect: Noschedule
+       - effect: NoSchedule
          key: env_type
          operator: Equal
-         value: prodcution     
+         value: production     
+     ```
+
+     View the pods with short details: 
+     ```
+     kubectl get pods -owide | grep prod-redis
      ```
      </details>
  
@@ -146,11 +159,11 @@
      <details>
 
      ```
-     vi /root/super.kubeconfig
+     vi /root/CKA/super.kubeconfig
 
      Change the 2379 port to 6443 and run the below command to verify
      
-     kubectl cluster-info --kubeconfig=/root/super.kubeconfig     
+     kubectl cluster-info --kubeconfig=/root/CKA/super.kubeconfig     
      ```
      </details>
 
@@ -162,3 +175,6 @@
      sed -i 's/kube-contro1ler-manager/kube-controller-manager/g' kube-controller-manager.yaml
      ```
      </details>
+
+
+     
