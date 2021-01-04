@@ -94,6 +94,11 @@
               resources: {}
       status: {}
       ```
+      
+      In v1.19, we can add `--replicas` flag with `kubectl create deployment` command.
+      ```
+      kubectl create deployment hr-web-app --image=kodekloud/webapp-color --replicas=2
+      ```
      </details>
 
   7. To Create a Static pod, copy it to the static-pods folder in this case it is /etc/kubernetes/manifests
