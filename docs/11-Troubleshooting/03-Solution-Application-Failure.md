@@ -19,7 +19,6 @@
            name: mysql-service
            namespace: alpha
          spec:
-           clusterIP: 10.110.6.201
            ports:
            - port: 3306
              protocol: TCP
@@ -36,10 +35,19 @@
     2. Check Solution
 
        <details>
-
+  
+       You can edit the `mysql-service` service and change the targetPort "8080" to "3306".
         ```
         kubectl edit svc mysql-service -n beta
         ```
+        
+       OR
+        
+       Delete the `mysql-service` service and then apply below manifest:
+        ```
+        kubectl delete svc mysql-service -n beta
+        ```
+  
         ```
         apiVersion: v1
         kind: Service
@@ -47,7 +55,6 @@
           name: mysql-service
           namespace: beta
         spec:
-          clusterIP: 10.110.6.201
           ports:
           - port: 3306
             protocol: TCP
@@ -67,8 +74,8 @@
 
        ```
        kubectl edit svc mysql-service -n gamma
-       Press Esc, then qolon(:)
-       :%s/sql0001/mysql/
+       Press Esc, then colon(:)
+       :%s/sql00001/mysql/
        ```
        </details>
 
@@ -79,7 +86,7 @@
         ```
         kubectl edit deployment.apps/webapp-mysql -n delta
 
-        Change the DB_User to root
+        Change the DB_User's value to root.
 
         :%s/sql-user/root
 
@@ -91,40 +98,37 @@
     5. Check Solution
 
        <details>
-
+ 
         ```
-        kubectl edit deployment.apps/webapp-mysql -n delta
+        kubectl edit pod mysql -n epsilon
 
-        Change the DB_User to root
+        Replace the DB_Password with the correct password as shown below, then delete the pod and re-create it again.
+        
+        :%s/passwooooorrddd/paswrd
+        
+        save the file with ":wq" in vi editor and it will create a temporary file with random name under the default path /tmp/kubectl-edit-xxxxx.yaml. After deleting the existing one, re-create it again with kubectl apply -f or kubectl create -f command.
+        
+        In the "webapp-mysql" deployments, change the DB_User's value to root.
+        
+        kubectl edit deployment.apps/webapp-mysql -n epsilon
 
         :%s/sql-user/root
 
         - name: DB_User
           value: root
-        ```
-       </details>
-
-    6. Check Solution
-
-       <details>
- 
-        ```
-        kubectl edit pod mysql -n epsilon
-
-        Replace the DB_Password with Correct password as shown below, delete the pod and re-create it
-
-        :%s/passwooooorrddd/paswrd
+          
+        save the file and exit with ":wq" in vi editor. 
         ```
        </details>
     
-    7. Check Solution
+    6. Check Solution
 
        <details>
  
         ```
         kubectl edit deployment.apps/webapp-mysql -n zeta
 
-        Change the DB_User to root
+        Change the DB_User's value to root.
 
         :%s/sql-user/root
 
@@ -133,19 +137,19 @@
         ```
 
         ```
-        Replace the DB_Password with Correct password as shown below, delete the pod and re-create it
+        Replace the DB_Password with the correct password as shown below, delete the pod and re-create it.
 
         kubectl edit pod mysql -n zeta
 
         :%s/passwooooorrddd/paswrd
-
-        
+     
+        save the file with ":wq" in vi editor and it will create a temporary file with random name under the default path /tmp/kubectl-edit-xxxxx.yaml. After deleting the existing one, re-create it again with kubectl apply -f or kubectl create -f command. 
         ```
 
         ```
         kubectl edit svc web-service -n zeta
 
-        Change the nodePort from 30088 to 30081
+        Change the nodePort from "30088" to "30081".
 
         :%s/30088/30081
         ```
