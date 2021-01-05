@@ -4,7 +4,7 @@
 
   #### Solution to the Mock Exam 1
 
-  1. Apply below Manifests
+  1. Apply below manifests:
 
      <details>
      
@@ -27,7 +27,7 @@
      ```
      </details>
 
-  2. Run below command which create a pod with labels
+  2. Run below command which create a pod with labels:
 
      <details>
      
@@ -37,7 +37,7 @@
      </details>
 
  
-  3. Run below command to create namespace
+  3. Run below command to create a namespace:
      
      <details>
 
@@ -46,7 +46,7 @@
      ```
      </details>
 
-  4. Use the below command which will redirect the o/p
+  4. Use the below command which will redirect the o/p:
 
      <details>
 
@@ -55,7 +55,7 @@
      ```
      </details>
 
-  5. Execute below command which will expose the pod on port 6379
+  5. Execute below command which will expose the pod on port 6379:
 
      <details>
 
@@ -64,7 +64,7 @@
      ```
      </details>
 
-  6. Apply below manifests
+  6. Apply below manifests:
 
      <details>
 
@@ -94,9 +94,14 @@
               resources: {}
       status: {}
       ```
+      
+      In v1.19, we can add `--replicas` flag with `kubectl create deployment` command:
+      ```
+      kubectl create deployment hr-web-app --image=kodekloud/webapp-color --replicas=2
+      ```
      </details>
 
-  7. To Create a Static pod, copy it to the static-pods folder in this case it is /etc/kubernetes/manifests
+  7. To Create a static pod, copy it to the static pods directory. In this case, it is `/etc/kubernetes/manifests`. Apply below manifests:
 
      <details>
 
@@ -122,7 +127,7 @@
      ```
      </details>
 
-  8. Run below command to create a pod in namespace finance
+  8. Run below command to create a pod in namespace `finance`:
 
      <details>
 
@@ -131,7 +136,7 @@
      ```
      </details>
 
-  9. Run below command and troubleshoot step by step
+  9. Run below command and troubleshoot step by step:
 
      <details>
 
@@ -153,7 +158,7 @@
      ```
      </details>
 
-  10. Apply Below manifests
+  10. Apply below manifests:
 
       <details>
 
@@ -179,7 +184,7 @@
       ```
       </details>
 
-  11. Run the below command to redirect the o/p.
+  11. Run the below command to redirect the o/p:
 
       <details>
 
@@ -188,7 +193,7 @@
       ```
       </details>
 
-  12. Apply the below manifest to create PV
+  12. Apply the below manifest to create a PV:
 
       <details>
      
@@ -207,3 +212,4 @@
              path: /pv/data-analytics
        ```
        </details>
+       

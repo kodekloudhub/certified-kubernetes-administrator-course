@@ -1,9 +1,9 @@
 # Advance Kubectl Commands
 
-  - To get the output of **`kubectl`** in a json format 
+  - To get the output of **`kubectl`** in a json format: 
 
     ```
-    kubectk get nodes -o json
+    kubectl get nodes -o json
     ```
 
     ```
@@ -41,7 +41,7 @@
 
   #### Loops - Range
 
-  - To print the output in a seprate column(one column with node name and other with CPU count):
+  - To print the output in a separate column (one column with node name and other with CPU count):
 
     ```
     kubectl get nodes -o=custom-columns=NODE:.metadata.name ,CPU:.status.capacity.cpu

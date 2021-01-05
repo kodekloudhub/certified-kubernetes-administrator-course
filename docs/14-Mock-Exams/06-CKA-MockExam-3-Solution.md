@@ -2,7 +2,7 @@
 
   Is it tough? Want to see the [solution](https://kodekloud.com/courses/539883/lectures/11459153) ?
 
-1. Run the below Command for Solution 
+1. Run the below command for solution: 
 
      <details>
 
@@ -29,16 +29,16 @@
      ```
      </details>
 
-2. Run the below Command for Solution 
+2. Run the below command for solution: 
 
      <details>
  
      ```
-     kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}' > /root/node_ips
+     kubectl get nodes -o jsonpath='{.items[*].status.addresses[?(@.type=="InternalIP")].address}' > /root/CKA/node_ips
      ```
      </details>
  
-3. Run the below Command for Solution  
+3. Run the below command for solution:  
  
      <details>
  
@@ -64,7 +64,7 @@
      ```
      </details>
  
-4. Run the below Command for Solution
+4. Run the below command for solution:
  
      <details>
      
@@ -83,7 +83,7 @@
      ```
      </details>
  
-5. Run the below Command for Solution  
+5. Run the below command for solution:  
  
      <details>
  
@@ -96,7 +96,7 @@
      spec:
        podSelector:
          matchLabels:
-           role: np-test-1
+           run: np-test-1
        policyTypes:
        - Ingress
        ingress:
@@ -106,7 +106,7 @@
      ```
      </details>
    
-6. Run the below Command for Solution 
+6. Run the below command for solution: 
  
      <details>
  
@@ -114,6 +114,14 @@
      kubectl taint node node01 env_type=production:NoSchedule
      ```
 
+     Deploy `dev-redis` pod and to ensure that workloads are not scheduled to this `node01` worker node.
+     ```
+     kubectl run dev-redis --image=redis:alpine
+
+     kubectl get pods -owide
+     ```
+
+     Deploy new pod `prod-redis` with toleration to be scheduled on `node01` worker node.
      ```
      apiVersion: v1
      kind: Pod
@@ -124,14 +132,19 @@
        - name: prod-redis
          image: redis:alpine
        tolerations:
-       - effect: Noschedule
+       - effect: NoSchedule
          key: env_type
          operator: Equal
-         value: prodcution     
+         value: production     
+     ```
+
+     View the pods with short details: 
+     ```
+     kubectl get pods -owide | grep prod-redis
      ```
      </details>
  
-7. Run the below Command for Solution 
+7. Run the below command for solution: 
  
      <details>
  
@@ -141,20 +154,20 @@
      ```
      </details>
 
-8. Run the below Command for Solution
+8. Run the below command for solution:
 
      <details>
 
      ```
-     vi /root/super.kubeconfig
+     vi /root/CKA/super.kubeconfig
 
      Change the 2379 port to 6443 and run the below command to verify
      
-     kubectl cluster-info --kubeconfig=/root/super.kubeconfig     
+     kubectl cluster-info --kubeconfig=/root/CKA/super.kubeconfig     
      ```
      </details>
 
-9. Run the below Command for Solution
+9. Run the below command for solution:
    
      <details>
      
@@ -162,3 +175,5 @@
      sed -i 's/kube-contro1ler-manager/kube-controller-manager/g' kube-controller-manager.yaml
      ```
      </details>
+
+
