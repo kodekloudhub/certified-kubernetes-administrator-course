@@ -4,16 +4,16 @@
 
   ### Solution
 
-    1. Check Solution 
+   1. Check Solution 
 
        <details>
-
+       
         ```
         kubectl get nodes -o json > /opt/outputs/nodes.json
         ```   
        </details>
 
-    2. Check Solution 
+   2. Check Solution 
 
        <details>
 
@@ -22,7 +22,7 @@
         ```   
        </details>
 
-    3. Check Solution
+   3. Check Solution
 
        <details>
 
@@ -31,7 +31,7 @@
         ```
        </details>
 
-    4. Check Solution
+   4. Check Solution
 
        <details>
 
@@ -40,7 +40,7 @@
         ```
        </details>
 
-    5. Check Solution
+   5. Check Solution
 
        <details>
 
@@ -49,7 +49,7 @@
         ```
        </details>
 
-    6. Check Solution
+   6. Check Solution
 
        <details>
 
@@ -58,7 +58,7 @@
         ```
        </details>
 
-    7. Check Solution
+   7. Check Solution
 
        <details>
 
@@ -67,16 +67,7 @@
         ```
        </details>
 
-    8. Check Solution
-
-       <details>
-
-        ```
-        kubectl get pv --sort-by=.spec.capacity.storage -o=custom-columns=NAME:.metadata.name,CAPACITY:.spec.capacity.storage > /opt/outputs/pv-and-capacity-sorted.txt
-        ```
-       </details>
-
-    9. Check Solution
+   8. Check Solution
 
        <details>
 
@@ -84,3 +75,6 @@
         kubectl config view --kubeconfig=my-kube-config -o jsonpath="{.contexts[?(@.context.user=='aws-user')].name}" > /opt/outputs/aws-context-name
         ```
        </details>
+       
+       
+       
