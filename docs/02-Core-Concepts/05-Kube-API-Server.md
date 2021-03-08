@@ -44,7 +44,7 @@ In this section, we will talk about kube-apiserver in kubernetes
    
 - You can also see the running process and affective options by listing the process on master node and searching for kube-apiserver.
   ```
-  $ ps -aux |grep kube-apiserver
+  $ ps -aux | grep kube-apiserver
   ```
   ![kube-apiserver4](../../images/kube-apiserver4.PNG)
 
