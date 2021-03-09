@@ -4,7 +4,7 @@
 In this section, we will take a look at kube-scheduler.
 
 #### kube-scheduler is responsible for scheduling pods on nodes.  
-- The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, thats the job of the **`kubelet`**.
+- The kube-scheduler is only responsible for deciding which pod goes on which node. It doesn't actually place the pod on the nodes, that's the job of the **`kubelet`**.
 
   ![kube-scheduler1](../../images/kube-scheduler1.PNG)
   
@@ -35,7 +35,7 @@ In this section, we will take a look at kube-scheduler.
   
 - You can also see the running process and affective options by listing the process on master node and searching for kube-apiserver.
   ``` 
-  $ ps -aux |grep kube-scheduler
+  $ ps -aux | grep kube-scheduler
   ```
   ![kube-scheduler5](../../images/kube-scheduler5.PNG)
   
