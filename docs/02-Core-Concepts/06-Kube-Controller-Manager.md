@@ -62,7 +62,7 @@ In this section, we will take a look at kube-controller-manager.
   ```
   ![kube-controller-manager3](../../images/kube-controller-manager3.PNG)
   
-K8s Referenece Docs:
+K8s Reference Docs:
 - https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/
 - https://kubernetes.io/docs/concepts/overview/components/
    
