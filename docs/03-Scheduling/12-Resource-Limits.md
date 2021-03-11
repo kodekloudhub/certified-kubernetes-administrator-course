@@ -68,7 +68,7 @@ In this section we will take a look at Resource Limits
   
 #### Note: Remember Requests and Limits for resources are set per container in the pod.
   
-## Exceed Limtis
+## Exceed Limits
 - what happens when a pod tries to exceed resources beyond its limits?
 
    ![el](../../images/el.PNG)
