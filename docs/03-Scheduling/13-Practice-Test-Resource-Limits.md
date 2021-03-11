@@ -49,6 +49,7 @@ Solutions to practice test - resource limtis
       limits:
         memory: 20Mi
   ---
+  ```
   </details>
 
   Delete the pod and recreate it.
