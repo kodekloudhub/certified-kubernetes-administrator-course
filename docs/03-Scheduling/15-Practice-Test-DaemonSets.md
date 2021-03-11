@@ -49,48 +49,49 @@ Solutions to practice test daemonsets
     
 - Create a daemonset
 
-<details>
+  <details>
 
-vi ds.yaml
+  ```
+  $ vi ds.yaml
+  ```
 
-
-```
-apiVersion: apps/v1
-kind: DaemonSet
-metadata:
-  name: elasticsearch
-  namespace: kube-system
-  labels:
-    k8s-app: fluentd-logging
-spec:
-  selector:
-    matchLabels:
-      name: elasticsearch
-  template:
-    metadata:
-      labels:
+  ```
+  apiVersion: apps/v1
+  kind: DaemonSet
+  metadata:
+    name: elasticsearch
+    namespace: kube-system
+    labels:
+      k8s-app: fluentd-logging
+  spec:
+    selector:
+      matchLabels:
         name: elasticsearch
-    spec:
-      tolerations:
-      # this toleration is to have the daemonset runnable on master nodes
-      # remove it if your masters can't run pods
-      - key: node-role.kubernetes.io/master
-        effect: NoSchedule
-      containers:
-      - name: elasticsearch
-        image: k8s.gcr.io/fluentd-elasticsearch:1.20
-```
-</details>
+    template:
+      metadata:
+        labels:
+          name: elasticsearch
+      spec:
+        tolerations:
+        # this toleration is to have the daemonset runnable on master nodes
+        # remove it if your masters can't run pods
+        - key: node-role.kubernetes.io/master
+          effect: NoSchedule
+        containers:
+        - name: elasticsearch
+          image: k8s.gcr.io/fluentd-elasticsearch:1.20
+  ```
+  </details>
 
-To create the daemonset and list the daemonsets and pods
+- To create the daemonset and list the daemonsets and pods
 
-<details>
+  <details>
 
-```
-$ kubectl create -f ds.yaml
-$ kubectl get ds -n kube-system
-$ kubectl get pod -n kube-system|grep elasticsearch
-```
-</details>
+  ```
+  $ kubectl create -f ds.yaml
+  $ kubectl get ds -n kube-system
+  $ kubectl get pod -n kube-system|grep elasticsearch
+  ```
+  </details>
 
 #### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/16603698)
