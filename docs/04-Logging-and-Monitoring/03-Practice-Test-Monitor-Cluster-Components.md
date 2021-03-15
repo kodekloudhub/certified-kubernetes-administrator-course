@@ -23,6 +23,7 @@ Solutions to practice test - monitor cluster components
 - Run the 'kubectl create -f .' command from within the downloaded repository.
 
   <details>
+  
   ```
   $ cd kubernetes-metrics-server
   $ kubectl create -f .
@@ -32,6 +33,7 @@ Solutions to practice test - monitor cluster components
 - Run the 'kubectl top node' command and wait for a valid output.
 
   <details>
+  
   ```
   $ kubectl top node
   ```
@@ -40,6 +42,7 @@ Solutions to practice test - monitor cluster components
 - Run the 'kubectl top node' command
 
   <details>
+  
   ```
   $ kubectl top node
   ```
@@ -48,6 +51,7 @@ Solutions to practice test - monitor cluster components
 - Run the 'kubectl top node' command
   
   <details>
+  
   ```
   $ kubectl top node
   ```
@@ -56,6 +60,7 @@ Solutions to practice test - monitor cluster components
 - Run the 'kubectl top pod' command
   
   <details>
+  
   ```
   $ kubectl top pod
   ```
@@ -64,6 +69,7 @@ Solutions to practice test - monitor cluster components
 - Run the 'kubectl top pod' command
   
   <details>
+  
   ```
   $ kubectl top pod
   ```
