@@ -38,6 +38,7 @@ Solutions to practice test - commands and arguments
 - Inspect the file 'Dockerfile2' given at /root/webapp-color. What command is run at container startup?
 
   <details>
+  
   ```
   python app.py --color red
   ```
