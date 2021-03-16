@@ -29,7 +29,7 @@ In this section, we will take a look at commands and arguments in docker
   ```
   $ docker run ubuntu sleep 5
   ```
-- This way when the container starts it runs the sleep program, waits for 5 seconds and then exists. How do you make that change permenent?
+- This way when the container starts it runs the sleep program, waits for 5 seconds and then exists. How do you make that change permanent?
   
   ![sleep](../../images/sleep.PNG)
   
