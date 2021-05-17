@@ -13,7 +13,7 @@ In this section, we will take a look at Static Pods
   ![sp](../../images/sp.PNG)
   
 ## Another way to configure static pod 
-- Instead of specifying the option directly in the **`kubelet.service`** file, you could provide a path to another config file using the config option, and define the directoy path as staticPodPath in the file.
+- Instead of specifying the option directly in the **`kubelet.service`** file, you could provide a path to another config file using the config option, and define the directory path as staticPodPath in the file.
 
   ![sp1](../../images/sp1.PNG)
 
