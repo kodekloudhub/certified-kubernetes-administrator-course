@@ -5,6 +5,7 @@ Solutions to practice test - rolling updates and rollback
 - We have deployed a simple web application. Inspect the PODs and the Services
 
   <details>
+  
   ```
   $ kubectl get pods
   $ kubectl get services
@@ -14,6 +15,7 @@ Solutions to practice test - rolling updates and rollback
 - What is the current color of the web application?
   
   <details>
+  
   ```
   Access the web portal
   ```
@@ -24,6 +26,7 @@ Solutions to practice test - rolling updates and rollback
 - Run the command 'kubectl describe deployment' and look at 'Desired Replicas'
 
   <details>
+  
   ```
   $ kubectl describe deployment
   ```
@@ -32,6 +35,7 @@ Solutions to practice test - rolling updates and rollback
 - Run the command 'kubectl describe deployment' and look for 'Images'
   
   <details>
+  
   ```
   $ kubectl describe deployment
   ```
@@ -40,6 +44,7 @@ Solutions to practice test - rolling updates and rollback
 - Run the command 'kubectl describe deployment' and look at 'StrategyType'
   
   <details>
+  
   ```
   $ kubectl describe deployment
   ```
@@ -57,6 +62,7 @@ Solutions to practice test - rolling updates and rollback
 - Run the command 'kubectl edit deployment frontend' and modify the required feild
   
   <details>
+  
   ```
   $ kubectl edit deployment frontend
   ```
