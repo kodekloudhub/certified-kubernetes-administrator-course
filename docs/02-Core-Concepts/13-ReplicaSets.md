@@ -88,7 +88,7 @@ In this section, we will take a look at the below
        matchLabels:
         type: front-end
  ```
-#### ReplicaSet requires a selector definition when compare to Replicaton Controller.
+#### ReplicaSet requires a selector definition when compare to Replication Controller.
    
   - To Create the replicaset
     ```
