@@ -80,9 +80,12 @@ In this section, we will take a look at backup and restore methods
   ```
 #### With all etcdctl commands specify the cert,key,cacert and endpoint for authentication.
 ```
-$ ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt \
+$ ETCDCTL_API=3 etcdctl \
+  snapshot save /tmp/snapshot.db \
+  --endpoints=https://[127.0.0.1]:2379 \
+  --cacert=/etc/kubernetes/pki/etcd/ca.crt \
   --cert=/etc/kubernetes/pki/etcd/etcd-server.crt \
-  --key=/etc/kubernetes/pki/etcd/etcd-server.key snapshot save /tmp/snapshot.db
+  --key=/etc/kubernetes/pki/etcd/etcd-server.key
 ```
 
   ![erest](../../images/erest.PNG)
