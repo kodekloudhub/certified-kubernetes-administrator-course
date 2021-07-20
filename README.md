@@ -191,7 +191,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 - [10-Design-and-Install-Kubernetes-Cluster](docs/10-Design-and-Install-Kubernetes-Cluster)
   
   - [01-Designing-a-Kubernetes-Cluster](docs/10-Design-and-Install-Kubernetes-Cluster/01-Designing-a-Kubernetes-Cluster.md)
-  - [02-Choosing-Kuberneter-Infrastructure](docs/10-Design-and-Install-Kubernetes-Cluster/02-Choosing-Kuberneters-Infrastructure.md)
+  - [02-Choosing-Kubernetes-Infrastructure](docs/10-Design-and-Install-Kubernetes-Cluster/02-Choosing-Kubernetes-Infrastructure.md)
   - [03-Configure-High-Availability](docs/10-Design-and-Install-Kubernetes-Cluster/03-Configure-High-Availability.md)
   - [04-ETCD-in-HA](docs/10-Design-and-Install-Kubernetes-Cluster/04-ETCD-in-HA.md)
   - [05-Important-update-k8s-hard-way](docs/10-Design-and-Install-Kubernetes-Cluster/05-Important-update-kubernetes-the-hard-way.md)
