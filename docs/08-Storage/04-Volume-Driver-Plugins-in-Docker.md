@@ -1,6 +1,6 @@
 # Volume Driver Plugins in Docker
 
-  - Take me to [Lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13350437)
+  - Take me to [Lecture](https://kodekloud.com/topic/volume-driver-plugins-in-docker-4/)
 
 In this section, we will take a look at **Volume Driver Plugins in Docker**
 

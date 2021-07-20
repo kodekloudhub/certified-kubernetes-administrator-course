@@ -1,5 +1,5 @@
 # Cluster Upgrade Introduction
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808227)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/cluster-upgrade-introduction/)
   
 #### Is it mandatory for all of the kubernetes components to have the same versions?
 - No, The components can be at different release versions.
@@ -92,9 +92,9 @@
   ![kubeu3](../../images/kubeu3.PNG)
   
 
+#### Demo Video on [Cluster Upgrade](https://kodekloud.com/topic/demo-cluster-upgrade/)
+
 #### K8s Reference Docs
 - https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/
 - https://kubernetes.io/docs/reference/setup-tools/kubeadm/kubeadm-upgrade/
-  
-  
   

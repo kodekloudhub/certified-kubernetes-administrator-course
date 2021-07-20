@@ -1,6 +1,6 @@
 # DNS in Kubernetes
 
-  - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808287)
+  - Take me to [Lecture](https://kodekloud.com/topic/dns-in-kubernetes/)
 
 In this section, we will take a look at **DNS in the Kubernetes Cluster**
 

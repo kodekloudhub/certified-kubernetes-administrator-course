@@ -1,5 +1,5 @@
 # Kubernetes Services
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808156)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/services-3/)
   
 In this section we will take a look at **`services`** in kubernetes
 

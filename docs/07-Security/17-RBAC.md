@@ -1,5 +1,5 @@
 # RBAC
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808259)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/role-based-access-controls/)
 
 In this section, we will take a look at RBAC
 

@@ -1,5 +1,5 @@
 # Kubernetes Software Versions
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808230)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/kubernetes-software-versions/)
   
 In this section, we will take a look at various kubernetes releases and versions
 

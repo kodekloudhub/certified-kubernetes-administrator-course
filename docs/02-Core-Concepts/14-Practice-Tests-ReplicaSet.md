@@ -1,5 +1,5 @@
 # Practice Test - ReplicaSets
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816569)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-replicasets/)
   
 #### Solutions for the replicaset practice tests
 1. Run the command **`kubectl get pods`** and count the number of pods.

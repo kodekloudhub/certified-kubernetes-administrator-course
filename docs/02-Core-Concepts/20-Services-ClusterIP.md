@@ -1,5 +1,5 @@
 # Kubernetes Services - ClusterIP
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808157)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/services-cluster-ip-2/)
   
 In this section we will take a look at **`services - ClusterIP`** in kubernetes
          

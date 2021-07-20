@@ -1,8 +1,8 @@
 # Practice Test - KubeConfig
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9816668)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-kubeconfig/)
  
 Solutions to the practice test - kubeconfig
-- Look for the kube config file under /root/.kube
+- Look for the kube config file under `/root/.kube`
   
   <details>
   ```
@@ -18,7 +18,7 @@ Solutions to the practice test - kubeconfig
   ```
   </details>
     
-- Run the command 'kubectl config view' and count the number of users
+- Run the command `kubectl config view` and count the number of users
 
   <details>
   ```
@@ -127,6 +127,3 @@ Solutions to the practice test - kubeconfig
 
 
 
-
-
- 

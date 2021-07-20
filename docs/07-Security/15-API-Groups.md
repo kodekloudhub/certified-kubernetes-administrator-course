@@ -1,5 +1,5 @@
 # API Groups
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808255)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/api-groups/)
   
 In this section, we will take a look at API Groups in kubernetes
 

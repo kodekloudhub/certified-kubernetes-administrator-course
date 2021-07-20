@@ -1,2 +1,2 @@
 # Download Presentation Deck
-  - Take me to [Presentation Deck](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/16092815)
+  - Take me to [Presentation Deck](https://kodekloud.com/topic/download-presentation-deck-5/)

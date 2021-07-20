@@ -1,5 +1,5 @@
 # Practice Test - Resource Limits
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816593)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-resource-limits/)
   
 Solutions to practice test - resource limtis
 - Run the command 'kubectl describe pod rabbit' and inspect requests.
@@ -80,4 +80,5 @@ Solutions to practice test - resource limtis
   ```
   </details>
 
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13290014)
+
+

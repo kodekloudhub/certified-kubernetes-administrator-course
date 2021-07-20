@@ -1,6 +1,6 @@
 # Pre-requisite Switching Routing Gateways
 
-  - Take me to [Lecture](https://kodekloud.com/courses/539883/lectures/9817246)
+  - Take me to [Lecture](https://kodekloud.com/topic/pre-requisite-switching-routing-gateways-cni-in-kubernetes/)
 
 In this section, we will take a look at **Switching, Routing and Gateways**
 

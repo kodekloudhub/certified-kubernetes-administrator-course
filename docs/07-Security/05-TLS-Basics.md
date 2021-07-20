@@ -1,5 +1,5 @@
 # TLS Basics
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808254)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/tls-basics/)
   
 In this section, we will take a look at TLS Basics
 

@@ -1,5 +1,5 @@
 # Practice Test Env Variables
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816643)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-env-variables/)
   
 Solutions to practice test env variables
 - Run the command 'kubectl get pods' and count the number of pods.

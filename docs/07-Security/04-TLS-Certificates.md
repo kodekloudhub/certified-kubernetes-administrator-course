@@ -1,5 +1,5 @@
-# TLS Certificates
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808262)
+# TLS Certificates Introduction
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/tls-introduction/)
   
 In this section, we will take a look at TLS certificates
 - What are TLS certificates?

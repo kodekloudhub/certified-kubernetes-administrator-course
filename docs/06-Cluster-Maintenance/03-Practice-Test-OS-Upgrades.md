@@ -1,5 +1,5 @@
 # Practice Test - OS Upgrades
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816648)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-os-upgrades/)
   
 Solutions to practice test - OS Upgrades
 - Let us explore the environment first. How many nodes do you see in the cluster?

@@ -1,3 +1,4 @@
 # KodeKloud - CKA Course Documents
-  - Take me to the [Tutorials](https://kodekloud.com/courses/539883/lectures/12356372)
-  
+  - Take me to the [Presentation Deck - 1](https://kodekloud.com/topic/attachments/)
+  - Take me to the [Presentation Deck - 2](https://kodekloud.com/topic/download-presentation-deck-for-this-section-1/)
+

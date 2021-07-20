@@ -1,6 +1,6 @@
 # CoreDNS in Kubernetes
 
-  - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808285)
+  - Take me to [Lecture](https://kodekloud.com/topic/coredns-in-kubernetes/)
 
 In this section, we will take a look at **CoreDNS in the Kubernetes**
 

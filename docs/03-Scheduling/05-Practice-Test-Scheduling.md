@@ -1,7 +1,7 @@
-# Practice Test - Scheduling
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9816589)
+# Practice Test - Labels and Selectors
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-labels-and-selectors/)
   
-Solutions to Practice Test - Scheduling
+Solutions to Practice Test - Labels and Selectors
 - Run the command 'kubectl get pods --selector env=dev'
   
   <details>
@@ -47,6 +47,3 @@ Solutions to Practice Test - Scheduling
   $ kubectl create -f replicaset-definition.yaml
   ```
   </details>
-
-  
-#### Take to [Practice Test - Scheduling](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13290011)

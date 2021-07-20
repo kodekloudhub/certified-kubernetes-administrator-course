@@ -1,5 +1,5 @@
 # Practice Test - Node Affinity
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/10277999)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-node-affinity-2/)
   
 Solutions to practice test - node affinity
 

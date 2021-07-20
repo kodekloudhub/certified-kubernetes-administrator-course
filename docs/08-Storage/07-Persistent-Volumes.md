@@ -1,6 +1,6 @@
 # Persistent Volumes
 
-  - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808275)
+  - Take me to [Lecture](https://kodekloud.com/topic/persistent-volumes-4/)
 
 In this section, we will take a look at **Persistent Volumes**
 

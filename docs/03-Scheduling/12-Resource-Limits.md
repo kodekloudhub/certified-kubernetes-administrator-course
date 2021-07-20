@@ -1,5 +1,5 @@
 # Resource Limits
-  - Take me to [Video Tutorials](https://kodekloud.com/courses/539883/lectures/9816620)
+  - Take me to [Video Tutorials](https://kodekloud.com/topic/resource-limits/)
   
 In this section we will take a look at Resource Limits
 

@@ -1,5 +1,5 @@
 # Practice Test - Namespaces
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816576)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-namespaces/)
 
 Solutions to practice test for namespaces
 
@@ -57,5 +57,3 @@ Solutions to practice test for namespaces
    ```
    </details>
 
-
-#### Take me to [Practice Test Solutions](https://kodekloud.com/courses/539883/lectures/16416900)

@@ -1,5 +1,5 @@
 # Authorization
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808261)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/authorization/)
   
 In this section, we will take a look at authorization in kubernetes
 

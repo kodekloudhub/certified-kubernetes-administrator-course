@@ -1,5 +1,5 @@
 # Security Section Introduction
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808249)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/security-section-introduction/)
 
 In this section, we will take a look at security section introduction
 - Kubernetes Security Primitives

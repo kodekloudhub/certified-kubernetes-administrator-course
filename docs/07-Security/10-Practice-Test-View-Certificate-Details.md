@@ -1,5 +1,5 @@
 # Practice Test - View Certificates
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816665)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-view-certificate-details/)
   
 Solutions to practice test - view certificates
 - Identify the certificate file used for the kube-api server

@@ -1,5 +1,5 @@
 # Practice Test - Services
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816583)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-services/)
 
 #### Solutions to Practice test - Services
 
@@ -76,15 +76,4 @@
   $ kubectl create -f service-definition-1.yaml
   ```
   </details>
-
-
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/16603611)
-
-
-
-
-
-
-
-
  

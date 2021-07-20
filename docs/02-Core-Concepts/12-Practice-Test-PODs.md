@@ -1,5 +1,5 @@
 # Practice Test - PODs
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9808164)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-pods/)
 
 ## Here are the solutions to the practice test
 1. Run the command **`kubectl get pods`** and count the number of pods.

@@ -1,6 +1,6 @@
 # Pre-requisite CNI
 
-  - Take me to [Lecture](https://kodekloud.com/courses/539883/lectures/9808284)
+  - Take me to [Lecture](https://kodekloud.com/topic/prerequsite-cni/)
 
 In this section, we will take a look at **Pre-requisite Container Network Interface(CNI)**
 

@@ -1,5 +1,5 @@
 # Practice Test - Backup and Restore Methods
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816654)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-backup-and-restore-methods/)
   
 Solutions to practice test - Backup and Restore Methods
 - Run the kubectl get deployments command
@@ -64,4 +64,4 @@ Solutions to practice test - Backup and Restore Methods
   
   
 
-#### Take me to [Solutions to Practice Tests Video Tutorial](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/14450164)
+#### Take me to [Solutions of Practice Tests - Backup and Restore](https://kodekloud.com/topic/solution-backup-and-restore/)

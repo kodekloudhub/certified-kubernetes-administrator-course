@@ -1,3 +1,3 @@
 # Certificate Health-Check Spreadsheet
-  - Take me to [Spreadsheet](https://kodekloud.com/courses/539883/lectures/11777973)
+  - Take me to [Spreadsheet](https://kodekloud.com/topic/certificate-health-check-spreadsheet/)
   

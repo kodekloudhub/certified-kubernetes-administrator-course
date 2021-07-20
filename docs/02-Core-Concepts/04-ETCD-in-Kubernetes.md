@@ -1,5 +1,5 @@
 # ETCD in Kubernetes
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808160)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/etcd-in-kubernetes/)
 
 In this section, we will take a look at ETCD role in kubernetes
 

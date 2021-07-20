@@ -1,6 +1,6 @@
 # Certification
 
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9814246)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/certification/)
   
 ## Certification Details
 

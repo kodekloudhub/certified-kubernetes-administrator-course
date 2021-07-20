@@ -1,5 +1,5 @@
 # Practice Test - Cluster Roles
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816671)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-cluster-roles/)
  
 Solutions to practice test - cluster roles
 - Run the command kubectl get clusterroles --no-headers | wc -l or kubectl get clusterroles --no-headers -o json | jq '.items | length'

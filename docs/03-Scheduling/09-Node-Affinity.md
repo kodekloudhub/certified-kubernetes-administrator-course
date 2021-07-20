@@ -1,5 +1,5 @@
 # Node Affinity
-  - Take me to the [Video Tutorial](https://kodekloud.com/courses/539883/lectures/10277936)
+  - Take me to the [Video Tutorial](https://kodekloud.com/topic/node-affinity-2/)
   
 In this section, we will talk about "Node Affinity" feature in kubernetes.
 

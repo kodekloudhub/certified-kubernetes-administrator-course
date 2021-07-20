@@ -1,5 +1,5 @@
 # Practice Test - Network Policies
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816676)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-network-policies/)
 
 Solutions to practice test - network policies
 

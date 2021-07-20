@@ -1,5 +1,5 @@
 # ETCD for Beginners
-  - Take me to the [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808166)
+  - Take me to the [Video Tutorial](https://kodekloud.com/topic/etcd-for-beginners/)
 
   In this section, we will take a quick look at introduction to ETCD for beginners. 
   - What is ETCD?
@@ -36,7 +36,7 @@
        $ ./etcd
        ```
      - When you start **`ETCD`** it will by default listens on port **`2379`**
-      - The default client that comes with **`ETCD`** is the [**`etcdctl`**](https://github.com/etcd-io/etcd/tree/master/etcdctl) client. You can use it to store and retrieve key-value pairs.
+      - The default client that comes with **`ETCD`** is the [**`etcdctl`**](https://github.com/etcd-io/etcd/tree/main/etcdctl) client. You can use it to store and retrieve key-value pairs.
         ```
         Syntax: To Store a Key-Value pair
         $ ./etcdctl set key1 value1

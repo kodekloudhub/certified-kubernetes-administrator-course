@@ -1,5 +1,5 @@
 # Practice Test - Deployments
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816571)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-tests-deployments/)
   
 Solutions to the deploments practice test
 1. Run the command **`kubectl get pods`** and count the number of pods.
@@ -122,5 +122,3 @@ Solutions to the deploments practice test
    ```
    </details>
 
-
-#### Take me to [Deployment Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/16416761) 

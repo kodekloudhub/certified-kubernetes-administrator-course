@@ -1,5 +1,5 @@
 # Practice Test - Commands and Arguments
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816639)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-commands-and-arguments/)
   
 Solutions to practice test - commands and arguments
 - Run the command 'kubectl get pods' and count the number of pods.
@@ -55,3 +55,5 @@ Solutions to practice test - commands and arguments
   </details>
   
 - Answer file located at /var/answers/answer-webapp-color-green.yaml
+
+

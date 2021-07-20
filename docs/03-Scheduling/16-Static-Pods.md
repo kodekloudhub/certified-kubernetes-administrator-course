@@ -1,5 +1,5 @@
 # Static Pods 
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/10352432)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/static-pods/)
   
 In this section, we will take a look at Static Pods
 

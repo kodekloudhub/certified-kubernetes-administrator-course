@@ -1,5 +1,5 @@
 # Monitor Cluster Components
-  - Take me to [Video Tutuorials](https://kodekloud.com/courses/539883/lectures/9808186)
+  - Take me to [Video Tutuorials](https://kodekloud.com/topic/monitor-cluster-components/)
   
 In this section, we will take a look at monitoring kubernetes cluster
 

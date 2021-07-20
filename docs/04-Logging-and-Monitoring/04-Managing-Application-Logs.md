@@ -1,5 +1,5 @@
 # Managing Application Logs
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808184)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/managing-application-logs/)
 
 In this section, we will take a look at managing application logs
 

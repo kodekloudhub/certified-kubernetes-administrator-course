@@ -1,5 +1,5 @@
 # KubeConfig 
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808258)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/kubeconfig/)
 
 In this section, we will take a look at kubeconfig in kubernetes
 

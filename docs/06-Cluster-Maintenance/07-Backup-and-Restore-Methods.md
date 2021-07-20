@@ -1,5 +1,5 @@
 # Backup and Restore Methods
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808228)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/backup-and-restore-methods/)
   
 In this section, we will take a look at backup and restore methods
 

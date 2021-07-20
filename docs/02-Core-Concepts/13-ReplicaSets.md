@@ -1,5 +1,5 @@
 # ReplicaSets
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808168)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/replicasets/)
 
 In this section, we will take a look at the below
 - Replication Controller

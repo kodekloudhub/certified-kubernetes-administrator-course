@@ -1,5 +1,5 @@
 # Practice Test - Init-Containers
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/10589190)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-init-containers/)
   
 Solutions to practice test - init-containers
 - Identify the pod that has an initContainer configured.

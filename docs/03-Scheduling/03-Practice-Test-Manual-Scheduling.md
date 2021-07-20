@@ -1,5 +1,5 @@
 # Practice Test - Manual Scheduling
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816587)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-manual-scheduling/)
 
 Solutions to Practice Test - Manual Scheduling
 
@@ -51,7 +51,4 @@ Solutions to Practice Test - Manual Scheduling
   $ kubectl create -f nginx.yaml
   ```
   </details>
-
-
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/16603715)
 
