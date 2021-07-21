@@ -1,5 +1,5 @@
 # Practice Test - Imperative Commands
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/10503277)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-imperative-commands-2/)
   
 Solutions for Practice Test - Imperative Commands
 

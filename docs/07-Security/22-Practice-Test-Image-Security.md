@@ -1,5 +1,5 @@
 # Practice Test - Image Security
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816673)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-image-security/)
 
 Solutions to the practice test - Image Security
 - We have an application running on our cluster. Let us explore it first. What image is the application using?

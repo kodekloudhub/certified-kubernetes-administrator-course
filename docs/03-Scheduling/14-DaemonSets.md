@@ -1,5 +1,5 @@
 # DaemonSets
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9815302)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/daemonsets/)
 
 In this section, we will take a look at DaemonSets.
 

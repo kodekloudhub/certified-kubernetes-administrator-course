@@ -1,13 +1,15 @@
 # Certified Kubernetes Administrator (CKA) Course
 
-These are notes from the [Certified Kubernetes Administrator Course](https://kodekloud.com/courses/enrolled/539883) hosted on KodeKloud.
+These are notes from the [Certified Kubernetes Administrator Course](https://kodekloud.com/courses/certified-kubernetes-administrator-cka/) hosted on KodeKloud.
 
 # Sections
 
 - [01-Introduction](docs/01-Introduction)
+
   - [01-Course-Introduction](docs/01-Introduction/01-Course-Introduction.md)
   - [02-Certification](docs/01-Introduction/02-Certification.md)
   
+
 - [02-Core-Concepts](docs/02-Core-Concepts)
 
   - [01-Core-Concepts-Section-Introduction](docs/02-Core-Concepts/01-Core-Concepts-Section-Introduction.md)
@@ -35,6 +37,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [23-Practice-Test-Imperative-Commands](docs/02-Core-Concepts/23-Practice-Test-Imperative-Commands.md)
   - [24-Attachments](docs/02-Core-Concepts/24-Attachments.md)
   
+
 - [03-Scheduling](docs/03-Scheduling)
 
   - [01-Scheduling-Section-Introduction](docs/03-Scheduling/01-Scheduling-Section-Introduction.md)
@@ -59,6 +62,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [20-Configuring-Kubernetes-Schedulers](docs/03-Scheduling/20-Configuring-Kubernetes-Schedulers.md)
   - [21-Download-Presentation-Deck](docs/03-Scheduling/21-Download-Presentation-Deck.md)
 
+
 - [04-Logging-and-Monitoring](docs/04-Logging-and-Monitoring)
 
   - [01-Logging-and-Monitoring-Section-Introduction](docs/04-Logging-and-Monitoring/01-Logging-and-Monitoring-Section-Introduction.md)
@@ -67,7 +71,8 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [04-Managing-Application-Logs](docs/04-Logging-and-Monitoring/04-Managing-Application-Logs.md)
   - [05-Download-Presentation-Deck](docs/04-Logging-and-Monitoring/05-Download-Presentation-Deck.md)
   - [06-Practice-Test-Managing-Application-Logs](docs/04-Logging-and-Monitoring/06-Practice-Test-Managing-Application-Logs.md)
-  
+ 
+
 - [05-Application-Lifecycle-Management](docs/05-Application-Lifecycle-Management)
 
   - [01-Application-Lifecycle-Management--Section-Introduction](docs/05-Application-Lifecycle-Management/01-Application-Lifecycle-Management--Section-Introduction.md)
@@ -89,6 +94,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [17.Self-Healing-Applications](docs/05-Application-Lifecycle-Management/17.Self-Healing-Applications.md)
   - [18.Download-Presentation-Deck](docs/05-Application-Lifecycle-Management/18.Download-Presentation-Deck.md)
   
+
 - [06-Cluster-Maintenance](docs/06-Cluster-Maintenance)
 
   - [01-Cluster-Maintenance-Section-Introduction](docs/06-Cluster-Maintenance/01-Cluster-Maintenance-Section-Introduction.md)
@@ -182,72 +188,56 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [26-Dowload-Presentation-Deck](docs/09-Networking/26-Dowload-Presentation-Deck.md)
 
 
-- [10-Install](docs/10-Install)
+- [10-Design-and-Install-Kubernetes-Cluster](docs/10-Design-and-Install-Kubernetes-Cluster)
   
-  - [01-Section-Introduction](docs/10-Install/01-Section-Introduction.md)
-  - [02-Designing-a-Kubernetes-Cluster](docs/10-Install/02-Designing-a-Kubernetes-Cluster.md)
-  - [03-Choosing-Kuberneter-Infrastructure](docs/10-Install/03-Choosing-Kuberneter-Infrastructure.md)
-  - [04-Choosing-Network-Solution](docs/10-Install/04-Choosing-Network-Solution.md)
-  - [05-Configure-High-Availability](docs/10-Install/05-Configure-High-Availability.md)
-  - [06-ETCD-in-HA](docs/10-Install/06-ETCD-in-HA.md)
-  - [07-Demo-Prequisitesd](docs/10-Install/07-Demo-Prequisites.md)
-  - [08-Provisioning-VMS](docs/10-Install/08-Provisioning-VMS.md)
-  - [09-Install-Client-Tools](docs/10-Install/09-Install-Client-Tools.md)
-  - [10-Secure-Cluster](docs/10-Install/10-Secure-Cluster.md)
-  - [11-Create-KubeConfigfiles](docs/10-Install/11-Create-KubeConfigfiles.md)
-  - [12-Data-Encryption](docs/10-Install/12-Data-Encryption.md)
-  - [13-Kubernetes-Release-Binaries](docs/10-Install/13-Kubernetes-Release-Binaries.md)
-  - [14-Install-Control-Plane-Components-Intro](docs/10-Install/14-Install-Control-Plane-Components-Intro.md)
-  - [15-Install-ETCD-Cluster](docs/10-Install/15-Install-ETCD-Cluster.md)
-  - [16-Install-Control-Plane-Components](docs/10-Install/16-Install-Control-Plane-Components.md)
-  - [17-Install-Control-Plane-Load-Balancer](docs/10-Install/17-Install-Control-Plane-Load-Balancer.md)
-  - [18-Install-Worker-node-componenets](docs/10-Install/18-Install-Worker-node-componenets.md)
-  - [19-TLS-Bootstrap-worker-node](docs/10-Install/19-TLS-Bootstrap-worker-node.md)
-  - [20-Demo-TLS-Bootstrap-worker-node](docs/10-Install/20-Demo-TLS-Bootstrap-worker-node.md)
-  - [21-Configure-Kubectl-for-remote-access](docs/10-Install/22-Provision-Networking.md)
-  - [23-Kubapi-to-kubelet-connectivity](docs/10-Install/23-Kubapi-to-kubelet-connectivity.md)
-  - [24-Deploy-Core-DNS](docs/10-Install/24-Deploy-Core-DNS.md)
-  - [25-End-to-End-tests](docs/10-Install/25-End-to-End-tests.md)
-  - [26-End-To-End-Tests-Run-and-analyze](docs/10-Install/26-End-To-End-Tests-Run-and-analyze.md)
-  - [27-Smoke-test](docs/10-Install/27-Smoke-test.md)
-  - [28-End-to-End-test-part1](docs/10-Install/28-End-to-End-test-part1.md)
-  - [29-Practise-Test-instal-using-kubeadm](docs/10-Install/29-Practise-Test-instal-using-kubeadm.md)
-  - [30-Solution-Install-a-K8s-cluster-kubeadm](docs/10-Install/30-Solution-Install-a-K8s-cluster-kubeadm.md)
-  - [31-Download-Presentation-Deck](docs/10-Install/21-Download-Presentation-Deck.md)
+  - [01-Designing-a-Kubernetes-Cluster](docs/10-Design-and-Install-Kubernetes-Cluster/01-Designing-a-Kubernetes-Cluster.md)
+  - [02-Choosing-Kubernetes-Infrastructure](docs/10-Design-and-Install-Kubernetes-Cluster/02-Choosing-Kubernetes-Infrastructure.md)
+  - [03-Configure-High-Availability](docs/10-Design-and-Install-Kubernetes-Cluster/03-Configure-High-Availability.md)
+  - [04-ETCD-in-HA](docs/10-Design-and-Install-Kubernetes-Cluster/04-ETCD-in-HA.md)
+  - [05-Important-update-k8s-hard-way](docs/10-Design-and-Install-Kubernetes-Cluster/05-Important-update-kubernetes-the-hard-way.md)
+  - [06-Download-Presentation-Deck](docs/10-Design-and-Install-Kubernetes-Cluster/06-Download-Presentation-Deck.md)
 
-
-- [11-Troubleshooting](docs/11-Troubleshooting)
+- [11-Install-Kubernetes-the-kubeadm-way](docs/11-Install-Kubernetes-the-kubeadm-way)
   
-  - [01-Troubelshooting-Section-Introduction](docs/11-Troubleshooting/01-Troubelshooting-Section-Introduction.md)
-  - [02-Application-Failure](docs/11-Troubleshooting/02-Application-Failure.md)
-  - [03-Solution-Application-Failure](docs/11-Troubleshooting/03-Solution-Application-Failure.md)
-  - [04-Control-Plane-Failure](docs/11-Troubleshooting/04-Control-Plane-Failure.md)
-  - [05-Practice-Test-Control-Plane-Failure](docs/11-Troubleshooting/05-Practice-Test-Control-Plane-Failure.md)
-  - [06-Solution-Control-Plane-Failure](docs/11-Troubleshooting/06-Solution-Control-Plane-Failure.md)
-  - [07-Worker-Node-Failure](docs/11-Troubleshooting/07-Worker-Node-Failure.md)
-  - [08-Practice-Test-Worker-Node-Failure](docs/11-Troubleshooting/08-Practice-Test-Worker-Node-Failure.md)
-  - [09-Solution-Worker-Node-Failure](docs/11-Troubleshooting/09-Solution-Worker-Node-Failure.md)
+  - [01-Introduction-to-Deployment-with-kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/01-Introduction-to-Deployment-with-kubeadm.md)
+  - [02-Resources](docs/11-Install-Kubernetes-the-kubeadm-way/02-Resources.md)
+  - [03-Provision-VMs-with-Vagrant](docs/11-Install-Kubernetes-the-kubeadm-way/03-Provision-VMs-with-Vagrant.md)
+  - [04-Demo-Deployment-with-Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/04-Demo-Deployment-with-Kubeadm.md)
+  - [05-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/05-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm.md)
 
 
-- [12-Other-Topics](docs/12-Other-Topics)
+- [12-Troubleshooting](docs/12-Troubleshooting)
   
-  - [01-Labs-JSON-PATH](docs/12-Other-Topics/01-Labs-JSON-PATH.md)
-  - [02-Pre-Requisites-JSON-PATH](docs/12-Other-Topics/02-Pre-Requisites-JSON-PATH.md)
-  - [03-Advance-Kubectl-Commands](docs/12-Other-Topics/03-Advance-Kubectl-Commands.md)
-  - [04-Practice-Test-Advance-Kubectl-Commands](docs/12-Other-Topics/04-Practice-Test-Advance-Kubectl-Commands.md)
+  - [01-Troubelshooting-Section-Introduction](docs/12-Troubleshooting/01-Troubelshooting-Section-Introduction.md)
+  - [02-Application-Failure](docs/12-Troubleshooting/02-Application-Failure.md)
+  - [03-Solution-Application-Failure](docs/12-Troubleshooting/03-Solution-Application-Failure.md)
+  - [04-Control-Plane-Failure](docs/12-Troubleshooting/04-Control-Plane-Failure.md)
+  - [05-Practice-Test-Control-Plane-Failure](docs/12-Troubleshooting/05-Practice-Test-Control-Plane-Failure.md)
+  - [06-Solution-Control-Plane-Failure](docs/12-Troubleshooting/06-Solution-Control-Plane-Failure.md)
+  - [07-Worker-Node-Failure](docs/12-Troubleshooting/07-Worker-Node-Failure.md)
+  - [08-Practice-Test-Worker-Node-Failure](docs/12-Troubleshooting/08-Practice-Test-Worker-Node-Failure.md)
+  - [09-Solution-Worker-Node-Failure](docs/12-Troubleshooting/09-Solution-Worker-Node-Failure.md)
+  - [10-Practice-Test-Troubleshoot-Network](docs/12-Troubleshooting/10-Practice-Test-Troubleshoot-Network.md)
 
-
-- [13-Lightning-Labs](docs/13-Lightning-Labs)
+- [13-Other-Topics](docs/13-Other-Topics)
   
-  - [01-Lightning-Labs-Introduction](docs/13-Lightning-Labs/01-Lightning-Labs-Introduction.md)
-  - [02-Lightning-Lab-1](docs/13-Lightning-Labs/02-Lightning-Lab-1.md)
+  - [01-Labs-JSON-PATH](docs/13-Other-Topics/01-Labs-JSON-PATH.md)
+  - [02-Pre-Requisites-JSON-PATH](docs/13-Other-Topics/02-Pre-Requisites-JSON-PATH.md)
+  - [03-Advance-Kubectl-Commands](docs/13-Other-Topics/03-Advance-Kubectl-Commands.md)
+  - [04-Practice-Test-Advance-Kubectl-Commands](docs/13-Other-Topics/04-Practice-Test-Advance-Kubectl-Commands.md)
+
+
+- [14-Lightning-Labs](docs/14-Lightning-Labs)
+  
+  - [01-Lightning-Labs-Introduction](docs/14-Lightning-Labs/01-Lightning-Labs-Introduction.md)
+  - [02-Lightning-Lab-1](docs/14-Lightning-Labs/02-Lightning-Lab-1.md)
   
 
-- [14-Mock-Exams](docs/14-Mock-Exams)
+- [15-Mock-Exams](docs/15-Mock-Exams)
   
-  - [01-Introduction](docs/14-Mock-Exams/01-Introduction.md)
-  - [02-Mock-Exam-1](docs/14-Mock-Exams/02-Mock-Exam-1.md)
-  - [03-Mock-Exam-2](docs/14-Mock-Exams/03-Mock-Exam-2.md)
-  - [04-CKA-MockExam-2-Solution](docs/14-Mock-Exams/04-CKA-MockExam-2-Solution.md)
-  - [05-Mock-Exam-3](docs/14-Mock-Exams/05-Mock-Exam-3.md)
-  - [06-CKA-MockExam-3-Solution](docs/14-Mock-Exams/06-CKA-MockExam-3-Solution.md)
+  - [01-Introduction](docs/15-Mock-Exams/01-Introduction.md)
+  - [02-Mock-Exam-1](docs/15-Mock-Exams/02-Mock-Exam-1.md)
+  - [03-Mock-Exam-2](docs/15-Mock-Exams/03-Mock-Exam-2.md)
+  - [04-CKA-MockExam-2-Solution](docs/15-Mock-Exams/04-CKA-MockExam-2-Solution.md)
+  - [05-Mock-Exam-3](docs/15-Mock-Exams/05-Mock-Exam-3.md)
+  - [06-CKA-MockExam-3-Solution](docs/15-Mock-Exams/06-CKA-MockExam-3-Solution.md)

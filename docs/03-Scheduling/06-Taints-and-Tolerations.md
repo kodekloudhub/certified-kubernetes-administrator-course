@@ -1,5 +1,5 @@
 # Taints and Tolerations
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/10277934)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/taints-and-tolerations-2/)
   
 In this section, we will take a look at taints and tolerations.
 - Pod to node relationship and how you can restrict what pods are placed on what nodes.

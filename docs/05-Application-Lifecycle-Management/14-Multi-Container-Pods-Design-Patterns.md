@@ -1,5 +1,5 @@
 # Multi-Container Pods Design Patterns
-  - Take me to [Tutorial](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/10589174)
+  - Take me to [Design Pattern page](https://kodekloud.com/topic/multi-container-pods-design-patterns/)
   
   ![dp](../../images/dp.PNG)
   

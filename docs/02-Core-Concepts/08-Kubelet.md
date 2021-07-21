@@ -1,5 +1,5 @@
 # Kubelet
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808158)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/kubelet/)
   
 In this section we will take a look at kubelet.
 

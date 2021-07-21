@@ -1,6 +1,6 @@
 # Pre-requisite Cluster Networking
 
-  - Take me to [Lecture](https://kodekloud.com/courses/539883/lectures/9808288)
+  - Take me to [Lecture](https://kodekloud.com/topic/cluster-networking/)
 
 In this section, we will take a look at **Pre-requisite of the Cluster Networking**
 

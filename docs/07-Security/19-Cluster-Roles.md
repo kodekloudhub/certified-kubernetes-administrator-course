@@ -1,5 +1,5 @@
 # Cluster Roles
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808263)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/cluster-roles/)
   
 In this section, we will take a look at cluster roles
 

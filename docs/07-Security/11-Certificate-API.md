@@ -1,5 +1,5 @@
 # Certificate API
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808253)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/certificates-api/)
   
 In this section, we will take a look at how to manage certificates and certificate API's in kubernetes
 

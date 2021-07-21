@@ -1,6 +1,6 @@
 # CNI weave
   
-  - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808283)
+  - Take me to [Lecture](https://kodekloud.com/topic/cni-weave/)
 
 In this section, we will take a look at "CNI Weave in the Kubernetes Cluster"
 

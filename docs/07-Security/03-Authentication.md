@@ -1,5 +1,5 @@
 # Authentication
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808250)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/authentication/)
   
 In this section, we will take a look at authentication in a kubernetes cluster
 

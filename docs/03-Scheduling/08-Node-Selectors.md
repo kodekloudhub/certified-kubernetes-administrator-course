@@ -1,5 +1,5 @@
 # Node Selectors
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/10277935)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/node-selectors/)
 
 In this section, we will take a look at Node Selectors in Kubernetes
 

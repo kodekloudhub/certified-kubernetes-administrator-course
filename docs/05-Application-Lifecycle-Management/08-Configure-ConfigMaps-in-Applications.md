@@ -1,5 +1,5 @@
 # Configure ConfigMaps in Applications
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/10589128)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/configure-configmaps-in-applications/)
   
 In this section, we will take a look at configuring configmaps in applications
 

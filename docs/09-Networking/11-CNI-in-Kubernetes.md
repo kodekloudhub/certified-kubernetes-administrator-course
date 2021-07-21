@@ -1,6 +1,6 @@
 # CNI in Kubernetes
 
-  - Take me to [Lecture](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808289)
+  - Take me to [Lecture](https://kodekloud.com/topic/cni-in-kubernetes/)
 
 In this section, we will take a look at **Container Networking Interface (CNI) in Kubernetes**
 

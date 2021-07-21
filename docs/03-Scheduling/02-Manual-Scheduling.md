@@ -1,5 +1,5 @@
 # Manual Scheduling
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9815303)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/manual-scheduling/)
   
 In this section, we will take a look at **`Manually Scheduling`** a **`POD`** on a node.
 

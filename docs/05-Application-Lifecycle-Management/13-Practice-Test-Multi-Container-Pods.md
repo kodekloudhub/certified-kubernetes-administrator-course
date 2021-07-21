@@ -1,5 +1,5 @@
 # Practice Test - Multi-Container Pods
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/10589159)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-multi-container-pods/)
   
 Solutions to practice test - multi-container pods
 - Identify the number of containers running in the 'red' pod.

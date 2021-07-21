@@ -1,5 +1,5 @@
 # Pods
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808169)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/pods-2/)
   
 In this section, we will take a look at PODS.
 - POD introduction

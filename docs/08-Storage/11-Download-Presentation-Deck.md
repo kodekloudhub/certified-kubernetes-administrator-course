@@ -1,3 +1,3 @@
 # Download Presentation Deck
 
-  [Download](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/16093022)
+  - [Presentation Deck](https://kodekloud.com/topic/download-presentation-deck-7/)

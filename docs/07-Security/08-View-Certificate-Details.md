@@ -1,5 +1,5 @@
 # View Certificate Details
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808260)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/view-certificate-details/)
   
 In this section, we will take a look how to view certificates in a kubernetes cluster.
 

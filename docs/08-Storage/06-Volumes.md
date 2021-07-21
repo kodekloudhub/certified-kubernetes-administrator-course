@@ -1,6 +1,6 @@
 # Volumes
 
-  - Take me to [Lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808274)
+  - Take me to [Lecture](https://kodekloud.com/topic/volumes/)
 
 In this section, we will take a look at **Volumes**
 

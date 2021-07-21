@@ -1,6 +1,6 @@
 # Practice Test Networking Weave
 
-  - Take me to [Lab](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9816785)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-networking-weave/)
 
 #### Solution 
 

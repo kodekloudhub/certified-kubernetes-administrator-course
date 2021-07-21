@@ -1,7 +1,7 @@
 # OS Upgrades
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808229)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/os-upgrades/)
   
-In this section, we will take a look at os upgrades.
+In this section, we will take a look at OS upgrades.
 
 #### If the node was down for more than 5 minutes, then the pods are terminated from that node
 

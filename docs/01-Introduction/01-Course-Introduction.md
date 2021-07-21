@@ -1,6 +1,6 @@
 # Course Introduction
 
-  - Take me to the [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808050)
+  - Take me to the [Video Tutorial](https://kodekloud.com/topic/course-introduction-5/)
 
 #### This course focuses on Administration part of the kubernetes. 
 
@@ -22,7 +22,7 @@
    
 #### If you are a beginner we highly recommend Kubenetes for the Absolute Beginners Hands-On course
 
-   - Take me to the [Kubenetes for the Absolute Beginners Hands-On Course](https://kodekloud.com/courses/enrolled/316262)
+   - Take me to the [Kubenetes for the Absolute Beginners Hands-On Course](https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners-hands-on/)
    
 ## Course Objectives
 

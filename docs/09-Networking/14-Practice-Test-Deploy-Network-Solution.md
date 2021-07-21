@@ -1,6 +1,6 @@
-# Practice Test Deploy Networking Solution
+# Practice Test - Deploy Networking Solution
 
-  - Take me to [Lab](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9892583)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-deploy-network-solution/)
 
 #### Solution
 

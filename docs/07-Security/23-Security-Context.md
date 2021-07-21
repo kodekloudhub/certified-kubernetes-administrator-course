@@ -1,5 +1,5 @@
 # Security Context
-  - Take me to [Video Tutorial]()
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/security-contexts-2/)
   
 In this section, we will take a look at security context
 

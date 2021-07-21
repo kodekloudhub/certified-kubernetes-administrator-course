@@ -1,5 +1,5 @@
 # Practice Test - Rolling Updates and Rollback
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816638)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-rolling-updates-and-rollbacks/)
   
 Solutions to practice test - rolling updates and rollback
 - We have deployed a simple web application. Inspect the PODs and the Services
@@ -99,4 +99,6 @@ Solutions to practice test - rolling updates and rollback
   
 - Execute the script at /root/curl-test.sh.
 
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/539883/lectures/13290086)
+
+
+

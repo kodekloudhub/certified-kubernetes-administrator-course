@@ -1,5 +1,5 @@
 # Practice Test - Cluster Upgrade Process
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816651)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-cluster-upgrade-process/)
   
 Solutions to practice test cluster upgrade process
 - What is the current version of the cluster?
@@ -110,9 +110,3 @@ Solutions to practice test cluster upgrade process
   ```
   </details>
 
-
-
-
-
-
-#### Take me to [Practice Test - Solutions Video Tutorial](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/14468155)

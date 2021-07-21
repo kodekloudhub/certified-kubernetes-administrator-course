@@ -1,5 +1,5 @@
 # Practice Test - Monitor Cluster Components
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816628)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-monitor-cluster-components/)
   
 Solutions to practice test - monitor cluster components
 - We have deployed a few PODs running workloads. Inspect it.
@@ -75,4 +75,5 @@ Solutions to practice test - monitor cluster components
   ```
   </details>
   
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13290102)
+
+

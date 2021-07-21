@@ -1,5 +1,5 @@
 # TLS in kubernetes - Certificate Creation
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808252)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/tls-in-kubernetes-certificate-creation/)
   
 In this section, we will take a look at TLS certificate creation in kubernetes
 

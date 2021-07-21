@@ -1,6 +1,6 @@
 # Using PVC in PODs
 
-  - Take me the [Lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/13154680)
+  - Take me the [Lecture](https://kodekloud.com/topic/using-pvc-in-pods/)
 
 In this section, we will take a look at **Using PVC in PODs**
 

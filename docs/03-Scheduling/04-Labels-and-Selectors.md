@@ -1,5 +1,5 @@
 # Labels and Selectors
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9816604)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/labels-and-selectors/)
   
 In this section, we will take a look at **`Labels and Selectors`**
 

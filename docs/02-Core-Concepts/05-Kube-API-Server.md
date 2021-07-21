@@ -1,5 +1,5 @@
 # Kube API Server
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808163)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/kube-api-server/)
   
 In this section, we will talk about kube-apiserver in kubernetes
 

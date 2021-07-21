@@ -1,6 +1,6 @@
 # Pre-requisite Docker Networking
 
-  - Take me to [Lecture](https://kodekloud.com/courses/539883/lectures/9808294)
+  - Take me to [Lecture](https://kodekloud.com/topic/prerequsite-docker-networking/)
 
 In this section, we will take a look at **Docker Networking**
 

@@ -1,5 +1,5 @@
 # Practice Test - Multiple Schedulers
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816597)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-multiple-schedulers/)
   
 Solutions to practice test - multiple schedulers
 - Run the command 'kubectl get pods --namespace=kube-system'
@@ -40,11 +40,5 @@ Solutions to practice test - multiple schedulers
   $ kubectl create -f /root/nginx-pod.yaml
   ```
   </details>
-
-
-
-
-
-
 
 

@@ -1,5 +1,5 @@
 # Rolling Updates and Rollback
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9808204)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/rolling-updates-and-rollbacks/)
   
 In this section, we will take a look at rolling updates and rollback in a deployment
 

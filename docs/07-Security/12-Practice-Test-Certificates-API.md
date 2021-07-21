@@ -1,5 +1,5 @@
 # Practice Test - Certificates API
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816667)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-certificates-api/)
 
 Solutions to the practice test - certificate API
 - A new member akshay joined our team. He requires access to our cluster. The Certificate Signing Request is at the /root location.

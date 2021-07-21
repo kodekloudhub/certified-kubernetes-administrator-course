@@ -1,6 +1,6 @@
 # Persistent Volume Claims
 
-  - Take me to [Lectures](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/9808277)
+  - Take me to [Lecture](https://kodekloud.com/topic/persistent-volume-claims-4/)
 
 In this section, we will take a look at **Persistent Volume Claim**
 

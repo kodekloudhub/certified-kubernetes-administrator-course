@@ -1,5 +1,5 @@
 # Multiple Schedulers 
-  - Take me to [Video Tutorial](https://kodekloud.com/courses/539883/lectures/9815299)
+  - Take me to [Video Tutorial](https://kodekloud.com/topic/multiple-schedulers/)
 
 In this section, we will take a look at multiple schedulers
 

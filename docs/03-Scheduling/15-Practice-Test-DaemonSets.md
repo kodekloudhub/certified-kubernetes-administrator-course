@@ -1,5 +1,5 @@
 # Practice Test - DaemonSets
-  - Take me to [Practice Test](https://kodekloud.com/courses/539883/lectures/9816595)
+  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-daemonsets/)
   
 Solutions to practice test daemonsets
 - Run the command kubectl get daemonsets --all-namespaces
@@ -94,4 +94,6 @@ Solutions to practice test daemonsets
   ```
   </details>
 
-#### Take me to [Practice Test - Solutions](https://kodekloud.com/courses/certified-kubernetes-administrator-with-practice-tests/lectures/16603698)
+
+
+
