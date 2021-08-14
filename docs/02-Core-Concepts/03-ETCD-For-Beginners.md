@@ -23,13 +23,27 @@
    - Its easy to install and get started with **`ETCD`**.
      - Download the relevant binary for your operating system from github releases page (https://github.com/etcd-io/etcd/releases)
        ```
-       For Example: To download ETCD V3.3.11, run the below curl command
+       For Example: To download ETCD V3.5.0
          
-       $ https://github.com/etcd-io/etcd/releases/download/v3.3.11/etcd-v3.3.11-linux-amd64.tar.gz
-       ```
-     - Extract it.
-       ```
-       $ tar xvzf etcd-v3.3.11-linux-amd64.tar.gz 
+        ETCD_VER=v3.5.0
+
+        # choose either URL
+        GOOGLE_URL=https://storage.googleapis.com/etcd
+        GITHUB_URL=https://github.com/etcd-io/etcd/releases/download
+        DOWNLOAD_URL=${GOOGLE_URL}
+
+        rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+        rm -rf /tmp/etcd-download-test && mkdir -p /tmp/etcd-download-test
+
+        curl -L ${DOWNLOAD_URL}/${ETCD_VER}/etcd-${ETCD_VER}-linux-amd64.tar.gz -o /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+        tar xzvf /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz -C /tmp/etcd-download-test --strip-components=1
+        rm -f /tmp/etcd-${ETCD_VER}-linux-amd64.tar.gz
+
+        /tmp/etcd-download-test/etcd --version
+        /tmp/etcd-download-test/etcdctl version
+        /tmp/etcd-download-test/etcdutl version
+        
+        cd /tmp/etcd-download-test/
        ```
      - Run the ETCD Service
        ```
@@ -39,7 +53,7 @@
       - The default client that comes with **`ETCD`** is the [**`etcdctl`**](https://github.com/etcd-io/etcd/tree/main/etcdctl) client. You can use it to store and retrieve key-value pairs.
         ```
         Syntax: To Store a Key-Value pair
-        $ ./etcdctl set key1 value1
+        $ ./etcdctl put key1 value1
         ```
         ```
         Syntax: To retrieve the stored data
