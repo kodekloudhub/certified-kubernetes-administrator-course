@@ -20,9 +20,9 @@
    - YAML
    - Setting up a basic lab environment with VirtualBox
    
-#### If you are a beginner we highly recommend Kubenetes for the Absolute Beginners Hands-On course
+#### If you are a beginner we highly recommend Kubernetes for the Absolute Beginners Hands-On course
 
-   - Take me to the [Kubenetes for the Absolute Beginners Hands-On Course](https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners-hands-on/)
+   - Take me to the [Kubernetes for the Absolute Beginners Hands-On Course](https://kodekloud.com/courses/kubernetes-for-the-absolute-beginners-hands-on/)
    
 ## Course Objectives
 
@@ -82,10 +82,10 @@ The objectives of this course are aligned to match the **`Certified Kubernetes A
   - CNI
 - Installation, Configuration & Validation
   - Design a Kubernetes Cluster
-  - Install Kubnernetes Master and Nodes
+  - Install Kubernetes Master and Nodes
   - Secure Cluster Communication
   - HA Kubernetes Cluster
-  - Kubenetes Release Binaries
+  - Kubernetes Release Binaries
   - Provision Infrastructure
   - Choose a Network Solution
   - Kubernetes Infrastructure Config
