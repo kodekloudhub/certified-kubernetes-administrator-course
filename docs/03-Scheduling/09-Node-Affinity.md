@@ -87,7 +87,7 @@ In this section, we will talk about "Node Affinity" feature in kubernetes.
   - requiredDuringSchedulingIgnoredDuringExecution
   - preferredDuringSchedulingIgnoredDuringExecution
 - Planned
-  - requiredDuringSchedulingRequriedDuringExecution
+  - requiredDuringSchedulingRequiredDuringExecution
   - preferredDuringSchedulingRequiredDuringExecution
   
   ![nat](../../images/nat.PNG)
