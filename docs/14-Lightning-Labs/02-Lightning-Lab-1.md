@@ -9,13 +9,13 @@
       <details>
    
       ```
-      On Master Node:-
+      On Controlplane Node:-
 
       kubectl drain controlplane --ignore-daemonsets
-      apt-get install kubeadm=1.19.0-00
+      apt-get install kubeadm=1.20.0-00
       kubeadm  upgrade plan
-      kubeadm  upgrade apply v1.19.0
-      apt-get install kubelet=1.19.0-00
+      kubeadm  upgrade apply v1.20.0
+      apt-get install kubelet=1.20.0-00
       systemctl daemon-reload
       systemctl restart kubelet
       kubectl uncordon controlplane
@@ -23,17 +23,18 @@
       
       
       On Worker Node:-
-
-      apt-get install kubeadm=1.19.0-00
-      kubeadm upgrade node --kubelet-version=v1.19.0
-      apt-get install kubelet=1.19.0-00
+      
+      apt-get update
+      apt-get install kubeadm=1.20.0-00
+      kubeadm upgrade node
+      apt-get install kubelet=1.20.0-00
       systemctl daemon-reload
       systemctl restart kubelet     
 
-      Back on Master Node:-
+      Back on Controlplane Node:-
       
       kubectl uncordon node01
-      kubectl get pods -o wide | grep gold (make sure this is scheduled on master node)
+      kubectl get pods -o wide | grep gold (make sure this is scheduled on controlplane node)
       ```
       </details>
 
