@@ -52,7 +52,7 @@ In this section we will take a look at **`services`** in kubernetes
       metadata:
        name: myapp-service
       spec:
-       types: NodePort
+       type: NodePort
        ports:
        - targetPort: 80
          port: 80
