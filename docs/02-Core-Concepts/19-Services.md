@@ -30,7 +30,7 @@ In this section we will take a look at **`services`** in kubernetes
    ![srv-types](../../images/srv-types.PNG)
  
  1. NodePort
-    - Where the service makes an internal POD accessible on a POD on the NODE.
+    - Where the service makes an internal port accessible on a port on the NODE.
       ```
       apiVersion: v1
       kind: Service
