@@ -275,21 +275,26 @@
       <details>
 
        ```
-        apiVersion: extensions/v1beta1
+        
+        apiVersion: networking.k8s.io/v1
         kind: Ingress
         metadata:
           name: test-ingress
           namespace: critical-space
           annotations:
             nginx.ingress.kubernetes.io/rewrite-target: /
+            nginx.ingress.kubernetes.io/ssl-redirect: "false"
         spec:
           rules:
           - http:
               paths:
               - path: /pay
+                pathType: Prefix
                 backend:
-                  serviceName: pay-service
-                  servicePort: 8282
+                  service:
+                   name: pay-service
+                   port:
+                    number: 8282
         ```
         </details>
 
