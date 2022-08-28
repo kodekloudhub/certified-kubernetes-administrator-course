@@ -54,6 +54,8 @@
       - protocol: TCP
         port: 3306
   ```
+  
+  ```
   $ kubectl create -f policy-definition.yaml
   ```
   
