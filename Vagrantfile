@@ -1,6 +1,12 @@
 # -*- mode: ruby -*-
 # vi:set ft=ruby sw=2 ts=2 sts=2:
 
+# Define the prefix for the VM name and hostname of the nodes
+NODE_PREFIX = "kube"
+
+# Define the prefix for the VM network forwarded port
+PORT_PREFIX = "27"
+
 # Define the number of master and worker nodes
 # If this number is changed, remember to update setup-hosts.sh script with the new hosts IP details in /etc/hosts of each VM.
 NUM_MASTER_NODE = 1
@@ -54,16 +60,16 @@ Vagrant.configure("2") do |config|
 
   # Provision Master Nodes
   (1..NUM_MASTER_NODE).each do |i|
-      config.vm.define "kubemaster" do |node|
+      config.vm.define NODE_PREFIX + "master" do |node|
         # Name shown in the GUI
         node.vm.provider "virtualbox" do |vb|
-            vb.name = "kubemaster"
+            vb.name = NODE_PREFIX + "master"
             vb.memory = 2048
             vb.cpus = 2
         end
-        node.vm.hostname = "kubemaster"
+        node.vm.hostname = NODE_PREFIX + "master"
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
-        node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
+        node.vm.network "forwarded_port", guest: 22, host: PORT_PREFIX + "#{10 + i}"
 
         node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
           s.args = ["enp0s8"]
@@ -77,15 +83,15 @@ Vagrant.configure("2") do |config|
 
   # Provision Worker Nodes
   (1..NUM_WORKER_NODE).each do |i|
-    config.vm.define "kubenode0#{i}" do |node|
+    config.vm.define NODE_PREFIX + "node0#{i}" do |node|
         node.vm.provider "virtualbox" do |vb|
-            vb.name = "kubenode0#{i}"
+            vb.name = NODE_PREFIX + "node0#{i}"
             vb.memory = 2048
             vb.cpus = 2
         end
-        node.vm.hostname = "kubenode0#{i}"
+        node.vm.hostname = NODE_PREFIX + "node0#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
-                node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
+                node.vm.network "forwarded_port", guest: 22, host: PORT_PREFIX + "#{20 + i}"
 
         node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
           s.args = ["enp0s8"]
