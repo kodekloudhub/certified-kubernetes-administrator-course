@@ -39,7 +39,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
     <summary>What is the name of the controlplane node in cluster2?</summary>
 
     ```bash
-    kubectl config use-context cluster1
+    kubectl config use-context cluster2
     kubectl get nodes
     ```
 
@@ -76,7 +76,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 
     ```bash
     kubectl config use-context cluster2
-    kubectl get po -n kube-system kube-apiserver-cluster2-controlplane -o yaml | grep etcd
+    kubectl get pods -n kube-system kube-apiserver-cluster2-controlplane -o yaml | grep etcd
     ```
 
     > From the output, locate `--etcd-servers`. The IP address in this line is the answer.
@@ -89,7 +89,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 
     ```bash
     kubectl config use-context cluster1
-    kubectl get po -n kube-system etcd-cluster1-controlplane -o yaml
+    kubectl get pods -n kube-system etcd-cluster1-controlplane -o yaml
     ```
 
     In the output, find the `volumes` section. The host path of the volume named `etcd-data` is the answer.
