@@ -8,7 +8,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
   - [01-Course-Introduction](docs/01-Introduction/01-Course-Introduction.md)
   - [02-Certification](docs/01-Introduction/02-Certification.md)
-  
+
 
 - [02-Core-Concepts](docs/02-Core-Concepts)
 
@@ -36,7 +36,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [22-Imperative-Commands-with-kubectl](docs/02-Core-Concepts/22-Imperative-Commands-with-kubectl.md)
   - [23-Practice-Test-Imperative-Commands](docs/02-Core-Concepts/23-Practice-Test-Imperative-Commands.md)
   - [24-Attachments](docs/02-Core-Concepts/24-Attachments.md)
-  
+
 
 - [03-Scheduling](docs/03-Scheduling)
 
@@ -71,7 +71,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [04-Managing-Application-Logs](docs/04-Logging-and-Monitoring/04-Managing-Application-Logs.md)
   - [05-Download-Presentation-Deck](docs/04-Logging-and-Monitoring/05-Download-Presentation-Deck.md)
   - [06-Practice-Test-Managing-Application-Logs](docs/04-Logging-and-Monitoring/06-Practice-Test-Managing-Application-Logs.md)
- 
+
 
 - [05-Application-Lifecycle-Management](docs/05-Application-Lifecycle-Management)
 
@@ -93,7 +93,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [16-Practice-Test-Init-Containers](docs/05-Application-Lifecycle-Management/16-Practice-Test-Init-Containers.md)
   - [17.Self-Healing-Applications](docs/05-Application-Lifecycle-Management/17.Self-Healing-Applications.md)
   - [18.Download-Presentation-Deck](docs/05-Application-Lifecycle-Management/18.Download-Presentation-Deck.md)
-  
+
 
 - [06-Cluster-Maintenance](docs/06-Cluster-Maintenance)
 
@@ -106,11 +106,12 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [07-Backup-and-Restore-Methods](docs/06-Cluster-Maintenance/07-Backup-and-Restore-Methods.md)
   - [08-Working-With-ETCDCTL](docs/06-Cluster-Maintenance/08-Working-With-ETCDCTL.md)
   - [09-Practice-Test-Backup-and-Restore-Methods](docs/06-Cluster-Maintenance/09-Practice-Test-Backup-and-Restore-Methods.md)
+  - [10-Practice-Test-Backup-and-Restore-Methods](docs/06-Cluster-Maintenance/10-Practice-Test-Backup-and-Restore-Methods-2.md)
   - [11-Download-Presentation-Deck](docs/06-Cluster-Maintenance/11-Download-Presentation-Deck.md)
-  
+
 
 - [07-Security](docs/07-Security)
-  
+
   - [01-Security-Section-Introduction](docs/07-Security/01-Security-Section-Introduction.md)
   - [02-Kubernetes-Security-Primitives](docs/07-Security/02-Kubernetes-Security-Primitives.md)
   - [03-Authentication](docs/07-Security/03-Authentication.md)
@@ -159,7 +160,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
 
 - [09-Networking](docs/09-Networking)
-  
+
   - [01-Networking-Introduction](docs/09-Networking/01-Networking-Introduction.md)
   - [02-Pre-requisite-Switching-Routing-Gateways](docs/09-Networking/02-Pre-requisite-Switching-Routing-Gateways.md)
   - [03-Pre-requisite-DNS](docs/09-Networking/03-Pre-requisite-DNS.md)
@@ -189,7 +190,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
 
 - [10-Design-and-Install-Kubernetes-Cluster](docs/10-Design-and-Install-Kubernetes-Cluster)
-  
+
   - [01-Designing-a-Kubernetes-Cluster](docs/10-Design-and-Install-Kubernetes-Cluster/01-Designing-a-Kubernetes-Cluster.md)
   - [02-Choosing-Kubernetes-Infrastructure](docs/10-Design-and-Install-Kubernetes-Cluster/02-Choosing-Kubernetes-Infrastructure.md)
   - [03-Configure-High-Availability](docs/10-Design-and-Install-Kubernetes-Cluster/03-Configure-High-Availability.md)
@@ -198,7 +199,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [06-Download-Presentation-Deck](docs/10-Design-and-Install-Kubernetes-Cluster/06-Download-Presentation-Deck.md)
 
 - [11-Install-Kubernetes-the-kubeadm-way](docs/11-Install-Kubernetes-the-kubeadm-way)
-  
+
   - [01-Introduction-to-Deployment-with-kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/01-Introduction-to-Deployment-with-kubeadm.md)
   - [02-Resources](docs/11-Install-Kubernetes-the-kubeadm-way/02-Resources.md)
   - [03-Provision-VMs-with-Vagrant](docs/11-Install-Kubernetes-the-kubeadm-way/03-Provision-VMs-with-Vagrant.md)
@@ -207,7 +208,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
 
 - [12-Troubleshooting](docs/12-Troubleshooting)
-  
+
   - [01-Troubelshooting-Section-Introduction](docs/12-Troubleshooting/01-Troubelshooting-Section-Introduction.md)
   - [02-Application-Failure](docs/12-Troubleshooting/02-Application-Failure.md)
   - [03-Solution-Application-Failure](docs/12-Troubleshooting/03-Solution-Application-Failure.md)
@@ -220,7 +221,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [10-Practice-Test-Troubleshoot-Network](docs/12-Troubleshooting/10-Practice-Test-Troubleshoot-Network.md)
 
 - [13-Other-Topics](docs/13-Other-Topics)
-  
+
   - [01-Labs-JSON-PATH](docs/13-Other-Topics/01-Labs-JSON-PATH.md)
   - [02-Pre-Requisites-JSON-PATH](docs/13-Other-Topics/02-Pre-Requisites-JSON-PATH.md)
   - [03-Advance-Kubectl-Commands](docs/13-Other-Topics/03-Advance-Kubectl-Commands.md)
@@ -228,13 +229,13 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
 
 - [14-Lightning-Labs](docs/14-Lightning-Labs)
-  
+
   - [01-Lightning-Labs-Introduction](docs/14-Lightning-Labs/01-Lightning-Labs-Introduction.md)
   - [02-Lightning-Lab-1](docs/14-Lightning-Labs/02-Lightning-Lab-1.md)
-  
+
 
 - [15-Mock-Exams](docs/15-Mock-Exams)
-  
+
   - [01-Introduction](docs/15-Mock-Exams/01-Introduction.md)
   - [02-Mock-Exam-1](docs/15-Mock-Exams/02-Mock-Exam-1.md)
   - [03-Mock-Exam-2](docs/15-Mock-Exams/03-Mock-Exam-2.md)
