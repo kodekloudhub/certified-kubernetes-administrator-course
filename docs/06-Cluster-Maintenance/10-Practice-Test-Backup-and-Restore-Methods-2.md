@@ -162,7 +162,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 1.  <details>
     <summary>An ETCD backup for cluster2 is stored at /opt/cluster2.db. Use this snapshot file to carryout a restore on cluster2 to a new path /var/lib/etcd-data-new.</summary>
 
-    There are several parts to this question. Let's go througn them one at a time.
+    There are several parts to this question. Let's go through them one at a time.
 
     1.  <details>
         <summary>Move the backup to the etcd-server node</summary>
