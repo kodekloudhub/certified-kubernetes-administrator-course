@@ -89,7 +89,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 
     ```bash
     kubectl config use-context cluster1
-     kubectl get po -n kube-system etcd-cluster1-controlplane -o yaml
+    kubectl get po -n kube-system etcd-cluster1-controlplane -o yaml
     ```
 
     In the output, find the `volumes` section. The host path of the volume named `etcd-data` is the answer.
@@ -115,7 +115,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
     systemctl cat etcd.service
     ```
 
-    Note the comment line in the output. This tells you where the service uint file is. We are going to need to edit this file in a later question!
+    Note the comment line in the output. This tells you where the service unit file is. We are going to need to edit this file in a later question!
 
     From the output, locate `--data-dir`
 
