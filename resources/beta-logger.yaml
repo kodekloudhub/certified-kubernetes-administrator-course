@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logger
+  namespace: beta
+spec:
+  containers:
+  - name: beta
+    image: busybox
+    args: [/bin/sh, -c, 'while true; do echo "INFO: $(date) Logger is running"; sleep 2;  echo "ERROR: $(date) Logger encountered errors!"; sleep 2;done']
