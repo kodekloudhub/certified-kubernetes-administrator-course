@@ -177,7 +177,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [14-Practice-Test-Deploy-Network-Solution](docs/09-Networking/14-Practice-Test-Deploy-Network-Solution.md)
   - [15-ipam-weave](docs/09-Networking/15-ipam-weave.md)
   - [16-Practice-Test-Networking-weave](docs/09-Networking/16-Practice-Test-Networking-weave.md)
-  - [17-Service-Networking](17-Service-Networking.md)
+  - [17-Service-Networking](docs/09-Networking/17-Service-Networking.md)
   - [18-Practice-Test-Service-Networking](docs/09-Networking/18-Practice-Test-Service-Networking.md)
   - [19-DNS-in-kubernetes](docs/09-Networking/19-DNS-in-kubernetes.md)
   - [20-CoreDNS-in-Kubernetes](docs/09-Networking/20-CoreDNS-in-Kubernetes.md)
