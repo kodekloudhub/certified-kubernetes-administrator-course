@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: essports-wl02
+  name: essports-wl02
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: essports-wl02
+  template:
+    metadata:
+      labels:
+        app: essports-wl02
+    spec:
+      containers:
+      - image: nginx:alpine
+        name: nginx
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: essports-svc
+  name: essports-svc
+spec:
+  ports:
+  - name: 80-32767
+    port: 80
+    protocol: TCP
+    targetPort: 80
+    nodePort: 32750
+  selector:
+    app: essports-wl02
+  type: NodePort
+
