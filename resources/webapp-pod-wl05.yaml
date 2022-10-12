@@ -1,0 +1,73 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: canara-wl05
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: webapp-pod-wl05
+  name: webapp-pod-wl05
+  namespace: canara-wl05
+spec:
+  containers:
+  - image: kodekloud/simple-webapp-mysql
+    name: webapp-pod-wl05
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: webapp-svc-wl05
+  name: webapp-svc-wl05
+  namespace: canara-wl05
+spec:
+  ports:
+  - name: 8080-8080
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 31020
+  selector:
+    run: webapp-pod-wl05
+  type: NodePort
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: canara-wl05
+  labels:
+    run: mysql-pod-wl05
+  name: mysql-wl05
+spec:
+  containers:
+  - image: mysql:5.6
+    name: mysql-pod-wl05
+    env: 
+    - name: MYSQL_ROOT_PASSWORD
+      value: password123
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: canara-wl05
+  labels:
+    app: mysql-svc-wl05
+  name: mysql-svc-wl05
+spec:
+  ports:
+  - name: 3306-3306
+    port: 3306
+    protocol: TCP
+    targetPort: 3306
+  selector:
+    run: mysql-pod-wl05
+  type: ClusterIP
