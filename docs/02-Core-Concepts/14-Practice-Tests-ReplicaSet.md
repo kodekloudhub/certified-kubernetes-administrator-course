@@ -75,9 +75,9 @@
    ```
    kubectl describe pods
    ```
-   </details>
 
    Look in the `Events` section at the end.
+   </details>
 
 1. <details>
    <summary>Delete any one of the 4 PODs.</summary>
