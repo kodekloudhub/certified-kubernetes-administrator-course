@@ -3,77 +3,110 @@
 
 #### Solutions to Practice test - Services
 
-- Run the command **`kubectl get services`** and count the number of services.
-  
-  <details>
+1. <details>
+    <summary>How many Services exist on the system?</summary>
 
-  ```
-  $ kubectl get services
-  ```
-  </details>
+    ```
+    kubectl get services
+    ```
 
-- Run the command **`kubectl get services`** and look at the Type column
+    Count the number of services (if any)
+    </details>
 
-  <details>
 
-  ```
-  $ kubectl get services
-  ```
-  </details>
+1. Information only
 
-- Run the command **`kubectl describe service`** and look at TargetPort.
+1.  <details>
+    <summary>What is the type of the default kubernetes service?</summary>
 
-  <details>
+    From the output of Q1, examine the `TYPE` column.
+    </details>
 
-  ```
-  $ kubectl describe service|grep TargetPort
-  ```
-  </details>
+1.  <details>
+    <summary>What is the targetPort configured on the kubernetes service?</summary>
 
-- Run the command **`kubectl describe service`** and look at Labels
+    ```
+    $ kubectl describe service | grep TargetPort
+    ```
+    </details>
 
-  <details>
+1.  <details>
+    <summary>How many labels are configured on the kubernetes service?</summary>
 
-  ```
-  $ kubectl describe service
-  ```
-  </details>
+    ```
+    kubectl describe service
+    ```
 
-- Run the command **`kubectl describe service`** and look at Endpoints
-  
-  <details>
+    ...and look for labels.
 
-  ```
-  $ kubectl describe service
-  ```
-  </details>
+    --- OR ---
 
-- Run the command **`kubectl get deployment`** and count the number of pods.
+    ```
+    kubectl describe service --show-labels
+    ```
 
-  <details>
+    </details>
 
-  ```
-  $ kubectl get deployment
-  ```
-  </details>
+1.  <details>
+    <summary>How many Endpoints are attached on the kubernetes service?</summary>
 
-- Run the command **`kubectl describe deployment`** and look under the containers section.
+    ```
+    kubectl describe service
+    ```
 
-  <details>
+    ...and look for endpoints
 
-  ```
-  $ kubectl describe deployment
-  ```
-  </details>
+    </details>
 
-- Try to access the Web Application UI using the tab simple-webapp-ui above the terminal.
+1.  <details>
+    <summary>How many Deployments exist on the system now?</summary>
 
-- Update the given values in the service definition file and create the service.
+    ```
+    kubectl get deployment
+    ```
 
-  <details>
+    Count the deployments (if any)
+    </details>
 
-  ```
-  $ kubectl create -f service-definition-1.yaml
-  ```
-  </details>
- 
+1.  <details>
+    <summary>What is the image used to create the pods in the deployment?</summary>
+
+    ```
+    kubectl describe deployment
+    ```
+
+    Look in the containers section.
+
+    --- OR ---
+
+    ```
+    kubectl get deployment -o wide
+    ```
+
+    Look in the `IMAGES` column
+
+    </details>
+
+1.  <details>
+    <summary>Are you able to access the Web App UI?</summary>
+
+    Try to access the Web Application UI using the tab simple-webapp-ui above the terminal.
+
+    </details>
+
+1.  <details>
+    <summary>Create a new service to access the web application using the service-definition-1.yaml file.</summary>
+
+    ```
+    vi service-definition-1.yaml
+    ```
+
+    Fill in the values as directed, save and exit.
+
+    ```
+    kubectl create -f service-definition-1.yaml
+    ```
+    </details>
+
+1. Test newly deployed service.
+
