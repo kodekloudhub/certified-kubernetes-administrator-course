@@ -4,33 +4,34 @@
 
 #### Solution
 
-  1. Check the Solution
+  1. <details>
+      <summary>We have deployed an application called app in the default namespace. What is the state of the pod?</summary>
 
-     <details>
+      ```bash
+      kubectl get pods
+      ```
 
-      ```
-      Not Running
-      ```
+      Note it is stuck at `ContainerCreating`. It will reamin this way.
+
+      > NotRunning
+
      </details>
 
-  2. Check the Solution
+  2. <details>
+      <summary>Inspect why the POD is not running.</summary>
 
-     <details>
+      ```bash
+      kubectl describe pod app
+      ```
 
-      ```
-      No Network Configured
-      ```
+      The answer is in the `Events` section. It cannot allocate an IP address, therefore...
+
+      > No network configured
+
      </details>
 
-  3. Check the Solution
+  3. <details>
+      <summary>Deploy weave-net networking solution to the cluster.</summary>
 
-     <details>
-
-      ```
-      Click [here](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/)
-
-      OR Execute below command
-
-      kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-      ```
+      Follow the instruction [here](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#-installation) and apply the given manifest.
      </details>

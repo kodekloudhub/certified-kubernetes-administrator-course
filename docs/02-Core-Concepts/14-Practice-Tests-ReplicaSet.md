@@ -216,14 +216,4 @@
 
    </details>
 
-1. <details>
-   <summary>Scale the ReplicaSet to 5 PODs.</summary>
-
-   ```
-   kubectl scale rs new-replica-set --replicas 2
-   ```
-
-   </details>
-
-
 
