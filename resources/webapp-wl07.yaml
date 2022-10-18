@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-wl07
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp-wl07
+  name: webapp-wl07
+  namespace: dev-wl07
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp-wl07
+  template:
+    metadata:
+      labels:
+        app: webapp-wl07
+    spec:
+      containers:
+      - image: kodekloud/webapp-color
+        name: webapp-color-wl07
+
