@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: test-wl08
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: trace-wl08
+  name: trace-wl08
+  namespace: test-wl08
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trace-wl08
+  template:
+    metadata:
+      labels:
+        app: trace-wl08
+    spec:
+      containers:
+      - command:
+        - sleep
+        - "5000"
+        image: busybox:1.28
+        name: busybox-wl08
+
