@@ -1,0 +1,29 @@
+---
+
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: app-space
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-wear-cka09-svcn
+  namespace: app-space
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-wear-cka09-svcn
+  template:
+    metadata:
+      labels:
+        app: webapp-wear-cka09-svcn
+    spec:
+      containers:
+      - name: simple-webapp
+        image: kodekloud/ecommerce:apparels
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080

@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp-color-wl10
+  name: webapp-color-wl10
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp-color-wl10
+  template:
+    metadata:
+      labels:
+        app: webapp-color-wl10
+    spec:
+      containers:
+      - image: kodekloud/webapp-color
+        name: webapp-color-wl10
+        env:
+        - name: APP_COLOR
+          value: pink
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-color-wl10-service
+  namespace: default
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: webapp-color-wl10
+  type: NodePort
