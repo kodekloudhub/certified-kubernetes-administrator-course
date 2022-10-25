@@ -1,64 +1,119 @@
 # Solution Troubleshoot Network
 
-  - Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-test-troubleshoot-network/) of the Troubleshoot Network
-
-    ### Solution
-
-    1. Check Solution
-
-       <details>
-
-        ```
-         The pods are in a pending state? Does the cluster have a Network Addon installed?
-		 Install Weave using:
-		 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
-        ```
-        </details>
-
-    2. Check Solution
-
-       <details>
-
-        ```
-         The kube-proxy pods are not running. As a result the rules needed to allow connectivity to the services have not been created.
-
-         1. Check the logs of the kube-proxy pods
-         kubectl -n kube-system logs <name_of_the_kube_proxy_pod>
-
-         2. The configuration file "/var/lib/kube-proxy/configuration.conf" is not valid. The configuration path does not match the data in the ConfigMap.
-         kubectl -n kube-system describe configmap kube-proxy shows that the file name used is "config.conf" which is mounted in the kube-proxy daemonset pods at the path /var/lib/kube-proxy/config.conf
-
-         3. However in the DaemonSet for kube-proxy, the command used to start the kube-proxy pod makes use of the path /var/lib/kube-proxy/configuration.conf.
-
-          Correct this path to /var/lib/kube-proxy/config.conf as per the ConfigMap and recreate the kube-proxy pods.
-
-          This should get the kube-proxy pods back in a running state.
-        ```
-       </details>
-
-    3. Check Solution
-
-       <details>
-
-        ```
-         The kube-dns service is not working as expected. The first thing to check is if the service has a valid endpoint? Does it point to the kube-dns/core-dns?
-
-         Run: kubectl -n kube-system get ep kube-dns
-
-         If there are no endpoints for the service, inspect the service and make sure it uses the correct selectors and ports.
-
-         Run: kubectl -n kube-system describe svc kube-dns
-
-         Note that the selector used is: k8s-app=core-dns
-
-         If you compare this with the label set on the coredns deployment and its pods, you will see that the selector should be k8s-app=kube-dns
-
-         Modify the kube-dns service and update the selector to k8s-app=kube-dns
-         (Easiest way is to use the kubectl edit command)
-        ```
-       </details>
+Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-test-troubleshoot-network/) of the Troubleshoot Network
 
 
+1. <details>
+   <summary>Troubleshooting Test 1</summary>
+
+   We are asked to ensure all the components are working, so first let's examine the cluster to see what state it is in.
+
+   How many nodes, and their status?
+
+   ```
+   kubectl get nodes
+   ```
+
+   Seems OK...
+
+   Next, the pods
+
+   ```
+   kubectl get pods -A
+   ```
+
+   Mow we see that the `webapp` and `mysql` pods are stuck at `ContainerCreating`. We need to describe the pods and check the errors.
+
+   You will note that they are complaining about `network: unable to allocate IP address`, so clearly we have a networking issue.
+
+   When you did the `get pods` above, did you see any evidence of network support containers, like `flannel` or `weave`?
+
+   No - so we need to install networking support.
+
+   Let's install `Weave`
+
+   ```
+   kubectl apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+   ```
+
+   Now wait for a minute or so for it to initialize, then check the application pods
+
+   ```
+   kubectl get pods -n triton
+   ```
+
+   </details>
 
 
-       
+1. <details>
+   <summary>Troubleshooting Test 2</summary>
+
+   Once again let's examine the cluster to see what state it is in.
+
+   How many nodes, and their status?
+
+   ```
+   kubectl get nodes
+   ```
+
+   Seems OK...
+
+   Next, the pods
+
+   ```
+   kubectl get pods -A
+   ```
+
+   The kube-proxy pod is not running. It is actually crash-looping which means it tries to start, then fails. As a result the rules needed to allow connectivity to the services have not been created. First place to look when diagnosing CrashLoopBackoff is the pod logs.
+
+   1. Check the logs of the kube-proxy pod
+
+      ```
+      kubectl -n kube-system logs <name_of_the_kube_proxy_pod>
+      ```
+
+      We see that it cannot find a configuration file.
+
+      Now try looking for the configuration in case it has a different name
+
+      ```
+      ls -l /var/lib/kube-proxy
+      ```
+
+      The directory is not found!
+
+   1. Inspect the pod template spec win the `kube-proxy` daemonset.
+
+      ```
+      kubectl get ds -n kube-system kube-proxy -o yaml | less
+      ```
+
+      Scroll around and check volumes and volume mounts. Notice that a config map is mounted at the path `/var/lib/kube-proxy` within the pod.
+
+   1. Inspect the config map
+
+      ```
+      kubectl describe cm -n kube-system kube-proxy
+      ```
+
+      Here we see that the files mounted by the config map are `config.conf` and `kubeconfig.conf`
+
+   1. Fix the command line arguments to `kube-proxy`
+
+      ```
+      kubectl edit ds -n kube-system kube-proxy
+      ```
+
+      Set the correct filename
+
+      ```
+      --config=/var/lib/kube-proxy/config.conf
+      ```
+
+      Finally, confirm it is running.
+
+      ```
+      kubectl get pods -n kube-system
+      ```
+
+   </details>
