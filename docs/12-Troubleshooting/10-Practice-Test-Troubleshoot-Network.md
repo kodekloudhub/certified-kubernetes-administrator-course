@@ -22,7 +22,7 @@ Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-tes
    kubectl get pods -A
    ```
 
-   Mow we see that the `webapp` and `mysql` pods are stuck at `ContainerCreating`. We need to describe the pods and check the errors.
+   Now we see that the `webapp` and `mysql` pods are stuck at `ContainerCreating`. We need to describe the pods and check the errors.
 
    You will note that they are complaining about `network: unable to allocate IP address`, so clearly we have a networking issue.
 
@@ -82,7 +82,7 @@ Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-tes
 
       The directory is not found!
 
-   1. Inspect the pod template spec win the `kube-proxy` daemonset.
+   1. Inspect the pod template spec in the `kube-proxy` daemonset.
 
       ```
       kubectl get ds -n kube-system kube-proxy -o yaml | less
@@ -96,7 +96,7 @@ Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-tes
       kubectl describe cm -n kube-system kube-proxy
       ```
 
-      Here we see that the files mounted by the config map are `config.conf` and `kubeconfig.conf`
+      Here we see that the files mounted by the config map are `config.conf` and `kubeconfig.conf`, but _not_ `configuation.conf`.
 
    1. Fix the command line arguments to `kube-proxy`
 
