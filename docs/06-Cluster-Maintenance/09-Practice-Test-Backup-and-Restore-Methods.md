@@ -84,7 +84,7 @@ Solutions to practice test - Backup and Restore Methods
         To do this, we need to edit the `volumes` section and change the `hostPath` to be the directory we restored to.
 
         ```
-        vi /ect/kubernetes/manfiests/etcd.yaml
+        vi /etc/kubernetes/manifests/etcd.yaml
         ```
 
         ```yaml
