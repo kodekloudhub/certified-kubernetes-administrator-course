@@ -8,7 +8,7 @@
 
      <details>
 
-     Run the following two steps on both `controlplane` and `node01` (use `ssh node01`) to get to the worker node.
+     Run the following two steps on both `controlplane` and `node01` (use `ssh node01` to get to the worker node).
 
       1. Configure kernel parameters
 
