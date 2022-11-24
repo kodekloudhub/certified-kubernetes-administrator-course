@@ -1,8 +1,8 @@
 #!/bin/bash
 
-kubectl run -n kube-public server1-cka03-svcn --image=nginx --context=cluster3 
+kubectl run -n kube-public server1-cka03-svcn --image=nginx --context=cluster3 --kubeconfig /root/.kube/clusters/cluster3_config
 
-until [[ `kubectl get pods server1-cka03-svcn -n kube-public --context=cluster3 -o jsonpath='{.status.containerStatuses[].ready}'` == true ]]; do sleep 2; done;
+until [[ `kubectl get pods server1-cka03-svcn -n kube-public --kubeconfig /root/.kube/clusters/cluster3_config --context=cluster3 -o jsonpath='{.status.containerStatuses[].ready}'` == true ]]; do sleep 2; done;
 
 #nohup kubectl --kubeconfig=/root/.kube/clusters/cluster2_config port-forward --address 0.0.0.0 -n kube-public server1-cka03-svcn 9999:80 &
 
@@ -13,7 +13,7 @@ After=network.target
 
 [Service]
 User=root
-ExecStart=/bin/bash -c "/usr/bin/kubectl --kubeconfig=/root/.kube/clusters/cluster3_config port-forward --address 0.0.0.0 -n kube-public server1-cka03-svcn 9999:80"
+ExecStart=/bin/bash -c "/usr/bin/kubectl --kubeconfig=/root/.kube/clusters/cluster3_config --context=cluster3 port-forward --address 0.0.0.0 -n kube-public server1-cka03-svcn 9999:80"
 StartLimitInterval=0
 RestartSec=10
 Restart=always
@@ -25,7 +25,7 @@ EOF
 systemctl daemon-reload
 systemctl enable webserver.service --now
 
-kubectl --context=cluster3 apply -f - << EOF
+kubectl --kubeconfig /root/.kube/clusters/cluster3_config --context=cluster3 apply -f - << EOF
 apiVersion: v1
 kind: Service
 metadata:
