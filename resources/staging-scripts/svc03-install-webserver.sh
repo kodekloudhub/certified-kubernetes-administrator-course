@@ -1,6 +1,6 @@
 #!/bin/bash
 
-kubectl run -n kube-public server1-cka03-svcn --image=nginx --kubeconfig=/root/.kube/clusters/cluster2_config
+kubectl run -n kube-public server1-cka03-svcn --image=nginx --kubeconfig=/root/.kube/clusters/cluster3_config
 
 until [[ `kubectl get pods server1-cka03-svcn -n kube-public --context=cluster2 -o jsonpath='{.status.containerStatuses[].ready}'` == true ]]; do sleep 2; done;
 
@@ -13,7 +13,7 @@ After=network.target
 
 [Service]
 User=root
-ExecStart=/bin/bash -c "/usr/bin/kubectl --kubeconfig=/root/.kube/clusters/cluster2_config port-forward --address 0.0.0.0 -n kube-public server1-cka03-svcn 9999:80"
+ExecStart=/bin/bash -c "/usr/bin/kubectl --kubeconfig=/root/.kube/clusters/cluster3_config port-forward --address 0.0.0.0 -n kube-public server1-cka03-svcn 9999:80"
 StartLimitInterval=0
 RestartSec=10
 Restart=always
