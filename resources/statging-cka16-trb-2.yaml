@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pink-ing-cka16-trb
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: kodekloud-pink.app
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: pink-svc-cka16-trb
+                port:
+                  number: 5000
