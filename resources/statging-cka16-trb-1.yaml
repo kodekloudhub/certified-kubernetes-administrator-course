@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: pink-svc-cka16-trb
+spec:
+  ports:
+    - port: 5000
+      protocol: UDP
+      targetPort: 5000
+  selector:
+    app: pink-app-cka16-trb
+  type: ClusterIP
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pink-pod-cka16-trb
+  labels:
+    app: pink-app-cka16-trb
+spec:
+  containers:
+    - name: app
+      image: alpine/socat
+      command:
+        - /bin/sh
+        - -c
+        - apk add curl > /dev/null 2>&1 ; socat -U TCP-LISTEN:5000,fork
+          EXEC:'curl example.com',stderr,pty,echo=0
+      ports:
+        - containerPort: 5000
+
+ 
