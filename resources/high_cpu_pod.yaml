@@ -1,17 +1,26 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name:  frontend-cka-arch-05
-  namespace: default
+  name: mysql
 spec:
-  containers:
-  - name: cpu-demo-ctr
-    image: vish/stress
-    resources:
-      limits:
-        cpu: "1.5"
-      requests:
-        cpu: "0.5"
-    args:
-    - -cpus
-    - "1"
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        
