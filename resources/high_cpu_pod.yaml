@@ -9,7 +9,7 @@ spec:
     image: vish/stress
     resources:
       limits:
-        cpu: "0.5"
+        cpu: "1.5"
       requests:
         cpu: "0.5"
     args:
