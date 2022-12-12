@@ -1,12 +1,17 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: frontend-cka-arch-05
+  name:  frontend-cka-arch-05
+  namespace: default
 spec:
   containers:
-  - name: app
-    image: nginx
+  - name: cpu-demo-ctr
+    image: vish/stress
     resources:
       limits:
-        memory: "128Mi"
-        cpu: "100m"
+        cpu: "0.5"
+      requests:
+        cpu: "0.5"
+    args:
+    - -cpus
+    - "0.4"
