@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-cka-arch-05
+spec:
+  containers:
+  - name: app
+    image: nginx
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "100m"
