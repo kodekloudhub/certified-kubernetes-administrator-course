@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: backend-cka06-arcg
+  name: backend-cka06-arch
   namespace: default
 spec:
   containers:
