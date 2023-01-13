@@ -35,7 +35,7 @@
     1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifcally to 1.24, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
 
         ```
-        kubectl describe node controlpane | grep -A 3 taint
+        kubectl describe node controlplane | grep -i -A3 taint
         ```
 
         Output:
