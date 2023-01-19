@@ -96,7 +96,7 @@ Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-tes
       kubectl describe cm -n kube-system kube-proxy
       ```
 
-      Here we see that the files mounted by the config map are `config.conf` and `kubeconfig.conf`, but _not_ `configuation.conf`.
+      Here we see that the files mounted by the config map are `config.conf` and `kubeconfig.conf`, but _not_ `configuration.conf`.
 
    1. Fix the command line arguments to `kube-proxy`
 
