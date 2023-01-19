@@ -2,7 +2,7 @@
   - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-static-pods/)
   
 Solutions to the practice test - static pods
-- Run the command kubectl get pods --all-namespaces and look for those with -master appended in the name
+- Run the command kubectl get pods --all-namespaces and look for those with -controlplane appended in the name
   
   <details>
 
