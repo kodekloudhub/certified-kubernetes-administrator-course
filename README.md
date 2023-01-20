@@ -44,7 +44,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [02-Manual-Scheduling](docs/03-Scheduling/02-Manual-Scheduling.md)
   - [03-Practice-Test-Manual-Scheduling](docs/03-Scheduling/03-Practice-Test-Manual-Scheduling.md)
   - [04-Labels-and-Selectors](docs/03-Scheduling/04-Labels-and-Selectors.md)
-  - [05-Practice-Test-Scheduling](docs/03-Scheduling/05-Practice-Test-Scheduling.md)
+  - [05-Practice-Test-Labels-and-Selectors](docs/03-Scheduling/05-Practice-Test-Labels-and-Selectors.md)
   - [06-Taints-and-Tolerations](docs/03-Scheduling/06-Taints-and-Tolerations.md)
   - [07-Practice-Test-Taints-and-Tolerations](docs/03-Scheduling/07-Practice-Test-Taints-and-Tolerations.md)
   - [08-Node-Selectors](docs/03-Scheduling/08-Node-Selectors.md)

@@ -1,111 +1,121 @@
 # Practice Test - Node Affinity
   - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-node-affinity-2/)
-  
+
 Solutions to practice test - node affinity
 
-- Run the command 'kubectl describe node node01' and count the number of labels under **`Labels Section`**.
-  
-  <details>
+1.  <details>
+    <summary>How many Labels exist on node node01?</summary>
 
-  ```
-  $ kubectl describe node node01
-  ```
-  </details>
+    ```
+    kubectl describe node node01
+    ```
 
-- Run the command 'kubectl describe node node01' and see the label section
-  
-  <details>
+    Look under `Labels` section
 
-  ```
-  $ kubectl describe node node01
-  ```
-  </details>
+    --- OR ---
 
-- Run the command 'kubectl label node node01 color=blue'.
+    ```
+    kubectl describe node node01 --show-labels
+    ```
 
-  <details>
+    </details>
 
-  ```
-  $ kubectl label node node01 color=blue
-  ```
-  </details>
+1.  <details>
+    <summary>What is the value set to the label key beta.kubernetes.io/arch on node01?</summary>
 
-- Run the below commands
+    From the output of Q1, find the answer there.
+    </details>
 
-  <details>
+1.  <details>
+    <summary>Apply a label color=blue to node node01</summary>
 
-  ```
-  $ kubectl create deployment blue --image=nginx
-  $ kubectl scale deployment blue --replicas=6
-  ```
-  </details>
+    ```
+    kubectl label node node01 color=blue
+    ```
+    </details>
 
-- Check if master and node01 have any taints on them that will prevent the pods to be scheduled on them. If there are no taints, the pods can be scheduled on either node.
-  
-  <details>
+1.  <details>
+    <summary>Create a new deployment named blue with the nginx image and 3 replicas.</summary>
 
-  ```
-  $ kubectl describe nodes|grep -i taints
-  $ kubectl get pods -o wide
-  ```
-  </details>
+    ```
+    kubectl create deployment blue --image=nginx --replicas=3
+    ```
+    </details>
 
-- Answer file at /var/answers/blue-deployment.yaml
-  
-  <details>
+1.  <details>
+    <summary>Which nodes can the pods for the blue deployment be placed on?</summary>
 
-  ```
-  $ kubectl edit deployment blue
-  ```
-  </details>
 
-  Add the below under the template.spec section
-  
-  <details>
+    Check if master and node01 have any taints on them that will prevent the pods to be scheduled on them. If there are no taints, the pods can be scheduled on either node.
 
-  ```
-  affinity:
-      nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: color
-                operator: In
-                values:
-                - blue
-   ```
-   </details>
+    ```
+    kubectl describe nodes controlplane | grep -i taints
+    kubectl describe nodes node01 | grep -i taints
+    ```
+    </details>
 
- - Run the command 'kubectl get pods -o wide' and see the Node column
-   
-   <details>
+1.  <details>
+    <summary>Set Node Affinity to the deployment to place the pods on node01 only.</summary>
+    Now we edit in place the deployment we created earlier. Remember that we labelled `node01` with `color=blue`? Now we are going to create an affinity to that label, which will "attract" the pods of the deployment to it.
 
-   ```
-   $ kubectl get pods -o wide
-   ```
-   </details>
+    1.
+        ```
+        $ kubectl edit deployment blue
+        ```
+    1. Add the YAML below under the template.spec section, i.e. at the same level as `containers` as it is a POD setting. The affinity will be considered only during scheduling stage, however this edit will cause the deployment to roll out again.
 
- - Answer file at /var/answers/red-deployment.yaml
-   Add the below under the template.spec section
-   
-   <details>
+      ```yaml
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: color
+                  operator: In
+                  values:
+                  - blue
+      ```
+    </details>
 
-   ```
-   affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: node-role.kubernetes.io/master
-                operator: Exists
-   ```
-   ```
-   $ kubectl create -f red-deployment.yaml
-   ```
-   ```
-   $ kubectl get pods -o wide
-   ```
-   </details>
-   
-  
-  
+1. <details>
+    <summary>Which nodes are the pods placed on now?</summary>
+
+    ```
+    $ kubectl get pods -o wide
+    ```
+    </details>
+
+1.  <details>
+    <summary>Create a new deployment named red with the nginx image and 2 replicas, and ensure it gets placed on the controlplane node only.</summary>
+
+    1. Create a YAML template for the deploymemt
+
+        ```
+        kubectl create deployment red --image nginx --replicas 2 --dry-run=client -o yaml > red.yaml
+        ```
+    1. Edit the file
+        ```
+        vi red.yaml
+        ```
+    1.  Add the toleration using the label stated in the question, and placing it as before for the `blue` deployment
+      ```yaml
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: node-role.kubernetes.io/master
+                  operator: Exists
+      ```
+    1. Save, exit and create the deployment
+      ```
+      kubectl create -f red.yaml
+      ```
+    1. Check the result
+      ```
+      $ kubectl get pods -o wide
+      ```
+    </details>
+
+
+
