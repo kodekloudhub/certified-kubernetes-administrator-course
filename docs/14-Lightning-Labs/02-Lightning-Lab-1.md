@@ -5,7 +5,7 @@
 ## Solution to LL-1
 
 1.  <details>
-    <summary>Upgrade the current version of kubernetes from 1.23.0 to 1.24.0 exactly using the kubeadm utility.</summary>
+    <summary>Upgrade the current version of kubernetes from 1.25.0 to 1.26.0 exactly using the kubeadm utility.</summary>
 
     There is currently an issue with this lab which requires an extra step. This may be addressed in the near future. 
 
@@ -32,7 +32,7 @@
         kubeadm upgrade apply v1.26.0
         ```
 
-    1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifically to 1.24, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
+    1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifically to 1.26, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
 
         ```
         kubectl describe node controlplane | grep -A 3 taint
