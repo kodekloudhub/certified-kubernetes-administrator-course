@@ -1,4 +1,4 @@
-# Lightining Lab 1
+# Lightning Lab 1
 
   - I am ready! [Take me to Lightning Lab 1](https://kodekloud.com/topic/lightning-lab-1-2/)
 
@@ -32,10 +32,10 @@
         kubeadm upgrade apply v1.26.0
         ```
 
-    1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifcally to 1.24, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
+    1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifically to 1.24, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
 
         ```
-        kubectl describe node controlpane | grep -A 3 taint
+        kubectl describe node controlplane | grep -A 3 taint
         ```
 
         Output:

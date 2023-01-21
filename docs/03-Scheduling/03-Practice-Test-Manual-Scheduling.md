@@ -3,52 +3,67 @@
 
 Solutions to Practice Test - Manual Scheduling
 
-- Run, **`kubectl create -f nginx.yaml`**
-  
-  <details>
+1.  <details>
+    <summary>A pod definition file nginx.yaml is given. Create a pod using the file.</summary>
 
-  ```
-  $ kubectl create -f nginx.yaml
-  ```
-  </details>
+    ```
+    kubectl create -f nginx.yaml
+    ```
+    </details>
 
-- Run the command 'kubectl get pods' and check the status column
+1.  <details>
+    <summary>What is the status of the created POD?</summary>
 
-  <details>
+    ```
+    kubectl get pods
+    ```
 
-  ```
-  $ kubectl get pods
-  ```
-  </details>
+    Examine the `STATUS` column
+    </details>
 
-- Run the command 'kubectl get pods --namespace kube-system'
+1.  <details>
+    <summary>Why is the POD in a pending state?</br>Inspect the environment for various kubernetes control plane components.</summary>
 
-  <details>
+    ```
+    kubectl get pods --namespace kube-system
+    ```
 
-  ```
-  $ kubectl get pods --namespace kube-system
-  ```
-  </details>
+    There is a key pod missing here!
+    </details>
 
-- Set **`nodeName`** property on the pod to node01 node
+1.  <details>
+    <summary>Manually schedule the pod on node01.</summary>
 
-  <details>
+    We will have to delete and recereate the pod, as the only property that may be edited on a running container is `image`
 
-  ```
-  $ vi nginx.yaml
-  $ kubectl delete -f nginx.yaml
-  $ kubectl create -f nginx.yaml
-  ```
-  </details>
+    ```
+    vi nginx.yaml
+    ```
 
-- Set **`nodeName`** property on the pod to master node
+    Make the following edit
 
-  <details>
+    ```yaml
+    ---
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: nginx
+    spec:
+      nodeName: node01    # add this line
+      containers:
+      -  image: nginx
+         name: nginx
+    ```
 
-  ```
-  $ vi nginx.yaml
-  $ kubectl delete -f nginx.yaml
-  $ kubectl create -f nginx.yaml
-  ```
+    ```
+    kubectl delete -f nginx.yaml
+    kubectl create -f nginx.yaml
+    ```
+    </details>
+
+1.  <details>
+    <summary>Now schedule the same pod on the controlplane node.</summary>
+
+    Repeat the steps as per the previous question. Edit `nodeName` to be `controlplane`
   </details>
 

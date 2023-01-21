@@ -1,134 +1,128 @@
 # Practice Test - Taints and Tolerations
   - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-taints-and-tolerations/)
-  
+
 Solutions to the Practice Test - Taints and Tolerations
 
-- Run the command 'kubectl get nodes' and count the number of nodes.
-  
-  <details>
+1.  <details>
+    <summary>How many nodes exist on the system?</summary>
 
-  ```
-  $ kubectl get nodes
-  ```
-  </details>
+    ```
+    $ kubectl get nodes
+    ```
 
-- Run the command 'kubectl describe node node01' and see the taint property
+    Count the nodes
 
-  <details>
+    </details>
 
-  ```
-  $ kubectl describe node node01
-  ```
-  </details>
+1.  <details>
+    <summary>Do any taints exist on node01 node?</summary>
 
-- Run the command 'kubectl taint nodes node01 spray=mortein:NoSchedule'.
+    ```
+    $ kubectl describe node node01
+    ```
 
-  <details>
+    Find the `Taints` property in the output.
+    </details>
 
-  ```
-  $ kubectl taint nodes node01 spray=mortein:NoSchedule
-  ```
-  </details>
+1.  <details>
+    <summary>Create a taint on node01 with key of spray, value of mortein and effect of NoSchedule</summary>
 
-- Answer file at /var/answers/mosquito.yaml
+    ```
+    kubectl taint nodes node01 spray=mortein:NoSchedule
+    ```
+    </details>
 
-  <details>
+1.  <details>
+    <summary>Create a new pod with the nginx image and pod name as mosquito.</summary>
 
-  ```
-  master $ cat /var/answers/mosquito.yaml
-  apiVersion: v1
-  kind: Pod
-   metadata:
-    name: mosquito
-  spec:
-   containers:
-   - image: nginx
-     name: mosquito
-  ```
-  ```
-  $ kubectl create -f /var/answers/mosquito.yaml
-  ```
-  </details>
+    ```
+    kubectl run mosquito --image nginx
+    ```
+    </details>
 
-- Run the command 'kubectl get pods' and see the state
+1.  <details>
+    <summary>What is the state of the POD?</summary>
 
-  <details>
+    ```
+    kubectl get pods
+    ```
 
-  ```
-  $ kubectl get pods
-  ```
-  </details>
+    Check the `STATUS` column
+    </details>
 
-- Why do you think the pod is in a pending state?
+1.  <details>
+    <summary>Why do you think the pod is in a pending state?</summary>
 
-  <details>
+    Mosqitoes don't like mortein!
 
-  ```
-  POD Mosquito cannot tolerate taint Mortein
-  ```
-  </details>
+    So the answer is that the pod cannot tolerate the taint on the node.
 
-- Answer file at /var/answers/bee.yaml
+    </details>
 
-  <details>
+1.  <details>
+    <summary>Create another pod named bee with the nginx image, which has a toleration set to the taint mortein.</summary>
 
-  ```
-  master $ cat /var/answers/bee.yaml
-  apiVersion: v1
-  kind: Pod
-  metadata:
-   name: bee
-  spec:
-   containers:
-   - image: nginx
-     name: bee
-   tolerations:
-   - key: spray
-     value: mortein
-     effect: NoSchedule
-     operator: Equal
-  ```
-  ```
-  $ kubectl create -f /var/answers/bee.yaml
-  ```
-  </details>
+    Allegedly bees are immune to mortein!
 
-- Notice the 'bee' pod was scheduled on node node01 despite the taint.
+    1.  Create a YAML skeleton for the pod imperatively
 
-- Run the command 'kubectl describe node master' and see the taint property
-  
-  <details>
+        ```
+        kubectl run bee --image nginx --dry-run=client -o yaml > bee.yaml
+        ```
+    1.  Edit the file to add the toleration
+        ```
+        vi bee.yaml
+        ```
+    1. Add the toleration. This goes at the same indentation level as `containers` as it is a POD setting.
+        ```yaml
+          tolerations:
+          - key: spray
+            value: mortein
+            effect: NoSchedule
+            operator: Equal
+        ```
+    1. Save and exit, then create pod
+        ```
+        kubectl create -f bee.yaml
+        ```
+    </details>
 
-  ```
-  $ kubectl describe node master
-  ```
-  </details>
+1. Information only.
 
-- Run the command 'kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-'.
-  
-  <details>
+1.  <details>
+    <summary>Do you see any taints on controlplane node?</summary>
 
-  ```
-  $ kubectl taint nodes master node-role.kubernetes.io/master:NoSchedule-
-  ```
-  </details>
+    ```
+    kubectl describe node controlplane
+    ```
 
-- Run the command 'kubectl get pods' and see the state
+    Examine the `Taints` property.
+    </details>
 
-  <details>
+1.  <details>
+    <summary>Remove the taint on controlplane, which currently has the taint effect of NoSchedule.</summary>
 
-  ```
-  $ kubectl get pods
-  ```
-  </details>
+    ```
+    kubectl taint nodes controlplane node-role.kubernetes.io/control-plane:NoSchedule-
+    ```
+    </details>
 
-- Run the command 'kubectl get pods -o wide' and look at the Node column
- 
-  <details>
+1.  <details>
+    <summary>What is the state of the pod mosquito now?</summary>
 
-  ```
-  $ kubectl get pods -o wide
-  ```
-  </details>
+    ```
+    $ kubectl get pods
+    ```
+    </details>
+
+1.  <details>
+    <summary>Which node is the POD mosquito on now?</summary>
+
+    ```
+    $ kubectl get pods -o wide
+    ```
+
+    This also explains why the `mosquito` pod colud schedule anywhere. It also could not tolerate `controlplane` taints, which we have now removed.
+    </details>
 
 

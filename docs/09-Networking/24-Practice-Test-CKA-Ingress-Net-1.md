@@ -274,28 +274,27 @@
 
       <details>
 
+      ```
+      apiVersion: networking.k8s.io/v1
+      kind: Ingress
+      metadata:
+        name: test-ingress
+        namespace: critical-space
+        annotations:
+          nginx.ingress.kubernetes.io/rewrite-target: /
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      spec:
+        rules:
+        - http:
+            paths:
+            - path: /pay
+              pathType: Prefix
+              backend:
+                service:
+                  name: pay-service
+                  port:
+                    number: 8282 
        ```
-        
-        apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          name: test-ingress
-          namespace: critical-space
-          annotations:
-            nginx.ingress.kubernetes.io/rewrite-target: /
-            nginx.ingress.kubernetes.io/ssl-redirect: "false"
-        spec:
-          rules:
-          - http:
-              paths:
-              - path: /pay
-                pathType: Prefix
-                backend:
-                  service:
-                   name: pay-service
-                   port:
-                    number: 8282
-        ```
         </details>
 
   23. Check the Solution
