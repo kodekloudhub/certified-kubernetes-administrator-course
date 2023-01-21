@@ -56,7 +56,7 @@
 
         ```
         apt-mark unhold kubelet
-        apt-get install -y kubelet=1.25.0-00
+        apt-get install -y kubelet=1.26.0-00
         systemctl daemon-reload
         systemctl restart kubelet
         ```
@@ -71,7 +71,7 @@
 
         ```
         apt-mark unhold kubectl
-        apt-get install -y kubectl=1.25.0-00
+        apt-get install -y kubectl=1.26.0-00
         ```
 
     1. Re-hold packages
