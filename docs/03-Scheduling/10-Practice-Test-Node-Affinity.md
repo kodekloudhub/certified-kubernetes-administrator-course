@@ -104,7 +104,7 @@ Solutions to practice test - node affinity
             requiredDuringSchedulingIgnoredDuringExecution:
               nodeSelectorTerms:
               - matchExpressions:
-                - key: node-role.kubernetes.io/master
+                - key: node-role.kubernetes.io/control-plane
                   operator: Exists
       ```
     1. Save, exit and create the deployment
