@@ -98,6 +98,11 @@ Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-tes
 
       Here we see that the files mounted by the config map are `config.conf` and `kubeconfig.conf`, but _not_ `configuration.conf`.
 
+      These two files are
+
+      * `config.conf` - This is the actual configuration that kube-proxy needs to load. This file refers to `kubeconfig.conf`
+      * `kubeconfig.conf` - This is simply a a kubeconfig file, same as you will find on the lab terminal in `~/.kube.config`. It is the credentials and address for kube-proxy to talk to the api server.
+
    1. Fix the command line arguments to `kube-proxy`
 
       ```
