@@ -39,7 +39,7 @@ In this section, we will take a look at kubeconfig in kubernetes
   ```
   $ kubectl config use-context <context-name>
   ex: 
-  $kubectl config use-context prod-user@production
+  $ kubectl config use-context prod-user@production
   ```
   
   ![kc7](../../images/kc7.PNG)
