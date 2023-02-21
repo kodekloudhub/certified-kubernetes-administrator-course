@@ -117,22 +117,30 @@ Solutions to the Practice Test Service Accounts
 1.  <details>
     <summary>Edit the deployment to change ServiceAccount from <b>default</b> to <b>dashboard-sa</b>.</summary>
 
-    1. Use command `kubectl edit deploy web-dashboard`, which opens the running deployment in `vi`
-    1. Move dowm to the deployment spec and insert the service account
+    1. Use command `kubectl edit deployment web-dashboard`, which opens the running deployment in `vi`
+    1. Move dowm to the deployment spec and insert the service account as shown:
 
       ```yaml
       apiVersion: apps/v1
       kind: Deployment
       metadata:
+        annotations:
+          deployment.kubernetes.io/revision: "2"
+        creationTimestamp: "2023-02-21T19:29:21Z"
+        generation: 2
         name: web-dashboard
         namespace: default
+        resourceVersion: "1499"
+        uid: ac5a26bf-7a88-41cc-8db3-d5a4bd2ad31c
       spec:
+        progressDeadlineSeconds: 600
         replicas: 1
+        revisionHistoryLimit: 10
         selector:
           matchLabels:
             name: web-dashboard
         strategy:
-          rollingUpda
+          rollingUpdate:
             maxSurge: 25%
             maxUnavailable: 25%
           type: RollingUpdate
@@ -144,7 +152,10 @@ Solutions to the Practice Test Service Accounts
           spec:
             serviceAccountName: dashboard-sa    # <- Insert this line
             containers:
-            - image: gcr.io/kodekloud/customimage/my-kubernetes-dashboard
+            - env:
+              - name: PYTHONUNBUFFERED
+                value: "1"
+              image: gcr.io/kodekloud/customimage/my-kubernetes-dashboard
               imagePullPolicy: Always
               name: web-dashboard
               ports:
