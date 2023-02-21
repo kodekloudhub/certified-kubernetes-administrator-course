@@ -115,7 +115,7 @@ Solutions to the Practice Test Service Accounts
     1. Press Load Dashboard. It should now display the pod
 
 1.  <details>
-    <summary>Edit the deployment to change ServiceAccount from <b>default<b> to <b>dashboard-sa</b>.</summary>
+    <summary>Edit the deployment to change ServiceAccount from <b>default</b> to <b>dashboard-sa</b>.</summary>
 
     1. Use command `kubectl edit deploy web-dashboard`, which opens the running deployment in `vi`
     1. Move dowm to the deployment spec and insert the service account
