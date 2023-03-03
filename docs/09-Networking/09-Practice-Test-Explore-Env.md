@@ -78,7 +78,7 @@
    <summary>What is the IP address assigned to node01?</summary>
 
    ```
-   kubectl get nodes -o wide`
+   kubectl get nodes -o wide
    ```
 
    Note the value in `INTERNAL-IP` column for `node01`
@@ -185,7 +185,7 @@
 
    You can see that by far and away, the most used port is `2379`.
 
-   <details>
+   </details>
 
 1. Information
 
