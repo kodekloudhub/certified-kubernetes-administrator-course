@@ -165,6 +165,16 @@
    netstat -nplt | grep kube-scheduler
    ```
 
+   <details>
+   <summary>What the netstat options used mean</summary>
+
+   * `-n` - Show IP addresses (don't try to resolve to host names)
+   * `-p` - Show the process names (e.g. `kube-scheduler`)
+   * `-l` - Include only _listening_ sockets
+   * `-t` - Include only TCP sockets
+
+   </details>
+
    Output:
 
    ```
@@ -182,6 +192,15 @@
    ```
    netstat -anp | grep etcd
    ```
+
+   <details>
+   <summary>What the netstat options used mean</summary>
+
+   * `-a` - Include sockets in all states
+   * `-n` - Show IP addresses (don't try to resolve to host names)
+   * `-p` - Show the process names (e.g. `etcd`)
+
+   </details>
 
    You can see that by far and away, the most used port is `2379`.
 
