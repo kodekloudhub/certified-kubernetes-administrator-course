@@ -22,7 +22,6 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   # config.vm.box = "base"
-  config.vm.box = "ubuntu/bionic64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -57,16 +56,44 @@ Vagrant.configure("2") do |config|
       config.vm.define "kubemaster" do |node|
         # Name shown in the GUI
         node.vm.provider "virtualbox" do |vb|
+            config.vm.box = "ubuntu/bionic64"
             vb.name = "kubemaster"
             vb.memory = 2048
             vb.cpus = 2
         end
-        node.vm.hostname = "kubemaster"
+        
+        # Allow for running on Apple M1 Pro ARM Chip
+        node.vm.provider "vmware_desktop" do |vmware|
+            config.vm.box = "starboard/ubuntu-arm64-20.04.5"
+            config.vm.box_version = "20221120.20.40.0"
+            config.vm.box_download_insecure = true
+            # Required otherwise "operation canceled" error will occur
+            vmware.gui = true
+            vmware.linked_clone = false
+            vmware.vmx["displayname"] = "kubemaster#{i}"
+            vmware.vmx["memsize"] = 2048
+            vmware.vmx["numvcpus"] = 2
+            # Required since Vagrant tries to use e1000 which is deprecated and less performant
+            vmware.vmx["ethernet0.virtualdev"] = "vmxnet3"
+            # Add secondary network adapter like (enp0s8), will be called eth1 due to tranditional naming
+            # Consider updating this when new arm image comes out for support
+            vmware.vmx["ethernet2.present"] = "TRUE"
+            vmware.vmx["ethernet2.virtualDev"] = "vmxnet3"
+            vmware.vmx["ethernet2.networkName"] = "enp0s8"
+        end
+
+        node.vm.hostname = "kubemaster#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
         node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
 
         node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-          s.args = ["enp0s8"]
+          node.vm.provider "virtualbox" do |vb|
+            s.args = ["enp0s8"]
+          end
+          # The ARM based image from starboard still uses eth1 as secondary network interface
+          node.vm.provider "vmware_desktop" do |vmware|
+            s.args = ["eth1"]
+          end
         end
 
         node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
@@ -79,16 +106,42 @@ Vagrant.configure("2") do |config|
   (1..NUM_WORKER_NODE).each do |i|
     config.vm.define "kubenode0#{i}" do |node|
         node.vm.provider "virtualbox" do |vb|
-            vb.name = "kubenode0#{i}"
+            vb.name = "kubenode#{i}"
             vb.memory = 2048
             vb.cpus = 2
         end
-        node.vm.hostname = "kubenode0#{i}"
+
+        # Allow for running on Apple M1 Pro ARM Chip
+        node.vm.provider "vmware_desktop" do |vmware|
+            config.vm.box = "starboard/ubuntu-arm64-20.04.5"
+            config.vm.box_version = "20221120.20.40.0"
+            # Required otherwise "operation canceled" error will occur
+            vmware.gui = true
+            vmware.linked_clone = false
+            vmware.vmx["displayname"] = "kubenode0#{i}"
+            vmware.vmx["memsize"] = 2048
+            vmware.vmx["numvcpus"] = 2
+            # Required since Vagrant tries to use e1000 which is deprecated
+            vmware.vmx["ethernet0.virtualdev"] = "vmxnet3"
+            # Add secondary network adapter like (enp0s8), will be called eth1 due to tranditional naming
+            # Consider updating this when new arm image comes out for support
+            vmware.vmx["ethernet2.present"] = "TRUE"
+            vmware.vmx["ethernet2.virtualDev"] = "vmxnet3"
+            vmware.vmx["ethernet2.networkName"] = "enp0s8"
+        end
+
+        node.vm.hostname = "kubenode#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
                 node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
 
         node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-          s.args = ["enp0s8"]
+          node.vm.provider "virtualbox" do |vb|
+            s.args = ["enp0s8"]
+          end
+          # The ARM based image from starboard still uses eth1 as secondary network interface
+          node.vm.provider "vmware_desktop" do |vmware|
+            s.args = ["eth1"]
+          end
         end
 
         node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
