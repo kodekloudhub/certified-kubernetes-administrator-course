@@ -70,7 +70,7 @@ Vagrant.configure("2") do |config|
             # Required otherwise "operation canceled" error will occur
             vmware.gui = true
             vmware.linked_clone = false
-            vmware.vmx["displayname"] = "kubemaster#{i}"
+            vmware.vmx["displayname"] = "kubemaster"
             vmware.vmx["memsize"] = 2048
             vmware.vmx["numvcpus"] = 2
             # Required since Vagrant tries to use e1000 which is deprecated and less performant
