@@ -105,7 +105,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: default-http-backend
+  name: default-backend-service
   namespace: app-space
 spec:
   selector:
@@ -113,3 +113,4 @@ spec:
   ports:
   - port: 80
     targetPort: 8080
+
