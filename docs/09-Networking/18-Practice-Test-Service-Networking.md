@@ -4,57 +4,83 @@
 
 #### Solution 
 
-  1. Check the Solution
+1. <details>
+   <summary>What network range are the nodes in the cluster part of?</summary>
 
-     <details>
+   ```
+   kubectl get nodes -o wide
+   ```
 
-      ```
-      172.17.0.0/16
-      ```
-     </details>
+   Note the INTERNAL-IP column to derive:
 
-  2. Check the Solution
+   ```
+   192.20.116.0/24
+   ```
+   </details>
 
-     <details>
+2. <details>
+   <summary>What is the range of IP addresses configured for PODs on this cluster?</summary>
 
-      ```
-      10.32.0.0/12
-      ```
-     </details>
+   ```
+   kubectl get pods -A -o wide
+   ```
 
-  3. Check the Solution
+   From this list, exclude the static control plane pods like `kube-apiserver` as these run on the host network, not the pod network. From the remaining pods we can derive:
 
-     <details>
+   ```
+   10.244.0.0/16
+   ```
+   </details>
 
-      ```
-      10.96.0.0/12
-      ```
-     </details>
+3. <details>
+   <summary>What is the IP Range configured for the services within the cluster?</summary>
 
-  4. Check the Solution
+   ```
+   kubectl get service -A
+   ```
 
-     <details>
+   Note the CLUSTER-IP column to derive:
 
-      ```
-      2
-      ```
-     </details>
+   ```
+   10.96.0.0/12
+   ```
+   </details>
 
-  5. Check the Solution
+4. <details>
+   <summary>How many kube-proxy pods are deployed in this cluster?</summary>
 
-     <details>
+   ```
+   kubectl get pod -n kube-system | grep kube-proxy
+   ```
 
-      ```
-      iptables
-      ```
-     </details>
+   Count the results
+   </details>
 
-  6. Check the Solution
+5. <details>
+   <summary>What type of proxy is the kube-proxy configured to use?</summary>
 
-     <details>
+   From the output of the above question, you have two kube-proxy pods, e.g.
 
-      ```
-      using daemonset
-      ```
-     </details>
+   ```
+   controlplane ~ ➜  kubectl get pod -n kube-system | grep kube-proxy
+   kube-proxy-rtr8p                       1/1     Running   0             56m
+   kube-proxy-t7w8f                       1/1     Running   0             56m
+   ```
+
+   Pick either and check its logs. The answer is there.
+
+   ```
+   k logs -n kube-system kube-proxy-rtr8p
+   ```
+   </details>
+
+6. <details>
+   <summary>How does this Kubernetes cluster ensure that a kube-proxy pod runs on all nodes in the cluster?</summary>
+
+   ```
+   kubectl get all -n kube-system
+   ```
+
+   From this, you can see that `kube-proxy` is a `daemonset`
+   </details>
 
