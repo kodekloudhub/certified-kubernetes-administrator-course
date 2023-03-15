@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dev-apd
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: webapp-apd
+  name: webapp-apd
+  namespace: dev-apd
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp-apd
+  template:
+    metadata:
+      labels:
+        app: webapp-apd
+    spec:
+      containers:
+      - image: kodekloud/webapp-color
+        name: webapp-color-apd
+
+
