@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: news-apd
+spec:
+  selector:
+    matchLabels:
+      name: news-apd
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: news-apd
+    spec:
+      containers:
+      - name: news-apd-container
+        image: busybox:1.28
+        command:
+         - sh
+         - -c
+         - "sleeeep 45000"
