@@ -39,3 +39,26 @@ spec:
     app-kgh: route01
 status:
   loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier-ii: square-apd
+    app-xnz: route02
+  name: square-apd
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app-xnz: route02
+  template:
+    metadata:
+      labels:
+        app-xnz: route02
+    spec:
+      containers:
+        - image: kodekloud/webapp-color:v2
+          name: square-apd
