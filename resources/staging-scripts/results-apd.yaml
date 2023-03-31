@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dashboard-apd
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: results-apd
+  namespace: dashboard-apd
+  labels:
+   dashboard: results-apd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      dashboard: results-apd
+  template:
+    metadata:
+      labels:
+        dashboard: results-apd
+    spec:
+      containers:
+      - name: results-apd-container
+        image: nginx:alpine
+        ports:
+        - containerPort: 80

@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    stage: test01 
+    test-app: v1
+  name: test-v1-apd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      test-app: v1
+  template:
+    metadata:
+      labels:
+        test-app: v1
+    spec:
+      containers:
+        - image: kodekloud/webapp-color:v1
+          name: test-v1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+     tag: test-apd-svc
+  name: test-apd-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    test-app: v1
+status:
+  loadBalancer: {}

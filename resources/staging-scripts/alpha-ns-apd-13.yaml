@@ -1,0 +1,68 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: alpha-ns-apd
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ruby-alpha-apd
+  labels:
+    mark-zxc: alpha1
+  namespace: alpha-ns-apd
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      alpha: v1
+  template:
+    metadata:
+      labels:
+        alpha: v1
+    spec:
+      containers:
+        - image: kodekloud/webapp-color:v1
+          name: ruby-alpha-apd
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: alpha-apd-service
+  name: alpha-apd-service
+  namespace: alpha-ns-apd
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    alpha: v1
+status:
+  loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    mark-zyx: alpha2
+  name: cube-alpha-apd
+  namespace: alpha-ns-apd
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      alpha: v1
+  template:
+    metadata:
+      labels:
+        alpha: v1
+    spec:
+      containers:
+        - image: kodekloud/webapp-color:v2
+          name: cube-alpha-apd

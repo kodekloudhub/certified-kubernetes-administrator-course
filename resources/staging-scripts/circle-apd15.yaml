@@ -1,0 +1,64 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier-i: circle-apd
+    app-kgh: route01
+  name: circle-apd
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app-kgh: route01
+  template:
+    metadata:
+      labels:
+        app-kgh: route01
+    spec:
+      containers:
+        - image: kodekloud/webapp-color:v1
+          name: circle-apd
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: foundary-svc
+  name: foundary-svc
+  namespace: default
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app-kgh: route01
+status:
+  loadBalancer: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tier-ii: square-apd
+    app-xnz: route02
+  name: square-apd
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app-xnz: route02
+  template:
+    metadata:
+      labels:
+        app-xnz: route02
+    spec:
+      containers:
+        - image: kodekloud/webapp-color:v2
+          name: square-apd

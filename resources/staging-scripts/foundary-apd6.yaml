@@ -1,0 +1,31 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: blue-apd
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: foundary-apd
+  name: foundary-apd
+  namespace: blue-apd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foundary-apd
+  template:
+    metadata:
+      labels:
+        app: foundary-apd
+    spec:
+      containers:
+      - command:
+        - sh
+        - -c 
+        - "sleep 9500"
+        image: ubuntu:jammy
+        name: foundary-apd
