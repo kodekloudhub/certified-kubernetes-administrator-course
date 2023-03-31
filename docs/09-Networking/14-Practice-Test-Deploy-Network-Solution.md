@@ -33,5 +33,5 @@
   3. <details>
       <summary>Deploy weave-net networking solution to the cluster.</summary>
 
-      Follow the instruction [here](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/#-installation) and apply the given manifest.
+      Apply the manifest found under the `/root/weave` directory.
      </details>
