@@ -16,7 +16,7 @@ So OCI stands for Open Container Initiative and it consists of an image spec and
 
 ![](../../images/02-03-03.png)
 
-So `rkt` and other container runtimes that adhere to the OCI standards where now supported as container runtimes for Kubernetes via the CRI, however Docker wasn’t built to support  the CRI standards, remember Docker was built way before CRI was introduced and Docker still was the dominant container tool used by most, so Kubernetes had to continue to support Docker as well and so Kubernetes introduced what is known as Docker-shim which was a hacky but temporary way to support Docker outside of the CRI.
+So `rkt` and other container runtimes that adhere to the OCI standards where now supported as container runtimes for Kubernetes via the CRI, however Docker wasn’t built to support  the CRI standards, remember Docker was built way before CRI was introduced and Docker still was the dominant container tool used by most, so Kubernetes had to continue to support Docker as well and so Kubernetes introduced what is known as `dockershim` which was a hacky but temporary way to support Docker outside of the CRI.
 
 ![](../../images/02-03-04.png)
 
@@ -24,7 +24,7 @@ So while most other container runtimes worked to the CRI, Docker continued to wo
 
 ![](../../images/02-03-05.png)
 
-So now you have `containerd` as a separate runtime and Docker separately, so Kubernetes continued to maintain support for Docker engine directly however having to maintain the Docker-shim was an unnecessary for and added complications so it was decided in v1.24 release of Kubernetes to remove Docker-shim completely and so support for Docker was removed. But you see all the images that were built before Docker was removed so all the Docker images continued to work because Docker followed the image spec from the OCI standards so all the images built by Docker follow the standard so they continued to work with `containerd` but Docker itself was removed as a supported runtime form Kubernetes. So that’s kind of the whole story, now let’s look into contained more specifically.
+So now you have `containerd` as a separate runtime and Docker separately, so Kubernetes continued to maintain support for Docker engine directly however having to maintain the dockershim was an unnecessary for and added complications so it was decided in v1.24 release of Kubernetes to remove dockershim completely and so support for Docker was removed. But you see all the images that were built before Docker was removed so all the Docker images continued to work because Docker followed the image spec from the OCI standards so all the images built by Docker follow the standard so they continued to work with `containerd` but Docker itself was removed as a supported runtime form Kubernetes. So that’s kind of the whole story, now let’s look into contained more specifically.
 
 ![](../../images/02-03-06.png)
 
@@ -70,7 +70,7 @@ So here’s a chart that lists the comparison between the Docker and `crictl` co
 | stats      | stats             | Display a live stream of container(s) resource usage statistics      | Column: NET/BLOCK I/O, PIDs         |
 | version    | version           | Show the runtime (Docker, ContainerD, or others) version information |                                     |
 
-So, since as I mentioned, `crictl` can be used to connect to any CRI compatible runtime, remember to set the right endpoint if you have multiple container runtimes configured, or if you want `crictl` to interact with a specific runtime, for example if you haven’t configured anything by default it’s going to connect to these sockets in this particular order, so it’s going to try and connect to Docker-shim first, then `containerd`, then CRI-O, then the CRI-dockerd – that’s kind of the order that it falls. But if you want to override that and set a specific endpoint, you use the –runtime-endpoint option with the `crictl` command line, or you could use the CONTAINER_RUNTIME_ENDPOINT environment variable. Set the environment variable to the right endpoint.
+So, since as I mentioned, `crictl` can be used to connect to any CRI compatible runtime, remember to set the right endpoint if you have multiple container runtimes configured, or if you want `crictl` to interact with a specific runtime, for example if you haven’t configured anything by default it’s going to connect to these sockets in this particular order, so it’s going to try and connect to dockershim first, then `containerd`, then CRI-O, then the CRI-dockerd – that’s kind of the order that it falls. But if you want to override that and set a specific endpoint, you use the –runtime-endpoint option with the `crictl` command line, or you could use the CONTAINER_RUNTIME_ENDPOINT environment variable. Set the environment variable to the right endpoint.
 
 ![](../../images/02-03-09.png)
 
