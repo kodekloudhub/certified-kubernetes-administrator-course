@@ -15,7 +15,7 @@ Solutions to practice test - node affinity
     --- OR ---
 
     ```
-    kubectl describe node node01 --show-labels
+    kubectl get node node01 --show-labels
     ```
 
     </details>
