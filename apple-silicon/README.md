@@ -278,7 +278,7 @@ Connect to each VM in turn and perform the following steps
     }
     ```
 
-    Once you have deleted all your VMs, edit this file and remove all the blocks related to kubemaster and kubeworker.
+    Once you have deleted all your VMs, edit this file and remove all the blocks (including their surrounding `{ }`) related to kubemaster and kubeworker. In the above example you would delete everything you can see. Do this for all kubemsters and kubeworkers.
 
     ```
     sudo vi /var/db/dhcpd_leases
