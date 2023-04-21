@@ -90,7 +90,7 @@ Connect to each VM in turn, and run the following:
 
 ### Step 3 - Set up Container Runtime (containerd)
 
-Here we deviate slightly from the lecture. Using the default version of `ocntainerd` that is provided by `apt-get install` results in a cluster with crashlooping pods, so we install a version that works by downloading directly from their github site. 
+Here we deviate slightly from the lecture. Using the default version of `containerd` that is provided by `apt-get install` results in a cluster with crashlooping pods, so we install a version that works by downloading directly from their github site. 
 
 Connect to each VM in turn, and run the following scripts:
 
