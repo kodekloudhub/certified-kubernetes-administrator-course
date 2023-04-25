@@ -242,3 +242,5 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [04-CKA-MockExam-2-Solution](docs/15-Mock-Exams/04-CKA-MockExam-2-Solution.md)
   - [05-Mock-Exam-3](docs/15-Mock-Exams/05-Mock-Exam-3.md)
   - [06-CKA-MockExam-3-Solution](docs/15-Mock-Exams/06-CKA-MockExam-3-Solution.md)
+
+### Thank you
