@@ -217,7 +217,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
     1.  <details>
         <summary>Reconfigure and restart etcd</summary>
 
-        We will need the location of the service unit file which we determined in Q10
+        We will need the location of the service unit file which we determined in Q12
 
         ```bash
         vi /etc/systemd/system/etcd.service
