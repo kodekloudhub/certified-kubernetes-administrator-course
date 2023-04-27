@@ -188,7 +188,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
     1.  <details>
         <summary>Check the ownership of the current etcd-data directory</summary>
 
-        We will need to ensure correct ownership of our restored data
+        We will need to ensure correct ownership of our restored data. We determined the location of the data directory in Q12
 
         ```bash
         ls -ld /var/lib/etcd-data/
@@ -217,7 +217,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
     1.  <details>
         <summary>Reconfigure and restart etcd</summary>
 
-        We will need the location of the service unit file which we determined in Q12
+        We will need the location of the service unit file which we also determined in Q12
 
         ```bash
         vi /etc/systemd/system/etcd.service
