@@ -131,6 +131,8 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 1.  <details>
     <summary>How many other nodes are part of the ETCD cluster that etcd-server is a part of?</summary>
 
+    This question is somewhat contentious. It ought not to contain the word `other`. The required answer is
+
     > 1
 
     </details>
@@ -160,7 +162,11 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 
     </details>
 1.  <details>
-    <summary>An ETCD backup for cluster2 is stored at /opt/cluster2.db. Use this snapshot file to carryout a restore on cluster2 to a new path /var/lib/etcd-data-new.</summary>
+    <summary>An ETCD backup for cluster2 is stored at /opt/cluster2.db. Use this snapshot file to carry out a restore on cluster2 to a new path <b>/var/lib/etcd-data-new</b>.</summary>
+
+    As you recall, `cluster2` is using _external_ etcd. This means
+    * `etcd` does not have to be on the control plane node of the cluster. In this case, it is not.
+    * `etcd` runs as an operating system service not a pod, therefore there is no manifest file to edit. Changes are instead made to a service unit file.</br></br>
 
     There are several parts to this question. Let's go through them one at a time.
 
