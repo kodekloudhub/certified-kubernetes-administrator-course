@@ -225,7 +225,7 @@ In this test, we practice both with _stacked_ and _external_ etcd clusters.
 
         Edit the `--data-dir` argument to the newly restored directory, and save.
 
-        Finally, reload and restart the `etcd` service. Whenever you have edited a system unit file, a `daemon-reload` is required to reload the in-memory configuration of the `systemd` service.
+        Finally, reload and restart the `etcd` service. Whenever you have edited a service unit file, a `daemon-reload` is required to reload the in-memory configuration of the `systemd` service.
 
         ```bash
         systemctl daemon-reload
