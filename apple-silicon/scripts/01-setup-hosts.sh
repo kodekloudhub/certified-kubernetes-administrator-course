@@ -1,1 +1,1 @@
-cat /tmp/hostentries | sudo tee -a /etc/hosts > /dev/null
+cat /tmp/hostentries | sudo tee -a /etc/hosts

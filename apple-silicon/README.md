@@ -122,12 +122,6 @@ Connect to each VM in turn, and run the following scripts:
     sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
     ```
 
-1. Configure crictl to work with containerd
-
-    ```bash
-    sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
-    ```
-
 1. Set containerd to auto-start at boot (enable it).
 
     ```bash
@@ -168,6 +162,12 @@ Connect to each VM in turn and perform the following steps
     sudo apt-mark hold kubelet kubeadm kubectl
     ```
 
+1. Configure crictl to work with containerd
+
+    ```bash
+    sudo crictl config runtime-endpoint unix:///var/run/containerd/containerd.sock
+    ```
+
 ### Step 5 - Provisioning the Kubernetes Cluster
 
 1. Configure the Control Plane
@@ -176,7 +176,7 @@ Connect to each VM in turn and perform the following steps
     1. Determine the IP address of the control plane node. We will need it for the forthcoming `kubeadm init` command.
 
         ```bash
-        dig +short kubemaster
+        dig +short kubemaster | grep -v 127
         ```
 
     1. Initialize control plane.
@@ -190,6 +190,7 @@ Connect to each VM in turn and perform the following steps
     1. Set up the kubeconfig file.
 
         ```bash
+        mkdir ~/.kube
         sudo cp /etc/kubernetes/admin.conf ~/.kube/config
         sudo chown ubuntu:ubuntu ~/.kube/config
         chmod 600 ~/.kube/config
