@@ -13,121 +13,215 @@
       ```
      </details>
 
-  2. Check the Solution
+  1. Check the Solution
 
      <details>
 
       ```
-      kubectl create namespace ingress-space
+      kubectl create namespace ingress-nginx
       ```
      </details>
 
-  3. Check the Solution
+  1. Check the Solution
 
      <details>
 
       ```
-      kubectl create configmap nginx-configuration --namespace ingress-space
+      kubectl create configmap ingress-nginx-controller --namespace ingress-nginx
       ```
      </details>
 
-  4. Check the Solution
+  1. Check the Solution
 
      <details>
 
       ```
-      kubectl create serviceaccount ingress-serviceaccount --namespace ingress-space
+      kubectl create serviceaccount ingress-nginx --namespace ingress-nginx
+      kubectl create serviceaccount ingress-nginx-admission --namespace ingress-nginx
       ```
      </details>
 
-  5. Check the Solution
+  1. Check the Solution
 
      <details>
 
       ```
       Ok
 
-      kubectl get roles,rolebindings --namespace ingress-space
+      kubectl get roles,rolebindings --namespace ingress-nginx
       ```
      </details>
 
-  6. Check the Solution
+  1. Check the Solution
 
      <details>
 
-      ```
+     Fix the issues
+
+     ```
+     vi /root/ingress-controller.yaml
+     ```
+
+     There is a `Deployment` and a `Service` in this file, There are issues with each.
+
+
+     1. The `namespace` of the deployment is incorrect.
+     1. indentation error at line 74 (use `:set nu` in vi to turn on line numbers)
+     1. `name` of the service is incorrect
+     1. `nodeport` on service is incorrect case. Should be `nodePort`
+
+      ```yaml
       apiVersion: apps/v1
       kind: Deployment
       metadata:
-        name: ingress-controller
-        namespace: ingress-space
+        labels:
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: ingress-nginx
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: ingress-nginx
+          app.kubernetes.io/part-of: ingress-nginx
+          app.kubernetes.io/version: 1.1.2
+          helm.sh/chart: ingress-nginx-4.0.18
+        name: ingress-nginx-controller
+        namespace: ingress-nginx
       spec:
-        replicas: 1
+        minReadySeconds: 0
+        revisionHistoryLimit: 10
         selector:
           matchLabels:
-            name: nginx-ingress
+            app.kubernetes.io/component: controller
+            app.kubernetes.io/instance: ingress-nginx
+            app.kubernetes.io/name: ingress-nginx
         template:
           metadata:
             labels:
-              name: nginx-ingress
+              app.kubernetes.io/component: controller
+              app.kubernetes.io/instance: ingress-nginx
+              app.kubernetes.io/name: ingress-nginx
           spec:
-            serviceAccountName: ingress-serviceaccount
             containers:
-              - name: nginx-ingress-controller
-                image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.21.0
-                args:
-                  - /nginx-ingress-controller
-                  - --configmap=$(POD_NAMESPACE)/nginx-configuration
-                  - --default-backend-service=app-space/default-http-backend
-                env:
-                  - name: POD_NAME
-                    valueFrom:
-                      fieldRef:
-                        fieldPath: metadata.name
-                  - name: POD_NAMESPACE
-                    valueFrom:
-                      fieldRef:
-                        fieldPath: metadata.namespace
-                ports:
-                  - name: http
-                    containerPort: 80
-                  - name: https
-                    containerPort: 443
-      ```
-     </details>
-  
-  7. Check the Solution
+            - args:
+              - /nginx-ingress-controller
+              - --publish-service=$(POD_NAMESPACE)/ingress-nginx-controller
+              - --election-id=ingress-controller-leader
+              - --watch-ingress-without-class=true
+              - --default-backend-service=app-space/default-http-backend
+              - --controller-class=k8s.io/ingress-nginx
+              - --ingress-class=nginx
+              - --configmap=$(POD_NAMESPACE)/ingress-nginx-controller
+              - --validating-webhook=:8443
+              - --validating-webhook-certificate=/usr/local/certificates/cert
+              - --validating-webhook-key=/usr/local/certificates/key
+              env:
+              - name: POD_NAME
+                valueFrom:
+                  fieldRef:
+                    fieldPath: metadata.name
+              - name: POD_NAMESPACE
+                valueFrom:
+                  fieldRef:
+                    fieldPath: metadata.namespace
+              - name: LD_PRELOAD
+                value: /usr/local/lib/libmimalloc.so
+              image: registry.k8s.io/ingress-nginx/controller:v1.1.2@sha256:28b11ce69e57843de44e3db6413e98d09de0f6688e33d4bd384002a44f78405c
+              imagePullPolicy: IfNotPresent
+              lifecycle:
+                preStop:
+                  exec:
+                    command:
+                    - /wait-shutdown
+              livenessProbe:
+                failureThreshold: 5
+                httpGet:
+                  path: /healthz
+                  port: 10254
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                successThreshold: 1
+                timeoutSeconds: 1
+              name: controller
+              ports:
+              - name: http
+                containerPort: 80
+                protocol: TCP
+              - containerPort: 443
+                name: https
+                protocol: TCP
+              - containerPort: 8443
+                name: webhook
+                protocol: TCP
+              readinessProbe:
+                failureThreshold: 3
+                httpGet:
+                  path: /healthz
+                  port: 10254
+                  scheme: HTTP
+                initialDelaySeconds: 10
+                periodSeconds: 10
+                successThreshold: 1
+                timeoutSeconds: 1
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 90Mi
+              securityContext:
+                allowPrivilegeEscalation: true
+                capabilities:
+                  add:
+                  - NET_BIND_SERVICE
+                  drop:
+                  - ALL
+                runAsUser: 101
+              volumeMounts:
+              - mountPath: /usr/local/certificates/
+                name: webhook-cert
+                readOnly: true
+            dnsPolicy: ClusterFirst
+            nodeSelector:
+              kubernetes.io/os: linux
+            serviceAccountName: ingress-nginx
+            terminationGracePeriodSeconds: 300
+            volumes:
+            - name: webhook-cert
+              secret:
+                secretName: ingress-nginx-admission
 
-     <details>
+      ---
 
-      ```
       apiVersion: v1
       kind: Service
       metadata:
-        name: ingress
-        namespace: ingress-space
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: ingress-nginx
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: ingress-nginx
+          app.kubernetes.io/part-of: ingress-nginx
+          app.kubernetes.io/version: 1.1.2
+          helm.sh/chart: ingress-nginx-4.0.18
+        name: ingress-nginx-controller
+        namespace: ingress-nginx
       spec:
-        type: NodePort
         ports:
         - port: 80
+          protocol: TCP
           targetPort: 80
-          protocol: TCP
           nodePort: 30080
-          name: http
-        - port: 443
-          targetPort: 443
-          protocol: TCP
-          name: https
         selector:
-          name: nginx-ingress
-      ```
+          app.kubernetes.io/component: controller
+          app.kubernetes.io/instance: ingress-nginx
+          app.kubernetes.io/name: ingress-nginx
+        type: NodePort      
+        ```
      </details>
-
-  8. Check the Solution
+  
+  1. Check the Solution
 
      <details>
 
-      ```
+      ```yaml
       apiVersion: networking.k8s.io/v1
       kind: Ingress
       metadata:
@@ -144,25 +238,24 @@
               pathType: Prefix
               backend:
                 service:
-                 name: wear-service
-                 port: 
+                name: wear-service
+                port: 
                   number: 8080
             - path: /watch
               pathType: Prefix
               backend:
                 service:
-                 name: video-service
-                 port:
+                name: video-service
+                port:
                   number: 8080
-
       ```
      </details>
 
-  9. Check the Solution
+  1. Check the Solution
 
      <details>
 
-      ```
-      OK
-      ```
+      Press the `Ingress` button above the terminal pane. 
+      In the browser tab that opens, try appending `/wear` or `/watch` after `labs.kodekloud.com` in the browser address bar.
+
      </details>
