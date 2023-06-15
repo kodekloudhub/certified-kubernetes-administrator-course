@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  name: {{ Q1_SERVICE_NAME }}
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    run: {{ Q1_SERVICE_NAME }}
+status:
+  loadBalancer: {}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: {{ Q1_POD1_NAME }}
+  name: {{ Q1_POD1_NAME }}
+spec:
+  nodeName: cluster1-node01
+  containers:
+  - image: nginx:latest
+    name: {{ Q1_POD1_NAME }}
+    ports:
+    - containerPort: 80
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: {{ Q1_POD2_NAME }}
+  name: {{ Q1_POD2_NAME }}
+spec:
+  nodeName: cluster1-node02
+  containers:
+  - args:
+    - sleep
+    - "86400"
+    image: curlimages/curl
+    name: {{ Q1_POD2_NAME }}
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}
