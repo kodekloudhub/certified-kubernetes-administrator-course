@@ -5,7 +5,7 @@
 ## Solution to LL-1
 
 1.  <details>
-    <summary>Upgrade the current version of kubernetes from 1.25.0 to 1.26.0 exactly using the kubeadm utility.</summary>
+    <summary>Upgrade the current version of kubernetes from 1.26.0 to 1.27.0 exactly using the kubeadm utility.</summary>
 
     There is currently an issue with this lab which requires an extra step. This may be addressed in the near future. 
 
@@ -22,14 +22,14 @@
         ```
         apt-get update
         apt-mark unhold kubeadm
-        apt-get install -y kubeadm=1.26.0-00
+        apt-get install -y kubeadm=1.27.0-00
         ```
 
     1. Plan and apply upgrade
 
         ```
         kubeadm upgrade plan
-        kubeadm upgrade apply v1.26.0
+        kubeadm upgrade apply v1.27.0
         ```
 
     1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifically to 1.26, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
@@ -56,7 +56,7 @@
 
         ```
         apt-mark unhold kubelet
-        apt-get install -y kubelet=1.26.0-00
+        apt-get install -y kubelet=1.27.0-00
         systemctl daemon-reload
         systemctl restart kubelet
         ```
@@ -71,7 +71,7 @@
 
         ```
         apt-mark unhold kubectl
-        apt-get install -y kubectl=1.26.0-00
+        apt-get install -y kubectl=1.27.0-00
         ```
 
     1. Re-hold packages
@@ -97,7 +97,7 @@
         ```
         apt-get update
         apt-mark unhold kubeadm
-        apt-get install -y kubeadm=1.26.0-00
+        apt-get install -y kubeadm=1.27.0-00
         ```
 
     1. Upgrade node
@@ -110,7 +110,7 @@
 
         ```
         apt-mark unhold kubelet
-        apt-get install kubelet=1.26.0-00
+        apt-get install kubelet=1.27.0-00
         systemctl daemon-reload
         systemctl restart kubelet
         ```
