@@ -38,7 +38,7 @@ Because we cannot use VirtualBox and are instead using Multipass, [a script is p
 1. Run the VM deploy script from your Mac terminal
 
     ```bash
-    ./deploy-virtual-machines
+    ./deploy-virtual-machines.sh
     ```
 
 2. Verify you can connect to all three (two if your Mac only has 8GB RAM) VMs:
