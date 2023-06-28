@@ -7,8 +7,25 @@ NUM_MASTER_NODE = 1
 NUM_WORKER_NODE = 2
 
 IP_NW = "192.168.56."
-MASTER_IP_START = 1
-NODE_IP_START = 2
+MASTER_IP_START = 10
+NODE_IP_START = 20
+
+def common_setup(node)
+  node.vm.provision "setup-kernel", :type => "shell", :path => "ubuntu/setup-kernel.sh"
+  # Restart
+  node.vm.provision :shell do |shell|
+    shell.privileged = true
+    shell.inline = "echo Rebooting"
+    shell.reboot = true
+  end
+
+  node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
+    s.args = ["enp0s8"]
+  end
+
+  node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
+  node.vm.provision "install-net-tools", type: "shell", :path => "ubuntu/install-net-tools.sh"
+end
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -22,7 +39,7 @@ Vagrant.configure("2") do |config|
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   # config.vm.box = "base"
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/jammy64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -54,44 +71,39 @@ Vagrant.configure("2") do |config|
 
   # Provision Master Nodes
   (1..NUM_MASTER_NODE).each do |i|
-      config.vm.define "kubemaster" do |node|
-        # Name shown in the GUI
-        node.vm.provider "virtualbox" do |vb|
-            vb.name = "kubemaster"
-            vb.memory = 2048
-            vb.cpus = 2
-        end
-        node.vm.hostname = "kubemaster"
-        node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
-        node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
-
-        node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-          s.args = ["enp0s8"]
-        end
-
-        node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
-
+    config.vm.define "kubemaster" do |node|
+      # Name shown in the GUI
+      node.vm.provider "virtualbox" do |vb|
+        vb.name = "kubemaster"
+        vb.memory = 2048
+        vb.cpus = 2
       end
-  end
+      node.vm.hostname = "kubemaster"
+      node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
+      node.vm.network "forwarded_port", guest: 22, host: "#{2710 + i}"
 
+      if i == 1
+        # Install (opinionated) configs for vim and tmux on master-1. These used by the author for CKA exam.
+        node.vm.provision "file", source: "./ubuntu/tmux.conf", destination: "$HOME/.tmux.conf"
+        node.vm.provision "file", source: "./ubuntu/vimrc", destination: "$HOME/.vimrc"
+      end
+      common_setup(node)
+    end
+  end
 
   # Provision Worker Nodes
   (1..NUM_WORKER_NODE).each do |i|
     config.vm.define "kubenode0#{i}" do |node|
-        node.vm.provider "virtualbox" do |vb|
-            vb.name = "kubenode0#{i}"
-            vb.memory = 2048
-            vb.cpus = 2
-        end
-        node.vm.hostname = "kubenode0#{i}"
-        node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
-                node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
+      node.vm.provider "virtualbox" do |vb|
+        vb.name = "kubenode0#{i}"
+        vb.memory = 2048
+        vb.cpus = 2
+      end
+      node.vm.hostname = "kubenode0#{i}"
+      node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
+      node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
 
-        node.vm.provision "setup-hosts", :type => "shell", :path => "ubuntu/vagrant/setup-hosts.sh" do |s|
-          s.args = ["enp0s8"]
-        end
-
-        node.vm.provision "setup-dns", type: "shell", :path => "ubuntu/update-dns.sh"
+      common_setup(node)
     end
   end
 end
