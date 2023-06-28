@@ -2,7 +2,13 @@
 
 - Take me to [Lecture](https://kodekloud.com/topic/demo-deployment-with-kubeadm/)
 
+# Apple Silicon
+
 If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the separate instructions [here](../../apple-silicon/README.md).
+
+For all other operating systems/hardware including Intel Apple, please remain on this page...
+
+# VirtualBox/Vagrant
 
 In this lab, you will build your own 3-node Kubernetes cluster using `kubeadm` with `VirtualBox` and `Vagrant`
 
