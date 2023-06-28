@@ -144,7 +144,7 @@ Connect to each VM in turn and perform the following steps
 1.  Download the Google Cloud public signing key
 
     ```bash
-    sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
     ```
 
 1.  Add the Kubernetes apt repository
