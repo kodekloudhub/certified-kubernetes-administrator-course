@@ -215,7 +215,7 @@ Connect to each VM in turn and perform the following steps
     1. Prepare the join command for the worker nodes
 
         ```bash
-        sudo kubeadm token create --print-join-command
+        kubeadm token create --print-join-command
         ```
 
         Copy the output of this. We will need to paste it on the worker(s)
@@ -225,7 +225,12 @@ Connect to each VM in turn and perform the following steps
     For each worker node
 
     1. Connect to the worker node
-    1. Paste the join command you copied from the final step of configuring the control plane to the command prompt and run it.
+    1. Paste the join command you copied from the final step of configuring the control plane to the command prompt and run it. Put `sudo` on the command line first, then passte the join command after sudo so it looks like
+
+        ```
+        sudo sudo kubeadm join 192.168.64.4:6443 --token whd8v4.1d2liamlgy3ccymb --discovery-token-ca-cert-hash sha256:9537c57af216775e26ffa7ad3e4955b76800fe9bab228ad3d8cb4e1c30402014`
+        ```
+
 
 ## Notes
 
