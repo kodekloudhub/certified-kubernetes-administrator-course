@@ -35,7 +35,7 @@ These instructions follow the steps in the lecture videos fairly closely, howeve
 
 Because we cannot use VirtualBox and are instead using Multipass, [a script is provided](./deploy-virtual-machines.sh) to create the three VMs.
 
-1. Run the VM deploy script from your Mac terminal 
+1. Run the VM deploy script from your Mac terminal
 
     ```bash
     ./deploy-virtual-machines
@@ -90,7 +90,7 @@ Connect to each VM in turn, and run the following:
 
 ### Step 3 - Set up Container Runtime (containerd)
 
-Here we deviate slightly from the lecture. Using the default version of `containerd` that is provided by `apt-get install` results in a cluster with crashlooping pods, so we install a version that works by downloading directly from their github site. 
+Here we deviate slightly from the lecture. Using the default version of `containerd` that is provided by `apt-get install` results in a cluster with crashlooping pods, so we install a version that works by downloading directly from their github site.
 
 Connect to each VM in turn, and run the following scripts:
 
@@ -128,7 +128,7 @@ Connect to each VM in turn, and run the following scripts:
     sudo systemctl daemon-reload
     sudo systemctl enable --now containerd
     ```
-    
+
 
 ### Step 4 - Install kubeadm, kubelet and kubectl
 
@@ -215,7 +215,7 @@ Connect to each VM in turn and perform the following steps
     1. Prepare the join command for the worker nodes
 
         ```bash
-        kubeadm token create --print-join-command
+        sudo kubeadm token create --print-join-command
         ```
 
         Copy the output of this. We will need to paste it on the worker(s)
@@ -253,7 +253,7 @@ Connect to each VM in turn and perform the following steps
     multipass start kubeworker01
     multipass start kubeworker02
     ```
-    
+
 1. To see the state of VMs, run
 
     ```bash
