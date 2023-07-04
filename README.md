@@ -166,7 +166,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [03-Pre-requisite-DNS](docs/09-Networking/03-Pre-requisite-DNS.md)
   - [04-Pre-requisite-CoreDNS](docs/09-Networking/04-Pre-requisite-CoreDNS.md)
   - [05-Pre-requisite-Network-Namespace](docs/09-Networking/05-Pre-requisite-Network-Namespace.md)
-  - [06-Pre-requisite-Docker-Networking](docs/09-Networking/06-Pre-requisite-Docker-Networking.mdd)
+  - [06-Pre-requisite-Docker-Networking](docs/09-Networking/06-Pre-requisite-Docker-Networking.md)
   - [07-Pre-requisite-CNI](docs/09-Networking/07-Pre-requisite-CNI.md)
   - [08-Cluster-Networking](docs/09-Networking/08-Cluster-Networking.md)
   - [09-Practice-Test-Explore-Env](docs/09-Networking/09-Practice-Test-Explore-Env.md)
