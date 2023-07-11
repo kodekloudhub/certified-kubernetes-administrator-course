@@ -61,7 +61,7 @@ In this section, we will take a look at how to manage certificates and certifica
   ![csr2](../../images/csr2.PNG)
   
 #### All the certificate releated operations are carried out by the controller manager. 
-- If anyone has to sign the certificates they need the CA Servers, route certificate and private key. The controller manager configuration has two options where you can specify this.
+- If anyone has to sign the certificates they need the CA Servers, root certificate and private key. The controller manager configuration has two options where you can specify this.
 
   ![csr3](../../images/csr3.PNG)
   
