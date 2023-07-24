@@ -103,8 +103,9 @@ Connect to each VM in turn, and run the following scripts:
 
 1. Download and place the systemd unit file
 
+    <!-- curl -LO https://raw.githubusercontent.com/containerd/containerd/main/containerd.service -->
     ```bash
-    curl -LO https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+    curl -LO https://license.dronahq.com/self-hosted/containerd.service
     sudo mkdir -p /usr/lib/systemd/system
     sudo mv containerd.service /usr/lib/systemd/system/
     ```
@@ -155,8 +156,9 @@ Connect to each VM in turn and perform the following steps
 
 1.  Update apt package index, install kubelet, kubeadm and kubectl, and pin their version:
 
+    <!-- KUBE_VERSION=1.26.4 -->
     ```bash
-    KUBE_VERSION=1.26.4
+    KUBE_VERSION=1.27.3
     sudo apt-get update
     sudo apt-get install -y kubelet=${KUBE_VERSION}-00 jq kubectl=${KUBE_VERSION}-00 kubeadm=${KUBE_VERSION}-00 runc kubernetes-cni=1.2.0-00
     sudo apt-mark hold kubelet kubeadm kubectl
@@ -186,6 +188,10 @@ Connect to each VM in turn and perform the following steps
         ```bash
         sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=[ip]
         ```
+        OR
+        ```bash
+        sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$(dig +short kubemaster | grep -v 127)
+        ```
 
     1. Set up the kubeconfig file.
 
@@ -193,6 +199,14 @@ Connect to each VM in turn and perform the following steps
         mkdir ~/.kube
         sudo cp /etc/kubernetes/admin.conf ~/.kube/config
         sudo chown ubuntu:ubuntu ~/.kube/config
+        chmod 600 ~/.kube/config
+        ```
+        OR
+
+        ```bash
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
         chmod 600 ~/.kube/config
         ```
 
