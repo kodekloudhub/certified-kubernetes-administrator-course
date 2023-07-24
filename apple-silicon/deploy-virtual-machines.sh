@@ -6,11 +6,19 @@ ARG=$1
 
 set -euo pipefail
 
-RED="\e[1;31m"
-YELLOW="\e[1;33m"
-GREEN="\e[1;32m"
-BLUE="\e[1;34m"
-NC="\e[0m"
+if [ -t 1 ]; then
+  export RED="$(tput setaf 1)"
+  export YELLOW="$(tput setaf 3)"
+  export GREEN="$(tput setaf 2)"
+  export BLUE="$(tput setaf 4)"
+  export NC="$(tput sgr0)"
+else
+  export RED=""
+  export YELLOW=""
+  export GREEN=""
+  export BLUE=""
+  export NC=""
+fi
 
 NUM_WORKER_NODES=2
 MEM_GB=$(( $(sysctl hw.memsize | cut -d ' ' -f 2) /  1073741824 ))
