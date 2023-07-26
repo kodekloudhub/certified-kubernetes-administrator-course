@@ -143,7 +143,13 @@ We will install kubectl here so that we can run commands against the cluster whe
     apt-mark hold kubectl
     ```
 
-## Configure Operating System and Container Runtime
+1. Exit the root shell
+
+    ```bash
+    exit
+    ```
+
+## Configure Operating System, Container Runtime and Kube Packages
 
 First, be logged into `student-node` as directed above.
 
@@ -212,6 +218,30 @@ ubuntu@controlplane:~$
         systemctl restart containerd
         ```
 
+1. Download the Google Cloud public signing key
+    ```bash
+    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+    ```
+
+1. Add the Kubernetes apt repository
+    ```bash
+    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+    ```
+
+1. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
+    ```bash
+    apt-get update
+    apt-get install -y kubelet kubeadm kubectl
+    apt-mark hold kubelet kubeadm kubectl
+    ```
+
+1.  Configure `crictl` in case we need it to examine running containers
+    ```bash
+    crictl config \
+        --set runtime-endpoint=unix:///run/containerd/containerd.sock \
+        --set image-endpoint=unix:///run/containerd/containerd.sock
+    ```
+
 1. Exit root shell
     ```bash
     exit
@@ -236,30 +266,6 @@ ubuntu@controlplane:~$
 1. Become root
     ```bash
     sudo -i
-    ```
-
-1. Download the Google Cloud public signing key
-    ```bash
-    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-    ```
-
-1. Add the Kubernetes apt repository
-    ```bash
-    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-    ```
-
-1. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
-    ```bash
-    apt-get update
-    apt-get install -y kubelet kubeadm kubectl
-    apt-mark hold kubelet kubeadm kubectl
-    ```
-
-1.  Configure `crictl` in case we need it to examine running containers
-    ```bash
-    crictl config \
-        --set runtime-endpoint=unix:///run/containerd/containerd.sock \
-        --set image-endpoint=unix:///run/containerd/containerd.sock
     ```
 
 1. Boot the control plane
@@ -356,14 +362,9 @@ Run the following on `student-node`
     kubectl edit service nginx
     ```
 
-    Edit the service until it looks like this
+    Edit the `spec:` part of the service until it looks like this. Don't change anything above `spec:`
 
     ```yaml
-    apiVersion: v1
-    kind: Service
-    metadata:
-      name: nginx
-      namespace: default
     spec:
       ports:
       - port: 80
