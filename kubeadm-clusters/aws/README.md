@@ -4,7 +4,7 @@ This guide shows how to install a 3 node kubeadm cluster on AWS EC2 instances. I
 
 * Instance type: `t3.medium`
 * Operating System: Ubuntu 22.04 (at time of writing)
-* Storage: `gp2`, 16GB
+* Storage: `gp2`, 8GB
 
 Note that this is an exercise in simply getting a cluster running. It will not be suitable for serving workloads to the internet, nor will it be properly secured, otherwise this guide would be three times longer!
 
@@ -110,13 +110,13 @@ Copy all these outputs to a notepad for later use.
 1. Wait for all instances to be ready (Instance state - `running`, Status check - `2/2 checks passed`). This will take 2-3 minutes. You may have to hit the refresh button a couple of times. We should now have something that looks like this: ![instances](../../images/kubeadm-ec2-instances-ready.png)
 1. Test you can log in.
     1. You can do it directly from your terminal by copying and pasting the value of `connect_command` that was output at the end of the terraform run, _or_
-    1. Use MobaXterm or another SSH client to connect to the IP address output as part of the connect command, as user `ubuntu`, and you will also need to give it the path to the SSH key file.
+    1. Use MobaXterm or another SSH client to connect to the IP address output as part of the connect command, as user `ubuntu`, and you will also need to give it the path to the SSH key file, which is the path after `-i` in the `connect_command`.
 
 ## Prepare the student node
 
 We will install kubectl here so that we can run commands against the cluster when it is built
 
-1. Become root (saves typing `suo` before every command)
+1. Become root (saves typing `sudo` before every command)
     ```bash
     sudo -i
     ```
@@ -143,7 +143,7 @@ We will install kubectl here so that we can run commands against the cluster whe
     apt-mark hold kubectl
     ```
 
-## Configure Operating System and Services
+## Configure Operating System and Container Runtime
 
 First, be logged into `student-node` as directed above.
 
@@ -362,11 +362,8 @@ Run the following on `student-node`
     apiVersion: v1
     kind: Service
     metadata:
-      creationTimestamp: "2023-07-26T05:16:10Z"
       name: nginx
       namespace: default
-      resourceVersion: "1061"
-      uid: 7abd10c4-6fb1-45eb-9e39-c8e781e597bc
     spec:
       ports:
       - port: 80
@@ -377,12 +374,6 @@ Run the following on `student-node`
         run: nginx
       sessionAffinity: None
       type: NodePort
-    ```
-
-1.  Get the node port
-
-    ```bash
-    kubectl get service nginx
     ```
 
 1.  Test with curl
@@ -400,7 +391,7 @@ Run the following on `student-node`
         node01   Ready    <none>   13m   v1.27.4   172.31.26.150   <none>        Ubuntu 22.04.2 LTS   5.19.0-1028-aws   containerd://1.6.12
         ```
 
-    1. Using the INTERNAL-IP and the nodePort value set on the service, form a `curl` command
+    1. Using the INTERNAL-IP and the nodePort value set on the service, form a `curl` command. The IP will be different to what is shown here.
 
         ```bash
         curl http://172.31.26.150:30080
@@ -410,7 +401,7 @@ Run the following on `student-node`
 
     1. Get the _public_ IP of one of the nodes. These were output by Terraform. You can also find this by looking at the instances on the EC2 page of the AWS console.
 
-    1. Using the public IP and the nodePort value set on the service, form a URL to paste into your browser
+    1. Using the public IP and the nodePort value set on the service, form a URL to paste into your browser. The IP will be different to what is shown here.
 
         ```
         http://18.205.245.169:30080/
