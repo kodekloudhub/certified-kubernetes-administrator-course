@@ -7,7 +7,7 @@ In this section, we will take a look at API Groups in kubernetes
 
  ![api3](../../images/api3.PNG)
  
-- The kubernetes API is grouped into multiple such groups based on thier purpose. Such as one for **`APIs`**, one for **`healthz`**, **`metrics`** and **`logs`** etc.
+- The kubernetes API is grouped into multiple such groups based on their purpose. Such as one for **`APIs`**, one for **`healthz`**, **`metrics`** and **`logs`** etc.
 
   ![api4](../../images/api4.PNG)
  
