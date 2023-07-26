@@ -6,7 +6,7 @@ This guide shows how to install a 3 node kubeadm cluster on AWS EC2 instances. I
 * Operating System: Ubuntu 22.04 (at time of writing)
 * Storage: `gp2`, 8GB
 
-Note that this is an exercise in simply getting a cluster running. It will not be suitable for serving workloads to the internet, nor will it be properly secured, otherwise this guide would be three times longer!
+Note that this is an exercise in simply getting a cluster running and is a learning exercise only! It will not be suitable for serving workloads to the internet, nor will it be properly secured, otherwise this guide would be three times longer! It should not be used as a basis for building a production cluster.
 
 # 1. Provision Infrastructure
 
