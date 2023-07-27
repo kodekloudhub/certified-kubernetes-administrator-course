@@ -15,20 +15,23 @@ We will provision the following infrastructure. The infrastructure will be creat
 ![Infra](../../images/kubeadm-aws-architecture.png)
 
 
-As can be seen in this diagram, we will create four EC2 instances; three form the cluster itself and the fourth, `student-node` is where you will coordinate the work from. This is similar to how the real exam works - you start on a student node, then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam.
+As can be seen in this diagram, we will create four EC2 instances; three form the cluster itself and the fourth, `student-node` is where you will coordinate the work from. This is similar to how the real exam works - you start on a student node, then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam. The `student-node` assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
 
-**TODO** Ingress nodeports?
+We have also set up direct connection from your workstation to the node ports of the workers so that you can browse any NodePort services you create (see security below).
 
 Some basic security will be configured:
-* Only you will be able to connect to the student-node. A piece of Terraform magic will determine your public IP address and set it in the security group of the student-node instance.
-* Only you will be able to access the cluster's node ports over the Internet.
-* Only the student node can SSH to the cluster nodes.
-* Ports required by Kubernetes itself (inc etcd) and Weave CNI will be configured in security groups on the cluster nodes.
 
-Security not configured, some of which would be used for a real production workload:
-* The kube nodes would be on private subnets (no direct access from the Internet) and placed behind a NAT gateway to allow them to download packages.
+* Only you will be able to connect to the student-node. A piece of Terraform magic will determine your public IP address and set it in the security group of the student-node instance.
+* Only you will be able to access the cluster's node ports over the Internet, using the same technique as above.
+* Only the student node can SSH to the cluster nodes.
+* Ports required by Kubernetes itself (inc. etcd) and Weave CNI will be configured in security groups on the cluster nodes.
+
+Security issues that would make this unsuitable for a genuine production cluster:
+
+* The kube nodes would be on private subnets (no direct access from the Internet) and placed behind a NAT gateway to allow them to download packages, or with a more extreme security posture, completely [airgapped](https://en.wikipedia.org/wiki/Air_gap_(networking)).
+* Access to API server and etcd would be more tightly controlled.
 * Use of default VPC is not recommended.
-* A cloud load balancer would be provisioned to provide ingress to the cluster. It is _definitely_ not recommended to expose the worker nodes' node ports to the Internet as we are doing here!!!
+* A cloud load balancer coupled with an ingress controller would be provisioned to provide ingress to the cluster. It is _definitely_ not recommended to expose the worker nodes' node ports to the Internet as we are doing here!!!
 
 Other things that will be configured by the Terraform code
 * Host names set on the nodes: `student-node`, `controlplane`, `node01`, `node02`
