@@ -96,7 +96,7 @@ terraform plan
 terraform apply
 ```
 
-If this all runs correctly, you will see something like the following at the end of all the output.
+If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will_ be different for you. Path to SSH key file (after `-i`) will be different on Windows and may be different on Mac.
 
 ```
 Apply complete! Resources: 22 added, 0 changed, 0 destroyed.
