@@ -205,6 +205,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [03-Provision-VMs-with-Vagrant](docs/11-Install-Kubernetes-the-kubeadm-way/03-Provision-VMs-with-Vagrant.md)
   - [04-Demo-Deployment-with-Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/04-Demo-Deployment-with-Kubeadm.md)
   - [05-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/05-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm.md)
+  - [BONUS - Install kubeadm cluster on AWS](./kubeadm-clusters/aws)
 
 
 - [12-Troubleshooting](docs/12-Troubleshooting)
