@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: frontend-stable-cka05-arch
+spec:
+  nodeName: cluster1-controlplane
+  containers:
+  - name: fe-cka05-arch
+    image: vish/stress
+    resources:
+      limits:
+        cpu: "0.395"
+      requests:
+        cpu: "0.35"
+    args:
+    - -cpus
+    - "1"
