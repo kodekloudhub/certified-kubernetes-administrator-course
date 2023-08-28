@@ -62,7 +62,7 @@ spec:
 status: {}
 ```
 
-The egress policy you find here is a "red herring". Since we are not concerned with egress from the nginx pod, only ingress to it from the other pods, then it does not feature in the solution to this problem so you can ignore it.
+The egress policy you find here is a [red herring](https://dictionary.cambridge.org/dictionary/english/red-herring). Since we are not concerned with egress from the nginx pod, only ingress to it from the other pods, then it does not feature in the solution to this problem so you can ignore it.
 
 There are two issues that need fixing here. You can modify the policy and make both these changes with a single invocation of:
 
