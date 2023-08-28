@@ -107,13 +107,13 @@ spec:
 
 Note the fact that there must be no `-` before the podSelector that we added. If we put a `-` then the rule would operate as follows
 
-> **ALLOW** Any pod in namespace `default` **OR** any pod with label `app=cyan-white-cka28-trb`
+> **ALLOW** any pod in namespace `default` **OR** any pod in any namespace with label `app=cyan-white-cka28-trb`
 
 That would also permit `cyan-black-cka28-trb` to access, which is incorrect! Without the `-`, the rule operates correctly as follows
 
-> **ALLOW** Any pod in namespace `default` **AND** with label `app=cyan-white-cka28-trb`
+> **ALLOW** any pod in namespace `default` **AND** (in the same namespace) with label `app=cyan-white-cka28-trb`
 
-Let's test this. We will use the `--connection-timeout` argument for `curl` so as not to wait too long for the expected failed connection from the black pod.
+Let's test this. We will use the `--connect-timeout` argument for `curl` so as not to wait too long for the expected failed connection from the black pod.
 
 ```
 k exec -n default cyan-white-cka28-trb -it -- curl --connect-timeout 10 cyan-svc-cka28-trb.cyan-ns-cka28-trb.svc
