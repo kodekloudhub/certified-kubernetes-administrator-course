@@ -111,7 +111,9 @@ Note the fact that there must be no `-` before the podSelector that we added. If
 
 That would also permit `cyan-black-cka28-trb` to access, which is incorrect! Without the `-`, the rule operates correctly as follows
 
-> **ALLOW** any pod in namespace `default` **AND** (in the same namespace) with label `app=cyan-white-cka28-trb`
+> **ALLOW** any pod in namespace `default` **THAT HAS** label `app=cyan-white-cka28-trb`
+
+Which basically means pods in namespace `default` **AND** with correct labels.
 
 Let's test this. We will use the `--connect-timeout` argument for `curl` so as not to wait too long for the expected failed connection from the black pod.
 
