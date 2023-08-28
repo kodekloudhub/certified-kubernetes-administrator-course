@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend-cka06-arch
+  namespace: default
+spec:
+  nodeName: cluster1-node02
+  containers:
+  - name: memory-demo-ctr
+    image: polinux/stress
+    resources:
+      requests:
+        memory: "1G"  
+      limits:
+        memory: "1.2G"  
+    command: ["stress"]
+    args: ["--vm", "1", "--vm-bytes", "1G", "--vm-hang", "1"]
