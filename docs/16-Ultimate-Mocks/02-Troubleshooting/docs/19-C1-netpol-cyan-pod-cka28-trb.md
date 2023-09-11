@@ -14,7 +14,7 @@ Two other pods called `cyan-white-cka28-trb1` and `cyan-black-cka28-trb` are als
 
 The nginx based app running on the `cyan-pod-cka28-trb` pod is exposed internally on the default nginx port (80).
 
-**Expectation**: This app should only be accessible from the `cyan-white-cka28`-trb1 pod.
+**Expectation**: This app should only be accessible from the `cyan-white-cka28-trb` pod.
 
 **Problem**: This app is not accessible from anywhere.
 
