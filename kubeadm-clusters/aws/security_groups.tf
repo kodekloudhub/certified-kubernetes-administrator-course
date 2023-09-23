@@ -46,6 +46,16 @@ resource "aws_security_group" "student_node" {
       "${chomp(data.http.my_ip.response_body)}/32"
     ]
   }
+
+  ingress {
+    description = "EC2 Instance Connect"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [
+      "18.206.107.24/29"
+    ]
+  }
 }
 
 # Security group for ingress to controlplane
