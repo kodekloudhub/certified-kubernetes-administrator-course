@@ -123,27 +123,12 @@ We will install kubectl here so that we can run commands against the cluster whe
     ```bash
     sudo -i
     ```
-1. Update the apt package index and install packages needed to use the Kubernetes apt repository:
-    ```bash
-    apt-get update
-    apt-get install -y apt-transport-https ca-certificates curl
-    ```
 
-1. Download the Google Cloud public signing key
+1. Install latest version of kubectl and place in the user programs directory
     ```bash
-    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
-    ```
-
-1. Add the Kubernetes apt repository
-    ```bash
-    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
-    ```
-
-1. Update apt package index, install kubectl, and pin its version
-    ```bash
-    apt-get update
-    apt-get install -y kubectl
-    apt-mark hold kubectl
+    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    chmod +x kubectl
+    mv kubectl /usr/local/bin
     ```
 
 1. Exit the root shell
@@ -151,6 +136,18 @@ We will install kubectl here so that we can run commands against the cluster whe
     ```bash
     exit
     ```
+
+1. Check
+
+    ```bash
+    kubectl version
+    ```
+
+    It should amongst other things tell you
+
+    > The connection to the server localhost:8080 was refused - did you specify the right host or port?
+
+    which is fine, since we haven't installed kubernetes yet.
 
 ## Configure Operating System, Container Runtime and Kube Packages
 
@@ -221,14 +218,14 @@ ubuntu@controlplane:~$
         systemctl restart containerd
         ```
 
-1. Download the Google Cloud public signing key
+1. Download the Kubernetes public signing key
     ```bash
-    curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
     ```
 
 1. Add the Kubernetes apt repository
     ```bash
-    echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /' > /etc/apt/sources.list.d/kubernetes.list
     ```
 
 1. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
