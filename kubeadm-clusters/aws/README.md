@@ -119,6 +119,8 @@ Copy all these outputs to a notepad for later use.
 
 We will install kubectl here so that we can run commands against the cluster when it is built
 
+1. Log into `student_node`, as per the login test above.
+
 1. Become root (saves typing `sudo` before every command)
     ```bash
     sudo -i
