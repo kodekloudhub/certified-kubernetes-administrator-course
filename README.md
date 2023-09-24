@@ -245,3 +245,8 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [06-CKA-MockExam-3-Solution](docs/15-Mock-Exams/06-CKA-MockExam-3-Solution.md)
 
 - [16-Ultimate-Mocks](docs/16-Ultimate-Mocks/)
+
+- [17-Tips-and-Tricks](docs/17-tips-and-tricks/)
+  - [01-Server for testing network policies](docs/17-tips-and-tricks/docs/01-server-for-testing-network-policies.md)
+  - [02-Client-for-testing-network-things](docs/17-tips-and-tricks/docs/02-client--for-testing-network-things.md)
+
