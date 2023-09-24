@@ -198,7 +198,7 @@ ubuntu@controlplane:~$
     ```bash
     apt-get install -y containerd
     ```
-1.  Configure the container runtime to use CGroups. This part is the bit many students miss, and if not done results in a controlplane that comes up, then all the pods start crashlooping.
+1.  Configure the container runtime to use CGroups. This part is the bit many students miss, and if not done results in a controlplane that comes up, then all the pods start crashlooping. `kubectl` will also fail with an error like `The connection to the server x.x.x.x:6443 was refused - did you specify the right host or port?`
 
     1. Create default configuration
 
