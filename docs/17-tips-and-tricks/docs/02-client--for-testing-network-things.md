@@ -18,7 +18,7 @@ kubectl run tester --image wbitt/network-multitool
 When the pod is running, you can exec into it and run the commands
 
 ```
-$ kubectl exec tester --it -- bash
+$ kubectl exec tester -it -- bash
 
 /# curl something
 /# nslookup something-else
@@ -28,6 +28,6 @@ $ kubectl exec tester --it -- bash
 Or run the commands directly if you need to send the results to a file
 
 ```
-$ kubectl exec tester --it -- nslookup my-service.default.svc > /opt/some-file.txt
+$ kubectl exec tester -it -- nslookup my-service.default.svc > /opt/some-file.txt
 ```
 
