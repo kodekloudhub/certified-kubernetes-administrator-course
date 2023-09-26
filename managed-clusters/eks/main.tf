@@ -16,8 +16,6 @@ provider "aws" {
       "kubernetes.io/cluster/demo-eks" = "owned"
     }
   }
-  access_key = var.access_key
-  secret_key = var.secret_key
 }
 
 output "NodeInstanceRole" {
