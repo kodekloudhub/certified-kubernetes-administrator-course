@@ -2,6 +2,10 @@
 #
 # Creates the unmanaged node group
 #
+# Most of these resources are terraform resources converted from
+# the CloudFormation template at
+# https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2022-12-23/amazon-eks-nodegroup.yaml
+#
 ####################################################################
 
 
@@ -42,6 +46,7 @@ data "aws_iam_policy_document" "assume_role_ec2" {
   }
 }
 
+# IAM role to assign to worker nodes
 resource "aws_iam_role" "node_instance_role" {
   name               = "demo-eks-node"
   assume_role_policy = data.aws_iam_policy_document.assume_role_ec2.json
@@ -54,12 +59,14 @@ resource "aws_iam_role" "node_instance_role" {
   path = "/"
 }
 
+# Instance profile to associate above role with worker nodes
 resource "aws_iam_instance_profile" "node_instance_profile" {
   name = "NodeInstanceProfile"
   path = "/"
   role = aws_iam_role.node_instance_role.id
 }
 
+# Security group to apply to worker nodes
 resource "aws_security_group" "node_security_group" {
   name        = "NodeSecurityGroupIngress"
   description = "Security group for all nodes in the cluster"
@@ -68,6 +75,11 @@ resource "aws_security_group" "node_security_group" {
     "Name" = "NodeSecurityGroupIngress"
   }
 }
+
+#
+# Now follows several rules that are applied to the node security group
+# to allow control plane to access nodes
+#
 
 resource "aws_vpc_security_group_ingress_rule" "node_security_group_ingress" {
   description                  = "Allow node to communicate with each other"
@@ -83,6 +95,29 @@ resource "aws_vpc_security_group_egress_rule" "node_egress_all" {
   cidr_ipv4         = "0.0.0.0/0"
   security_group_id = aws_security_group.node_security_group.id
 }
+
+resource "aws_vpc_security_group_ingress_rule" "node_security_group_from_control_plane_ingress" {
+  description                  = "Allow worker Kubelets and pods to receive communication from the cluster control plane"
+  security_group_id            = aws_security_group.node_security_group.id
+  referenced_security_group_id = data.aws_eks_cluster.deme_eks.vpc_config[0].cluster_security_group_id
+  from_port                    = 1025
+  to_port                      = 65535
+  ip_protocol                  = "TCP"
+}
+
+resource "aws_vpc_security_group_ingress_rule" "control_plane_egress_to_node_security_group_on_443" {
+  description                  = "Allow pods running extension API servers on port 443 to receive communication from cluster control plane"
+  security_group_id            = aws_security_group.node_security_group.id
+  referenced_security_group_id = data.aws_eks_cluster.deme_eks.vpc_config[0].cluster_security_group_id
+  from_port                    = 443
+  to_port                      = 443
+  ip_protocol                  = "TCP"
+}
+
+#
+# Now follows several rules that are applied to the EKS cluster security group
+# to allow nodes to access control plane
+#
 
 resource "aws_vpc_security_group_ingress_rule" "cluster_control_plane_security_group_ingress" {
   description                  = "Allow pods to communicate with the cluster API Server"
@@ -111,24 +146,7 @@ resource "aws_vpc_security_group_egress_rule" "control_plane_egress_to_node_secu
   ip_protocol                  = "TCP"
 }
 
-resource "aws_vpc_security_group_ingress_rule" "node_security_group_from_control_plane_ingress" {
-  description                  = "Allow worker Kubelets and pods to receive communication from the cluster control plane"
-  security_group_id            = aws_security_group.node_security_group.id
-  referenced_security_group_id = data.aws_eks_cluster.deme_eks.vpc_config[0].cluster_security_group_id
-  from_port                    = 1025
-  to_port                      = 65535
-  ip_protocol                  = "TCP"
-}
-
-resource "aws_vpc_security_group_ingress_rule" "control_plane_egress_to_node_security_group_on_443" {
-  description                  = "Allow pods running extension API servers on port 443 to receive communication from cluster control plane"
-  security_group_id            = aws_security_group.node_security_group.id
-  referenced_security_group_id = data.aws_eks_cluster.deme_eks.vpc_config[0].cluster_security_group_id
-  from_port                    = 443
-  to_port                      = 443
-  ip_protocol                  = "TCP"
-}
-
+# Launch Template defines how the autoscaling group will create worker nodes.
 resource "aws_launch_template" "node_launch_template" {
   name = "NodeLaunchTemplate"
   block_device_mappings {
@@ -195,8 +213,8 @@ resource "time_sleep" "wait_30_seconds" {
 # Defer to CloudFormation here to create AutoScalingGroup
 # as the terraform ASG resource does not support UpdatePolicy
 resource "aws_cloudformation_stack" "autoscaling_group" {
-  depends_on = [ 
-    time_sleep.time_sleep.wait_30_seconds 
+  depends_on = [
+    time_sleep.wait_30_seconds
   ]
   name = "${var.cluster_name}-stack"
   template_body = <<EOF
