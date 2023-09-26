@@ -1,57 +1,41 @@
 # Amazon EKS Cluster
 
-In this guide, we will deploy an EKS cluster in the KodeKloud AWS Playground using Terraform. This cluster utilises an *unmanged* node group, i.e. one we have to deploy and join manually as the playground does not support the creation of managed node groups.
+In this guide, we will deploy an EKS cluster in the KodeKloud AWS Playground using Terraform. This cluster utilises an *unmanaged* node group, i.e. one we have to deploy and join manually as the playground does not support the creation of managed node groups.
 
-If you want to do this manually from the AWS console, you can follow the guide created by Raymond Bao Ly [here](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748)
+If you want to do this manually from the AWS console, you can follow the guide created by Raymond Bao Ly [here](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748).
 
-The terraform code will create an EKS cluster called `demo-eks`
+This terraform code will create an EKS cluster called `demo-eks` and will have the same properties as the manually deployed version linked above.
 
-We will run this entire lab in AWS CloudShell with is a Linux terminal you run inside the AWS console with most of what we need preconfigured. [Click here](https://us-east-1.console.aws.amazon.com/cloudshell/home?region=us-east-1) to open CloudShell.
+## Start an AWS Playground
+
+[Click here](https://kodekloud.com/topic/playground-aws/) to start a playground, and click `START LAB` to request a new AWS Cloud Playground instance. After a few seconds, you will receive your credential to access AWS Cloud console.
+
+Note that you must have KodeKloud Pro subscription to run an AWS playground. If you have your own AWS account, this should still work, however you will bear the cost for any resources created until you delete them.
+
+We will run this entire lab in AWS CloudShell which is a Linux terminal you run inside the AWS console and has most of what we need preconfigured. [Click here](https://us-east-1.console.aws.amazon.com/cloudshell/home?region=us-east-1) to open CloudShell.
+
+From here on, all commands must be run in the CloudShell terminal
 
 ## Install Terraform
 
-This deployment was tested using Terraform v1.5.3
+```bash
+curl -O https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
+unzip terraform_1.5.7_linux_amd64.zip
+mkdir -p ~/bin
+mv terraform ~/bin/
+terraform version
+```
 
-If you don't already have Terraform installed, it is quite easy to do. Don't be alarmed if you don't know Terraform, just go with the flow here. Note that for a successful career in DevOps you cannot avoid Terraform, so we recommend our courses which can be found [on this page](https://kodekloud.com/learning-path-infrastructure-as-code/).
-
-If you are studying or have studied Terraform, have a good look at the configuration files and see if you can understand how they work.
-
-
-1. Go to https://developer.hashicorp.com/terraform/downloads?product_intent=terraform
-1. Select your operating system
-    1. For macOS, the easiest way is to use homebrew as indicated.
-    1. For Windows, select `AMD64` and download the zip file. The zip file contains only `terraform.exe`. Unzip it and place it somewhere you can run it from.
-        * If you have the [chocolately](https://chocolatey.org/) package manager, simply run `choco install -y terraform` As Administrator.
-        * If you don't, you really should consider [installing it](https://chocolatey.org/install).
-
-## Create IAM access keys
-
-We need access keys for Terraform to connect to the AWS account.
-
-1. Log into AWS using the URL and credentials provided when you started the playground.
-1. Go to the IAM console.
-1. Select `Users` from the menu in the left panel.
-1. Find your user account (for playground, username will begin with `odl_user_`), and click it.
-1. Select `Security credentials` tab, scroll down to `Access keys` and press `Create access key`.
-1. Select `Command Line Interface (CLI)` radio button.
-1. Check the `Confirmation` checkbox at the bottom and press `Next`.
-1. Enter anything for the description and press `Next`.
-1. Show the secret access key. Copy access key and secret access key to a notepad for use later, or download the CSV file.
-
-## Prepare the terraform code
-
-You can either individually download all the `tf` files from this repo folder and open a command prompt/terminal in the folder you downloaded to, or clone the repo as follows:
+## Clone this repo
 
 ```bash
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
+```
+
+Now change into the EKS directory
+
+```bash
 cd certified-kubernetes-administrator-course/managed-clusters/eks
-```
-
-Now create a file `terraform.tfvars` in the same folder as the rest of the `.tf` files. Use the following template for this file and replace the values for `access_key` and `secret_key` with the keys you generated in the step above
-
-```
-access_key   = "AKIASFFZ4IEWZEXAMPLE"
-secret_key   = "st1i+TlfYn4+lpp4vYRNuxbafYm8jraCEXAMPLE"
 ```
 
 ## Provision the infrastructure
@@ -62,7 +46,15 @@ terraform plan
 terraform apply
 ```
 
-This may take up to 10 minutes to complete.
+This may take up to 10 minutes to complete. When it completes, you will see something similar to this at the end of all the output. You will need the value of `NodeInstanceRole` later.
+
+```
+Outputs:
+
+NodeAutoScalingGroup = "demo-eks-stack-NodeGroup-UUJRINMIFPLO"
+NodeInstanceRole = "arn:aws:iam::387779321901:role/demo-eks-node"
+NodeSecurityGroup = "sg-003010e8d8f9f32bd"
+```
 
 ## Set up access and join nodes
 
@@ -75,3 +67,51 @@ Do the following at the CloudShell command line
     ```bash
     aws eks update-kubeconfig --region us-east-1 --name demo-eks
     ```
+
+1.  Join the worker nodes
+
+    1. Download the node authentication ConfigMap
+
+        ```
+        curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/aws-auth-cm.yaml
+        ```
+
+    1.  Edit the ConfigMap YAML to add in the `NodeInstanceRole` we got from terraform
+
+        ```bash
+        vi aws-auth-cm.yaml
+        ```
+
+        Delete the text `<ARN of instance role (not instance profile)>` and replace it with the value for `NodeInstanceRole` we got from terraform, then save and exit.
+
+        ```yaml
+        apiVersion: v1
+        kind: ConfigMap
+        metadata:
+        name: aws-auth
+        namespace: kube-system
+        data:
+        mapRoles: |
+            - rolearn: <ARN of instance role (not instance profile)> # <- EDIT THIS
+            username: system:node:{{EC2PrivateDNSName}}
+            groups:
+                - system:bootstrappers
+                - system:nodes
+
+        ```
+
+    1.  Apply the edited ConfigMap to join the nodes
+
+        ```bash
+        kubectl apply -f aws-auth-cm.yaml
+        ```
+
+        Wait 2-3 minutes for node join to complete, then
+
+        ```bash
+        kubectl get node -o wide
+        ```
+
+        You should see 3 worker nodes in ready state. Note that with EKS you do not see control plane nodes, as they are managed by AWS.
+
+1.  View the completed cluster in the [EKS Console](https://us-east-1.console.aws.amazon.com/eks/home?region=us-east-1).
