@@ -182,11 +182,23 @@ resource "aws_launch_template" "node_launch_template" {
   )
 }
 
+
+# Wait for LT to settle, or CloudFormation may fail
+resource "time_sleep" "wait_30_seconds" {
+  depends_on = [
+    aws_launch_template.node_launch_template
+    ]
+
+  create_duration = "30s"
+}
+
 # Defer to CloudFormation here to create AutoScalingGroup
 # as the terraform ASG resource does not support UpdatePolicy
 resource "aws_cloudformation_stack" "autoscaling_group" {
+  depends_on = [ 
+    time_sleep.time_sleep.wait_30_seconds 
+  ]
   name = "${var.cluster_name}-stack"
-
   template_body = <<EOF
 Description: "Node autoscaler"
 Resources:
