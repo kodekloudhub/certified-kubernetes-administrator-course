@@ -58,8 +58,6 @@ NodeSecurityGroup = "sg-003010e8d8f9f32bd"
 
 ## Set up access and join nodes
 
-To use our cluster, we will use AWS CloudShell which gives us a terminal inside the AWS Console that has most of the tools we need pre-configured. Open CloudShell by [clicking here](https://us-east-1.console.aws.amazon.com/cloudshell/home?region=us-east-1)
-
 Do the following at the CloudShell command line
 
 1.  Create a KUBECONFIG for `kubectl`
