@@ -13,7 +13,7 @@ data "aws_vpc" "default_vpc" {
 # into the environment from anyone other than yourself, by inserting your public
 # IP to a security group ingress rule.
 # Try this URL in your browser!
-data "http" "my_ip" {
+data "http" "cloudshell_ip" {
   url = "https://checkip.amazonaws.com/"
 }
 

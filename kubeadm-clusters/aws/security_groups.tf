@@ -31,46 +31,19 @@ resource "aws_security_group" "ingress_vpc" {
   }
 }
 
-# Security group for ingress to student_node host.
-# Permits only you to connect to it
-resource "aws_security_group" "student_node" {
-  name   = "student_node"
-  vpc_id = data.aws_vpc.default_vpc.id
-
-  ingress {
-    description = "Login SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.my_ip.response_body)}/32"
-    ]
-  }
-
-  ingress {
-    description = "EC2 Instance Connect"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [
-      "18.206.107.24/29"
-    ]
-  }
-}
-
 # Security group for ingress to controlplane
 resource "aws_security_group" "controlplane" {
   name   = "controlplane"
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    # Allow SSH from any host that has student_node security group
+    # Allow SSH from cloudshell
     description = "Login SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    security_groups = [
-      aws_security_group.student_node.id
+    cidr_blocks = [
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
     ]
   }
 
@@ -108,9 +81,9 @@ resource "aws_security_group" "workernode" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    security_groups = [
-      aws_security_group.student_node.id
-    ]
+    cidr_blocks = [
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
+      ]
   }
 
   ingress {
@@ -125,14 +98,14 @@ resource "aws_security_group" "workernode" {
   }
 
   ingress {
-    # Allow access to node ports from your workstation
+    # Allow access to node ports cloudshell
     # and student node
     description = "Node Ports"
     from_port   = 30000
     to_port     = 32767
     protocol    = "tcp"
     cidr_blocks = [
-      "${chomp(data.http.my_ip.response_body)}/32"
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
       ]
     security_groups = [
       aws_security_group.student_node.id

@@ -70,34 +70,6 @@ resource "aws_instance" "kubenode" {
               EOT
 }
 
-# Create the student_node
-# The user_data will set the hostname and entries for
-# all nodes in /etc/hosts
-resource "aws_instance" "student_node" {
-  ami           = data.aws_ami.ubuntu.image_id
-  instance_type = "t3.small"
-  key_name      = aws_key_pair.kube_kp.key_name
-  vpc_security_group_ids = [
-    aws_security_group.student_node.id,
-    aws_security_group.egress_all.id
-  ]
-  tags = {
-    "Name" = "student_node"
-  }
-  user_data = <<-EOT
-              #!/usr/bin/env bash
-              hostnamectl set-hostname "student-node"
-              echo "${tls_private_key.key_pair.private_key_pem}" > /home/ubuntu/.ssh/id_rsa
-              chown ubuntu:ubuntu /home/ubuntu/.ssh/id_rsa
-              chmod 600 /home/ubuntu/.ssh/id_rsa
-              cat <<EOF >> /etc/hosts
-              ${aws_network_interface.kubenode["controlplane"].private_ip} controlplane
-              ${aws_network_interface.kubenode["node01"].private_ip} node01
-              ${aws_network_interface.kubenode["node02"].private_ip} node02
-              EOF
-              EOT
-}
-
 # Attach controlplane security group to controlplane ENI
 resource "aws_network_interface_sg_attachment" "controlplane_sg_attachment" {
   security_group_id    = aws_security_group.controlplane.id

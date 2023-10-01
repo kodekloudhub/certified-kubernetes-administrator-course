@@ -16,13 +16,15 @@ provider "aws" {
       "tf:stackid" = "kubeadm-cluster"
     }
   }
-  access_key = var.access_key
-  secret_key = var.secret_key
 }
 
-output "connect_command" {
-  value       = "ssh -i ${pathexpand("~/.ssh/kubeadm-aws.pem")} ubuntu@${aws_instance.student_node.public_ip}"
-  description = "Public IP of student_node. Connect to this address from your SSH client."
+# output "connect_command" {
+#   value       = "ssh -i ${pathexpand("~/.ssh/kubeadm-aws.pem")} ubuntu@${aws_instance.student_node.public_ip}"
+#   description = "Public IP of student_node. Connect to this address from your SSH client."
+# }
+
+output "controlplane" {
+  value = aws_instance.kubenode["controlplanee"].public_ip
 }
 
 output "node01" {
