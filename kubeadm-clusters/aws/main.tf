@@ -24,7 +24,7 @@ provider "aws" {
 # }
 
 output "controlplane" {
-  value = aws_instance.kubenode["controlplanee"].public_ip
+  value = aws_instance.kubenode["controlplane"].public_ip
 }
 
 output "node01" {
