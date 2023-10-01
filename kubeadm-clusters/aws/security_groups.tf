@@ -107,9 +107,6 @@ resource "aws_security_group" "workernode" {
     cidr_blocks = [
       "${chomp(data.http.cloudshell_ip.response_body)}/32"
       ]
-    security_groups = [
-      aws_security_group.student_node.id
-    ]
   }
 }
 
