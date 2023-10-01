@@ -49,12 +49,14 @@ resource "aws_security_group" "controlplane" {
 
   ingress {
     # Allow API server access from anywhere inside the VPC
+    # and from the cloudshell node
     description = "API Server"
     from_port   = 6443
     to_port     = 6443
     protocol    = "tcp"
     cidr_blocks = [
-      data.aws_vpc.default_vpc.cidr_block
+      data.aws_vpc.default_vpc.cidr_block,
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
     ]
   }
 
