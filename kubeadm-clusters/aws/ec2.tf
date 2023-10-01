@@ -19,7 +19,7 @@ resource "tls_private_key" "key_pair" {
 
 # Save the private key to local .ssh directory so it can be used by SSH clients
 resource "local_sensitive_file" "pem_file" {
-  filename = pathexpand("~/.ssh/kubeadm-aws.pem")
+  filename = pathexpand("~/.ssh/id_rsa")
   file_permission = "600"
   content = tls_private_key.key_pair.private_key_pem
 }

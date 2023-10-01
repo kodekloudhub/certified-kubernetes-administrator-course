@@ -18,19 +18,14 @@ provider "aws" {
   }
 }
 
-# output "connect_command" {
-#   value       = "ssh -i ${pathexpand("~/.ssh/kubeadm-aws.pem")} ubuntu@${aws_instance.student_node.public_ip}"
-#   description = "Public IP of student_node. Connect to this address from your SSH client."
-# }
-
-output "controlplane" {
-  value = aws_instance.kubenode["controlplane"].public_ip
+output "connect_controlplane" {
+  value = "ssh ubuntu@${aws_instance.kubenode["controlplane"].public_ip}"
 }
 
-output "node01" {
-  value = aws_instance.kubenode["node01"].public_ip
+output "connect_node01" {
+  value = "ssh ubuntu@${aws_instance.kubenode["node01"].public_ip}"
 }
 
-output "node02" {
-  value = aws_instance.kubenode["node02"].public_ip
+output "connect_node02" {
+  value = "ssh ubuntu@${aws_instance.kubenode["node02"].public_ip}"
 }
