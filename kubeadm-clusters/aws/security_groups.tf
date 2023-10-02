@@ -61,25 +61,21 @@ resource "aws_security_group" "controlplane" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_api_server" {
-  description = "Allow API server access from cloudshell"
-    from_port   = 6443
-    to_port     = 6443
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
-    ]
-    security_group_id = aws_security_group.controlplane.id
+  description       = "Allow API server access from cloudshell"
+  from_port         = 6443
+  to_port           = 6443
+  protocol          = "tcp"
+  cidr_ipv4         = "${chomp(data.http.cloudshell_ip.response_body)}/32"
+  security_group_id = aws_security_group.controlplane.id
 }
 
 resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_controlplane_SSH" {
-  description = "Allow SSH access from cloudshell"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
-    ]
-    security_group_id = aws_security_group.controlplane.id
+  description       = "Allow SSH access from cloudshell"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_ipv4         = "${chomp(data.http.cloudshell_ip.response_body)}/32"
+  security_group_id = aws_security_group.controlplane.id
 }
 
 
@@ -101,25 +97,21 @@ resource "aws_security_group" "workernode" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_SSH" {
-  description = "Allow SSH access from cloudshell"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
-    ]
-    security_group_id = aws_security_group.workernode.id
+  description       = "Allow SSH access from cloudshell"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_ipv4         = "${chomp(data.http.cloudshell_ip.response_body)}/32"
+  security_group_id = aws_security_group.workernode.id
 }
 
 resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_nodeport" {
-  description = "Allow NodePort access from cloudshell"
-    from_port   = 32000
-    to_port     = 32767
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
-    ]
-    security_group_id = aws_security_group.workernode.id
+  description       = "Allow NodePort access from cloudshell"
+  from_port         = 32000
+  to_port           = 32767
+  protocol          = "tcp"
+  cidr_ipv4         = "${chomp(data.http.cloudshell_ip.response_body)}/32"
+  security_group_id = aws_security_group.workernode.id
 }
 
 # Security group for communication between weave pods
