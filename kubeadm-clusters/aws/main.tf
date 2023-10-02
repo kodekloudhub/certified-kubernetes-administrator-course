@@ -29,3 +29,7 @@ output "connect_node01" {
 output "connect_node02" {
   value = "ssh ubuntu@${aws_instance.kubenode["node02"].public_ip}"
 }
+
+output "/etc/hosts" {
+  value = "\n${aws_instance.kubenode["controlplane"].public_ip} controlplane\n${aws_instance.kubenode["node01"].public_ip} node01\n${aws_instance.kubenode["node02"].public_ip} node02\n"
+}
