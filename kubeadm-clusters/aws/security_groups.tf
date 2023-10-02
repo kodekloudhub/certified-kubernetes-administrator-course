@@ -37,17 +37,6 @@ resource "aws_security_group" "controlplane" {
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    # Allow SSH from cloudshell
-    description = "Login SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
-    ]
-  }
-
-  ingress {
     # Allow API server access from anywhere inside the VPC
     # and from the cloudshell node
     description = "API Server"
@@ -55,8 +44,7 @@ resource "aws_security_group" "controlplane" {
     to_port     = 6443
     protocol    = "tcp"
     cidr_blocks = [
-      data.aws_vpc.default_vpc.cidr_block,
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
+      data.aws_vpc.default_vpc.cidr_block
     ]
   }
 
@@ -72,24 +60,36 @@ resource "aws_security_group" "controlplane" {
   }
 }
 
+resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_api_server" {
+  description = "Allow API server access from cloudshell"
+    from_port   = 6443
+    to_port     = 6443
+    protocol    = "tcp"
+    cidr_blocks = [
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
+    ]
+    security_group_id = aws_security_group.controlplane.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_controlplane_SSH" {
+  description = "Allow SSH access from cloudshell"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
+    ]
+    security_group_id = aws_security_group.controlplane.id
+}
+
+
 # Security group for ingress to worker nodes
 resource "aws_security_group" "workernode" {
   name   = "workernode"
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    # Allow SSH from any host that has student_node security group
-    description = "Login SSH"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [
-      "${chomp(data.http.cloudshell_ip.response_body)}/32"
-      ]
-  }
-
-  ingress {
-    # Allow SSH from any host that has controlplane security group
+    # Allow kubelet access from any host that has controlplane security group
     description = "kubelet api"
     from_port   = 10250
     to_port     = 10250
@@ -98,18 +98,28 @@ resource "aws_security_group" "workernode" {
       aws_security_group.controlplane.id
     ]
   }
+}
 
-  ingress {
-    # Allow access to node ports cloudshell
-    # and student node
-    description = "Node Ports"
-    from_port   = 30000
+resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_SSH" {
+  description = "Allow SSH access from cloudshell"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [
+      "${chomp(data.http.cloudshell_ip.response_body)}/32"
+    ]
+    security_group_id = aws_security_group.workernode.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_nodeport" {
+  description = "Allow NodePort access from cloudshell"
+    from_port   = 32000
     to_port     = 32767
     protocol    = "tcp"
     cidr_blocks = [
       "${chomp(data.http.cloudshell_ip.response_body)}/32"
-      ]
-  }
+    ]
+    security_group_id = aws_security_group.workernode.id
 }
 
 # Security group for communication between weave pods
