@@ -18,16 +18,29 @@ provider "aws" {
   }
 }
 
+
+output "controlplane_ip" {
+  value = aws_instance.kubenode["controlplane"].public_ip
+}
+
+output "node01_ip" {
+  value = aws_instance.kubenode["node01"].public_ip
+}
+
+output "node02_ip" {
+  value = aws_instance.kubenode["node02"].public_ip
+}
+
 output "connect_controlplane" {
-  value = "ssh ubuntu@${aws_instance.kubenode["controlplane"].public_ip}"
+  value = "ssh ubuntu@controlplane"
 }
 
 output "connect_node01" {
-  value = "ssh ubuntu@${aws_instance.kubenode["node01"].public_ip}"
+  value = "ssh ubuntu@$node01"
 }
 
 output "connect_node02" {
-  value = "ssh ubuntu@${aws_instance.kubenode["node02"].public_ip}"
+  value = "ssh ubuntu@node02"
 }
 
 output "etc-hosts" {
