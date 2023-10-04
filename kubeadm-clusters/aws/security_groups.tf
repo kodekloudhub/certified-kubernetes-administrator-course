@@ -107,7 +107,7 @@ resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_SSH" {
 
 resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_nodeport" {
   description       = "Allow NodePort access from cloudshell"
-  from_port         = 32000
+  from_port         = 30000
   to_port           = 32767
   ip_protocol       = "tcp"
   cidr_ipv4         = "${chomp(data.http.cloudshell_ip.response_body)}/32"
@@ -117,7 +117,7 @@ resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_nodepo
 resource "aws_vpc_security_group_ingress_rule" "browser_to_workernodes_nodeport" {
   count = length(var.my_ip) > 0 ? 1 : 0
   description       = "Allow NodePort access from user browser"
-  from_port         = 32000
+  from_port         = 30000
   to_port           = 32767
   ip_protocol       = "tcp"
   cidr_ipv4         = "${var.my_ip}/32"
