@@ -43,6 +43,20 @@ crictl config \
 }
 
 {
-kubeadm init
+cat <<EOF > config.yaml
+apiVersion: kubeadm.k8s.io/v1beta3
+kind: ClusterConfiguration
+apiServer:
+  certSANs:
+    - $(curl -s https://checkip.amazonaws.com)
+EOF
+
+kubeadm init --config config.yaml
 kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+}
+
+{
+sudo cp /etc/kubernetes/admin.conf .
+sudo chmod 666 admin.conf
+sed -i "s/$(dig +short controlplane)/$(curl -s https://checkip.amazonaws.com)/" admin.conf
 }

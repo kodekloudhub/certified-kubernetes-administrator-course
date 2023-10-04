@@ -15,150 +15,138 @@ We will provision the following infrastructure. The infrastructure will be creat
 ![Infra](../../images/kubeadm-aws-architecture.png)
 
 
-As can be seen in this diagram, we will create four EC2 instances; three form the cluster itself and the fourth, `student-node` is where you will coordinate the work from. This is similar to how the real exam works - you start on a student node, then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam. The `student-node` assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
+As can be seen in this diagram, we will create three EC2 instances to form the cluster. We will access these nodes to perform configuration using the AWS CloudShell. This is similar to how the real exam works - you start on a separate node (in this case CloudShell), then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to CloudShell first. This is also how it is in the exam. The CloudShell assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
 
-We have also set up direct connection from your workstation to the node ports of the workers so that you can browse any NodePort services you create (see security below).
+We will also set up direct connection from your workstation to the node ports of the workers so that you can browse any NodePort services you create (see security below).
 
 Some basic security will be configured:
 
-* Only you will be able to connect to the student-node. A piece of Terraform magic will determine your public IP address and set it in the security group of the student-node instance.
-* Only you will be able to access the cluster's node ports over the Internet, using the same technique as above.
-* Only the student node can SSH to the cluster nodes.
+* Only the CloudShell will be able to access the cluster's API Server, and this is where you will run `kubectl` commands from when the cluster is running.
+* Only the CloudShell can SSH to the cluster nodes.
+* Only the CloudShell and your workstation will be able to access the node ports.
 * Ports required by Kubernetes itself (inc. etcd) and Weave CNI will be configured in security groups on the cluster nodes.
 
 Security issues that would make this unsuitable for a genuine production cluster:
 
-* The kube nodes would be on private subnets (no direct access from the Internet) and placed behind a NAT gateway to allow them to download packages, or with a more extreme security posture, completely [airgapped](https://en.wikipedia.org/wiki/Air_gap_(networking)).
+* The kube nodes should be on private subnets (no direct access from the Internet) and placed behind a NAT gateway to allow them to download packages, or with a more extreme security posture, completely [airgapped](https://en.wikipedia.org/wiki/Air_gap_(networking)).
 * Access to API server and etcd would be more tightly controlled.
 * Use of default VPC is not recommended.
 * A cloud load balancer coupled with an ingress controller would be provisioned to provide ingress to the cluster. It is _definitely_ not recommended to expose the worker nodes' node ports to the Internet as we are doing here!!!
 
 Other things that will be configured by the Terraform code
-* Host names set on the nodes: `student-node`, `controlplane`, `node01`, `node02`
-* Content of `/etc/hosts` set up on all nodes for easy use of `ssh` command from student node.
+* Host names set on the nodes: `controlplane`, `node01`, `node02`
+* Content of `/etc/hosts` set up on all nodes for easy use of `ssh` command from CloudShell.
 * Generation of key pair for logging into instances via SSH.
+
+## Get Started
 
 Let's go ahead and get the infrastructure built!
 
-Firstly, start an [AWS Playground](https://kodekloud.com/topic/playground-aws/), or if you have your own AWS account, you can use that but you'll bear the cost of the infrastructure while it is running.
+If you want to access any `NodePort` services you create on this cluster, you will need to go to https://checkip.amazonaws.com in your browser. Note down the IP address it gives you. This is your own public IP address assigned by your broadband provider, and you will need to give this IP to the terraform we are going to be running (detailed further down).
+
+[Click here](https://kodekloud.com/topic/playground-aws/) to start a playground, and click `START LAB` to request a new AWS Cloud Playground instance. After a few seconds, you will receive your credential to access AWS Cloud console.
+
+Note that you must have KodeKloud Pro subscription to run an AWS playground. If you have your own AWS account, this should still work, however you will bear the cost for any resources created until you delete them.
+
+We will run this entire lab in AWS CloudShell which is a Linux terminal you run inside the AWS console and has most of what we need preconfigured. [Click here](https://us-east-1.console.aws.amazon.com/cloudshell/home?region=us-east-1) to open CloudShell.
+
 
 ## Install Terraform
 
-This deployment was tested using Terraform v1.5.3
+```bash
+curl -O https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
+unzip terraform_1.5.7_linux_amd64.zip
+mkdir -p ~/bin
+mv terraform ~/bin/
+terraform version
+```
 
-If you don't already have Terraform installed, it is quite easy to do. Don't be alarmed if you don't know Terraform, just go with the flow here. Note that for a successful career in DevOps you cannot avoid Terraform, so we recommend our courses which can be found [on this page](https://kodekloud.com/learning-path-infrastructure-as-code/).
-
-If you are studying or have studied Terraform, have a good look at the configuration files and see if you can understand how they work.
-
-
-1. Go to https://developer.hashicorp.com/terraform/downloads?product_intent=terraform
-1. Select your operating system
-    1. For macOS, the easiest way is to use homebrew as indicated.
-    1. For Windows, select `AMD64` and download the zip file. The zip file contains only `terraform.exe`. Unzip it and place it somewhere you can run it from.
-        * If you have the [chocolately](https://chocolatey.org/) package manager, simply run `choco install -y terraform` As Administrator.
-        * If you don't, you really should consider [installing it](https://chocolatey.org/install).
-
-## Create IAM access keys
-
-We need access keys for Terraform to connect to the AWS account.
-
-1. Log into AWS using the URL and credentials provided when you started the playground.
-1. Go to the IAM console.
-1. Select `Users` from the menu in the left panel.
-1. Find your user account (for playground, username will begin with `odl_user_`), and click it.
-1. Select `Security credentials` tab, scroll down to `Access keys` and press `Create access key`.
-1. Select `Command Line Interface (CLI)` radio button.
-1. Check the `Confirmation` checkbox at the bottom and press `Next`.
-1. Enter anything for the description and press `Next`.
-1. Show the secret access key. Copy access key and secret access key to a notepad for use later, or download the CSV file.
-
-## Prepare the terraform code
-
-You can either individually download all the `tf` files from this repo folder and open a command prompt/terminal in the folder you downloaded to, or clone the repo as follows:
+## Clone this repo
 
 ```bash
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
+```
+
+Now change into the `aws` directory
+
+```bash
 cd certified-kubernetes-administrator-course/kubeadm-clusters/aws
 ```
 
-Now create a file `terraform.tfvars` in the same folder as the rest of the `.tf` files. Use the following template for this file and replace the values for `access_key` and `secret_key` with the keys you generated in the step above
+## Prepare the terraform code
 
-```
-access_key   = "AKIASFFZ4IEWZEXAMPLE"
-secret_key   = "st1i+TlfYn4+lpp4vYRNuxbafYm8jraCEXAMPLE"
-```
+We need to tell terraform about your public IP that we obtained above so that it can create a security group rule to permit you to browse the node ports.
+
+1. Create the file `terraform.tfvars`
+
+    ```bash
+    vi terraform.tfvars
+    ```
+
+1.  Put the following into it, replacing `<ip-address>` with the IP you got from https://checkip.amazonaws.com
+
+    ```
+    my_ip = "<ip-address>"
+    ```
 
 ## Provision the infrastructure
 
-```bash
-terraform init
-terraform plan
-terraform apply
-```
+1. Run the terraform
 
-If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will_ be different for you. Path to SSH key file (after `-i`) will be different on Windows and may be different on Mac.
+    ```bash
+    terraform init
+    terraform plan
+    terraform apply
+    ```
 
-```
-Apply complete! Resources: 22 added, 0 changed, 0 destroyed.
+    This should take about half a minute. If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will_ be different for you
 
-Outputs:
+    ```
+    Apply complete! Resources: 24 added, 0 changed, 0 destroyed.
 
-connect_command = "ssh -i ~/kubeadm-aws.pem ubuntu@3.94.180.170"
-node01 = "18.205.245.169"
-node02 = "75.101.200.29"
-```
+    Outputs:
 
-Copy all these outputs to a notepad for later use.
+    address_controlplane = "54.165.101.73"
+    address_node01 = "44.201.135.110"
+    address_node02 = "3.234.228.187"
+    connect_controlplane = "ssh ubuntu@controlplane"
+    connect_node01 = "ssh ubuntu@$node01"
+    connect_node02 = "ssh ubuntu@node02"
+    etc-hosts = <<EOT
 
-1. Wait for all instances to be ready (Instance state - `running`, Status check - `2/2 checks passed`). This will take 2-3 minutes. You may have to hit the refresh button a couple of times. We should now have something that looks like this: ![instances](../../images/kubeadm-ec2-instances-ready.png)
+    54.165.101.73 controlplane
+    44.201.135.110 node01
+    3.234.228.187 node02
+
+    EOT
+    ```
+
+    Copy all these outputs to a notepad for later use.
+
+1.  Set up the CloudShell hosts file
+
+    1. Copy the 3 lines of output between `<<EOT` and `EOT`
+    1. Add to `/etc/hosts`
+
+        ```bash
+        sudo vi /etc/hosts
+        ```
+
+        Paste in these 3 lines to the end of the file, save and exit.
+
+1. Wait for all instances to be ready (Instance state - `running`, Status check - `2/2 checks passed`). This will take 2-3 minutes. See [EC2 console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running).
 1. Test you can log in.
-    1. You can do it directly from your terminal by copying and pasting the value of `connect_command` that was output at the end of the terraform run, _or_
-    1. Use MobaXterm or another SSH client to connect to the IP address output as part of the connect command, as user `ubuntu`, and you will also need to give it the path to the SSH key file, which is the path after `-i` in the `connect_command`.
 
-## Prepare the student node
-
-We will install kubectl here so that we can run commands against the cluster when it is built
-
-1. Log into `student_node`, as per the login test above.
-
-1. Become root (saves typing `sudo` before every command)
-    ```bash
-    sudo -i
-    ```
-
-1. Install latest version of kubectl and place in the user programs directory
-    ```bash
-    curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-    chmod +x kubectl
-    mv kubectl /usr/local/bin
-    ```
-
-1. Exit the root shell
-
-    ```bash
-    exit
-    ```
-
-1. Check
-
-    ```bash
-    kubectl version
-    ```
-
-    It should amongst other things tell you
-
-    > The connection to the server localhost:8080 was refused - did you specify the right host or port?
-
-    which is fine, since we haven't installed kubernetes yet.
+    Provided you have updated `/etc/hosts` as directed above, you should be able to log into each of `controlplane`, `node01` and `node02` using the `ssh` commands output by terraform.
 
 ## Configure Operating System, Container Runtime and Kube Packages
 
-First, be logged into `student-node` as directed above.
+First, be logged into CloudShell as directed above.
 
-Repeat the following steps on `controlplane`, `node01` and `node02` by SSH-ing from `student-node` to each cluster node in turn, e.g.
+Repeat the following steps on `controlplane`, `node01` and `node02` by SSH-ing from CloudShell to each cluster node in turn, e.g.
 
 ```
-ubuntu@studentnode:~$ ssh controlplane
+[cloudshell-user@ip-10-6-54-25 aws]$ ssh ubuntu@controlplane
 Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.19.0-1028-aws x86_64)
 
 Last login: Tue Jul 25 15:27:07 2023 from 172.31.93.38
@@ -198,7 +186,7 @@ ubuntu@controlplane:~$
     ```bash
     apt-get install -y containerd
     ```
-1.  Configure the container runtime to use CGroups. This part is the bit many students miss, and if not done results in a controlplane that comes up, then all the pods start crashlooping. `kubectl` will also fail with an error like `The connection to the server x.x.x.x:6443 was refused - did you specify the right host or port?`
+1.  Configure the container runtime to use systemd CGroups. This part is the bit many students miss, and if not done results in a controlplane that comes up, then all the pods start crashlooping. `kubectl` will also fail with an error like `The connection to the server x.x.x.x:6443 was refused - did you specify the right host or port?`
 
     1. Create default configuration
 
@@ -249,7 +237,7 @@ ubuntu@controlplane:~$
     exit
     ```
 
-1.  Return to `student-node`
+1.  Return to CloudShell
 
     ```bash
     exit
@@ -262,7 +250,7 @@ ubuntu@controlplane:~$
 1.  ssh to `controlplane`
 
     ```bash
-    ssh controlplane
+    ssh ubuntu@controlplane
     ```
 
 1. Become root
@@ -270,9 +258,21 @@ ubuntu@controlplane:~$
     sudo -i
     ```
 
-1. Boot the control plane
+1. Create a kubeadm config file that will add the *public* IP of the control plane to the API server certificate such that we can access the endpoint from outside the VM network (i.e. from our CloudShell). Note that AWS does not run CloudShell in any of your own VPCs, therefore access to EC2 instances running in VPC is over the public network.
+
     ```bash
-    kubeadm init
+    cat <<EOF > config.yaml
+    apiVersion: kubeadm.k8s.io/v1beta3
+    kind: ClusterConfiguration
+    apiServer:
+    certSANs:
+        - $(curl -s https://checkip.amazonaws.com)
+    EOF
+    ```
+
+1. Boot the control plane using the above configuration
+    ```bash
+    kubeadm init --config config.yaml
     ```
 
     Copy the join command that is printed to a notepad for use on the worker nodes.
@@ -294,26 +294,31 @@ ubuntu@controlplane:~$
     exit
     ```
 
-1.  Prepare the kubeconfig file for copying to `student-node`
+1.  Prepare the kubeconfig file for copying to CloudShell node
 
     ```bash
     {
-    sudo cp /etc/kubernetes/admin.conf .
-    sudo chown ubuntu:ubuntu admin.conf
+      sudo cp /etc/kubernetes/admin.conf .
+      sudo chmod 666 admin.conf
+      sed -i "s/$(dig +short controlplane)/$(curl -s https://checkip.amazonaws.com)/" admin.conf
     }
     ```
 
-1.  Exit to student node
+    What this `sed` command is doing is replacing the `server` address of the API server from the *internal* IP address of the control plane (returned by the `dig` command) , to the *external* IP address (returned by the `curl`) command. From CloudShell we will be crossing the internet to reach the controlplane. CloudShell is not connected to the same internal network as the nodes, therefore `kubectl` cannot use the internal IP to reach the API server.
+
+1.  Exit to CloudShell
 
     ```bash
     exit
     ```
 
-1.  Copy kubeconfig down from `controlplane` to `student-node`
+1.  Copy kubeconfig down from `controlplane` to CloudShell and set proper permissions
 
-    ```
-    mkdir ~/.kube
-    scp controlplane:~/admin.conf ~/.kube/config
+    ```bash
+    mkdir -p ~/.kube
+    scp ubuntu@controlplane:~/admin.conf ~/.kube/config
+    sudo chown $(id -u):$(id -g) ~/.kube/config
+    chmod 600 ~/.kube/config
     ```
 
 1.  Test it
@@ -333,7 +338,7 @@ ubuntu@controlplane:~$
 
 1. Paste the join command that was output by `kubeadm init` on `controlplane`
 
-1. Return to `student-node`
+1. Return to CloudShell
 
     ```
     exit
@@ -342,7 +347,7 @@ ubuntu@controlplane:~$
 
 1. Repeat the steps 2, 3 and 4 on `node02`
 
-1. Now you should be back on `student-node`. Check all nodes are up
+1. Now you should be back on CloudShell. Check all nodes are up
 
     ```bash
     kubectl get nodes -o wide
@@ -350,7 +355,7 @@ ubuntu@controlplane:~$
 
 ## Create a test service
 
-Run the following on `student-node`
+Run the following on CloudShell
 
 1. Deploy and expose an nginx pod
 
@@ -379,33 +384,20 @@ Run the following on `student-node`
       type: NodePort
     ```
 
-1.  Test with curl
+1.  Get the _public_ IP of one of the worker nodes to use in the following steps. These were output by Terraform as `address_node01` and `address_node02`. You can also find this by looking at the [instances on the EC2 page](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:instanceState=running) of the AWS console.
 
-    1. Get the _internal_ IP of one of the nodes
+1.  Test with curl on CloudShell
 
-        ```bash
-        kubectl get node node01 -o wide
-        ```
-
-        This will output the following (INTERNAL-IP will be different for you)
-
-        ```
-        NAME     STATUS   ROLES    AGE   VERSION   INTERNAL-IP     EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION    CONTAINER-RUNTIME
-        node01   Ready    <none>   13m   v1.27.4   172.31.26.150   <none>        Ubuntu 22.04.2 LTS   5.19.0-1028-aws   containerd://1.6.12
-        ```
-
-    1. Using the INTERNAL-IP and the nodePort value set on the service, form a `curl` command. The IP will be different to what is shown here.
+    Replace the IP address with the one you chose from the above step
 
         ```bash
-        curl http://172.31.26.150:30080
+        curl http://44.201.135.110:30080
         ```
 
 1.  Test from your own browser
 
-    1. Get the _public_ IP of one of the nodes. These were output by Terraform. You can also find this by looking at the instances on the EC2 page of the AWS console.
-
-    1. Using the public IP and the nodePort value set on the service, form a URL to paste into your browser. The IP will be different to what is shown here.
+    Replace the IP address with the one you chose from the above step
 
         ```
-        http://18.205.245.169:30080/
+        http://44.201.135.110:30080
         ```
