@@ -114,6 +114,16 @@ resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_nodepo
   security_group_id = aws_security_group.workernode.id
 }
 
+resource "aws_vpc_security_group_ingress_rule" "browser_to_workernodes_nodeport" {
+  count = length(var.my_ip) > 0 ? 1 : 0
+  description       = "Allow NodePort access from user's browser"
+  from_port         = 32000
+  to_port           = 32767
+  ip_protocol       = "tcp"
+  cidr_ipv4         = "${var.my_ip}/32"
+  security_group_id = aws_security_group.workernode.id
+}
+
 # Security group for communication between weave pods
 resource "aws_security_group" "weave" {
   name   = "weave"
