@@ -116,7 +116,7 @@ resource "aws_vpc_security_group_ingress_rule" "cloudshell_to_workernodes_nodepo
 
 resource "aws_vpc_security_group_ingress_rule" "browser_to_workernodes_nodeport" {
   count = length(var.my_ip) > 0 ? 1 : 0
-  description       = "Allow NodePort access from user's browser"
+  description       = "Allow NodePort access from user browser"
   from_port         = 32000
   to_port           = 32767
   ip_protocol       = "tcp"
