@@ -2,6 +2,7 @@
 
 Lets have a look at the [Practice Test](https://kodekloud.com/topic/practice-test-troubleshoot-network/) of the Troubleshoot Network
 
+Note that this lab is sequential. You must solve test 1 completely before you can solve test 2, i.e. you cannot skip test 1 and do test 2 only.
 
 1. <details>
    <summary>Troubleshooting Test 1</summary>
