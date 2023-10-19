@@ -2,7 +2,7 @@
     # https://www.linkedin.com/pulse/kubernetes-setup-using-kubeadm-aws-ec2-ubuntu-servers-cedric-wanji/
 
 apt-get update
-apt-get install -y apt-transport-https ca-certificates curl
+apt-get install -y apt-transport-https ca-certificates curl jq
 
 cat <<EOF > /etc/modules-load.d/k8s.conf
 overlay
@@ -28,9 +28,11 @@ containerd config default > /etc/containerd/config.toml
 sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
 systemctl restart containerd
 
-curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-archive-keyring.gpg
 
-echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+KUBE_LATEST=$(curl -L -s https://dl.k8s.io/release/stable.txt | awk 'BEGIN { FS="." } { printf "%s.%s", $1, $2 }')
+mkdir -p /etc/apt/keyrings
+curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/ /" > /etc/apt/sources.list.d/kubernetes.list
 
 apt-get update
 apt-get install -y kubelet kubeadm kubectl
@@ -43,20 +45,11 @@ crictl config \
 }
 
 {
-cat <<EOF > config.yaml
-apiVersion: kubeadm.k8s.io/v1beta3
-kind: ClusterConfiguration
-apiServer:
-  certSANs:
-    - $(curl -s https://checkip.amazonaws.com)
-EOF
-
-kubeadm init --config config.yaml
+kubeadm init
 kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 }
 
 {
 sudo cp /etc/kubernetes/admin.conf .
 sudo chmod 666 admin.conf
-sed -i "s/$(dig +short controlplane)/$(curl -s https://checkip.amazonaws.com)/" admin.conf
 }
