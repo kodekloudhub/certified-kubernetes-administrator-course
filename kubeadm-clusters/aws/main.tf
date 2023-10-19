@@ -27,11 +27,12 @@ output "connect_student_node" {
   value       = "ssh ubuntu@${aws_instance.student_node.public_ip}"
 }
 
-output "address_controlplane" {
-  description = "Public IP of controlplane"
-  value       = aws_instance.kubenode["controlplane"].public_ip
+output "address_student_node" {
+  description = "Public IP of student-node"
+  value       = "aws_instance.student_node.public_ip"
 }
 
+# We can use either of these IPs to connect to node ports
 output "address_node01" {
   description = "Public IP of node01"
   value       = aws_instance.kubenode["node01"].public_ip

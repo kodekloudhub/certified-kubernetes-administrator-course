@@ -131,8 +131,9 @@ resource "aws_security_group" "workernode" {
     from_port   = 30000
     to_port     = 32767
     protocol    = "tcp"
-    security_groups = [
-      aws_security_group.student_node.id
+    cidr_blocks = [
+      # Note - insecure. Anyone can connect to node ports.
+      "0.0.0.0/0"
     ]
   }
 }
