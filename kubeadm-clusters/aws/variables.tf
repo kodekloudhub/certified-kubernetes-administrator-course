@@ -1,8 +1,9 @@
-variable "my_ip" {
-  description = "Your broadband public IP"
-  type = string
-  default = ""
+# Region to build in
+variable "aws_region" {
+  type    = string
+  default = "us-east-1"
 }
+
 
 # Names of the EC2 instances to create
 locals {
