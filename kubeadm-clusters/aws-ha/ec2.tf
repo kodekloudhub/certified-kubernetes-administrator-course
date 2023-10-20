@@ -37,7 +37,7 @@ resource "aws_key_pair" "kube_kp" {
 # created.
 resource "aws_network_interface" "kubenode" {
   for_each        = { for idx, inst in local.instances : inst => idx }
-  subnet_id       = data.aws_subnets.public.ids[each.value]
+  subnet_id       = data.aws_subnets.public.ids[each.value % 3]
   security_groups = [aws_security_group.egress_all.id]
   tags = {
     Name = local.instances[each.value]
