@@ -15,7 +15,7 @@ We will provision the following infrastructure. The infrastructure will be creat
 ![Infra](../../images/kubeadm-aws-architecture.png)
 
 
-As can be seen in this diagram, we will create three EC2 instances to form the cluster and a further one `student-node` from which to perform the configuration. We build the infrastructure using Terraform from `student-node` (so you don't have to install Terraform on your workstation), then log into `student-node` which can access the cluster nodes. This relationship between `student-node` and the cluster nodes is similar to CKA Ultimate Mocks and how the real exam works - you start on a separate node (in this case `student-node`), then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam. `student-node` assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
+As can be seen in this diagram, we will create three EC2 instances to form the cluster and a further one `student-node` from which to perform the configuration. We build the infrastructure using Terraform from AWS CloudShell (so you don't have to install Terraform on your workstation), then log into `student-node` which can access the cluster nodes. This relationship between `student-node` and the cluster nodes is similar to CKA Ultimate Mocks and how the real exam works - you start on a separate node (in this case `student-node`), then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam. `student-node` assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
 
 We will also set up direct connection from your workstation to the node ports of the workers so that you can browse any NodePort services you create (see security below).
 
@@ -51,7 +51,7 @@ We will run this entire lab in AWS `student-node` which is a Linux terminal you 
 
 ## Install Terraform
 
-From the `student-node` command prompt...
+From the CloudShell command prompt...
 
 ```bash
 curl -O https://releases.hashicorp.com/terraform/1.6.2/terraform_1.6.2_linux_amd64.zip
@@ -92,7 +92,7 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws
 
     address_node01 = "18.233.150.22"
     address_node02 = "54.87.18.1"
-    address_student_node = "aws_instance.student_node.public_ip"
+    address_student_node = "100.26.200.3"
     connect_student_node = "ssh ubuntu@100.26.200.3"
     ```
 

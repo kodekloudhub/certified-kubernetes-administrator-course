@@ -45,7 +45,7 @@ crictl config \
 }
 
 {
-kubeadm init
+kubeadm init --control-plane-endpoint $(dig +short loadbalancer):6443 --upload-certs
 kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
 }
 
