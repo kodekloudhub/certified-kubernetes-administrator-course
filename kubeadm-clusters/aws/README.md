@@ -387,3 +387,9 @@ Run the following on `student-node`
         ```
         http://44.201.135.110:30080
         ```
+
+## Notes on the terraform code
+
+Those of you who are also studying our Terraform courses should look at the terraform files and try to understand what is happening here.
+
+One point of note is that for the `kubenode` instances, we create network interfaces for them as separate resources, then attach these ENIs to the instances when they are built. The reason for this is so that the IP addresses of the instances can be known in advance, such that during instance creation `/etc/hosts` may be created by the user_data script.
