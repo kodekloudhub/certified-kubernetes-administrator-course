@@ -23,7 +23,7 @@ Some basic security will be configured:
 
 * Only the `student-node` will be able to access the cluster's API Server, and this is where you will run `kubectl` commands from when the cluster is running.
 * Only the `student-node` can SSH to the cluster nodes.
-* Ports required by Kubernetes itself (inc. etcd) and Weave CNI will be configured in security groups on the cluster nodes.
+* Ports required by Kubernetes itself (inc. etcd) and Calico CNI will be configured in security groups on the cluster nodes.
 
 Security issues that would make this unsuitable for a genuine production cluster:
 
@@ -86,14 +86,14 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws
     This should take about half a minute. If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will be different_ for you
 
     ```
-    Apply complete! Resources: 22 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 34 added, 0 changed, 0 destroyed.
 
     Outputs:
 
-    address_node01 = "18.233.150.22"
-    address_node02 = "54.87.18.1"
-    address_student_node = "100.26.200.3"
-    connect_student_node = "ssh ubuntu@100.26.200.3"
+    address_node01 = "44.201.38.144"
+    address_node02 = "54.163.17.159"
+    address_student_node = "3.88.148.210"
+    connect_student_node = "ssh ubuntu@3.88.148.210"
     ```
 
     Copy all these outputs to a notepad for later use.
@@ -349,14 +349,15 @@ To create a highly available control plane, we install kubeadm on the first cont
     Replace `L.L.L.L` with the IP address you got above
 
     ```bash
-    kubeadm init --control-plane-endpoint L.L.L.L:6443 --upload-certs
+    kubeadm init --control-plane-endpoint L.L.L.L:6443 --upload-certs --pod-network-cidr=192.168.0.0/16
     ```
 
     Copy both join commands that are printed to a notepad for use on other control nodes and the worker nodes.
 
-1. Install network plugin (weave)
+1. Install network plugin (calico)
     ```bash
-    kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f "https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s-1.11.yaml"
+    kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/tigera-operator.yaml
+    kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/custom-resources.yaml
     ```
 
 1.  Check we are up and running
@@ -502,3 +503,9 @@ Run the following on `student-node`
         ```
         http://44.201.135.110:30080
         ```
+
+## Notes on the terraform code
+
+Those of you who are also studying our Terraform courses should look at the terraform files and try to understand what is happening here.
+
+One point of note is that for the `kubenode` instances, we create network interfaces for them as separate resources, then attach these ENIs to the instances when they are built. The reason for this is so that the IP addresses of the instances can be known in advance, such that during instance creation `/etc/hosts` may be created by the user_data script.

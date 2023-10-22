@@ -30,7 +30,7 @@ resource "aws_key_pair" "kube_kp" {
   public_key = trimspace(tls_private_key.key_pair.public_key_openssh)
 }
 
-# Create 3 network interfaces (ENIs) which will be for the 3 cluster nodes
+# Create one network interfaces (ENI) for each kubenode.
 # We need to create these spearately from the instances themselves to prevent
 # a circular dependency when setting up host files in the EC2 instances - we
 # need to know the IP addresses the nodes will have before they are actually
@@ -110,58 +110,58 @@ resource "aws_network_interface_sg_attachment" "loadbalancer_sg_attachment" {
   network_interface_id = aws_instance.kubenode["loadbalancer"].primary_network_interface_id
 }
 
-# Attach controlplane and weave security groups to controlplane01 ENI
+# Attach controlplane and calico security groups to controlplane01 ENI
 resource "aws_network_interface_sg_attachment" "controlplane01_sg_attachment" {
   security_group_id    = aws_security_group.controlplane.id
   network_interface_id = aws_instance.kubenode["controlplane01"].primary_network_interface_id
 }
 
-resource "aws_network_interface_sg_attachment" "controlplane01_sg_attachment_weave" {
-  security_group_id    = aws_security_group.weave.id
+resource "aws_network_interface_sg_attachment" "controlplane01_sg_attachment_calico" {
+  security_group_id    = aws_security_group.calico.id
   network_interface_id = aws_instance.kubenode["controlplane01"].primary_network_interface_id
 }
 
-# Attach controlplane and weave security groups to controlplane02 ENI
+# Attach controlplane and calico security groups to controlplane02 ENI
 resource "aws_network_interface_sg_attachment" "controlplane02_sg_attachment" {
   security_group_id    = aws_security_group.controlplane.id
   network_interface_id = aws_instance.kubenode["controlplane02"].primary_network_interface_id
 }
 
-resource "aws_network_interface_sg_attachment" "controlplane02_sg_attachment_weave" {
-  security_group_id    = aws_security_group.weave.id
+resource "aws_network_interface_sg_attachment" "controlplane02_sg_attachment_calico" {
+  security_group_id    = aws_security_group.calico.id
   network_interface_id = aws_instance.kubenode["controlplane02"].primary_network_interface_id
 }
 
-# Attach controlplane and weave security groups to controlplane03 ENI
+# Attach controlplane and calico security groups to controlplane03 ENI
 resource "aws_network_interface_sg_attachment" "controlplane03_sg_attachment" {
   security_group_id    = aws_security_group.controlplane.id
   network_interface_id = aws_instance.kubenode["controlplane03"].primary_network_interface_id
 }
 
-resource "aws_network_interface_sg_attachment" "controlplane03_sg_attachment_weave" {
-  security_group_id    = aws_security_group.weave.id
+resource "aws_network_interface_sg_attachment" "controlplane03_sg_attachment_calico" {
+  security_group_id    = aws_security_group.calico.id
   network_interface_id = aws_instance.kubenode["controlplane03"].primary_network_interface_id
 }
 
-# Attach workernodes and weave security groups to node01 ENI
+# Attach workernodes and calico security groups to node01 ENI
 resource "aws_network_interface_sg_attachment" "node01_sg_attachment" {
   security_group_id    = aws_security_group.workernode.id
   network_interface_id = aws_instance.kubenode["node01"].primary_network_interface_id
 }
 
-resource "aws_network_interface_sg_attachment" "node01_sg_attachment_weave" {
-  security_group_id    = aws_security_group.weave.id
+resource "aws_network_interface_sg_attachment" "node01_sg_attachment_calico" {
+  security_group_id    = aws_security_group.calico.id
   network_interface_id = aws_instance.kubenode["node01"].primary_network_interface_id
 }
 
-# Attach workernodes and weave security groups to node02 ENI
+# Attach workernodes and calico security groups to node02 ENI
 resource "aws_network_interface_sg_attachment" "node02_sg_attachment" {
   security_group_id    = aws_security_group.workernode.id
   network_interface_id = aws_instance.kubenode["node02"].primary_network_interface_id
 }
 
-resource "aws_network_interface_sg_attachment" "node02_sg_attachment_weave" {
-  security_group_id    = aws_security_group.weave.id
+resource "aws_network_interface_sg_attachment" "node02_sg_attachment_calico" {
+  security_group_id    = aws_security_group.calico.id
   network_interface_id = aws_instance.kubenode["node02"].primary_network_interface_id
 }
 

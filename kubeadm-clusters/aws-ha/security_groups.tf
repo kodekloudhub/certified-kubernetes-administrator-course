@@ -179,15 +179,25 @@ resource "aws_security_group" "workernode" {
   }
 }
 
-# Security group for communication between weave pods
-resource "aws_security_group" "weave" {
-  name   = "weave"
+# Security group for communication between calico pods
+resource "aws_security_group" "calico" {
+  name   = "calico"
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    description = "Weave TCP"
-    from_port   = 6783
-    to_port     = 6783
+    description = "vxlan"
+    from_port   = 4789
+    to_port     = 4789
+    protocol    = "udp"
+    security_groups = [
+      aws_security_group.controlplane.id,
+      aws_security_group.workernode.id
+    ]
+  }
+  ingress {
+    description = "bgp"
+    from_port   = 179
+    to_port     = 179
     protocol    = "tcp"
     security_groups = [
       aws_security_group.controlplane.id,
@@ -196,9 +206,20 @@ resource "aws_security_group" "weave" {
   }
 
   ingress {
-    description = "Weave UDP"
-    from_port   = 6783
-    to_port     = 6784
+    description = "typha"
+    from_port   = 5473
+    to_port     = 5473
+    protocol    = "tcp"
+    security_groups = [
+      aws_security_group.controlplane.id,
+      aws_security_group.workernode.id
+    ]
+  }
+
+  ingress {
+    description = "wireguard"
+    from_port   = 51820 
+    to_port     = 51820 
     protocol    = "udp"
     security_groups = [
       aws_security_group.controlplane.id,

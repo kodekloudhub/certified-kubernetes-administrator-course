@@ -44,12 +44,40 @@ crictl config \
 
 }
 
+# control1
 {
-kubeadm init --control-plane-endpoint $(dig +short loadbalancer):6443 --upload-certs
-kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s.yaml
+kubeadm init --control-plane-endpoint $(dig +short loadbalancer):6443 --upload-certs --pod-network-cidr=192.168.0.0/16
+kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/tigera-operator.yaml
+kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/custom-resources.yaml
 }
+
 
 {
 sudo cp /etc/kubernetes/admin.conf .
 sudo chmod 666 admin.conf
+}
+
+
+
+# HAProxy
+{
+apt-get update
+apt-get install -y haproxy
+cat <<EOF > /etc/haproxy/haproxy.cfg
+frontend kubernetes
+    bind $(dig +short loadbalancer):6443
+    option tcplog
+    mode tcp
+    default_backend kubernetes-control-nodes
+
+backend kubernetes-control-nodes
+    mode tcp
+    balance roundrobin
+    option tcp-check
+    server controlplane01 $(dig +short controlplane01):6443 check fall 3 rise 2
+    server controlplane02 $(dig +short controlplane02):6443 check fall 3 rise 2
+    server controlplane03 $(dig +short controlplane03):6443 check fall 3 rise 2
+EOF
+
+systemctl restart haproxy
 }
