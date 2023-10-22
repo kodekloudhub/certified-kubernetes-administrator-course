@@ -218,8 +218,8 @@ resource "aws_security_group" "calico" {
 
   ingress {
     description = "wireguard"
-    from_port   = 51820 
-    to_port     = 51820 
+    from_port   = 51820
+    to_port     = 51820
     protocol    = "udp"
     security_groups = [
       aws_security_group.controlplane.id,
