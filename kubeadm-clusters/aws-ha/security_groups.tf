@@ -133,7 +133,7 @@ resource "aws_security_group" "controlplane" {
     from_port   = 2379
     to_port     = 2380
     protocol    = "tcp"
-    cidr_blocks = [
+    security_groups = [
       aws_security_group.student_node.id
     ]
   }
