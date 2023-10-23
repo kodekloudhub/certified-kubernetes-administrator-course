@@ -67,7 +67,7 @@ resource "aws_security_group" "loadbalancer" {
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    # Allow SSH from any host that has student_node security group
+    # Allow SSH from student-node
     description = "Login SSH"
     from_port   = 22
     to_port     = 22
@@ -88,7 +88,7 @@ resource "aws_security_group" "loadbalancer" {
   }
 
   ingress {
-    # Allow API server access from anywheere in VPC
+    # Allow API server access from anywhere in VPC
     description = "API Server"
     from_port   = 6443
     to_port     = 6443
@@ -105,7 +105,7 @@ resource "aws_security_group" "controlplane" {
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    # Allow SSH from any host that has student_node security group
+    # Allow SSH from student-node
     description = "Login SSH"
     from_port   = 22
     to_port     = 22
@@ -127,15 +127,54 @@ resource "aws_security_group" "controlplane" {
   }
 
   ingress {
-    # Allow etcd access from anywhere inside the VPC
+    # Allow etcd access from student-node
+    # e.g. to run etcdctl
     description = "etcd"
     from_port   = 2379
     to_port     = 2380
     protocol    = "tcp"
     cidr_blocks = [
-      data.aws_vpc.default_vpc.cidr_block
+      aws_security_group.student_node.id
     ]
   }
+}
+
+# Additional rules for control plane SG to allow
+# control plane components to talk to each other
+resource "aws_vpc_security_group_ingress_rule" "controlplane_etcd" {
+  description                  = "etcd gossip"
+  ip_protocol                  = "tcp"
+  from_port                    = 2739
+  to_port                      = 2380
+  security_group_id            = aws_security_group.controlplane.id
+  referenced_security_group_id = aws_security_group.controlplane.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "controlplane_scheduler" {
+  description                  = "kubeschduler gossip"
+  ip_protocol                  = "tcp"
+  from_port                    = 10259
+  to_port                      = 10259
+  security_group_id            = aws_security_group.controlplane.id
+  referenced_security_group_id = aws_security_group.controlplane.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "controlplane_cm" {
+  description                  = "controller-manager gossip"
+  ip_protocol                  = "tcp"
+  from_port                    = 10257
+  to_port                      = 10257
+  security_group_id            = aws_security_group.controlplane.id
+  referenced_security_group_id = aws_security_group.controlplane.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "controlplane_api" {
+  description                  = "apiserver gossip"
+  ip_protocol                  = "tcp"
+  from_port                    = 6443
+  to_port                      = 6443
+  security_group_id            = aws_security_group.controlplane.id
+  referenced_security_group_id = aws_security_group.controlplane.id
 }
 
 # Security group for ingress to worker nodes
@@ -144,7 +183,7 @@ resource "aws_security_group" "workernode" {
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    # Allow SSH from any host that has student_node security group
+    # Allow SSH from student-node
     description = "Login SSH"
     from_port   = 22
     to_port     = 22
@@ -185,16 +224,6 @@ resource "aws_security_group" "calico" {
   vpc_id = data.aws_vpc.default_vpc.id
 
   ingress {
-    description = "vxlan"
-    from_port   = 4789
-    to_port     = 4789
-    protocol    = "udp"
-    security_groups = [
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
-  ingress {
     description = "bgp"
     from_port   = 179
     to_port     = 179
@@ -205,6 +234,27 @@ resource "aws_security_group" "calico" {
     ]
   }
 
+  ingress {
+    description = "ip-in-ip"
+    from_port   = 179
+    to_port     = 179
+    protocol    = "4"
+    security_groups = [
+      aws_security_group.controlplane.id,
+      aws_security_group.workernode.id
+    ]
+  }
+
+  ingress {
+    description = "vxlan"
+    from_port   = 4789
+    to_port     = 4789
+    protocol    = "udp"
+    security_groups = [
+      aws_security_group.controlplane.id,
+      aws_security_group.workernode.id
+    ]
+  }
   ingress {
     description = "typha"
     from_port   = 5473
@@ -219,7 +269,7 @@ resource "aws_security_group" "calico" {
   ingress {
     description = "wireguard"
     from_port   = 51820
-    to_port     = 51820
+    to_port     = 51821
     protocol    = "udp"
     security_groups = [
       aws_security_group.controlplane.id,
