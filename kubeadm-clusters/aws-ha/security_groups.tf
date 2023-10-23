@@ -168,15 +168,6 @@ resource "aws_vpc_security_group_ingress_rule" "controlplane_cm" {
   referenced_security_group_id = aws_security_group.controlplane.id
 }
 
-# resource "aws_vpc_security_group_ingress_rule" "controlplane_api" {
-#   description                  = "apiserver gossip"
-#   ip_protocol                  = "tcp"
-#   from_port                    = 6443
-#   to_port                      = 6443
-#   security_group_id            = aws_security_group.controlplane.id
-#   referenced_security_group_id = aws_security_group.controlplane.id
-# }
-
 # Security group for ingress to worker nodes
 resource "aws_security_group" "workernode" {
   name   = "workernode"
@@ -219,6 +210,7 @@ resource "aws_security_group" "workernode" {
 }
 
 # Security group for communication between calico pods
+# Applied to all nodes
 resource "aws_security_group" "calico" {
   name   = "calico"
   vpc_id = data.aws_vpc.default_vpc.id
@@ -276,18 +268,15 @@ resource "aws_security_group" "calico" {
       aws_security_group.workernode.id
     ]
   }
-
-  ingress {
-    # Allow API server access from all cluster components
-    description = "API Server"
-    from_port   = 6443
-    to_port     = 6443
-    protocol    = "tcp"
-    security_groups = [
-      aws_security_group.loadbalancer.id,
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
-
 }
+
+# Calico daemonsets seem to require this port
+resource "aws_vpc_security_group_ingress_rule" "calico_apiserver" {
+  description                  = "api-server gossip"
+  ip_protocol                  = "tcp"
+  from_port                    = 6443
+  to_port                      = 6443
+  security_group_id            = aws_security_group.calico.id
+  referenced_security_group_id = aws_security_group.calico.id
+}
+
