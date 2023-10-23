@@ -144,7 +144,7 @@ resource "aws_security_group" "controlplane" {
 resource "aws_vpc_security_group_ingress_rule" "controlplane_etcd" {
   description                  = "etcd gossip"
   ip_protocol                  = "tcp"
-  from_port                    = 2739
+  from_port                    = 2379
   to_port                      = 2380
   security_group_id            = aws_security_group.controlplane.id
   referenced_security_group_id = aws_security_group.controlplane.id
