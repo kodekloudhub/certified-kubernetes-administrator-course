@@ -1,6 +1,6 @@
-# Kubeadm on AWS EC2
+# Kubeadm HA on AWS EC2
 
-This guide shows how to install a 3 node kubeadm cluster on AWS EC2 instances. If using the KodeKloud AWS Playground environment, please ensure you have selected region `us-east-1` (N. Virginia) from the region selection at the top right of the AWS console. To maintain compatibility with the playground permissions, we will use the following EC2 instance configuration.
+This guide shows how to install a 5 node highly-available kubeadm cluster on AWS EC2 instances. If using the KodeKloud AWS Playground environment, please ensure you have selected region `us-east-1` (N. Virginia) from the region selection at the top right of the AWS console. To maintain compatibility with the playground permissions, we will use the following EC2 instance configuration.
 
 * Instance type: `t3.medium`
 * Operating System: Ubuntu 22.04 (at time of writing)
@@ -12,10 +12,10 @@ Note that this is an exercise in simply getting a cluster running and is a learn
 
 We will provision the following infrastructure. The infrastructure will be created by Terraform, so as not to spend too much of the lab time just getting that provisioned, and to allow you to focus on the cluster installation.
 
-![Infra](../../images/kubeadm-aws-architecture.png)
+![Infra](../../images/kubeadm-aws-ha-architecture.png)
 
 
-As can be seen in this diagram, we will create three EC2 instances to form the cluster and a further one `student-node` from which to perform the configuration. We build the infrastructure using Terraform from AWS CloudShell (so you don't have to install Terraform on your workstation), then log into `student-node` which can access the cluster nodes. This relationship between `student-node` and the cluster nodes is similar to CKA Ultimate Mocks and how the real exam works - you start on a separate node (in this case `student-node`), then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam. `student-node` assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
+As can be seen in this diagram, we will create five EC2 instances to form the cluster - 3 control planes and 2 workers, plus one load balancer to provide access to the API server endpoints and a further one `student-node` from which to perform the configuration. We build the infrastructure using Terraform from AWS CloudShell (so you don't have to install Terraform on your workstation), then log into `student-node` which can access the cluster nodes. This relationship between `student-node` and the cluster nodes is similar to CKA Ultimate Mocks and how the real exam works - you start on a separate node (in this case `student-node`), then use SSH to connect to cluster nodes. Note that SSH connections are only possible in the direction of the arrows. It is not possible to SSH from e.g. `controlplane` directly to `node01`. You must `exit` to `student-node` first. This is also how it is in the exam. `student-node` assumes the role of a [bastion host](https://en.wikipedia.org/wiki/Bastion_host).
 
 We will also set up direct connection from your workstation to the node ports of the workers so that you can browse any NodePort services you create (see security below).
 
@@ -23,7 +23,7 @@ Some basic security will be configured:
 
 * Only the `student-node` will be able to access the cluster's API Server, and this is where you will run `kubectl` commands from when the cluster is running.
 * Only the `student-node` can SSH to the cluster nodes.
-* Ports required by Kubernetes itself (inc. etcd) and Weave CNI will be configured in security groups on the cluster nodes.
+* Ports required by Kubernetes itself (inc. etcd) and Calico CNI will be configured in security groups on the cluster nodes.
 
 Security issues that would make this unsuitable for a genuine production cluster:
 
@@ -34,7 +34,7 @@ Security issues that would make this unsuitable for a genuine production cluster
 * A cloud load balancer coupled with an ingress controller would be provisioned to provide ingress to the cluster. It is _definitely_ not recommended to expose the worker nodes' node ports to the Internet as we are doing here!!!
 
 Other things that will be configured by the Terraform code
-* Host names set on the nodes: `controlplane`, `node01`, `node02`
+* Host names set on the nodes: `loadbalancer`, `controlplane01`, `controlplane02`, `controlplane03`, `node01`, `node02`
 * Content of `/etc/hosts` set up on all nodes for easy use of `ssh` command from `student-node`.
 * Generation and distribution of a key pair for logging into instances via SSH.
 
@@ -67,10 +67,10 @@ terraform version
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
 ```
 
-Now change into the `aws/terraform` directory
+Now change into the `aws-ha/terraform` directory
 
 ```bash
-cd certified-kubernetes-administrator-course/kubeadm-clusters/aws/terraform
+cd certified-kubernetes-administrator-course/kubeadm-clusters/aws-ha/terraform
 ```
 
 ## Provision the infrastructure
@@ -86,14 +86,14 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws/terraform
     This should take about half a minute. If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will be different_ for you
 
     ```
-    Apply complete! Resources: 22 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 43 added, 0 changed, 0 destroyed.
 
     Outputs:
 
-    address_node01 = "18.233.150.22"
-    address_node02 = "54.87.18.1"
-    address_student_node = "100.26.200.3"
-    connect_student_node = "ssh ubuntu@100.26.200.3"
+    address_node01 = "54.224.201.244"
+    address_node02 = "44.213.109.108"
+    address_student_node = "3.92.232.115"
+    connect_student_node = "ssh ubuntu@3.92.232.115"
     ```
 
     Copy all these outputs to a notepad for later use.
@@ -134,22 +134,98 @@ We will install kubectl here so that we can run commands against the cluster whe
     which is fine, since we haven't installed kubernetes yet.
 
 
+## Configure the load balancer
+
+Now we will install the load balancer that serves as the endpoint for connecting to API server. This will round-robin API server requests between each of the control plane nodes. For this we will use [HAProxy](https://haproxy.org/) in TCP load balancing mode. In this mode it simply forwards all traffic to its back ends (the control planes) without changing it e.g. doing SSL termination.
+
+First, be logged into `student-node` as directed above.
+
+1.  Log into the load balancer
+
+    ```
+    ssh loadbalancer
+    ```
+
+1. Become root (saves typing `sudo` before every command)
+
+    ```bash
+    sudo -i
+    ```
+
+1. Update the apt package index and install packages needed for HAProxy:
+
+    ```bash
+    apt-get update
+    apt-get install -y haproxy
+    ```
+
+1.  Get IP addresses of the loadbalancer and 3 control planes and copy them to your notepad
+
+    ```bash
+    dig +short loadbalancer
+    dig +short controlplane01
+    dig +short controlplane02
+    dig +short controlplane03
+    ```
+
+1.  Create the HAProxy configuration file
+
+    First we'll delete the default configuration, then add our own
+
+    ```
+    rm /etc/haproxy/haproxy.cfg
+    vi /etc/haproxy/haproxy.cfg
+    ```
+
+    Now put the following content into the file. Replace `L.L.L.L` with the IP address of `loadbalancer`, and `X.X.X.X` with IPs for each control plane node
+
+    ```
+    frontend kubernetes
+        bind L.L.L.L:6443
+        option tcplog
+        mode tcp
+        default_backend kubernetes-control-nodes
+
+    backend kubernetes-control-nodes
+        mode tcp
+        balance roundrobin
+        option tcp-check
+        server controlplane01 X.X.X.X:6443 check fall 3 rise 2
+        server controlplane02 X.X.X.X:6443 check fall 3 rise 2
+        server controlplane03 X.X.X.X:6443 check fall 3 rise 2
+    ```
+
+1.  Restart and check haproxy
+
+    ```bash
+    systemctl restart haproxy
+    systemctl status haproxy
+    ```
+
+    It should be warning us that no backend is available - which is true because we haven't installed Kubernetes yet!
+
+1.  Exit from `sudo` and then back to `student-node`
+
+    ```bash
+    exit
+    exit
+    ```
+
 ## Configure Operating System, Container Runtime and Kube Packages
 
 First, be logged into `student-node` as directed above.
 
-Repeat the following steps on `controlplane`, `node01` and `node02` by SSH-ing from `student-node` to each cluster node in turn, e.g.
+Repeat the following steps on `controlplane01`, `controlplane02`, `controlplane03`, `node01` and `node02` by SSH-ing from `student-node` to each cluster node in turn, e.g.
 
 ```
-ubuntu@student-node:~$ ssh controlplane
+ubuntu@student-node:~$ ssh controlplane01
 Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.19.0-1028-aws x86_64)
 
 Last login: Tue Jul 25 15:27:07 2023 from 172.31.93.38
-ubuntu@controlplane:~$
+ubuntu@controlplane01:~$
 ```
 
 Note that there's no step to disable swap, since EC2 instances are by default with swap disabled.
-
 
 1. Become root (saves typing `sudo` before every command)
     ```bash
@@ -247,14 +323,18 @@ Note that there's no step to disable swap, since EC2 instances are by default wi
     exit
     ```
 
-    Repeat the above till you have done `controlplane`, `node01` and  `node02`
+    Repeat the above till you have done `controlplane01`, `controlplane02`, `controlplane03`, `node01` and  `node02`
 
 ## Boot up controlplane
 
-1.  ssh to `controlplane`
+To create a highly available control plane, we install kubeadm on the first control plane node almost the same way as for a single control plane cluster, then we *join* the other control plane nodes in a similar manner to joining worker nodes
+
+### controlplane01
+
+1.  ssh to `controlplane01`
 
     ```bash
-    ssh controlplane
+    ssh controlplane01
     ```
 
 1. Become root
@@ -262,16 +342,24 @@ Note that there's no step to disable swap, since EC2 instances are by default wi
     sudo -i
     ```
 
-1. Boot the control plane using the above configuration
+1. Boot the first control plane using the IP address of the load balancer as the control plane endpoint
+
     ```bash
-    kubeadm init
+    dig +short loadbalancer
     ```
 
-    Copy the join command that is printed to a notepad for use on the worker nodes.
+    Replace `L.L.L.L` with the IP address you got above
 
-1. Install network plugin (weave)
     ```bash
-    kubectl --kubeconfig /etc/kubernetes/admin.conf apply -f "https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s-1.11.yaml"
+    kubeadm init --control-plane-endpoint L.L.L.L:6443 --upload-certs --pod-network-cidr=192.168.0.0/16
+    ```
+
+    Copy both join commands that are printed to a notepad for use on other control nodes and the worker nodes.
+
+1. Install network plugin (calico). Weave does not work too well with HA clusters.
+    ```bash
+    kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/tigera-operator.yaml
+    kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/custom-resources.yaml
     ```
 
 1.  Check we are up and running
@@ -301,11 +389,34 @@ Note that there's no step to disable swap, since EC2 instances are by default wi
     exit
     ```
 
-1.  Copy kubeconfig down from `controlplane` to `student-node` and set proper permissions
+### controlplane02 and controlplane03
+
+Be on `student-node`
+
+For each of `controlplane02` and `controlplane03`
+
+1.  SSH to `controlplane02`
+1.  Become root
+
+    ```bash
+    sudo -i
+    ```
+1.  Paste the join command for *control* nodes that was output by `kubeadm init` on `controlplane01`
+1.  Exit back to `student-node`
+    ```bash
+    exit
+    exit
+    ```
+1. Repeat the steps 2,3 and 4 on `controlplane03`
+
+
+### Configure kubectl on student-node
+
+1.  Copy kubeconfig down from `controlplane01` to `student-node` and set proper permissions
 
     ```bash
     mkdir -p ~/.kube
-    scp controlplane:~/admin.conf ~/.kube/config
+    scp controlplane01:~/admin.conf ~/.kube/config
     sudo chown $(id -u):$(id -g) ~/.kube/config
     chmod 600 ~/.kube/config
     ```
@@ -316,6 +427,8 @@ Note that there's no step to disable swap, since EC2 instances are by default wi
     kubectl get pods -n kube-system
     ```
 
+    You should now see that there are 3 pods for each of the main control plane components. Also if you look at the kubeconfig file in `~/.kube/config`, you'll see that the IP addres for the `server:` entry is that of the load balancer.
+
 ## Join the worker nodes
 
 1.  SSH to `node01`
@@ -325,7 +438,7 @@ Note that there's no step to disable swap, since EC2 instances are by default wi
     sudo -i
     ```
 
-1. Paste the join command that was output by `kubeadm init` on `controlplane`
+1. Paste the join command for *worker* nodes that was output by `kubeadm init` on `controlplane01`
 
 1. Return to `student-node`
 
@@ -342,9 +455,19 @@ Note that there's no step to disable swap, since EC2 instances are by default wi
     kubectl get nodes -o wide
     ```
 
+    There should now be 3 control nodes and 2 workers.
+
 ## Create a test service
 
 Run the following on `student-node`
+
+1.  Ensure all calico pods are running. They can take a while to initialise
+
+    ```bash
+    watch kubectl get pods -n calico-system
+    ```
+
+    Press `CTRL-C` to exit watch when pods are stable
 
 1. Deploy and expose an nginx pod
 

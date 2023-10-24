@@ -32,7 +32,7 @@ resource "aws_security_group" "ingress_vpc" {
 }
 
 # Security group for ingress to student_node host.
-# Permits only you to connect to it
+# Permits only cloudshell and EC2 instance connect to connect to it
 resource "aws_security_group" "student_node" {
   name   = "student_node"
   vpc_id = data.aws_vpc.default_vpc.id
@@ -43,7 +43,7 @@ resource "aws_security_group" "student_node" {
     to_port     = 22
     protocol    = "tcp"
     cidr_blocks = [
-      "${chomp(data.http.my_ip.response_body)}/32"
+      data.localos_public_ip.cloudshell_ip.cidr
     ]
   }
 
@@ -132,10 +132,8 @@ resource "aws_security_group" "workernode" {
     to_port     = 32767
     protocol    = "tcp"
     cidr_blocks = [
-      "${chomp(data.http.my_ip.response_body)}/32"
-      ]
-    security_groups = [
-      aws_security_group.student_node.id
+      # Note - insecure. Anyone can connect to node ports.
+      "0.0.0.0/0"
     ]
   }
 }
@@ -167,4 +165,3 @@ resource "aws_security_group" "weave" {
     ]
   }
 }
-
