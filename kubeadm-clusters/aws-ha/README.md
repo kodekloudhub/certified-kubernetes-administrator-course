@@ -86,14 +86,14 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws
     This should take about half a minute. If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will be different_ for you
 
     ```
-    Apply complete! Resources: 34 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 43 added, 0 changed, 0 destroyed.
 
     Outputs:
 
-    address_node01 = "44.201.38.144"
-    address_node02 = "54.163.17.159"
-    address_student_node = "3.88.148.210"
-    connect_student_node = "ssh ubuntu@3.88.148.210"
+    address_node01 = "54.224.201.244"
+    address_node02 = "44.213.109.108"
+    address_student_node = "3.92.232.115"
+    connect_student_node = "ssh ubuntu@3.92.232.115"
     ```
 
     Copy all these outputs to a notepad for later use.
@@ -458,6 +458,14 @@ For each of `controlplane02` and `controlplane03`
 ## Create a test service
 
 Run the following on `student-node`
+
+1.  Ensure all calico pods are running. They can take a while to initialise
+
+    ```bash
+    watch kubectl get pods -n calico-system
+    ```
+
+    Press `CTRL-C` to exit watch when pods are stable
 
 1. Deploy and expose an nginx pod
 

@@ -22,6 +22,13 @@ EOF
 # Apply sysctl params without reboot
 sysctl --system
 
+# Network manager config for calico
+mkdir -p /etc/NetworkManager/conf.d/
+cat <<EOF > /etc/NetworkManager/conf.d/calico.conf
+[keyfile]
+unmanaged-devices=interface-name:cali*;interface-name:tunl*;interface-name:vxlan.calico;interface-name:vxlan-v6.calico;interface-name:wireguard.cali;interface-name:wg-v6.cali
+EOF
+
 apt-get install -y containerd
 mkdir -p /etc/containerd
 containerd config default > /etc/containerd/config.toml
@@ -41,6 +48,15 @@ apt-mark hold kubelet kubeadm kubectl
 crictl config \
         --set runtime-endpoint=unix:///run/containerd/containerd.sock \
         --set image-endpoint=unix:///run/containerd/containerd.sock
+
+[[ "$(hostname)" == controlplane* ]] && kubeadm config images pull
+
+if [ "$(hostname)" == "controlplane01" ]
+then
+    curl -L https://github.com/projectcalico/calico/releases/download/v3.26.3/calicoctl-linux-amd64 -o calicoctl
+    chmod +x ./calicoctl
+    mv ./calicoctl /usr/local/bin
+fi
 
 }
 
