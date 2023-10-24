@@ -67,10 +67,10 @@ terraform version
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
 ```
 
-Now change into the `aws` directory
+Now change into the `aws/terraform` directory
 
 ```bash
-cd certified-kubernetes-administrator-course/kubeadm-clusters/aws
+cd certified-kubernetes-administrator-course/kubeadm-clusters/aws/terraform
 ```
 
 ## Provision the infrastructure
