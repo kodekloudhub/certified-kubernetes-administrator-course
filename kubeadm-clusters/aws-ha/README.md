@@ -67,10 +67,10 @@ terraform version
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
 ```
 
-Now change into the `aws` directory
+Now change into the `aws-ha` directory
 
 ```bash
-cd certified-kubernetes-administrator-course/kubeadm-clusters/aws
+cd certified-kubernetes-administrator-course/kubeadm-clusters/aws-ha
 ```
 
 ## Provision the infrastructure
@@ -136,7 +136,7 @@ We will install kubectl here so that we can run commands against the cluster whe
 
 ## Configure the load balancer
 
-Now we will install the load balancer that serves as the endpoint for connecting to API server. This will round-robin API server requests between each of the control plane nodes. For this we will use [HAProxy](https://haproxy.org/) in TCP load balancing mode. In this mode it simply forwards all traffic to its back ends (the control planes) without changing it (e.g. doing SSL termination).
+Now we will install the load balancer that serves as the endpoint for connecting to API server. This will round-robin API server requests between each of the control plane nodes. For this we will use [HAProxy](https://haproxy.org/) in TCP load balancing mode. In this mode it simply forwards all traffic to its back ends (the control planes) without changing it e.g. doing SSL termination.
 
 First, be logged into `student-node` as directed above.
 
@@ -218,12 +218,14 @@ First, be logged into `student-node` as directed above.
 Repeat the following steps on `controlplane01`, `controlplane02`, `controlplane03`, `node01` and `node02` by SSH-ing from `student-node` to each cluster node in turn, e.g.
 
 ```
-ubuntu@student-node:~$ ssh controlplane
+ubuntu@student-node:~$ ssh controlplane01
 Welcome to Ubuntu 22.04.2 LTS (GNU/Linux 5.19.0-1028-aws x86_64)
 
 Last login: Tue Jul 25 15:27:07 2023 from 172.31.93.38
-ubuntu@controlplane:~$
+ubuntu@controlplane01:~$
 ```
+
+Note that there's no step to disable swap, since EC2 instances are by default with swap disabled.
 
 1. Become root (saves typing `sudo` before every command)
     ```bash
@@ -321,7 +323,7 @@ ubuntu@controlplane:~$
     exit
     ```
 
-    Repeat the above till you have done `controlplane`, `node01` and  `node02`
+    Repeat the above till you have done `controlplane01`, `controlplane02`, `controlplane03`, `node01` and  `node02`
 
 ## Boot up controlplane
 
@@ -332,7 +334,7 @@ To create a highly available control plane, we install kubeadm on the first cont
 1.  ssh to `controlplane01`
 
     ```bash
-    ssh controlplane
+    ssh controlplane01
     ```
 
 1. Become root
@@ -354,7 +356,7 @@ To create a highly available control plane, we install kubeadm on the first cont
 
     Copy both join commands that are printed to a notepad for use on other control nodes and the worker nodes.
 
-1. Install network plugin (calico)
+1. Install network plugin (calico). Weave does not work too well with HA clusters.
     ```bash
     kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/tigera-operator.yaml
     kubectl --kubeconfig /etc/kubernetes/admin.conf create -f https://raw.githubusercontent.com/projectcalico/calico/v3.26.3/manifests/custom-resources.yaml

@@ -148,6 +148,9 @@ Last login: Tue Jul 25 15:27:07 2023 from 172.31.93.38
 ubuntu@controlplane:~$
 ```
 
+Note that there's no step to disable swap, since EC2 instances are by default with swap disabled.
+
+
 1. Become root (saves typing `sudo` before every command)
     ```bash
     sudo -i
