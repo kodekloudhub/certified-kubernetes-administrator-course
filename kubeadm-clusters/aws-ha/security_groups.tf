@@ -117,7 +117,7 @@ resource "aws_security_group" "controlplane" {
 
   ingress {
     # Allow API server access only from loadbalancer
-    description = "API Server"
+    description = "API Server from LB"
     from_port   = 6443
     to_port     = 6443
     protocol    = "tcp"
@@ -129,7 +129,7 @@ resource "aws_security_group" "controlplane" {
   ingress {
     # Allow etcd access from student-node
     # e.g. to run etcdctl
-    description = "etcd"
+    description = "etcd frorm SN"
     from_port   = 2379
     to_port     = 2380
     protocol    = "tcp"
@@ -214,61 +214,51 @@ resource "aws_security_group" "workernode" {
 resource "aws_security_group" "calico" {
   name   = "calico"
   vpc_id = data.aws_vpc.default_vpc.id
-
-  ingress {
-    description = "bgp"
-    from_port   = 179
-    to_port     = 179
-    protocol    = "tcp"
-    security_groups = [
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
-
-  ingress {
-    description = "ip-in-ip"
-    from_port   = 179
-    to_port     = 179
-    protocol    = "4"
-    security_groups = [
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
-
-  ingress {
-    description = "vxlan"
-    from_port   = 4789
-    to_port     = 4789
-    protocol    = "udp"
-    security_groups = [
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
-  ingress {
-    description = "typha"
-    from_port   = 5473
-    to_port     = 5473
-    protocol    = "tcp"
-    security_groups = [
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
-
-  ingress {
-    description = "wireguard"
-    from_port   = 51820
-    to_port     = 51821
-    protocol    = "udp"
-    security_groups = [
-      aws_security_group.controlplane.id,
-      aws_security_group.workernode.id
-    ]
-  }
 }
+
+resource "aws_vpc_security_group_ingress_rule" "calico_bgp" {
+  description                  = "bgp"
+  from_port                    = 179
+  to_port                      = 179
+  ip_protocol                  = "tcp"
+  security_group_id            = aws_security_group.calico.id
+  referenced_security_group_id = aws_security_group.calico.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "calico_ip_in_ip" {
+  description                  = "ip-in-ip"
+  ip_protocol                  = "4"
+  security_group_id            = aws_security_group.calico.id
+  referenced_security_group_id = aws_security_group.calico.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "calico_vxlan" {
+  description                  = "vxlan"
+  from_port                    = 4789
+  to_port                      = 4789
+  ip_protocol                  = "udp"
+  security_group_id            = aws_security_group.calico.id
+  referenced_security_group_id = aws_security_group.calico.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "calico_typha" {
+  description                  = "typha"
+  from_port                    = 5473
+  to_port                      = 5473
+  ip_protocol                  = "tcp"
+  security_group_id            = aws_security_group.calico.id
+  referenced_security_group_id = aws_security_group.calico.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "calico_typha" {
+  description                  = "wireguard"
+  from_port                    = 51820
+  to_port                      = 51821
+  ip_protocol                  = "udp"
+  security_group_id            = aws_security_group.calico.id
+  referenced_security_group_id = aws_security_group.calico.id
+}
+
 
 # Calico daemonsets seem to require this port
 resource "aws_vpc_security_group_ingress_rule" "calico_apiserver" {
