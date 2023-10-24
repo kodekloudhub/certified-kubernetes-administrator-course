@@ -250,7 +250,7 @@ resource "aws_vpc_security_group_ingress_rule" "calico_typha" {
   referenced_security_group_id = aws_security_group.calico.id
 }
 
-resource "aws_vpc_security_group_ingress_rule" "calico_typha" {
+resource "aws_vpc_security_group_ingress_rule" "calico_wireguard" {
   description                  = "wireguard"
   from_port                    = 51820
   to_port                      = 51821
