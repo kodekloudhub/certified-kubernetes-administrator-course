@@ -11,6 +11,6 @@ spec:
       requests:
         memory: "200Mi"
       limits:
-        memory: "700Mi"
+        memory: "900Mi"
     command: ["stress"]
     args: ["--vm", "1", "--vm-bytes", "800M", "--vm-hang", "1"]
