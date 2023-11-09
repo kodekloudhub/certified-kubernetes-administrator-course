@@ -30,7 +30,7 @@ You may update the network policy, but make sure it is not deleted from the `cya
 
 The solution given below is correct, however in some instances it doesn't work due to an intermittent bug in the installation of Weave to the lab environment found by a very astute community member in [this thread](https://kodekloud.com/community/t/network-policy-blocking-all-the-ingress-traffic/300501/15?u=alistair_kodekloud) on the community forum.
 
-TL;DR - To detect the presence of this bug, run the following two commands. Bonus - see if you can understand how they work, especially the first one (which is split across multiple lines with `\` for legibility)!
+TL;DR - To detect the presence of this bug, run the following two commands. Bonus - see if you can understand how they work! Note that the first one is split across multiple lines with `\` for legibility. This is a valid construct in shell script.
 
 ```
 kubectl exec -n kube-system \
