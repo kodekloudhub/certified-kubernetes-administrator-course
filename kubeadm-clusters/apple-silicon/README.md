@@ -24,7 +24,7 @@ Additionally
     mkdir ~/kodekloud
     cd ~/kodekloud
     git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
-    cd certified-kubernetes-administrator-course/apple-silicon
+    cd certified-kubernetes-administrator-course/kubeadm-clusters/apple-silicon
     ```
 
 ## Install Cluster
@@ -36,7 +36,11 @@ These instructions follow the steps in the lecture videos fairly closely, howeve
 Because we cannot use VirtualBox and are instead using Multipass, [a script is provided](./deploy-virtual-machines.sh) to create the three VMs.
 
 1. Run the VM deploy script from your Mac terminal
-
+   > **Note:**
+   > Set execute permission on the required scripts by running the following command:
+   > ```bash 
+   > chmod +x *.sh scripts/*.sh
+   > ```
     ```bash
     ./deploy-virtual-machines.sh
     ```
