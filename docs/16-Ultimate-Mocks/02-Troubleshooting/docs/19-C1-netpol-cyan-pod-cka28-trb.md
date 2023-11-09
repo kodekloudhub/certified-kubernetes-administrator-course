@@ -34,7 +34,7 @@ TL;DR - To detect the presence of this bug, run the following commands. Bonus - 
 
 ```
 kubectl exec -n kube-system \
-   $(kubectl get po -n kube-system --selector name=weave-net -o jsonpath='{.items[1].metadata.name}') \
+   $(kubectl get po -n kube-system --selector name=weave-net -o jsonpath='{.items[0].metadata.name}') \
    -c weave -- printenv | grep IPALLOC
 
 kubectl get configmap -n kube-system kube-proxy -o jsonpath={'.data.config\.conf}' | yq e .clusterCIDR -
