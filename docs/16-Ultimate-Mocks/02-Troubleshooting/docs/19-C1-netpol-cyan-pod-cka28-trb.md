@@ -28,9 +28,19 @@ You may update the network policy, but make sure it is not deleted from the `cya
 
 ### Update - Intermittent lab bug!
 
-The solution given below is correct, however in some instances it doesn't work due to an intermittent bug in the installation of Weave to the lab environment found by a very atutue community member in [this thread](https://kodekloud.com/community/t/network-policy-blocking-all-the-ingress-traffic/300501/15?u=alistair_kodekloud) on the community forum.
+The solution given below is correct, however in some instances it doesn't work due to an intermittent bug in the installation of Weave to the lab environment found by a very astute community member in [this thread](https://kodekloud.com/community/t/network-policy-blocking-all-the-ingress-traffic/300501/15?u=alistair_kodekloud) on the community forum.
 
-Should you encounter this (netpol not working even though you have followed the solution below), then practice your skills of manual pod scheduling, and get all three concerned pods to restart on the same worker node (choose either node). Then the netpol should take effect.
+TL;DR - To detect the presence of this bug, run the following commands
+
+```
+kubectl exec -n kube-system weave-net-7dx2p -c weave -- printenv | grep IPALLOC
+kubectl get configmap -n kube-system kube-proxy -o jsonpath={'.data.config\.conf}' | yq e .clusterCIDR -
+```
+
+Both should report the same CIDR range, e.g. `10.244.0.0/16`. If they are not both the same (doesn't matter what they actually are, but must be the same), then the lab has the bug. Should you encounter this (netpol not working even though you have followed the solution below), then practice your skills of [manual pod scheduling](../../../03-Scheduling/02-Manual-Scheduling.md), and get all three concerned pods to restart on the same worker node (choose either node). Then the netpol should take effect.
+
+
+
 
 ### Solution
 
