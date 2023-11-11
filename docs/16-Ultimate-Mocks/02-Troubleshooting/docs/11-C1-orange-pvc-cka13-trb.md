@@ -37,7 +37,7 @@ Troubleshoot and fix this issue, making sure that orange-pvc-cka13-trb PVC is in
     vi pvc.yaml
     ```
 
-    Change the requested size to match the size of the PV.
+    Change the requested size to match the size of the PV. Save and exit vi, then replace the PVC with the edited manifest:
 
     ```
     kubectl replace --force -f pvc.yaml
