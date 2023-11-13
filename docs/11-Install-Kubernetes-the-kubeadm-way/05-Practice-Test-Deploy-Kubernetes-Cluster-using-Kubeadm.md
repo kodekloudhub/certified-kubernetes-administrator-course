@@ -1,21 +1,28 @@
 # Practice Test - Install kubernetes cluster using kubeadm tool
 
-  - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-deploy-a-kubernetes-cluster-using-kubeadm/)
+If you want to build your own cluster, check these out:
 
-If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the separate instructions [here](../../apple-silicon/README.md).
+* [Kubeadm Clusters](../../kubeadm-clusters/)
+* [Managed Clusters](../../managed-clusters/)
 
-# Solutions for practice test - Install Using Kubeadm
+# Solutions for KodeKloud lab practice test - Install Using Kubeadm
 
-  1. Install the kubeadm, kubelet and kubectl packages at exact version 1.24.0 on the controlplane and node01.
+- Take me to [Practice Test](https://kodekloud.com/topic/practice-test-deploy-a-kubernetes-cluster-using-kubeadm/)
 
-     <details>
+In this practice lab, the container runtime (containerd) has already been installed. We only need to focus on the remaining node configuration, that is the kernel module and parameter settings, and installing the kubeadm cluster itself.
 
-     Run the following two steps on both `controlplane` and `node01` (use `ssh node01` to get to the worker node).
+Note that the video preceding this lab is out of date and is still using docker container driver and an out of date Kubernetes version. The lab is up to date.
+
+  1.  <details>
+      <summary>Install the kubeadm, kubelet and kubectl packages at exact version 1.24.0 on the controlplane and node01.</summary>
+
+      Run the following two steps on both `controlplane` and `node01` (use `ssh node01` to get to the worker node).
 
       1. Configure kernel parameters
 
          ```
          cat <<EOF | tee /etc/modules-load.d/k8s.conf
+         overlay
          br_netfilter
          EOF
 
@@ -24,55 +31,69 @@ If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the se
          net.bridge.bridge-nf-call-iptables = 1
          net.ipv4.ip_forward = 1
          EOF
+
          sysctl --system
          ```
 
       2. Install kubernetes binaries
 
+         Note that because you are logged into the lab as `root`, the use of `sudo` is not required.
+
          ```
          apt-get update
          apt-get install -y apt-transport-https ca-certificates curl
 
-         curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+         mkdir -m 755 /etc/apt/keyrings
 
-         echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | tee /etc/apt/sources.list.d/kubernetes.list
+         curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.27/deb/Release.key | gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+         echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.27/deb/ /' | tee /etc/apt/sources.list.d/kubernetes.list
 
          apt-get update
-         apt-get install -y kubelet=1.24.0-00 kubeadm=1.24.0-00 kubectl=1.24.0-00
+
+         # To see the new version labels
+         apt-cache madison kubeadm
+
+         apt-get install -y kubelet=1.27.0-2.1 kubeadm=1.27.0-2.1 kubectl=1.27.0-2.1
+
          apt-mark hold kubelet kubeadm kubectl
          ```
-     </details>
+      </details>
 
-  1. What is the version of kubelet installed?
-
-     <details>
-
-      ```
-      kubelet --version
-      ```
-     </details>
-
-  1. How many nodes are part of kubernetes cluster currently?
-
-     <details>
-
-      Are you able to run `kubectl get nodes`?
-
-      Know that the kubeconfig file installed by kubeadm is located in `/etc/kubernetes/admin.conf`
+  1.  <details>
+      <summary>What is the version of kubelet installed?</summary>
 
       ```
-      kubectl get nodes --kubeconfig /etc/kubernetes/admin.conf
+      kubelet version
       ```
+
+      You will get an error message because the cluster isn't installed yet, but it will tell you its version.
+
+      </details>
+
+  1.  <details>
+      <summary>How many nodes are part of kubernetes cluster currently?</summary>
+
+      Are you able to run `kubectl get nodes`? Have you run `kubeadm init` yet?
+
+      No, so there are no nodes.
 
       > 0
 
-     </details>
+      </details>
 
-  1. Information only
+  1.  Information only
 
-  1. Initialize controlplane node
+  1.  <details>
+      <summary>Initialize Control Plane Node (Master Node).</summary>
 
-     <details>
+      Use the following options:
+
+      * `apiserver-advertise-address` - Use the IP address allocated to eth0 on the controlplane node
+      * `apiserver-cert-extra-sans`` - Set it to `controlplane`
+      * `pod-network-cidr` - Set to `10.244.0.0/16`
+
+      Once done, set up the default kubeconfig file and wait for node to be part of the cluster.
 
       1. Get the IP address of the `eth0` adapter of the controlplane
 
@@ -100,11 +121,10 @@ If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the se
          cp /etc/kubernetes/admin.conf ~/.kube/config
          ```
 
-     </details>
+      </details>
 
-  1. Generate a kubeadm join token
-
-      <details>
+  1.  <details>
+      <summary>Generate a kubeadm join token</summary>
 
       You can copy the join command output by `kubeadm init` which looks like
 
@@ -117,9 +137,8 @@ If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the se
 
       </details>
 
-  1. Join node01 to the cluster using the join token
-
-      <details>
+  1.  <details>
+      <summary>Join node01 to the cluster using the join token</summary>
 
       1. `ssh` onto `node01` and paste the join command from above
       1. Return to the controlplane node
@@ -127,19 +146,20 @@ If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the se
 
       </details>
 
-  1. Install a Network Plugin
-
-     <details>
+  1.  <details>
+      <summary>Install a Network Plugin</summary>
 
       1. Install flannel
 
+         Click on "Install Netowrk Plugin" tab above the terminal. Find the link to Flannel in the page that comes up
+
          ```
-         kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+         kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
          ```
 
       2. Wait 30 seconds or so, then run `kubectl get nodes`. Nodes should now be ready.
 
-     </details>
+      </details>
 
 
 
