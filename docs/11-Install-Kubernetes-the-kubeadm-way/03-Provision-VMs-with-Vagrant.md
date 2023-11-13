@@ -2,4 +2,8 @@
 
   - Take me to [Lecture](https://kodekloud.com/topic/deploy-with-kubeadm-provision-vms-with-vagrant/)
 
-If you have an Apple M1 or M2 (Apple Silicon) machine, then please follow the separate instructions [here](../../apple-silicon/README.md).
+If you want to build your own cluster, check these out. They are more up to date than the video currently :smile:
+
+* [Kubeadm Clusters](../../kubeadm-clusters/)
+* [Managed Clusters](../../managed-clusters/)
+

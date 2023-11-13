@@ -13,3 +13,10 @@ In this section we present various labs for building kubeadm clusters
     For users of Mac M1/M2, this is a lab that provisions a 2 or 3 node cluster (depending on how much memory your Mac has) using [Multipass](https://multipass.run/).
 
     * [2/3 Node Cluster](./apple-silicon/)
+
+* Vagrant and VirtualBox
+
+    For users of Windows and Mac x86, privsio a 3 node cluster on your laptop.
+
+    * [3 Node Cluster](./virtualbox/)
+
