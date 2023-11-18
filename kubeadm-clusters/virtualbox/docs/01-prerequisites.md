@@ -16,6 +16,8 @@ Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) on 
  - Linux distributions
  - Solaris hosts
 
+This lab was last tested with VirtualBox 7.0.12, though newer versions should be ok.
+
 ## Vagrant
 
 Once VirtualBox is installed you may chose to deploy virtual machines manually on it.
@@ -31,6 +33,7 @@ Download and Install [Vagrant](https://www.vagrantup.com/) on your platform.
 
 This tutorial assumes that you have also installed Vagrant.
 
+This lab was last tested with Vagrant 2.3.7, though newer versions should be ok.
 
 ## Lab Defaults
 
@@ -51,7 +54,7 @@ To change this, edit the [Vagrantfile](../vagrant/Vagrantfile) in your cloned co
 
 Note that you do not need to edit any of the other scripts to make the above change. It is all managed by shell variable computations based on the assigned VM  IP  addresses and the values in the hosts file (also computed).
 
-It is *recommended* that you leave the pod and service networks with the following defaults. If you change them then you will also need to edit the Weave networking manifests to accommodate your change.
+It is *recommended* that you leave the pod and service networks as the defaults. If you change them then you will also need to edit the Weave networking manifests to accommodate your change.
 
 If you do decide to change any of these, please treat as personal preference and do not raise a pull request.
 
@@ -87,7 +90,7 @@ with the new CDIR range.  This should not overlap any of the other network setti
 
 In order to use tmux, you must first connect to `kubemaster` and run tmux there. From inside the tmux session you can open multiple panes and ssh to the worker nodes from these panes.
 
-> The use of tmux is optional and not required to complete this tutorial.
+*The use of tmux is optional and not required to complete this tutorial*.
 
 ![tmux screenshot](../../../images/tmux-screenshot.png)
 
