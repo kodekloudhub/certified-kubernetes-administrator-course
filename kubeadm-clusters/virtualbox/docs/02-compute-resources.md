@@ -41,7 +41,7 @@ This does the below:
 - Adds a DNS entry to each of the nodes to access internet
     > DNS: 8.8.8.8
 
-See [Vagrant page](../vagrant/README.md) for details.
+See [Vagrantfile](../Vagrantfile) for details.
 
 ## SSH to the nodes
 
