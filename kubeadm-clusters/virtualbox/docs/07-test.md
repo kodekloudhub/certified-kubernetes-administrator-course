@@ -9,35 +9,18 @@ Do the following on `kubemaster`
 1. Deploy and expose an nginx pod
 
     ```bash
-    kubectl run nginx --image nginx:alpine --expose --port 80
+    kubectl create deployment nginx --image nginx:alpine
+    kubectl expose deploy nginx --type=NodePort --port 80
     ```
 
-1. Convert the service to NodePort
-
-    ```bash
-    kubectl edit service nginx
-    ```
-
-    Edit the `spec:` part of the service until it looks like this. Don't change anything above `spec:`
-
-    ```yaml
-    spec:
-      ports:
-      - port: 80
-        protocol: TCP
-        targetPort: 80
-        nodePort: 30080
-      selector:
-        run: nginx
-      sessionAffinity: None
-      type: NodePort
-    ```
+[//]: # (command:kubectl wait deployment -n default nginx --for condition=Available=True --timeout=90s)
 
 1.  Hit the new service
 
-    ```
-    curl http://kubenode01:30080
-    curl http://kubenode02:30080
+    ```bash
+    PORT_NUMBER=$(kubectl get service -l app=nginx -o jsonpath="{.items[0].spec.ports[0].nodePort}")
+    curl http://kubenode01:$PORT_NUMBER
+    curl http://kubenode02:$PORT_NUMBER
     ```
 
     Both should return the nginx welcome message as HTML text.

@@ -128,12 +128,12 @@ for doc in glob.glob(os.path.join(docs_path, '*.md')):
                             '#######################################################################',
                             newline
                         ])
-                elif line == script_begin:
+                elif line.strip() == script_begin:
                     state = State.SCRIPT
                 elif choice_rx.match(line):
                     ignore_next_script = True
             elif state == State.SCRIPT:
-                if line == script_end:
+                if line.strip() == script_end:
                     state = State.NONE
                     script.append(newline)
                     ignore_next_script = False
@@ -142,7 +142,7 @@ for doc in glob.glob(os.path.join(docs_path, '*.md')):
                 #     script.append(line)
                 #     script.append('{')
                 elif not (ignore_next_script or line == '{' or line == '}'):
-                    script.append(line)
+                    script.append(line.strip())
 if script:
     # fns = '-'.join(file_nos[1:])
     output_file = os.path.join(qs_path, f'{output_file_no}-{current_host}.sh')

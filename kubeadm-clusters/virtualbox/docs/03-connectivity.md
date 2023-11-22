@@ -18,12 +18,6 @@ ssh-keygen
 
 Leave all settings to default (just press ENTER at any questions).
 
-View the generated public key ID at:
-
-```bash
-cat ~/.ssh/id_rsa.pub
-```
-
 Add this key to the local authorized_keys (`kubemaster`)
 
 Copy the key to the other hosts. For this step please enter `vagrant` where a password is requested.

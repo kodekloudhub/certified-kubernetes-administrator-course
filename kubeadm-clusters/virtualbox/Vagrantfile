@@ -6,7 +6,7 @@
 NUM_WORKER_NODE = 2
 
 IP_NW = "192.168.56."
-MASTER_IP_START = 10
+MASTER_IP_START = 11
 NODE_IP_START = 20
 
 # Sets up hosts file and DNS
