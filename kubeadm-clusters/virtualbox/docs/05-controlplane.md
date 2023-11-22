@@ -1,5 +1,7 @@
 # Boot the controlplane on kubemaster
 
+[//]: # (host:kubemaster)
+
 1.  On the `kubemster` node, become root
 
     ```

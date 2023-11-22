@@ -1,7 +1,6 @@
 #!/bin/bash
 #
 # Sets up the kernel with the requirements for running Kubernetes
-# Requires a reboot, which is carried out by the vagrant provisioner.
 set -ex
 
 # Add br_netfilter kernel module

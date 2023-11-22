@@ -4,8 +4,10 @@ In this section we will configure the nodes and install prerequisites such as th
 
 Perform all the following steps on each of `kubemaster`, `kubenode01` and `kubenode02`
 
+[//]: # (host:kubemaster-kubenode01-kubenode02)
+
 1. Become root (saves typing `sudo` before every command)
-    ```bash
+    ```
     sudo -i
     ```
 1. Update the apt package index and install packages needed to use the Kubernetes apt repository:

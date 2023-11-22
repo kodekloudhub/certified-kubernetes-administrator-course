@@ -4,6 +4,8 @@ Here we will test the cluster by creating a workload with a node port service an
 
 Do the following on `kubemaster`
 
+[//]: # (host:kubemaster)
+
 1. Deploy and expose an nginx pod
 
     ```bash
