@@ -9,8 +9,8 @@ On the `kubemster` node
 1.  Set shell variables for the pod and network network CIDRs. The API server advertise address is using the predefined variable described in the [first section](./01-prerequisites.md)
 
     ```bash
-    export POD_CIDR=10.244.0.0/16
-    export SERVICE_CIDR=10.96.0.0/16
+    POD_CIDR=10.244.0.0/16
+    SERVICE_CIDR=10.96.0.0/16
     ```
 
 1.  Start controlplane
@@ -20,6 +20,8 @@ On the `kubemster` node
     ```bash
     sudo kubeadm init --pod-network-cidr $POD_CIDR --service-cidr $SERVICE_CIDR --apiserver-advertise-address $INTERNAL_IP
     ```
+
+[//]: # (command:sleep 10)
 
 1.  Copy the `kubeadm join` command printed to your notepad to use on the worker nodes.
 
