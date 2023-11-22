@@ -10,6 +10,12 @@ IP_NW = "192.168.56."
 MASTER_IP_START = 1
 NODE_IP_START = 2
 
+#ssh -i .vagrant/machines/kubemaster/virtualbox/private_key vagrant@192.168.56.
+#ssh -i .vagrant/machines/kubenode01/virtualbox/private_key vagrant@192.168.56.
+#ssh -i .vagrant/machines/kubenode02/virtualbox/private_key vagrant@192.168.56.
+
+#sudo kubeadm join 192.168.56.2:6443 --token y0j6bu.kb8ml4g104d3sdvn \ discovery-token-ca-cert-hash sha256:c3d7bfd8a10330be7b3dc89243638c35e369479e9524844b93148544378ad004
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -58,8 +64,10 @@ Vagrant.configure("2") do |config|
         # Name shown in the GUI
         node.vm.provider "virtualbox" do |vb|
             vb.name = "kubemaster"
-            vb.memory = 2048
-            vb.cpus = 2
+            vb.memory = 4096
+            vb.cpus = 4
+            #vb.memory = 2048
+            #vb.cpus = 4
         end
         node.vm.hostname = "kubemaster"
         node.vm.network :private_network, ip: IP_NW + "#{MASTER_IP_START + i}"
@@ -80,8 +88,8 @@ Vagrant.configure("2") do |config|
     config.vm.define "kubenode0#{i}" do |node|
         node.vm.provider "virtualbox" do |vb|
             vb.name = "kubenode0#{i}"
-            vb.memory = 2048
-            vb.cpus = 2
+            vb.memory = 4096
+            vb.cpus = 4
         end
         node.vm.hostname = "kubenode0#{i}"
         node.vm.network :private_network, ip: IP_NW + "#{NODE_IP_START + i}"
@@ -95,3 +103,21 @@ Vagrant.configure("2") do |config|
     end
   end
 end
+
+
+#sudo kubeadm join 192.168.56.2:6443 --token y0j6bu.kb8ml4g104d3sdvn \
+#        --discovery-token-ca-cert-hash sha256:c3d7bfd8a10330be7b3dc89243638c35e369479e9524844b93148544378ad004
+
+#---------------------------------Practice End to End
+#How many pods exist on the system?  --kubectl get pods
+#Create a new pod with the nginx image.  --kubectl run nginx --image=nginx
+#Create a new pod with the nginx busybox.  --kubectl run busybox --image=busybox
+#What is the image used to create the new pods?  --kubectl edit pod busybox  -- Edit is used to add any edit ojbects like pod, deploy, svc...
+#Which nodes are these pods placed on?  -- kubectl get pods -o wide
+#How many containers are part of the pod busybox?  -- kubectl describe pod busybox | grep Container  -- count the number of Container ID
+#What images are used in the new nginx pod?  -- kubectl get pod nginx | grep image   -- something is wrong in
+# add another container in the pod busybox. image agentx and update the pod and delete and replace the pod with  2 container
+#What is the state of the container agentx in the pod busybox?  --kubectl describe pod busybox | grep image
+#create alias name for common commands  -- alias k='kubectl'  --also do alias to get all the alias 
+
+
