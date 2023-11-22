@@ -1,4 +1,6 @@
 #!/bin/bash
+#
+# Set up /etc/hosts so we can resolve all the machines in the VirtualBox network
 set -ex
 IFNAME=$1
 THISHOST=$2
@@ -16,3 +18,6 @@ ${NETWORK}.11  kubemaster
 ${NETWORK}.21  kubenode01
 ${NETWORK}.22  kubenode02
 EOF
+
+# Expoert internal IP as an environment variable
+echo "INTERNAL_IP=${ADDRESS}" >> /etc/environment
