@@ -661,3 +661,17 @@ kubenode01 login: [  113.341945] cloud-init[1453]: Cloud-init v. 23.1.2-0ubuntu0
 [ 4370.557054] 	 (t=49047 jiffies g=49519 c=49518 q=445)
 [ 4370.564047] 	1-...!: (1 ticks this GP) idle=48e/140000000000001/0 softirq=91001/91001 fqs=1 
 [ 4370.592140] 	(detected by 0, t=49050 jiffies, g=49519, c=49518, q=1083)
+[ 7907.083477] INFO: rcu_sched self-detected stall on CPU
+[ 7907.083482] INFO: rcu_sched self-detected stall on CPU
+[ 7907.085285] INFO: rcu_sched self-detected stall on CPU
+[ 7907.085291] 	1-...!: (1 ticks this GP) idle=996/140000000000001/0 softirq=190874/190874 fqs=0 
+[ 7907.085292] 	 (t=111339 jiffies g=104935 c=104934 q=563)
+[ 7907.085297] rcu_sched kthread starved for 111339 jiffies! g104935 c104934 f0x0 RCU_GP_WAIT_FQS(3) ->state=0x402 ->cpu=1
+[ 7907.085360] INFO: rcu_sched self-detected stall on CPU
+[ 7907.085366] 	0-...!: (1 GPs behind) idle=fba/140000000000001/0 softirq=188543/188544 fqs=0 
+[ 7907.085368] 	 (t=111339 jiffies g=104935 c=104934 q=563)
+[ 7907.085373] rcu_sched kthread starved for 111339 jiffies! g104935 c104934 f0x0 RCU_GP_WAIT_FQS(3) ->state=0x402 ->cpu=1
+[ 7907.264406] 	3-...!: (1 GPs behind) idle=26a/140000000000001/0 softirq=191694/191697 fqs=1 
+[ 7907.417468] 	 (t=111339 jiffies g=104935 c=104934 q=1731)
+[ 7907.417511] 	2-...!: (1 GPs behind) idle=d8a/140000000000001/0 softirq=189352/189353 fqs=1 
+[ 7907.441979] 	 (t=111339 jiffies g=104935 c=104934 q=1733)
