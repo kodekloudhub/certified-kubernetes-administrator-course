@@ -6,6 +6,9 @@ Ref: https://stackoverflow.com/questions/59629319/unable-to-upgrade-connection-p
 
 ## Join Workers
 
+[//]: # (host:kubenode01-kubenode02)
+[//]: # (comment:Run kubeadm join)
+
 On each of `kubenode01` and `kubenode02` do the following
 
 1.  Become root (if you are not already)

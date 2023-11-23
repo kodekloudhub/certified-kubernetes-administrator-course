@@ -10,33 +10,33 @@ Here we create an SSH key pair for the `vagrant` user who we are logged in as. W
 
 Generate Key Pair on `kubemaster` node
 
+[//]: # (host:kubemaster)
+
 ```bash
 ssh-keygen
 ```
 
 Leave all settings to default (just press ENTER at any questions).
 
-View the generated public key ID at:
-
-```bash
-cat ~/.ssh/id_rsa.pub
-```
-
 Add this key to the local authorized_keys (`kubemaster`)
 
-```bash
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
-```
+Copy the key to the other hosts. For this step please enter `vagrant` where a password is requested.
 
-Copy the output from the first `cat` command above into a notepad and form it into the following command
+The option `-o StrictHostKeyChecking=no` tells it not to ask if you want to connect to a previously unknown host. Not best practice in the real world, but speeds things up here.
 
 ```bash
-cat >> ~/.ssh/authorized_keys <<EOF
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD...OUTPUT-FROM-ABOVE-COMMAND...8+08b vagrant@kubemaster
-EOF
+ssh-copy-id -o StrictHostKeyChecking=no vagrant@kubenode01
+ssh-copy-id -o StrictHostKeyChecking=no vagrant@kubenode02
 ```
 
-Now ssh to each of the other nodes and paste the above from your notepad at each command prompt.
+For each host, the output should be similar to this. If it is not, then you may have entered an incorrect password. Retry the step.
+
+```
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'vagrant@kubenode01'"
+and check to make sure that only the key(s) you wanted were added.
+```
 
 
 Prev: [Compute Resources](02-compute-resources.md)<br>
