@@ -62,7 +62,7 @@
    From the output of the above question, you have two kube-proxy pods, e.g.
 
    ```
-   controlplane ~ ➜  kubectl get pod -n kube-system | grep kube-proxy
+   controlplane ~ kubectl get pod -n kube-system | grep kube-proxy
    kube-proxy-rtr8p                       1/1     Running   0             56m
    kube-proxy-t7w8f                       1/1     Running   0             56m
    ```
