@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "assume_role_ec2" {
 
 # IAM role to assign to worker nodes
 resource "aws_iam_role" "node_instance_role" {
-  name               = "demo-eks-node"
+  name               = "eks-demo-node"
   assume_role_policy = data.aws_iam_policy_document.assume_role_ec2.json
   managed_policy_arns = [
     "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
@@ -216,7 +216,7 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
   depends_on = [
     time_sleep.wait_30_seconds
   ]
-  name = "${var.cluster_name}-stack"
+  name = "eks-cluster-stack"
   template_body = <<EOF
 Description: "Node autoscaler"
 Resources:
