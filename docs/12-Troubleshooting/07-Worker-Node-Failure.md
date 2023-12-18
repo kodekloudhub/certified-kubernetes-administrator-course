@@ -30,7 +30,7 @@
     ```
 
     ```
-    sudo journalctl –u kubelet
+    sudo journalctl -u kubelet
     ```
     ![kublet](../../images/kublet.PNG)
   
