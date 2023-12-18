@@ -17,7 +17,7 @@ In this section, we will take a look at **Storage Class**
 
 ![class-19](../../images/class19.PNG)
 
-- No we have a Storage Class, So we no longer to define Persistent Volume. It will create automatically when a Storage Class is created. It's called **Dynamic Provisioning**. 
+- Now we have a Storage Class, So we no longer to define Persistent Volume. It will create automatically when a Storage Class is created. It's called **Dynamic Provisioning**. 
 
 ```
 sc-definition.yaml
