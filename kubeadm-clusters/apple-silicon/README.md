@@ -24,7 +24,7 @@ Additionally
     mkdir ~/kodekloud
     cd ~/kodekloud
     git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
-    cd certified-kubernetes-administrator-course/apple-silicon
+    cd certified-kubernetes-administrator-course/kubeadm-clusters/apple-silicon
     ```
 
 ## Install Cluster
