@@ -55,15 +55,15 @@ Kubernetes uses labels to connect different objects together
      selector:
        matchLabels:
         app: App1
-    template:
-      metadata:
-        labels:
-          app: App1
-          function: Front-end
-      spec:
-        containers:
-        - name: simple-webapp
-          image: simple-webapp   
+     template:
+       metadata:
+         labels:
+           app: App1
+           function: Front-end
+       spec:
+         containers:
+         - name: simple-webapp
+           image: simple-webapp   
    ```
 
   ![lrs](../../images/lrs.PNG)
