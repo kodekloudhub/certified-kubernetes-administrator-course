@@ -31,21 +31,6 @@ Additionally
 
 These instructions follow the steps in the lecture videos fairly closely, however we need to use versions of the various software to install that are compatible with ARM architecture. This means that whereever the lecture shows sofware downloads with `linux-amd64` in the name, we are going to choose the corresponding `linux-arm64` version.
 
-### Step 0 - Add executable permissions to scripts.
-
-Since scripts may not have executable permissions after being downloaded, you'll need to manually adjust these permissions.
-
-    ```bash
-    chmod +x deploy-virtual-machines.sh
-    chmod +x delete-virtual-machines.sh
-    chmod +x scripts/01-setup-hosts.sh
-    chmod +x scripts/02-setup-kernel.sh
-    chmod +x scripts/03-setup-cri.sh
-    chmod +x scripts/04-kube-components.sh
-    chmod +x scripts/05-deploy-controlplane.sh
-    chmod +x scripts/06-deploy-workers.sh
-    ```
-
 ### Step 1 - Provision VMs with Multipass
 
 Because we cannot use VirtualBox and are instead using Multipass, [a script is provided](./deploy-virtual-machines.sh) to create the three VMs.
