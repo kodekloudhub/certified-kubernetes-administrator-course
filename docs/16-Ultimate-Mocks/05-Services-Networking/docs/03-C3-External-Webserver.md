@@ -1,5 +1,7 @@
 # Cluster 3 - External Webserver
 
+NOTE: This question is also present in the Ultimate CKAD Mocks. The service name is `external-webserver-ckad01-svcn`, however the solution is exactly the same.
+
 For this question, please set the context to cluster3 by running:
 
 ```
@@ -87,7 +89,7 @@ The primary interface is `eth0`. Note down the `inet` value for this interface w
 
 If we now do a `kubectl get service` on `external-webserver-cka03-svcn`, we see there's no pod selector and therefore no endpoints. So isn't "working as expected" since it doesn't have any endpoints.
 
-To wire up the service to the external IP, we must explicitly create an endpoint for the service. Here's the endpoint with comments indicating what's what.
+To wire up the service to the external IP, we must explicitly create an endpoint for the service. Note that the name of the endpoint (`metadata.name`) *must exactly match* the name of the service that you want to associate it to. Here's the endpoint with comments indicating what's what.
 
 ```yaml
 apiVersion: v1
