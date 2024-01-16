@@ -11,7 +11,7 @@ variable "cluster_name" {
   default     = "demo-eks"
 }
 
-# KK Playground. Cluster must be called 'eksClusterRole'
+# KK Playground. Cluster role must be called 'eksClusterRole'
 variable "cluster_role_name" {
   type        = string
   description = "Name of the cluster role"
