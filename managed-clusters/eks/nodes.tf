@@ -48,7 +48,7 @@ data "aws_iam_policy_document" "assume_role_ec2" {
 
 # IAM role to assign to worker nodes
 resource "aws_iam_role" "node_instance_role" {
-  name               = "eks-demo-node"
+  name               = var.node_role_name
   assume_role_policy = data.aws_iam_policy_document.assume_role_ec2.json
   managed_policy_arns = [
     "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy",
