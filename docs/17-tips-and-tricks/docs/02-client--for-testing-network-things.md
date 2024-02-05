@@ -6,10 +6,12 @@ Often you will get questions that require you to test network polices, or look s
 * nslookup
 * netstat
 * dig
+* telnet
+* nc
 
 and many more.
 
-You run it like so. Commit the image name to memory - this image is a lifesaver!
+You run it like so. Commit the image name to memory - this image is a lifesaver! There is nothing to stop you using it in the exam.
 
 ```
 kubectl run tester --image wbitt/network-multitool
