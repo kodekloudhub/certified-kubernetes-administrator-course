@@ -4,7 +4,7 @@ Managed clusters are where part of the cluster is managed by a major cloud provi
 
 Depending on the offering, the worker nodes may be unmanaged, part or fully managed.
 
-We have some instructions for building managed clusters in KoeKloud playgorunds here:
+We have some instructions for building managed clusters in KodeKloud playgrounds here:
 
 * [AWS EKS](./eks/) - Using Terraform
 * [AWS EKS](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748) - Using the console
