@@ -206,7 +206,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [04-Demo-Deployment-with-Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/04-Demo-Deployment-with-Kubeadm.md)
   - [05-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/05-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm.md)
   - [BONUS 1 - Various kubeadm cluster configurations](./kubeadm-clusters) - Including for Apple M1/M2!
-  - [BONUS 2 - Install EKS cluster on AWS](./managed-clusters/eks/)
+  - [BONUS 2 - Installing Managed Clusters in Cloud Playgrounds](./managed-clusters/)
 
 
 - [12-Troubleshooting](docs/12-Troubleshooting)
