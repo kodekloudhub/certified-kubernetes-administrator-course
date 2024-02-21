@@ -4,7 +4,7 @@ In here is the setup specific to Apple Silicon (M1/M2) Macs. VirtualBox currentl
 
 ## Prerequisites
 
-* Apple M1 or M2 system
+* Apple Silicon System (M1/M2/M3 etc)
 * 8GB RAM (16GB preferred).
     * All configurations - One control plane node will be provisioned - `kubemaster`
     * If you have less than 16GB then only one worker node will be provisioned - `kubeworker1`
@@ -225,7 +225,7 @@ Connect to each VM in turn and perform the following steps
     For each worker node
 
     1. Connect to the worker node
-    1. Paste the join command you copied from the final step of configuring the control plane to the command prompt and run it. Put `sudo` on the command line first, then passte the join command after sudo so it looks like
+    1. Paste the join command you copied from the final step of configuring the control plane to the command prompt and run it. Put `sudo` on the command line first, then paste the join command after sudo so it looks like
 
         ```
         sudo kubeadm join 192.168.64.4:6443 --token whd8v4.EXAMPLE --discovery-token-ca-cert-hash sha256:9537c57af216775e26ffa7ad3e495-5EXAMPLE`
