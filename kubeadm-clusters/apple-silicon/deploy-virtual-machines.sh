@@ -12,6 +12,12 @@ GREEN="\e[1;32m"
 BLUE="\e[1;34m"
 NC="\e[0m"
 
+if ! command -v jq > /dev/null
+then
+    echo -e "${RED}'jq' not found. Please install it${NC}"
+    exit 1
+fi
+
 NUM_WORKER_NODES=2
 MEM_GB=$(( $(sysctl hw.memsize | cut -d ' ' -f 2) /  1073741824 ))
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )/scripts
