@@ -32,9 +32,9 @@ This does the below:
 
     | VM            |  VM Name               | Purpose       | IP            | Forwarded Port   | RAM  |
     | ------------  | ---------------------- |:-------------:| -------------:| ----------------:|-----:|
-    | kubemaster    | kubemaster             | Master        | 192.168.56.11 |     2711         | 2048 |
-    | kubenode01    | kubenode01             | Worker        | 192.168.56.21 |     2721         | 1024 |
-    | kubenode02    | kubenode02             | Worker        | 192.168.56.22 |     2722         | 1024 |
+    | controlplane  | controlplane           | Control Plane | 192.168.56.11 |     2711         | 2048 |
+    | node01        | node01                 | Worker        | 192.168.56.21 |     2721         | 1024 |
+    | node02        | node02                 | Worker        | 192.168.56.22 |     2722         | 1024 |
 
     > These are the default settings. These can be changed in the Vagrant file
 
@@ -100,8 +100,8 @@ VirtualBox error:
 In such cases delete the VM, then delete the VM folder and then re-provision, e.g.
 
 ```bash
-vagrant destroy kubenode02
-rmdir "<path-to-vm-folder>\kubenode02
+vagrant destroy node02
+rmdir "<path-to-vm-folder>\node02
 vagrant up
 ```
 

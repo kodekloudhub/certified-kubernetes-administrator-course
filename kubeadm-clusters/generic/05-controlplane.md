@@ -1,6 +1,6 @@
-# Boot the controlplane on kubemaster
+# Boot the controlplane on controlplane
 
-[//]: # (host:kubemaster)
+[//]: # (host:controlplane)
 
 
 

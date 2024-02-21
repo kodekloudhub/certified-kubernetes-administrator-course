@@ -88,7 +88,7 @@ with the new CDIR range.  This should not overlap any of the other network setti
 
 [tmux](https://github.com/tmux/tmux/wiki) can be used to run the same commands on multiple compute instances at the same time. Labs in this tutorial may require running the same commands across multiple compute instances. In those cases you may consider using tmux and splitting a window into multiple panes with synchronize-panes enabled to speed up the provisioning process.
 
-In order to use tmux, you must first connect to `kubemaster` and run tmux there. From inside the tmux session you can open multiple panes and ssh to the worker nodes from these panes.
+In order to use tmux, you must first connect to `controlplane` and run tmux there. From inside the tmux session you can open multiple panes and ssh to the worker nodes from these panes.
 
 *The use of tmux is optional and not required to complete this tutorial*.
 

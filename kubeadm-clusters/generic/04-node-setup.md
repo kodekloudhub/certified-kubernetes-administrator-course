@@ -2,9 +2,9 @@
 
 In this section we will configure the nodes and install prerequisites such as the container runtime (`containerd`).
 
-Perform all the following steps on each of `kubemaster`, `kubenode01` and `kubenode02`
+Perform all the following steps on each of `controlplane`, `node01` and `node02`
 
-[//]: # (host:kubemaster-kubenode01-kubenode02)
+[//]: # (host:controlplane-node01-node02)
 
 1. Update the apt package index and install packages needed to use the Kubernetes apt repository:
     ```bash

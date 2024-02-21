@@ -6,10 +6,10 @@ Ref: https://stackoverflow.com/questions/59629319/unable-to-upgrade-connection-p
 
 ## Join Workers
 
-[//]: # (host:kubenode01-kubenode02)
+[//]: # (host:node01-node02)
 [//]: # (comment:Run kubeadm join)
 
-On each of `kubenode01` and `kubenode02` do the following
+On each of `node01` and `node02` do the following
 
 1.  Become root (if you are not already)
 
@@ -23,7 +23,7 @@ On each of `kubenode01` and `kubenode02` do the following
 
 ### Verify
 
-On `kubemaster` run the following. After a few seconds both nodes should be ready
+On `controlplane` run the following. After a few seconds both nodes should be ready
 
 ```
 kubectl get nodes

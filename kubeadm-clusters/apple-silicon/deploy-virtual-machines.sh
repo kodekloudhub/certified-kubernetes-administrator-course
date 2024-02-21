@@ -37,7 +37,7 @@ then
     sleep 1
 fi
 
-workers=$(for n in $(seq 1 $NUM_WORKER_NODES) ; do echo -n "kubeworker0$n " ; done)
+workers=$(for n in $(seq 1 $NUM_WORKER_NODES) ; do echo -n "node0$n " ; done)
 # workers=''
 
 # If the nodes are running, reset them
@@ -50,7 +50,7 @@ then
 fi
 
 # Boot the nodes
-for node in kubemaster $workers
+for node in controlplane $workers
 do
     if multipass list --format json | jq -r '.list[].name' | grep "$node"
     then
@@ -70,13 +70,13 @@ hostentries=/tmp/hostentries
 
 [ -f $hostentries ] && rm -f $hostentries
 
-for node in kubemaster $workers
+for node in controlplane $workers
 do
     ip=$(multipass info $node --format json | jq -r 'first( .info[] | .ipv4[0] )')
     echo "$ip $node" >> $hostentries
 done
 
-for node in kubemaster $workers
+for node in controlplane $workers
 do
     multipass transfer $hostentries $node:/tmp/
     multipass transfer $SCRIPT_DIR/01-setup-hosts.sh $node:/tmp/
@@ -90,7 +90,7 @@ then
     echo -e "${BLUE}Setting up common componenets${NC}"
     join_command=/tmp/join-command.sh
 
-    for node in kubemaster $workers
+    for node in controlplane $workers
     do
         echo -e "${BLUE}- ${node}${NC}"
         multipass transfer $hostentries $node:/tmp/
@@ -105,8 +105,8 @@ then
 
     # Configure control plane
     echo -e "${BLUE}Setting up control plane${NC}"
-    multipass exec kubemaster /tmp/05-deploy-controlplane.sh
-    multipass transfer kubemaster:/tmp/join-command.sh $join_command
+    multipass exec controlplane /tmp/05-deploy-controlplane.sh
+    multipass transfer controlplane:/tmp/join-command.sh $join_command
     echo -e "${GREEN}Done!${NC}"
 
     # Configure workers

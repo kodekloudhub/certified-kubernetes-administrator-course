@@ -2,9 +2,9 @@
 
 Here we will test the cluster by creating a workload with a node port service and get the results using `curl`
 
-Do the following on `kubemaster`
+Do the following on `controlplane`
 
-[//]: # (host:kubemaster)
+[//]: # (host:controlplane)
 
 1. Deploy and expose an nginx pod
 
@@ -19,8 +19,8 @@ Do the following on `kubemaster`
 
     ```bash
     PORT_NUMBER=$(kubectl get service -l app=nginx -o jsonpath="{.items[0].spec.ports[0].nodePort}")
-    curl http://kubenode01:$PORT_NUMBER
-    curl http://kubenode02:$PORT_NUMBER
+    curl http://node01:$PORT_NUMBER
+    curl http://node02:$PORT_NUMBER
     ```
 
     Both should return the nginx welcome message as HTML text.

@@ -11,10 +11,10 @@ Because we cannot use VirtualBox and are instead using Multipass, [a script is p
 2. Verify you can connect to all three (two if your Mac only has 8GB RAM) VMs:
 
     ```bash
-    multipass shell kubemaster
+    multipass shell controlplane
     ```
 
-    You should see a command prompt like `ubuntu@kubemaster:~$`
+    You should see a command prompt like `ubuntu@controlplane:~$`
 
     Type the following to return to the Mac terminal
 
@@ -22,7 +22,7 @@ Because we cannot use VirtualBox and are instead using Multipass, [a script is p
     exit
     ```
 
-    Do this for `kubeworker01` and `kubeworker02` as well
+    Do this for `node01` and `node02` as well
 
 Prev: [Prerequisites](./01-prerequisites.md)<br>
 Next: [Connectivity](./03-connectivity.md)

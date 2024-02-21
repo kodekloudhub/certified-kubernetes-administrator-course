@@ -2,9 +2,9 @@
 
 * Apple Silicon System (M1/M2/M3 etc)
 * 8GB RAM (16GB preferred).
-    * All configurations - One control plane node will be provisioned - `kubemaster`
-    * If you have less than 16GB then only one worker node will be provisioned - `kubeworker1`
-    * If you have 16GB or more then two workers will be provisioned - `kubeworker01` and `kubeworker2`
+    * All configurations - One control plane node will be provisioned - `controlplane`
+    * If you have less than 16GB then only one worker node will be provisioned - `node01`
+    * If you have 16GB or more then two workers will be provisioned - `node01` and `node02`
 
 You'll need to install the following first.
 

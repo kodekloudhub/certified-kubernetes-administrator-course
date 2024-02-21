@@ -14,9 +14,9 @@ sed -e "/^.*$2.*/d" -i /etc/hosts
 
 # Update /etc/hosts about other hosts
 cat >> /etc/hosts <<EOF
-${NETWORK}.11  kubemaster
-${NETWORK}.21  kubenode01
-${NETWORK}.22  kubenode02
+${NETWORK}.11  controlplane
+${NETWORK}.21  node01
+${NETWORK}.22  node02
 EOF
 
 # Expoert internal IP as an environment variable
