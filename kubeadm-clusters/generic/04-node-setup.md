@@ -6,15 +6,12 @@ Perform all the following steps on each of `kubemaster`, `kubenode01` and `kuben
 
 [//]: # (host:kubemaster-kubenode01-kubenode02)
 
-1. Become root (saves typing `sudo` before every command)
-    ```
-    sudo -i
-    ```
 1. Update the apt package index and install packages needed to use the Kubernetes apt repository:
     ```bash
     sudo apt-get update
     sudo apt-get install -y apt-transport-https ca-certificates curl
     ```
+
 1. Set up the required kernel modules and make them persistent
     ```bash
     cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
@@ -25,6 +22,7 @@ Perform all the following steps on each of `kubemaster`, `kubenode01` and `kuben
     sudo modprobe overlay
     sudo modprobe br_netfilter
     ```
+
 1.  Set the required kernel parameters and make them persistent
     ```bash
     cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
@@ -35,10 +33,12 @@ Perform all the following steps on each of `kubemaster`, `kubenode01` and `kuben
 
     sudo sysctl --system
     ```
+
 1. Install the container runtime
     ```bash
     sudo apt-get install -y containerd
     ```
+
 1.  Configure the container runtime to use systemd Cgroups. This part is the bit many students miss, and if not done results in a controlplane that comes up, then all the pods start crashlooping. `kubectl` will also fail with an error like `The connection to the server x.x.x.x:6443 was refused - did you specify the right host or port?`
 
     1. Create default configuration
@@ -53,7 +53,8 @@ Perform all the following steps on each of `kubemaster`, `kubenode01` and `kuben
         ```bash
         sudo systemctl restart containerd
         ```
-1.  Get latest version of Kubernetes and store in a shell variable
+
+1.  Determine latest version of Kubernetes and store in a shell variable
 
     ```bash
     KUBE_LATEST=$(curl -L -s https://dl.k8s.io/release/stable.txt | awk 'BEGIN { FS="." } { printf "%s.%s", $1, $2 }')
@@ -91,3 +92,8 @@ Perform all the following steps on each of `kubemaster`, `kubenode01` and `kuben
     KUBELET_EXTRA_ARGS='--node-ip ${INTERNAL_IP}'
     EOF
     ```
+
+Prev: Connectivity ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) ([VirtualBox](../virtualbox/docs/03-connectivity.md))</br>
+Next: [Control Plane setup](./05-controlplane.md)
+
+
