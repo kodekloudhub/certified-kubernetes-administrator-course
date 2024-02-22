@@ -1,5 +1,10 @@
 # Node Setup
 
+**NOTE**<br/>
+In this and the following sections, you will notice some groups of shell commands are enclosed in `{ }`. This is so that you can copy the block from github with the github copy button and paste to your node terminals. Without this, a group of several commands with `sudo` will stop after the first command and you will probably miss this fact, leading to things not working further on.
+
+---
+
 In this section we will configure the nodes and install prerequisites such as the container runtime (`containerd`).
 
 Perform all the following steps on each of `controlplane`, `node01` and `node02`
@@ -18,8 +23,8 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     ```bash
     {
         cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
-        overlay
-        br_netfilter
+    overlay
+    br_netfilter
     EOF
 
         sudo modprobe overlay
@@ -31,9 +36,9 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     ```bash
     {
         cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-        net.bridge.bridge-nf-call-iptables  = 1
-        net.bridge.bridge-nf-call-ip6tables = 1
-        net.ipv4.ip_forward                 = 1
+    net.bridge.bridge-nf-call-iptables  = 1
+    net.bridge.bridge-nf-call-ip6tables = 1
+    net.ipv4.ip_forward                 = 1
     EOF
 
         sudo sysctl --system
