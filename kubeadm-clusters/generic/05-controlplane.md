@@ -28,13 +28,14 @@ On the `controlplane` node
 1.  Set up the kubeconfig so it can be used by the `vagrant` user
 
 
-    1.  Create directory for kubeconfig, copy the admin kubeconfig as the default kubeconfig for `vagrant` user and set the correct file permissions
+    1.  Create directory for kubeconfig, copy the admin kubeconfig as the default kubeconfig for current user (`vagrant` on VirtualBox, `ubuntu` on Multipass or `ec2-user` on AWS) and set the correct file permissions.</br>Note that in Linux, the command `id -u` returns your user name on the system and `id -g` returns your group name.
 
         ```bash
         {
             mkdir ~/.kube
             sudo cp /etc/kubernetes/admin.conf ~/.kube/config
             sudo chown $(id -u):$(id -g) ~/.kube/config
+            chmod 600 ~/.kube/config
         }
         ```
 
