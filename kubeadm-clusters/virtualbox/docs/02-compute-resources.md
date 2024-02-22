@@ -130,5 +130,5 @@ To power on again:
 vagrant up
 ```
 
-Prev: [Prerequisites](./01-prerequisites.md)<br>
-Next: [Connectivity](./03-connectivity.md)
+Next: [Connectivity](./03-connectivity.md)<br/>
+Prev: [Prerequisites](./01-prerequisites.md)

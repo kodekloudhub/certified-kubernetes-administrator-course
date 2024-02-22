@@ -24,5 +24,5 @@ Because we cannot use VirtualBox and are instead using Multipass, [a script is p
 
     Do this for `node01` and `node02` as well
 
-Prev: [Prerequisites](./01-prerequisites.md)<br>
-Next: [Connectivity](./03-connectivity.md)
+Next: [Connectivity](./03-connectivity.md)<br>
+Prev: [Prerequisites](./01-prerequisites.md)

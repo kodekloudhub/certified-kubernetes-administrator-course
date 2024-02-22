@@ -110,7 +110,7 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     EOF
     ```
 
-Prev: Connectivity ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) ([VirtualBox](../virtualbox/docs/03-connectivity.md))</br>
-Next: [Control Plane setup](./05-controlplane.md)
+Next: [Control Plane setup](./05-controlplane.md)</br>
+Prev: Connectivity ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) ([VirtualBox](../virtualbox/docs/03-connectivity.md))
 
 
