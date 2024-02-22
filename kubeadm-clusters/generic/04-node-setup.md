@@ -8,30 +8,36 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
 
 1. Update the apt package index and install packages needed to use the Kubernetes apt repository:
     ```bash
-    sudo apt-get update
-    sudo apt-get install -y apt-transport-https ca-certificates curl
+    {
+        sudo apt-get update
+        sudo apt-get install -y apt-transport-https ca-certificates curl
+    }
     ```
 
 1. Set up the required kernel modules and make them persistent
     ```bash
-    cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
-    overlay
-    br_netfilter
+    {
+        cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+        overlay
+        br_netfilter
     EOF
 
-    sudo modprobe overlay
-    sudo modprobe br_netfilter
+        sudo modprobe overlay
+        sudo modprobe br_netfilter
+    }
     ```
 
 1.  Set the required kernel parameters and make them persistent
     ```bash
-    cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-    net.bridge.bridge-nf-call-iptables  = 1
-    net.bridge.bridge-nf-call-ip6tables = 1
-    net.ipv4.ip_forward                 = 1
+    {
+        cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+        net.bridge.bridge-nf-call-iptables  = 1
+        net.bridge.bridge-nf-call-ip6tables = 1
+        net.ipv4.ip_forward                 = 1
     EOF
 
-    sudo sysctl --system
+        sudo sysctl --system
+    }
     ```
 
 1. Install the container runtime
@@ -44,8 +50,10 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     1. Create default configuration
 
         ```bash
-        sudo mkdir -p /etc/containerd
-        containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | sudo tee /etc/containerd/config.toml
+        {
+            sudo mkdir -p /etc/containerd
+            containerd config default | sed 's/SystemdCgroup = false/SystemdCgroup = true/' | sudo tee /etc/containerd/config.toml
+        }
         ```
 
     1.  Restart containerd
@@ -62,8 +70,10 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
 
 1. Download the Kubernetes public signing key
     ```bash
-    mkdir -p /etc/apt/keyrings
-    curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    {
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    }
     ```
 
 1. Add the Kubernetes apt repository
@@ -73,9 +83,11 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
 
 1. Update apt package index, install kubelet, kubeadm and kubectl, and pin their version
     ```bash
-    sudo apt-get update
-    sudo apt-get install -y kubelet kubeadm kubectl
-    sudo apt-mark hold kubelet kubeadm kubectl
+    {
+        sudo apt-get update
+        sudo apt-get install -y kubelet kubeadm kubectl
+        sudo apt-mark hold kubelet kubeadm kubectl
+    }
     ```
 
 1.  Configure `crictl` in case we need it to examine running containers

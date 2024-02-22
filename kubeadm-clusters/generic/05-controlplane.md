@@ -31,9 +31,11 @@ On the `kubemster` node
     1.  Create directory for kubeconfig, copy the admin kubeconfig as the default kubeconfig for `vagrant` user and set the correct file permissions
 
         ```bash
-        mkdir ~/.kube
-        sudo cp /etc/kubernetes/admin.conf ~/.kube/config
-        sudo chown $(id -u):$(id -g) ~/.kube/config
+        {
+            mkdir ~/.kube
+            sudo cp /etc/kubernetes/admin.conf ~/.kube/config
+            sudo chown $(id -u):$(id -g) ~/.kube/config
+        }
         ```
 
     1.  Verify
@@ -52,6 +54,8 @@ On the `kubemster` node
 [//]: # (command:kubectl rollout status daemonset weave-net -n kube-system --timeout=90s)
 
 1.  Verify controlplane
+
+    It may take around 30 seconds for Weave to become stable.
 
     ```bash
     kubectl get pods -n kube-system
