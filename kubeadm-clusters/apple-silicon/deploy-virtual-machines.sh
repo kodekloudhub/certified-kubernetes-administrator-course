@@ -6,11 +6,11 @@ ARG=$1
 
 set -euo pipefail
 
-RED="\e[1;31m"
-YELLOW="\e[1;33m"
-GREEN="\e[1;32m"
-BLUE="\e[1;34m"
-NC="\e[0m"
+RED="\033[1;31m"
+YELLOW="\033[1;33m"
+GREEN="\033[1;32m"
+BLUE="\033[1;34m"
+NC="\033[0m"
 
 if ! command -v jq > /dev/null
 then
