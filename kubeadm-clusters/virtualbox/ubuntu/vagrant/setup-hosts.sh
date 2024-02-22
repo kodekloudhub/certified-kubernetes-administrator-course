@@ -19,5 +19,5 @@ ${NETWORK}.21  node01
 ${NETWORK}.22  node02
 EOF
 
-# Expoert internal IP as an environment variable
+# Export internal IP as an environment variable
 echo "INTERNAL_IP=${ADDRESS}" >> /etc/environment
