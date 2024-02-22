@@ -1,10 +1,10 @@
-# Boot the controlplane on controlplane
+# Boot the controlplane
 
 [//]: # (host:controlplane)
 
 
 
-On the `kubemster` node
+On the `controlplane` node
 
 1.  Set shell variables for the pod and network network CIDRs. The API server advertise address is using the predefined variable described in the [first section](./01-prerequisites.md)
 
