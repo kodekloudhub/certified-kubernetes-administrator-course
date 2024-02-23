@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Set up /etc/hosts so we can resolve all the machines in the VirtualBox network
-set -ex
+set -e
 IFNAME=$1
 THISHOST=$2
 ADDRESS="$(ip -4 addr show $IFNAME | grep "inet" | head -1 |awk '{print $2}' | cut -d/ -f1)"
