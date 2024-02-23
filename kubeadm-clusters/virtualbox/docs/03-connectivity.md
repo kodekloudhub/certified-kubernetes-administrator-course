@@ -18,14 +18,15 @@ ssh-keygen
 
 Leave all settings to default (just press ENTER at any questions).
 
-Add this key to the local authorized_keys (`controlplane`)
-
 Copy the key to the other hosts. For this step please enter `vagrant` where a password is requested.
 
 The option `-o StrictHostKeyChecking=no` tells it not to ask if you want to connect to a previously unknown host. Not best practice in the real world, but speeds things up here.
 
 ```bash
 ssh-copy-id -o StrictHostKeyChecking=no vagrant@node01
+```
+
+```bash
 ssh-copy-id -o StrictHostKeyChecking=no vagrant@node02
 ```
 
