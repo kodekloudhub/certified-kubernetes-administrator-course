@@ -2,7 +2,9 @@
 
 Note: You must have VirtualBox and Vagrant configured at this point
 
-Download this github repository and cd into the vagrant folder
+Open a terminal application (Windows or Powershell, it matters not). All commands in this guide are executed from the terminal.
+
+Download this github repository and cd into the virtualbox folder
 
 ```bash
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
