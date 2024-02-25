@@ -35,7 +35,7 @@ When you have finished with your cluster and want to reclaim the resources, perf
     ./delete-virtual-machines.sh
     ````
 
-1. Clean stale DHCP leases. Multipass does not do this automatically and if you do not do it yourself you will eventially run out of IP addresses on the multipass VM network.
+1. Clean stale DHCP leases. Multipass does not do this automatically and if you do not do it yourself you will eventually run out of IP addresses on the multipass VM network.
 
     1. Edit the following
 
