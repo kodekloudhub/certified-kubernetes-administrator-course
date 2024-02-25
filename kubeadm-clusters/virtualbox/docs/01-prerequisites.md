@@ -12,7 +12,7 @@ If you have an M-series (Apple Silicon) Mac, you cannot run VirtualBox. Please i
 Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) on any one of the supported platforms:
 
  - Windows hosts
- - MacOS hosts x86 only. For Apple Silicon (M1/M2/M3), see [here](../../apple-silicon/).
+ - MacOS hosts x86 only. For Apple Silicon (M-series processors), see [here](../../apple-silicon/).
  - Linux distributions
  - Solaris hosts
 
