@@ -82,6 +82,8 @@ do
     multipass transfer $SCRIPT_DIR/01-setup-hosts.sh $node:/tmp/
     multipass exec $node -- /tmp/01-setup-hosts.sh
 done
+multipass transfer $SCRIPT_DIR/tmux.conf controlplane:/home/ubuntu
+
 echo -e "${GREEN}Done!${NC}"
 
 if [ "$ARG" = "-auto" ] 

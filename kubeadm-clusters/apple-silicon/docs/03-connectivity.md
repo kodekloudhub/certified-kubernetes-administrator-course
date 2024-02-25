@@ -26,6 +26,8 @@ The option `-o StrictHostKeyChecking=no` tells it not to ask if you want to conn
 
 ```bash
 ssh-copy-id -o StrictHostKeyChecking=no ubuntu@node01
+```
+```bash
 ssh-copy-id -o StrictHostKeyChecking=no ubuntu@node02
 ```
 
