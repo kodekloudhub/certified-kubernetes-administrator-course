@@ -130,5 +130,16 @@ To power on again:
 vagrant up
 ```
 
+# Deleting the Virtual Machines
+
+When you have finished with your cluster and want to reclaim the resources, perform the following steps
+
+1. Exit from all your VM sessions
+1. Run the following
+
+    ```
+    vagrant destroy -f
+    ```
+
 Next: [Connectivity](./03-connectivity.md)<br/>
 Prev: [Prerequisites](./01-prerequisites.md)
