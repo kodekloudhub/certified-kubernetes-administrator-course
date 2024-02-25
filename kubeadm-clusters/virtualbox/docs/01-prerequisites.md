@@ -25,14 +25,6 @@ Vagrant provides an easier way to deploy multiple virtual machines on VirtualBox
 
 Download and Install [Vagrant](https://www.vagrantup.com/) on your platform.
 
-- Windows
-- Debian
-- Centos
-- Linux
-- macOS (x86 only, not M1)
-
-This tutorial assumes that you have also installed Vagrant.
-
 This lab was last tested with Vagrant 2.3.7, though newer versions should be ok.
 
 ## Lab Defaults
