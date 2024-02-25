@@ -111,6 +111,6 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     ```
 
 Next: [Control Plane setup](./05-controlplane.md)</br>
-Prev: Connectivity ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) ([VirtualBox](../virtualbox/docs/03-connectivity.md))
+Prev: Connectivity ([VirtualBox](../virtualbox/docs/03-connectivity.md)) ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) [AWS](../aws/docs/03-connectivity.md)
 
 
