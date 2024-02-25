@@ -121,3 +121,6 @@ We will install kubectl here so that we can run commands against the cluster whe
 
     which is fine, since we haven't installed kubernetes yet.
 
+
+Next: [Connectivity](./03-connectivity.md)<br/>
+Prev: [Prerequisites](./01-prerequisites.md)
