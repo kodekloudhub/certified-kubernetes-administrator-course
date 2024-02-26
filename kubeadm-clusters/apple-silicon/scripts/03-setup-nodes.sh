@@ -20,5 +20,5 @@ sudo crictl config \
     --set image-endpoint=unix:///run/containerd/containerd.sock
 
 cat <<EOF | sudo tee /etc/default/kubelet
-KUBELET_EXTRA_ARGS='--node-ip ${INTERNAL_IP}'
+KUBELET_EXTRA_ARGS='--node-ip ${PRIMARY_IP}'
 EOF

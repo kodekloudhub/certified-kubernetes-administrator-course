@@ -54,10 +54,10 @@ If you do decide to change any of these, please treat as personal preference and
 
 Due to how VirtualBox/Vagrant works, the networking for each VM requires two network adapters; one NAT (`enp0s3`) to communicate with the outside world, and one internal (`enp0s8`) which is attached to the VirtualBox network mentioned above. By default, Kubernetes components will connect to the default network adapter - the NAT one, which is *not* what we want, therefore there is a bit of extra configuration required to get around this, which you will encounter in the coming lab sections.
 
-We have pre-set an environment variable `INTERNAL_IP` on all VMs which is the IP address that kube components should be using. For those interested, this variable is assigned the result of the following command
+We have pre-set an environment variable `PRIMARY_IP` on all VMs which is the IP address that kube components should be using. `PRIMARY_IP` is defined as the IP address of the network interface on the node that is connected to the network having the default gateway, and is the interface that a node will use to talk to the other nodes. For those interested, this variable is assigned the result of the following command
 
 ```bash
-ip -4 addr show enp0s8 | grep "inet" | head -1 | awk '{print $2}' | cut -d/ -f1
+ip route | grep default | awk '{ print $9 }'
 ```
 
 ### Pod Network

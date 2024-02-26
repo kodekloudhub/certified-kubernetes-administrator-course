@@ -2,7 +2,7 @@
 cat /tmp/hostentries | sudo tee -a /etc/hosts
 
 # Export internal IP of primary NIC as an environment variable
-echo "INTERNAL_IP=$(ip route | grep default | awk '{ print $9 }')" | sudo tee -a /etc/environment > /dev/null
+echo "PRIMARY_IP=$(ip route | grep default | awk '{ print $9 }')" | sudo tee -a /etc/environment > /dev/null
 
 # Enable password auth in sshd so we can use ssh-copy-id
 sudo sed -i 's/#PasswordAuthentication/PasswordAuthentication/' /etc/ssh/sshd_config

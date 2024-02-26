@@ -102,11 +102,14 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
         --set image-endpoint=unix:///run/containerd/containerd.sock
     ```
 
-1.  Prepare extra arguments for kubelet such that when it starts, it listens on the VM network address and not the NAT one. This uses the predefined `INTERNAL_IP` environment variable. Paste the following to the terminal
+1.  Prepare extra arguments for kubelet such that when it starts, it listens on the VM network address and not the NAT one. This uses the predefined `PRIMARY_IP` environment variable. `PRIMARY_IP` is defined as the IP address of the network interface on the node that is connected to the network having the default gateway, and is the interface that a node will use to talk to the other nodes. `PRIMARY_IP` variable is set to the output of the following command:</br>`ip route | grep default | awk '{ print $9 }'`</br>Note this variable is created by the lab setup - it is not available by default in Linux.
+
+
+    Paste the following to the terminal
 
     ```bash
     cat <<EOF | sudo tee /etc/default/kubelet
-    KUBELET_EXTRA_ARGS='--node-ip ${INTERNAL_IP}'
+    KUBELET_EXTRA_ARGS='--node-ip ${PRIMARY_IP}'
     EOF
     ```
 

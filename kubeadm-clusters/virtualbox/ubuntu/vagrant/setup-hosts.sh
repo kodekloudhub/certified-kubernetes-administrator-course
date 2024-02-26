@@ -4,7 +4,7 @@
 set -e
 IFNAME=$1
 THISHOST=$2
-ADDRESS="$(ip -4 addr show $IFNAME | grep "inet" | head -1 |awk '{print $2}' | cut -d/ -f1)"
+ADDRESS="$(ip route | grep default | awk '{ print $9 }')"
 NETWORK=$(echo $ADDRESS | awk 'BEGIN {FS="."} ; { printf("%s.%s.%s", $1, $2, $3) }')
 sed -e "s/^.*${HOSTNAME}.*/${ADDRESS} ${HOSTNAME} ${HOSTNAME}.local/" -i /etc/hosts
 
@@ -19,5 +19,5 @@ ${NETWORK}.21  node01
 ${NETWORK}.22  node02
 EOF
 
-# Export internal IP as an environment variable
-echo "INTERNAL_IP=${ADDRESS}" >> /etc/environment
+# Export PRIMARY IP as an environment variable
+echo "PRIMARY_IP=${ADDRESS}" >> /etc/environment

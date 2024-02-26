@@ -67,6 +67,7 @@ resource "aws_instance" "kubenode" {
               ${aws_network_interface.kubenode["node01"].private_ip} node01
               ${aws_network_interface.kubenode["node02"].private_ip} node02
               EOF
+              echo "PRIMARY_IP=$(ip route | grep default | awk '{ print $9 }')" >> /etc/environment
               EOT
 }
 
