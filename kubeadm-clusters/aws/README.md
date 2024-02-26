@@ -1,4 +1,6 @@
-# Kubeadm on AWS EC2
+# Installing Kubernetes the kubeadm way on AWS EC2
+
+Updated March 2024
 
 This guide shows how to install a 3 node kubeadm cluster on AWS EC2 instances. If using the KodeKloud AWS Playground environment, please ensure you have selected region `us-east-1` (N. Virginia) from the region selection at the top right of the AWS console. To maintain compatibility with the playground permissions, we will use the following EC2 instance configuration.
 
