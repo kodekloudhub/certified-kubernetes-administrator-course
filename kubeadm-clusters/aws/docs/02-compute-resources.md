@@ -121,6 +121,12 @@ We will install kubectl here so that we can run commands against the cluster whe
 
     which is fine, since we haven't installed kubernetes yet.
 
+## Notes on the terraform code
+
+Those of you who are also studying our Terraform courses should look at the terraform files and try to understand what is happening here.
+
+One point of note is that for the `node` instances, we create network interfaces for them as separate resources, then attach these ENIs to the instances when they are built. The reason for this is so that the IP addresses of the instances can be known in advance, such that during instance creation `/etc/hosts` may be created by the user_data script.
+
 
 Next: [Connectivity](./03-connectivity.md)<br/>
 Prev: [Prerequisites](./01-prerequisites.md)
