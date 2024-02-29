@@ -47,7 +47,7 @@ Due to how VirtualBox/Vagrant works, the networking for each VM requires two net
 ip route | grep default | awk '{ print $9 }'
 ```
 
-### Bridge Networking
+#### Bridge Networking
 
 The default configuration in this lab is to bring the VMs up on bridged interfaces. What this means is that your Kubernetes nodes will appear as additional machines on your local network. This facilitates the use of your browser to connect to any NodePort services you deploy.
 
@@ -55,7 +55,7 @@ Should you have issues deploying bridge networking, please raise a [bug report](
 
 Then retry the lab in NAT mode. How to do this is covered in the [next section](./02-compute-resources.md).
 
-### NAT Networking
+#### NAT Networking
 
 The network used by the Virtual Box virtual machines is `192.168.56.0/24`.
 
