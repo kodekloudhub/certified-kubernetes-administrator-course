@@ -42,7 +42,7 @@ In this section, we will talk about kube-apiserver in kubernetes
   
   ![kube-apiserver3](../../images/kube-apiserver3.PNG)
    
-- You can also see the running process and affective options by listing the process on master node and searching for kube-apiserver.
+- You can also see the running process and effective options by listing the process on master node and searching for kube-apiserver.
   ```
   $ ps -aux | grep kube-apiserver
   ```
