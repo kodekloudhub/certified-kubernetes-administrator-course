@@ -17,7 +17,7 @@ In this section, we will take a look at **Volumes**
 
 ## Volume Storage Options
 
-- In the volumes, hostPath volume type is fine with the single node. It's not recomended for use with the multi node cluster.
+- In the volumes, hostPath volume type is fine with the single node. It's not recommended for use with the multi node cluster.
 - In the Kubernetes, it supports several types of standard storage solutions such as NFS, GlusterFS, CephFS or public cloud solutions like AWS EBS, Azure Disk or Google's Persistent Disk.
 
 ![class-15](../../images/class15.PNG)
