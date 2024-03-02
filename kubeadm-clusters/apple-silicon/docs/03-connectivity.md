@@ -1,8 +1,12 @@
 # Connectivity
 
-First identify a system from where you will perform administrative tasks, such as creating certificates, kubeconfig files and distributing them to the different VMs.
+We will perform most configuration tasks from the `controlplane` node. After the following steps you will be able to use ssh to log into workder nodes from the `cxontrolplane` prompt.
 
-If you are on a Linux laptop, then your laptop could be this system. In my case I chose the `controlplane` node to perform administrative tasks. Whichever system you chose make sure that system is able to access all the provisioned VMs through SSH to copy files over.
+You can if you prefer log into worker nodes from separate terminal sessions using e.g.
+
+```
+multipass shell node01
+```
 
 ## Access all VMs
 
@@ -17,8 +21,6 @@ ssh-keygen
 ```
 
 Leave all settings to default (just press ENTER at any questions).
-
-Add this key to the local authorized_keys (`controlplane`)
 
 Copy the key to the other hosts. For this step please enter `ubuntu` where a password is requested.
 

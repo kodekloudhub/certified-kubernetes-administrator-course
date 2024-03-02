@@ -11,6 +11,9 @@ Do the following on `controlplane`
     ```bash
     kubectl create deployment nginx --image nginx:alpine
     kubectl expose deploy nginx --type=NodePort --port 80
+
+    PORT_NUMBER=$(kubectl get service -l app=nginx -o jsonpath="{.items[0].spec.ports[0].nodePort}")
+    echo "Exposed on NodePort $PORT_NUMBER"
     ```
 
 [//]: # (command:kubectl wait deployment -n default nginx --for condition=Available=True --timeout=90s)
@@ -18,14 +21,25 @@ Do the following on `controlplane`
 1.  Hit the new service
 
     ```bash
-    PORT_NUMBER=$(kubectl get service -l app=nginx -o jsonpath="{.items[0].spec.ports[0].nodePort}")
     curl http://node01:$PORT_NUMBER
     curl http://node02:$PORT_NUMBER
     ```
 
     Both should return the nginx welcome message as HTML text.
 
-Note that this cluster is not exposed externally so you can't use your browser. This tutorial is only about proving you can set up a working kubeadm cluster. If you want a cluster to experiment with that you can use a browser on, consider [minikube](https://minikube.sigs.k8s.io/docs/start/)
+Congratulations! You now have your own working kubeadm cluster.
+
+## Viewing service with a browser
+
+### VirtualBox or Apple Silicon
+
+If you installed the cluster with bridge networking (the default), then you can view NodePort services with your browser.
+
+Run the following command on `controlplane` to get browser address, then copy the output to your browser:
+
+```bash
+echo "http://$(dig +short node01):$PORT_NUMBER"
+```
 
 Prev: [Worker nodes](./06-workers.md)
 

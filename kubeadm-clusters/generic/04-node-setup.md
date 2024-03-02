@@ -7,7 +7,7 @@ In this and the following sections, you will notice some groups of shell command
 
 In this section we will configure the nodes and install prerequisites such as the container runtime (`containerd`).
 
-Perform all the following steps on each of `controlplane`, `node01` and `node02`
+Perform all the following steps on each of `controlplane`, `node01` and `node02`. For this section you can run the commands simultaneously on all nodes if using iterm2 broadcast (Mac) or tmux (others).
 
 [//]: # (host:controlplane-node01-node02)
 
@@ -111,6 +111,8 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     KUBELET_EXTRA_ARGS='--node-ip ${PRIMARY_IP}'
     EOF
     ```
+
+If you used tmux or iterm2 synchronized panes for this section, you should disable the synchronization now.
 
 Next: [Control Plane setup](./05-controlplane.md)</br>
 Prev: Connectivity ([VirtualBox](../virtualbox/docs/03-connectivity.md)) ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) [AWS](../aws/docs/03-connectivity.md)

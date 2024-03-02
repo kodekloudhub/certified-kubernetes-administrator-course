@@ -28,5 +28,22 @@ We have pre-set an environment variable `PRIMARY_IP` on all VMs which is the IP 
 ip route | grep default | awk '{ print $9 }'
 ```
 
+## Running Commands in Parallel with iterm2
+
+[iterm2](https://iterm2.com/) which is a popular replacement for the standard Mac terminal application can be used to run the same commands on multiple compute instances at the same time. Some labs in this tutorial require running the same commands on multiple compute instances for instance installing the Kubernetes software. In those cases you may consider using iterm2 and splitting a window into multiple panes with *Broadcast input to all panes* enabled to speed up the provisioning process.
+
+*The use of iterm2 is optional and not required to complete this tutorial*.
+
+![titerm2 screenshot](../../../images/iterm2-broadcast.png)
+
+To set up as per the image above, do the following in iterm2
+1. Right click and select split pane horizontally
+1. Do this again to create the third pane (if building 2 workers)
+1. In each pane, connect to a different node with `multipass shell`
+1. From the `Session` menu at the top, select `Broadcast` -> `Broadcast imput to all panes`. The small icon at the top right of each pane indicates broadcast mode is enabled.
+
+Input typed or pased to one command prompt will be echoed to the others. Remember to turn off broadcast when you have finished a section that applies to all nodes.
+
 Next: [Compute Resources](02-compute-resources.md)
 
+[](#running-commands-in-parallel-with-iterm2)

@@ -17,4 +17,14 @@ done
 
 multipass purge
 
+echo
+echo "You should now remove all the following lines from /var/db/dhcpd_leases"
+echo
+cat /var/db/dhcpd_leases | egrep -A 5 -B 1 '(controlplane|node01|node02)'
+echo
+cat <<EOF
+Use the following command to do this
 
+  sudo vi /var/db/dhcpd_leases
+
+EOF
