@@ -33,7 +33,7 @@ In this section, we will take a look at kube-scheduler.
   ```
   ![kube-scheduler4](../../images/kube-scheduler4.PNG)
   
-- You can also see the running process and affective options by listing the process on master node and searching for kube-apiserver.
+- You can also see the running process and effective options by listing the process on master node and searching for kube-apiserver.
   ``` 
   $ ps -aux | grep kube-scheduler
   ```
