@@ -79,7 +79,7 @@ Solutions to practice test - monitor cluster components
   
 1.  <details>
 
-    <summary>Identify the POD that consumes the the least CPU(cores).</summary>
+    <summary>Identify the POD that consumes the least CPU(cores).</summary>
 
     Run the `kubectl top pod` command
   
