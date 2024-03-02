@@ -86,6 +86,8 @@ with the new CDIR range.  This should not overlap any of the other network setti
 
 ## Running Commands in Parallel with tmux
 
+If you are running this tutorial on an x86 Mac, you can instead use iterm2 to achive this. See the iterm2 setup in the [Apple Silicon guide](../../apple-silicon/docs/01-prerequisites.md#running-commands-in-parallel-with-iterm2).
+
 [tmux](https://github.com/tmux/tmux/wiki) can be used to run the same commands on multiple compute instances at the same time. Labs in this tutorial may require running the same commands across multiple compute instances. In those cases you may consider using tmux and splitting a window into multiple panes with synchronize-panes enabled to speed up the provisioning process.
 
 In order to use tmux, you must first connect to `controlplane` and run tmux there. From inside the tmux session you can open multiple panes and ssh to the worker nodes from these panes.
