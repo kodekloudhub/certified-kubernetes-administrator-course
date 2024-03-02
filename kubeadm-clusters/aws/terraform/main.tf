@@ -24,7 +24,12 @@ provider "aws" {
 
 output "connect_student_node" {
   description = "SSH command for student-node"
-  value       = "ssh ubuntu@${aws_instance.student_node.public_ip}"
+  value       = <<EOT
+                Use the following command to log into student_node
+
+                  ssh ubuntu@${aws_instance.student_node.public_ip}
+
+                EOT
 }
 
 output "address_student_node" {
