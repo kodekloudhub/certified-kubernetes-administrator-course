@@ -11,7 +11,7 @@
      - ETCD is a distributed reliable key-value store that is simple, secure & Fast.
 
 ## What is a Key-Value Store
-   - Traditionally, databases have been in tabular format, you must have heared about SQL or Relational databases. They store data in rows and columns
+   - Traditionally, databases have been in tabular format, you must have heard about SQL or Relational databases. They store data in rows and columns
 
      ![relational-dbs](../../images/relational-dbs.PNG)
 
@@ -20,7 +20,7 @@
      ![key-value](../../images/key-value.PNG)
 
 ## Install ETCD
-   - Its easy to install and get started with **`ETCD`**.
+   - It's easy to install and get started with **`ETCD`**.
      - Download the relevant binary for your operating system from github releases page (https://github.com/etcd-io/etcd/releases)
 
        For Example: To download ETCD v3.5.6, run the below curl command
@@ -36,7 +36,7 @@
        ```
        $ ./etcd
        ```
-     - When you start **`ETCD`** it will by default listens on port **`2379`**
+     - When you start **`ETCD`** it will by default listen on port **`2379`**
       - The default client that comes with **`ETCD`** is the [**`etcdctl`**](https://github.com/etcd-io/etcd/tree/main/etcdctl) client. You can use it to store and retrieve key-value pairs.
         ```
         Syntax: To Store a Key-Value pair
