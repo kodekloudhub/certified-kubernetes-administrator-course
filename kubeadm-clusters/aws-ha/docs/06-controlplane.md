@@ -23,7 +23,7 @@ To create a highly available control plane, we install kubeadm on the first cont
 
 1. Boot the first control plane using the IP address of the load balancer as the control plane endpoint
 
-    Set a shell versiable to the IP of the loadbalancer
+    Set a shell variable to the IP of the loadbalancer
 
     ```bash
     LOADBALANCER=$(dig +short loadbalancer)
