@@ -15,11 +15,10 @@ To create a highly available control plane, we install kubeadm on the first cont
     sudo -i
     ```
 
-1.  Set shell variables for the pod and network network CIDRs.
+1.  Set shell variable for the pod network CIDR.
 
     ```bash
-    POD_CIDR=10.244.0.0/16
-    SERVICE_CIDR=10.96.0.0/16
+    POD_CIDR=192.168.0.0/16
     ```
 
 1. Boot the first control plane using the IP address of the load balancer as the control plane endpoint
@@ -34,7 +33,6 @@ To create a highly available control plane, we install kubeadm on the first cont
 
     ```bash
     kubeadm init --pod-network-cidr $POD_CIDR \
-        --service-cidr $SERVICE_CIDR \
         --control-plane-endpoint ${LOADBALANCER}:6443 \
         --upload-certs
     ```

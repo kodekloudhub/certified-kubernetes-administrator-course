@@ -13,7 +13,7 @@ Some basic security will be configured:
 
 * Only the `student-node` will be able to access the cluster's API Server, and this is where you will run `kubectl` commands from when the cluster is running.
 * Only the `student-node` can SSH to the cluster nodes.
-* Ports required by Kubernetes itself (inc. etcd) and Weave CNI will be configured in security groups on the cluster nodes.
+* Ports required by Kubernetes itself (inc. etcd) and Calico CNI will be configured in security groups on the cluster nodes.
 
 Security issues that would make this unsuitable for a genuine production cluster:
 
