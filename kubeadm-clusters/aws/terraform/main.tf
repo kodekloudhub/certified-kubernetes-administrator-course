@@ -25,7 +25,7 @@ provider "aws" {
 output "connect_student_node" {
   description = "SSH command for student-node"
   value       = <<-EOT
-                Use the following command to log into student_node
+                Use the following command to log into student-node
 
                   ssh ubuntu@${aws_instance.student_node.public_ip}
 
@@ -37,7 +37,7 @@ output "connect_student_node" {
 
 output "address_student_node" {
   description = "Public IP of student-node"
-  value       = "aws_instance.student_node.public_ip"
+  value       = aws_instance.student_node.public_ip
 }
 
 # We can use either of these IPs to connect to node ports

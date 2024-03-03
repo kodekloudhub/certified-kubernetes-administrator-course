@@ -30,11 +30,11 @@ Other things that will be configured by the Terraform code
 
 Let's go ahead and get the infrastructure built!
 
-[Click here](https://kodekloud.com/topic/playground-aws/) to start a playground, and click `START LAB` to request a new AWS Cloud Playground instance. After a few seconds, you will receive a URL and your credentials to access AWS Cloud console.
+[Click here](https://kodekloud.com/topic/playground-aws/) to start a playground, and click `START LAB` to request a new AWS Cloud Playground instance. After a few seconds, you will receive a URL and your credentials to access AWS Cloud console. Sign into the console.
 
 Note that you must have KodeKloud Pro subscription to run an AWS playground. If you have your own AWS account, this should still work, however you will bear the cost for any resources created until you delete them.
 
-We will run this entire lab in AWS CloudShell which is a Linux terminal you run inside the AWS console and has most of what we need preconfigured, such as git and the AWS credentials needed by Terraform. [Click here](https://us-east-1.console.aws.amazon.com/cloudshell/home?region=us-east-1) to open CloudShell.
+We will run this entire lab in AWS CloudShell which is a Linux terminal you run inside the AWS console and has most of what we need preconfigured, such as git and the AWS credentials needed by Terraform. [Click here](https://us-east-1.console.aws.amazon.com/cloudshell/home?region=us-east-1) to open CloudShell - note that his link will not work until you have signed into the AWS console.
 
 
 ## Install Terraform
@@ -78,10 +78,19 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws/terraform
 
     Outputs:
 
-    address_node01 = "18.233.150.22"
-    address_node02 = "54.87.18.1"
-    address_student_node = "100.26.200.3"
-    connect_student_node = "ssh ubuntu@100.26.200.3"
+    address_node01 = "44.220.138.27"
+    address_node02 = "54.167.161.210"
+    address_student_node = "34.205.252.168"
+    connect_student_node = <<EOT
+    Use the following command to log into student-node
+
+      ssh ubuntu@34.205.252.168
+
+    You should wait till all instances are fully ready in the EC2 console.
+    The Status Check colunm should contain "2/2 checks passed"
+
+
+    EOT
     ```
 
     Copy all these outputs to a notepad for later use.
@@ -97,6 +106,13 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws/terraform
     ```
 
     Note that the IP address _will be different_ for you.
+
+    You should arrive at a prompt that looks like this
+
+    ```
+    ubuntu in 🌐 student-node in ~
+    ❯
+    ```
 
 ## Prepare the student node
 
@@ -120,6 +136,21 @@ We will install kubectl here so that we can run commands against the cluster whe
     > The connection to the server localhost:8080 was refused - did you specify the right host or port?
 
     which is fine, since we haven't installed kubernetes yet.
+
+## Deleting the cluster
+
+If using KodeKloud playground, this isn't strictly necessary as resources will be deleted when the playground ends.
+
+If you are using your own account, this is *crucial* as you will be billed for the resources created until you delete them - unless of course you want to keep it around and pay. Recall that this is *not* a production hardened installation and could pose a security risk to your account if you leave it lying around.
+
+To delete
+
+1. Return to the CloudShell terminal
+1. In the same directory where you ran `terraform apply`, run
+
+    ```
+    terraform destroy -auto-approve
+    ```
 
 ## Notes on the terraform code
 
