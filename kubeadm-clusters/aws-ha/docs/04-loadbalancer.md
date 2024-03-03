@@ -23,7 +23,7 @@ First, be logged into `student-node` as directed above.
     apt-get install -y haproxy
     ```
 
-1.  Get IP addresses of the loadbalancer and 3 control planes and copy them to your notepad
+1.  Using the [dig](https://linux.die.net/man/1/dig) command which is an alternative to `nslookup` and better for scripting with, we can get IP addresses of the loadbalancer and 3 control planes.
 
     ```bash
     dig +short loadbalancer
@@ -34,18 +34,10 @@ First, be logged into `student-node` as directed above.
 
 1.  Create the HAProxy configuration file
 
-    First we'll delete the default configuration, then add our own
-
-    ```
-    rm /etc/haproxy/haproxy.cfg
-    vi /etc/haproxy/haproxy.cfg
-    ```
-
-    Now put the following content into the file. Replace `L.L.L.L` with the IP address of `loadbalancer`, and `X.X.X.X` with IPs for each control plane node
-
-    ```
+    ```bash
+    cat <<EOF > /etc/haproxy/haproxy.cfg
     frontend kubernetes
-        bind L.L.L.L:6443
+        bind $(dig +short loadbalancer):6443
         option tcplog
         mode tcp
         default_backend kubernetes-control-nodes
@@ -54,9 +46,10 @@ First, be logged into `student-node` as directed above.
         mode tcp
         balance roundrobin
         option tcp-check
-        server controlplane01 X.X.X.X:6443 check fall 3 rise 2
-        server controlplane02 X.X.X.X:6443 check fall 3 rise 2
-        server controlplane03 X.X.X.X:6443 check fall 3 rise 2
+        server controlplane01 $(dig +short controlplane01):6443 check fall 3 rise 2
+        server controlplane02 $(dig +short controlplane02):6443 check fall 3 rise 2
+        server controlplane03 $(dig +short controlplane03):6443 check fall 3 rise 2
+    EOF
     ```
 
 1.  Restart and check haproxy
