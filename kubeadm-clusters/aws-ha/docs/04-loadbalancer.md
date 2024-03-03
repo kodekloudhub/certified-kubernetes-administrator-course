@@ -32,7 +32,7 @@ First, be logged into `student-node` as directed above.
     dig +short controlplane03
     ```
 
-    **Terminolgy**
+    **Terminology**
 
     AWS EC2 instances effectively have two IP addresses:
     1. Private IP - This is the IP on the AWS subnet where the instance is launched, and is used for EC2 instances to talk to each other.
