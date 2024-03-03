@@ -23,7 +23,7 @@ First, be logged into `student-node` as directed above.
     apt-get install -y haproxy
     ```
 
-1.  Using the [dig](https://linux.die.net/man/1/dig) command which is an alternative to `nslookup` and better for scripting with, we can get IP addresses of the loadbalancer and 3 control planes.
+1.  Using the [dig](https://linux.die.net/man/1/dig) command which is an alternative to `nslookup` and better for scripting with, we can get the *private* IP addresses of the loadbalancer and 3 control planes.
 
     ```bash
     dig +short loadbalancer
@@ -31,6 +31,12 @@ First, be logged into `student-node` as directed above.
     dig +short controlplane02
     dig +short controlplane03
     ```
+
+    **Terminolgy**
+
+    AWS EC2 instances effectively have two IP addresses:
+    1. Private IP - This is the IP on the AWS subnet where the instance is launched, and is used for EC2 instances to talk to each other.
+    1. Public IP - Not always assigned, but is the IP used to reach the EC2 instances from the outside world (i.e. your browser). We will see this later in the testing section.
 
 1.  Create the HAProxy configuration file
 
