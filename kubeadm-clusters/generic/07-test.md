@@ -18,7 +18,7 @@ Do the following on `controlplane`
 
 [//]: # (command:kubectl wait deployment -n default nginx --for condition=Available=True --timeout=90s)
 
-1.  Hit the new service
+2.  Hit the new service
 
     ```bash
     curl http://node01:$PORT_NUMBER
@@ -27,7 +27,7 @@ Do the following on `controlplane`
 
     Both should return the nginx welcome message as HTML text.
 
-Congratulations! You now have your own working kubeadm cluster.
+Congratulations! You now have a working kubeadm cluster.
 
 ## Viewing service with a browser
 
@@ -43,7 +43,7 @@ echo "http://$(dig +short node01):$PORT_NUMBER"
 
 ### AWS
 
-1. Refer to the outputs of the terraform run and get the IP address for either `node01` or `node02`. If you did not note these down, you can find the IP addresses from the [EC2 console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:) by looking in the `Public IPv4` column (scroll right if this column is not in view).
+1. Refer to the outputs of the terraform run and get the IP address for either `node01` or `node02`. If you did not note these down, you can find the IP addresses from the [EC2 console](https://us-east-1.console.aws.amazon.com/ec2/home?region=us-east-1#Instances:) by looking in the `Public IPv4 ...` column (scroll right if this column is not in view).
 1. Form a URL using the IP address (it will be different for you) and the NodePort number output from step 1 above, e.g.
 
     ```
