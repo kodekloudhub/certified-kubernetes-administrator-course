@@ -25,7 +25,7 @@ On the `controlplane` node
 
 1.  Copy the `kubeadm join` command printed to your notepad to use on the worker nodes.
 
-1.  Set up the kubeconfig so it can be used by the user you are loogged in as
+1.  Set up the kubeconfig so it can be used by the user you are logged in as
 
     1.  Create directory for kubeconfig, copy the admin kubeconfig as the default kubeconfig for current user (`vagrant` on VirtualBox, `ubuntu` on Multipass and AWS) and set the correct file permissions.</br>Note that in Linux, the command `id -u` returns your user name on the system and `id -g` returns your group name.
 

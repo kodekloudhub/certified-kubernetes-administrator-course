@@ -2,7 +2,7 @@
 
 In this lab, you will access the kubernetes nodes by SSH from `student-node` which you should now be logged into.
 
-Check each one
+Check each one. You must `exit` back to `student-node` before trying the next host.
 
 ```bash
 ssh controlplane
