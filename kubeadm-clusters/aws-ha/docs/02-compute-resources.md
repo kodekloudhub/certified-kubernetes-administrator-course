@@ -74,17 +74,17 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws-ha/terraform
     This should take about half a minute. If this all runs correctly, you will see something like the following at the end of all the output. IP addresses _will be different_ for you
 
     ```
-    Apply complete! Resources: 22 added, 0 changed, 0 destroyed.
+    Apply complete! Resources: 43 added, 0 changed, 0 destroyed.
 
     Outputs:
 
-    address_node01 = "44.220.138.27"
-    address_node02 = "54.167.161.210"
-    address_student_node = "34.205.252.168"
+    address_node01 = "44.213.90.240"
+    address_node02 = "54.173.66.210"
+    address_student_node = "44.199.229.207"
     connect_student_node = <<EOT
     Use the following command to log into student-node
 
-      ssh ubuntu@34.205.252.168
+      ssh ubuntu@44.199.229.207
 
     You should wait till all instances are fully ready in the EC2 console.
     The Status Check colunm should contain "2/2 checks passed"
@@ -102,7 +102,7 @@ cd certified-kubernetes-administrator-course/kubeadm-clusters/aws-ha/terraform
     Copy the `ssh` command from the terraform output `connect_student_node`, e.g.
 
     ```
-    ssh ubuntu@100.26.200.3
+    ssh ubuntu@44.199.229.207
     ```
 
     Note that the IP address _will be different_ for you.

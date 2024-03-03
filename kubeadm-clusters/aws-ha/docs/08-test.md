@@ -10,6 +10,12 @@ Run the following on `student-node`
 
     Press `CTRL-C` to exit watch when pods are stable
 
+1. All 5 nodes should now be ready:
+
+    ```
+    kubectl get nodes
+    ```
+
 1. Deploy and expose an nginx pod
 
     ```bash
@@ -18,6 +24,7 @@ Run the following on `student-node`
 
     PORT_NUMBER=$(kubectl get service -l app=nginx -o jsonpath="{.items[0].spec.ports[0].nodePort}")
     echo -e "\n\nService exposed on NodePort $PORT_NUMBER"
+
     ```
 
 [//]: # (command:kubectl wait deployment -n default nginx --for condition=Available=True --timeout=90s)

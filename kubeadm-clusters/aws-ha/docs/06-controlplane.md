@@ -72,6 +72,14 @@ To create a highly available control plane, we install kubeadm on the first cont
     exit
     ```
 
+1. On `student-node`, Copy down the kubeconfig so we can run kubectl commands from `student-node`
+
+    ```bash
+    {
+        mkdir ~/.kube
+        scp controlplane01:~/admin.conf ~/.kube/config
+    }
+
 ## controlplane02 and controlplane03
 
 Be on `student-node`

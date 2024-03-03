@@ -68,5 +68,5 @@ First, be logged into `student-node` as directed above.
     exit
     ```
 
-Next: [Node Setup](./04-loadbalancer.md)<br>
+Next: [Node Setup](./05-node-setup.md)<br>
 Prev: [Connectivity](./03-connectivity.md)
