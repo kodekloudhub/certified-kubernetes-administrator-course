@@ -5,11 +5,50 @@
 ## Solution to LL-1
 
 1.  <details>
-    <summary>Upgrade the current version of kubernetes from 1.26.0 to 1.27.0 exactly using the kubeadm utility.</summary>
+    <summary>Upgrade the current version of kubernetes from 1.28.0 to 1.29.0 exactly using the kubeadm utility.</summary>
 
-    There is currently an issue with this lab which requires an extra step. This may be addressed in the near future. 
+    Make sure that the upgrade is carried out one node at a time starting with the controlplane node. To minimize downtime, the deployment `gold-nginx` should be rescheduled on an alternate node before upgrading each node.
+
+
+    Upgrade `controlplane` node first and drain node `node01` before upgrading it. Pods for `gold-nginx` should run on the controlplane node subsequently.
 
     On controlplane node
+
+    1.  Update package repo
+
+        ```bash
+        apt update
+        ```
+
+    1.  Check madison to see what kubernetes packages are available
+
+        ```bash
+        apt-cache madison kubeadm
+        ```
+
+        Note that only 1.28 versions are present, meaning you have to grab the 1.29 repos
+
+    1.  Grab kubernetes 1.29 repos
+
+        ```bash
+        mkdir -p /etc/apt/keyrings
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+        ```
+
+        Note that the filename `kubernetes-1.29-apt-keyring.gpg` is arbitrary. There is already an existing file `kubernetes-apt-keyring.gpg` which we don't want to overwrite. As long as the filenames in the `curl` and `echo` commands match, you're good.
+
+    1.  Now run madison again to find out the package version for 1.29
+
+        ```bash
+        apt-cache madison kubeadm
+        ```
+
+        You should see the following in the list
+
+        > `kubeadm | 1.29.0-1.1 | https://pkgs.k8s.io/core:/stable:/v1.29/deb  Packages`
+
+        Now we know the package version is `1.29.0-1.1` we can proceed with the upgrade
 
     1. Drain node
 
@@ -20,43 +59,22 @@
     1. Upgrade kubeadm
 
         ```
-        apt-get update
         apt-mark unhold kubeadm
-        apt-get install -y kubeadm=1.27.0-00
+        apt install -y kubeadm=1.29.0-1.1
         ```
 
     1. Plan and apply upgrade
 
         ```
         kubeadm upgrade plan
-        kubeadm upgrade apply v1.27.0
-        ```
-
-    1. Remove taint on controlplane node. This is the issue described above. As part of the upgrade specifically to 1.26, some taints are added to all controlplane nodes. This will prevent the `gold-nginx` pod from being rescheduled to the controlplane node later on.
-
-        ```
-        kubectl describe node controlplane | grep -A 3 taint
-        ```
-
-        Output:
-
-        ```
-        Taints:   node-role.kubernetes.io/control-plane:NoSchedule
-                  node.kubernetes.io/unschedulable:NoSchedule
-        ```
-
-        Let's remove them
-
-        ```
-        kubectl taint node controlplane node-role.kubernetes.io/control-plane:NoSchedule-
-        kubectl taint node controlplane node.kubernetes.io/unschedulable:NoSchedule-
+        kubeadm upgrade apply v1.29.0
         ```
 
     1. Upgrade the kubelet
 
         ```
         apt-mark unhold kubelet
-        apt-get install -y kubelet=1.27.0-00
+        apt install -y kubelet=1.29.0-1.1
         systemctl daemon-reload
         systemctl restart kubelet
         ```
@@ -71,7 +89,7 @@
 
         ```
         apt-mark unhold kubectl
-        apt-get install -y kubectl=1.27.0-00
+        apt install -y kubectl=1.29.0-1.1
         ```
 
     1. Re-hold packages
@@ -92,12 +110,20 @@
         ssh node01
         ```
 
+    1. As before, you will need to update the package caches for v1.29
+
+        ```bash
+        mkdir -p /etc/apt/keyrings
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+        apt update
+        ```
+
     1. Upgrade kubeadm
 
         ```
-        apt-get update
         apt-mark unhold kubeadm
-        apt-get install -y kubeadm=1.27.0-00
+        apt install -y kubeadm=1.29.0-1.1
         ```
 
     1. Upgrade node
@@ -110,7 +136,7 @@
 
         ```
         apt-mark unhold kubelet
-        apt-get install kubelet=1.27.0-00
+        apt install kubelet=1.29.0-1.1
         systemctl daemon-reload
         systemctl restart kubelet
         ```
