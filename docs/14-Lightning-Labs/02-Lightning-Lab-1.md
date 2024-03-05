@@ -34,6 +34,7 @@
         mkdir -p /etc/apt/keyrings
         curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg
         echo "deb [signed-by=/etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+        apt update
         ```
 
         Note that the filename `kubernetes-1.29-apt-keyring.gpg` is arbitrary. There is already an existing file `kubernetes-apt-keyring.gpg` which we don't want to overwrite. As long as the filenames in the `curl` and `echo` commands match, you're good.
