@@ -17,6 +17,28 @@ IP_NW = "192.168.56"
 MASTER_IP_START = 11
 NODE_IP_START = 20
 
+module OS
+  def OS.windows?
+    (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+  end
+
+  def OS.mac?
+    (/darwin/ =~ RUBY_PLATFORM) != nil
+  end
+
+  def OS.unix?
+    !OS.windows?
+  end
+
+  def OS.linux?
+    OS.unix? and not OS.mac?
+  end
+
+  def OS.jruby?
+    RUBY_ENGINE == "jruby"
+  end
+end
+
 # Helper method to get the machine ID of a node.
 # This will only be present if the node has been
 # created in VirtualBox.
@@ -61,6 +83,16 @@ def provision_kubernetes_node(node)
   node.vm.provision "setup-ssh", :type => "shell", :path => "ubuntu/ssh.sh"
 end
 
+def get_bridge_adapter()
+  if OS.windows?
+    return %x{powershell -Command "Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription"}.chomp
+  elsif OS.darwin?
+    return %x{netstat -rn -f inet | grep '^default' | awk '{ print $NF }' | sort | head -1}.chomp
+  else
+    return %x{ip route | grep default | awk '{ print $5 }'}.chomp
+  end
+end
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -92,7 +124,8 @@ Vagrant.configure("2") do |config|
     end
     node.vm.hostname = "controlplane"
     if BUILD_MODE == "BRIDGE"
-      node.vm.network :public_network
+      adapter = ""
+      node.vm.network :public_network, bridge: get_bridge_adapter()
     else
       node.vm.network :private_network, ip: IP_NW + ".#{MASTER_IP_START}"
       node.vm.network "forwarded_port", guest: 22, host: "#{2710}"
@@ -113,7 +146,7 @@ Vagrant.configure("2") do |config|
       end
       node.vm.hostname = "node0#{i}"
       if BUILD_MODE == "BRIDGE"
-        node.vm.network :public_network
+        node.vm.network :public_network, bridge: get_bridge_adapter()
       else
         node.vm.network :private_network, ip: IP_NW + ".#{NODE_IP_START + i}"
         node.vm.network "forwarded_port", guest: 22, host: "#{2720 + i}"
@@ -152,14 +185,14 @@ Vagrant.configure("2") do |config|
             system("vagrant ssh #{node} -c 'cat /tmp/hosts.tmp | sudo tee -a /etc/hosts'")
           end
           File.delete("hosts.tmp")
-          puts <<~EOF
+          puts  <<~EOF
 
                  VM build complete!
 
                  Use either of the following to access any NodePort services you create from your browser
                  replacing "port_number" with the number of your NodePort.
 
-               EOF
+                EOF
           (1..NUM_WORKER_NODES).each do |i|
             puts "  http://#{ips[i]}:port_number"
           end
