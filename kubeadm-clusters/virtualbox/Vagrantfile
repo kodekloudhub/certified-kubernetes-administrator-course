@@ -41,6 +41,17 @@ module OS
   end
 end
 
+# Determine host adpater for bridging in BRIDGE mode
+def get_bridge_adapter()
+  if OS.windows?
+    return %x{powershell -Command "Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription"}.chomp
+  elsif OS.linux?
+    return %x{ip route | grep default | awk '{ print $5 }'}.chomp
+  else # Unix/MacOS
+    return %x{netstat -rn -f inet | grep '^default' | awk '{ print $NF }' | sort | head -1}.chomp
+  end
+end
+
 # Helper method to get the machine ID of a node.
 # This will only be present if the node has been
 # created in VirtualBox.
@@ -83,17 +94,6 @@ def provision_kubernetes_node(node)
   setup_dns node
   # Set up ssh
   node.vm.provision "setup-ssh", :type => "shell", :path => "ubuntu/ssh.sh"
-end
-
-# Determine host adpater for bridging in BRIDGE mode
-def get_bridge_adapter()
-  if OS.windows?
-    return %x{powershell -Command "Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription"}.chomp
-  elsif OS.linux?
-    return %x{ip route | grep default | awk '{ print $5 }'}.chomp
-  else # Unix/MacOS
-    return %x{netstat -rn -f inet | grep '^default' | awk '{ print $NF }' | sort | head -1}.chomp
-  end
 end
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
