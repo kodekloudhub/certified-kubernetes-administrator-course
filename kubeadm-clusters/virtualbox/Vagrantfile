@@ -13,10 +13,12 @@ BUILD_MODE = "BRIDGE"
 # If this number is changed, remember to update setup-hosts.sh script with the new hosts IP details in /etc/hosts of each VM.
 NUM_WORKER_NODES = 2
 
+# Network parameters for NAT mode
 IP_NW = "192.168.56"
 MASTER_IP_START = 11
 NODE_IP_START = 20
 
+# Host operating sysem detection
 module OS
   def OS.windows?
     (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
@@ -83,13 +85,14 @@ def provision_kubernetes_node(node)
   node.vm.provision "setup-ssh", :type => "shell", :path => "ubuntu/ssh.sh"
 end
 
+# Determine host adpater for bridging in BRIDGE mode
 def get_bridge_adapter()
   if OS.windows?
     return %x{powershell -Command "Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription"}.chomp
-  elsif OS.darwin?
-    return %x{netstat -rn -f inet | grep '^default' | awk '{ print $NF }' | sort | head -1}.chomp
-  else
+  elsif OS.linux?
     return %x{ip route | grep default | awk '{ print $5 }'}.chomp
+  else # Unix/MacOS
+    return %x{netstat -rn -f inet | grep '^default' | awk '{ print $NF }' | sort | head -1}.chomp
   end
 end
 
@@ -185,14 +188,14 @@ Vagrant.configure("2") do |config|
             system("vagrant ssh #{node} -c 'cat /tmp/hosts.tmp | sudo tee -a /etc/hosts'")
           end
           File.delete("hosts.tmp")
-          puts  <<~EOF
+          puts <<~EOF
 
                  VM build complete!
 
                  Use either of the following to access any NodePort services you create from your browser
                  replacing "port_number" with the number of your NodePort.
 
-                EOF
+               EOF
           (1..NUM_WORKER_NODES).each do |i|
             puts "  http://#{ips[i]}:port_number"
           end
