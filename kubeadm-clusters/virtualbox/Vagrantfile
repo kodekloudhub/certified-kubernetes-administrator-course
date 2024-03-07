@@ -48,7 +48,7 @@ def get_bridge_adapter()
   elsif OS.linux?
     return %x{ip route | grep default | awk '{ print $5 }'}.chomp
   elsif OS.mac?
-    return %x{./mac/mac-bridge.sh}'.chomp
+    return %x{mac/mac-bridge.sh}.chomp
   end
 end
 
