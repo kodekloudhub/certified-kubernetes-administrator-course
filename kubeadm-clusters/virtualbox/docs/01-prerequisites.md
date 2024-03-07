@@ -49,13 +49,15 @@ ip route | grep default | awk '{ print $9 }'
 
 #### Bridge Networking
 
-The default configuration in this lab is to bring the VMs up on bridged interfaces. What this means is that your Kubernetes nodes will appear as additional machines on your local network. This facilitates the use of your browser to connect to any NodePort services you deploy.
+The default configuration in this lab is to bring the VMs up on bridged interfaces. What this means is that your Kubernetes nodes will appear as additional machines on your local network, their IP addresses being provided dynamically by your broadband router. This facilitates the use of your browser to connect to any NodePort services you deploy.
 
 Should you have issues deploying bridge networking, please raise a [bug report](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/issues) and include all details including the output of `vagrant up`.
 
 Then retry the lab in NAT mode. How to do this is covered in the [next section](./02-compute-resources.md).
 
 #### NAT Networking
+
+In NAT configuration, the network on which the VMs run is isolated from your broadband router's network by a NAT gateway managed by the hypervisor. This means that VMs can see out (and connect to Internet), but you can't see in (i.e. use browser to connect to NodePorts) without setting up individual port forwarding rules for every NodePort using the VirtualBox UI.
 
 The network used by the Virtual Box virtual machines is `192.168.56.0/24`.
 
