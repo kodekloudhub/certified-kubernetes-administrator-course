@@ -4,10 +4,15 @@ If you have an M-series (Apple Silicon) Mac, you cannot run VirtualBox. Please i
 
 ## VM Hardware Requirements
 
-8 GB of RAM(12+ preferred)
-50 GB Disk space
+* 8 GB of RAM (16 preferred)
+* 8-core/4-core hyperthreaded or better CPU, e.g. Core-i7/Core-i9 (will be slow otherwise)
+* 50 GB Disk space
 
-## Virtual Box
+## git
+
+Required to download the repo. It is normally pre-installed on Mac, but not on Windows. If you need to install it, see [here](https://git-scm.com/download).
+
+## VirtualBox
 
 Download and Install [VirtualBox](https://www.virtualbox.org/wiki/Downloads) on any one of the supported platforms:
 
@@ -19,7 +24,7 @@ This lab was last tested with VirtualBox 7.0.12, though newer versions should be
 
 ## Vagrant
 
-Once VirtualBox is installed you may chose to deploy virtual machines manually on it.
+Once VirtualBox is installed you may choose to deploy virtual machines manually on it.
 Vagrant provides an easier way to deploy multiple virtual machines on VirtualBox more consistently.
 
 Download and Install [Vagrant](https://www.vagrantup.com/) on your platform.
