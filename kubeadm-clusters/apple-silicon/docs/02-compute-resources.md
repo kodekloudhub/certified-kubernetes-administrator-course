@@ -24,6 +24,15 @@ Because we cannot use VirtualBox and are instead using Multipass, [a script is p
 
     Do this for `node01` and `node02` as well
 
+If you encountered issues starting the VMs, you can try NAT mode. Note that in NAT mode you will not be able to connect to your NodePort services using your browser.
+
+1. Run
+    ```
+    ./delete-virtual-machines.sh
+    ```
+1. Edit `deploy-virtual-machines.sh` and change `BUILD_MODE = "BRIDGE"` to `BUILD_MODE = "NAT"` at line 15.
+
+
 # Deleting the Virtual Machines
 
 When you have finished with your cluster and want to reclaim the resources, perform the following steps

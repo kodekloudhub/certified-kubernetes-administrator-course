@@ -6,6 +6,15 @@ ARG=$1
 
 set -euo pipefail
 
+# Set the build mode
+# "BRIDGE" - Places VMs on your local network so cluster can be accessed from browser.
+#            You must have enough spare IPs on your network for the cluster nodes.
+# "NAT"    - Places VMs in a private virtual network. Cluster cannot be accessed
+#            without setting up a port forwarding rule for every NodePort exposed.
+#            Use this mode if for some reason BRIDGE doesn't work for you.
+BUILD_MODE="BRIDGE"
+
+
 RED="\033[1;31m"
 YELLOW="\033[1;33m"
 GREEN="\033[1;32m"
@@ -49,7 +58,6 @@ workers=$(for n in $(seq 1 $NUM_WORKER_NODES) ; do echo -n "node0$n " ; done)
 
 # Determine interface for bridge
 interface=""
-BUILD_MODE="BRIDGE"
 bridge_arg="--bridged"
 
 for iface in $(multipass networks --format json | jq -r '.list[] | .name')
