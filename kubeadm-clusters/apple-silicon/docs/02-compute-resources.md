@@ -30,7 +30,7 @@ If you encountered issues starting the VMs, you can try NAT mode. Note that in N
     ```
     ./delete-virtual-machines.sh
     ```
-1. Edit `deploy-virtual-machines.sh` and change `BUILD_MODE = "BRIDGE"` to `BUILD_MODE = "NAT"` at line 15.
+1. Edit `deploy-virtual-machines.sh` and change `BUILD_MODE="BRIDGE"` to `BUILD_MODE="NAT"` at line 15.
 
 
 # Deleting the Virtual Machines
