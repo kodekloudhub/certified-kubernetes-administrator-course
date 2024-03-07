@@ -16,11 +16,31 @@ CD into the virtualbox directory
 cd kubeadm-clusters/virtualbox
 ```
 
+Run Vagrant up to create the virtual machines.
+
+```bash
+vagrant up
+```
+
+
 ## Bridge interface selection
 
 Bridged networking makes the VMs appear as hosts directly on your local network. This means that you will be able to use your own browser to connect to any NodePort services you create in the cluster.
 
-If your workstation has more than one network interface capable of creating a bridge, Vagrant may stop and ask you which one to use if it cannot determine the best interface itself.
+If your workstation has more than one network interface capable of creating a bridge, Vagrant may stop and ask you which one to use if it cannot determine the best interface itself. Now it *should* work this out and not have to ask you, however if it does not, then the "best" interface is the one used to connect to your broadband router. On laptops, this would normally be the Wi-Fi adapter which should be easliy identifiable in the list. The example below is from a Windows desktop computer with a wired network adapter.
+
+Which of the two choices do you think is correct?
+
+<details>
+<summary>Reveal</summary>
+
+> `Intel(R) Ethernet Connection (2) I219-V`
+
+Why? Because
+1. Ethernet is the term often given to wired network connections.
+2. The other one is Hyper-V which is internal and used for native running of VMs (could indeed be used instead of VirtualBox, but that's another story).
+
+</details>
 
 ```text
 ==> controlplane: Available bridged network interfaces:
@@ -30,30 +50,6 @@ If your workstation has more than one network interface capable of creating a br
 ==> controlplane: being used to connect to the internet.
 ==> controlplane:
     controlplane: Which interface should the network bridge to?
-```
-
-In order to be able to answer this question, run the following *before* running `vagrant up`. The output of these commands will match one of the selections you are presented with.
-
-* Windows
-
-    At a PowerShell prompt:
-
-    ```powershell
-    Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription
-    ```
-
-* Linux/Mac
-
-    At a terminal prompt
-
-    ```bash
-    ip route | grep default | awk '{ print $5 }'
-    ```
-
-Run Vagrant up to create the virtual machines.
-
-```bash
-vagrant up
 ```
 
 At the end of the deployment, it will tell you how to access NodePort services from your browser once you have configured Kubernetes. Make a note of this.
