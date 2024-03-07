@@ -47,8 +47,8 @@ def get_bridge_adapter()
     return %x{powershell -Command "Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription"}.chomp
   elsif OS.linux?
     return %x{ip route | grep default | awk '{ print $5 }'}.chomp
-  else # Unix/MacOS
-    return %x{netstat -rn -f inet | grep '^default' | awk '{ print $NF }' | sort | head -1}.chomp
+  elsif OS.mac?
+    return %x{./mac/mac-bridge.sh}'.chomp
   end
 end
 
