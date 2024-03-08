@@ -2,7 +2,9 @@
 
 Note: You must have VirtualBox and Vagrant configured at this point
 
-Download this github repository and cd into the vagrant folder
+Open a terminal application (on Windows use PowerShell). All commands in this guide are executed from the terminal.
+
+Download this github repository and cd into the `virtualbox` folder
 
 ```bash
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
@@ -14,34 +16,51 @@ CD into the virtualbox directory
 cd kubeadm-clusters/virtualbox
 ```
 
-Run Vagrant up
+Run Vagrant up to create the virtual machines.
 
 ```bash
 vagrant up
 ```
 
 
-This does the below:
+## Bridge interface selection
 
-- Deploys 3 VMs - 1 Master, 2 Worker
-    > These are the default settings. This can be changed at the top of the Vagrant file.
-    > If you choose to change these settings, please also update vagrant/ubuntu/vagrant/setup-hosts.sh
-    > to add the additional hosts to the /etc/hosts default before running "vagrant up".
+Bridged networking makes the VMs appear as hosts directly on your local network. This means that you will be able to use your own browser to connect to any NodePort services you create in the cluster.
 
-- Set's IP addresses in the range 192.168.56
+If your workstation has more than one network interface capable of creating a bridge, Vagrant may stop and ask you which one to use if it cannot determine the best interface itself. Now it *should* work this out and not have to ask you, however if it does not, then the "best" interface is the one used to connect to your broadband router. On laptops, this would normally be the Wi-Fi adapter which should be easliy identifiable in the list. The example below is from a Windows desktop computer with a wired network adapter.
 
-    | VM            |  VM Name               | Purpose       | IP            | Forwarded Port   | RAM  |
-    | ------------  | ---------------------- |:-------------:| -------------:| ----------------:|-----:|
-    | kubemaster    | kubemaster             | Master        | 192.168.56.11 |     2711         | 2048 |
-    | kubenode01    | kubenode01             | Worker        | 192.168.56.21 |     2721         | 1024 |
-    | kubenode02    | kubenode02             | Worker        | 192.168.56.22 |     2722         | 1024 |
+Which of the two choices do you think is correct?
 
-    > These are the default settings. These can be changed in the Vagrant file
+<details>
+<summary>Reveal</summary>
 
-- Adds a DNS entry to each of the nodes to access internet
-    > DNS: 8.8.8.8
+> `Intel(R) Ethernet Connection (2) I219-V`
 
-See [Vagrantfile](../Vagrantfile) for details.
+Why? Because
+1. Ethernet is the term often given to wired network connections.
+2. The other one is Hyper-V which is internal and used for native running of VMs (could indeed be used instead of VirtualBox, but that's another story).
+
+</details>
+
+```text
+==> controlplane: Available bridged network interfaces:
+1) Intel(R) Ethernet Connection (2) I219-V
+2) Hyper-V Virtual Ethernet Adapter
+==> controlplane: When choosing an interface, it is usually the one that is
+==> controlplane: being used to connect to the internet.
+==> controlplane:
+    controlplane: Which interface should the network bridge to?
+```
+
+At the end of the deployment, it will tell you how to access NodePort services from your browser once you have configured Kubernetes. Make a note of this.
+
+If you encountered issues starting the VMs, you can try NAT mode. Note that in NAT mode you will not be able to connect to your NodePort services using your browser without setting up port forwarding rules in VirtualBox UI.
+
+1. Run
+    ```
+    vagrant destroy -f
+    ```
+1. Edit `vagrantfile` and change `BUILD_MODE = "BRIDGE"` to `BUILD_MODE = "NAT"` at line 10.
 
 ## SSH to the nodes
 
@@ -49,7 +68,7 @@ There are two ways to SSH into the nodes:
 
 ### 1. SSH using Vagrant
 
-  From the directory you ran the `vagrant up` command, run `vagrant ssh <vm>` for example `vagrant ssh master-1`.
+  From the directory you ran the `vagrant up` command, run `vagrant ssh <vm>` for example `vagrant ssh controlplane`.
 
   This is the easiest way as it requires no configuration.
 
@@ -100,8 +119,8 @@ VirtualBox error:
 In such cases delete the VM, then delete the VM folder and then re-provision, e.g.
 
 ```bash
-vagrant destroy kubenode02
-rmdir "<path-to-vm-folder>\kubenode02
+vagrant destroy node02
+rmdir "<path-to-vm-folder>\node02
 vagrant up
 ```
 
@@ -130,5 +149,16 @@ To power on again:
 vagrant up
 ```
 
-Prev: [Prerequisites](./01-prerequisites.md)<br>
-Next: [Connectivity](./03-connectivity.md)
+# Deleting the Virtual Machines
+
+When you have finished with your cluster and want to reclaim the resources, perform the following steps
+
+1. Exit from all your VM sessions
+1. Run the following
+
+    ```
+    vagrant destroy -f
+    ```
+
+Next: [Connectivity](./03-connectivity.md)<br/>
+Prev: [Prerequisites](./01-prerequisites.md)

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ip=$(ip a | grep enp0s1 | grep inet | awk '{print $2}' | cut -d / -f 1)
+ip=$(ip route | grep default | awk '{ print $9 }')
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$ip
 
 mkdir ~/.kube

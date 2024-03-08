@@ -1,6 +1,5 @@
-# 3 Node kubeadm cluster on VirtualBox
+# Installing Kubernetes the kubeadm way on  VirtualBox
 
-Updated November 2023
+Updated March 2024
 
 [Click here](./docs/01-prerequisites.md) to begin.
-

@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Sets up the kernel with the requirements for running Kubernetes
-set -ex
+set -e
 
 # Add br_netfilter kernel module
 echo "br_netfilter" >> /etc/modules

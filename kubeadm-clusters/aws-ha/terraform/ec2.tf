@@ -70,6 +70,7 @@ resource "aws_instance" "kubenode" {
               ${aws_network_interface.kubenode["node01"].private_ip} node01
               ${aws_network_interface.kubenode["node02"].private_ip} node02
               EOF
+              echo "PRIMARY_IP=$(ip route | grep default | awk '{ print $9 }')" >> /etc/environment
               EOT
 }
 
@@ -93,6 +94,8 @@ resource "aws_instance" "student_node" {
               echo "${tls_private_key.key_pair.private_key_pem}" > /home/ubuntu/.ssh/id_rsa
               chown ubuntu:ubuntu /home/ubuntu/.ssh/id_rsa
               chmod 600 /home/ubuntu/.ssh/id_rsa
+              curl -sS https://starship.rs/install.sh | sh -s -- -y
+              echo 'eval "$(starship init bash)"' >> /home/ubuntu/.bashrc
               cat <<EOF >> /etc/hosts
               ${aws_network_interface.kubenode["loadbalancer"].private_ip} loadbalancer
               ${aws_network_interface.kubenode["controlplane01"].private_ip} controlplane01
