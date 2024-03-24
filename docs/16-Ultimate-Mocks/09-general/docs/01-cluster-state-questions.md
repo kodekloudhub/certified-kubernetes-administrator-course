@@ -101,7 +101,7 @@ Use a similar approach whether the stat is CPU or memory, or the resource is Pod
     for ctx in $(kubectl config get-contexts -o name)
     do
         kubectl --context=$ctx top pod --no-headers -A --sort-by=cpu | head -1 | awk -v ctx=$ctx '{printf "%s,%s,%s,%s\n", ctx, $1, $2, $3}'
-    done | sort -t ',' -k4 -h | tail -1 | awk 'BEGIN { FS="," } { printf "%s,%s,%s", $1, $2, $3 }' > /opt/high_cpu_pod
+    done | sort -t ',' -k4 -h | tail -1 |  | sed -E 's/,[[:digit:]]+[a-z]*$//i' > /opt/high_cpu_pod
     ```
 
     There is a lot going on here, isn't there?
@@ -144,7 +144,7 @@ Use a similar approach whether the stat is CPU or memory, or the resource is Pod
         ```
         cluster1,default,frontend-stable-cka05-arch,396m
         ```
-    1. Finally pipe to `awk` again with field separator as comma (the default is space) to remove the CPU value and only output the first 3 fields as required by the question, yielding
+    1. Finally pipe to `sed` to remove the CPU value and only output the first 3 fields as required by the question. The `sed` expression matches comma, followed by one or more digits, followed by zero or more letters, followed by end of line using extended regex (`-E`) and replaces it with an empty string, thus deleting the matched text. This yields the required output:
         ```
         cluster1,default,frontend-stable-cka05-arch
         ```
