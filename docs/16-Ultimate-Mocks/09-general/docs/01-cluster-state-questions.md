@@ -116,7 +116,7 @@ Use a similar approach whether the stat is CPU or memory, or the resource is Pod
     1. The `for` loop lists the cluster contexts one by one storing the cluster name in the variable `ctx`
     1. With each context, the `kubectl top pods` command is executed with `-A` for all namespaces...
         1. `--no-headers` removes the column headers from the output.
-        1. `--sort-by=cpu` ensures the pod we need from this cluster is the first pod listed. In kubectl, sort order is descending.
+        1. `--sort-by=cpu` ensures the pod we need from this cluster is the first pod listed. In `kubectl top`, sort order is descending.
         1. Then we pipe the output to `head -1` to get only the first line of results (the top pod for this cluster).
         1. Then we pipe it to `awk` to format the output close to what we need, passing in the cluster name so we can include it in the output. The output will look like this
             ```
