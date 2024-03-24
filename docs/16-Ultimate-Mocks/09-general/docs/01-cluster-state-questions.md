@@ -101,7 +101,7 @@ Use a similar approach whether the stat is CPU or memory, or the resource is Pod
     for ctx in $(kubectl config get-contexts -o name)
     do
         kubectl --context=$ctx top pod --no-headers -A --sort-by=cpu | head -1 | awk -v ctx=$ctx '{printf "%s,%s,%s,%s\n", ctx, $1, $2, $3}'
-    done | sort -t ',' -k4 -h | tail -1 | sed -E 's/,[[:digit:]]+[a-z]*$//i' > /opt/high_cpu_pod
+    done | sort -t ',' -k4 -h | tail -1 | sed -E 's/,[0-9]+[a-z]*$//i' > /opt/high_cpu_pod
     ```
 
     There is a lot going on here, isn't there?
