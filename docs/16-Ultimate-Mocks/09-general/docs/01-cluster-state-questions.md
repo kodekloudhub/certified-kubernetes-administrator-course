@@ -106,14 +106,14 @@ Use a similar approach whether the stat is CPU or memory, or the resource is Pod
 
     There is a lot going on here, isn't there?
 
-    As a working DevOps engineer, this is the sort of thing you would be expected to be able to come up with in your day-to-day job! Hence it is important to know how to *use* Linux as well as Kubernetes to be successful in a Kubernetes job. You don't need to know it to Sys Admin level (e.g RHCSA, LFCS).<br/>The following courses are recommended:
+    As a working DevOps engineer, this is the sort of thing you would be expected to be able to come up with in your day-to-day job - indeed the lab engineer who developed the marking script for this lab would have to use something like the above! Hence it is important to know how to *use* Linux as well as Kubernetes to be successful in a Kubernetes job. You don't need to know it to Sys Admin level (e.g RHCSA, LFCS).<br/>The following courses are recommended:
     * [Linux Basics](https://kodekloud.com/courses/the-linux-basics-course/)
     * [Shell Scripts for Beginners](https://kodekloud.com/courses/shell-scripts-for-beginners/)
     * [Advanced Bash Scripting](https://kodekloud.com/courses/advanced-bash-scripting/)
 
     So, what is actually going on?
 
-    1. The `for` loop lists the cluster contexts one by one storing the cluster name in the validale `ctx`
+    1. The `for` loop lists the cluster contexts one by one storing the cluster name in the variable `ctx`
     1. With each context, the `kubectl top pods` command is executed with `-A` for all namespaces...
         1. `--no-headers` removes the column headers from the output.
         1. `--sort-by=cpu` ensures the pod we need from this cluster is the first pod listed. In kubectl, sort order is descending.
