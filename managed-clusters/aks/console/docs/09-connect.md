@@ -24,6 +24,8 @@ Fill in this form as follows
 
 Unique names should be 24 characters long consisting of number and lower case letters only You can use [this online tool](https://www.random.org/strings/) to create your unique names.
 
+![image](../images/09b-random-string.png)
+
 Copy your random strings into the form and press **Create Storage**
 
 The cloud shell window will open at the bottom of your browser window and will automatically run the two commands that were listed in the pop-up.
