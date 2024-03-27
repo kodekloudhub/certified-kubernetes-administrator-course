@@ -30,8 +30,6 @@
 
     1. Press the `Update` button at the bottom of the screen to complete pool configuration.
 
-1. Repeat the above for `userpool`
-
 
 Next: [Networking](./06-networking.md)
 
