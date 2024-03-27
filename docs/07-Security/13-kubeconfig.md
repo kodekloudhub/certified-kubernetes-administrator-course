@@ -37,7 +37,9 @@ In this section, we will take a look at kubeconfig in kubernetes
   
 - How do you update your current context? Or change the current context
   ```
-  $ kubectl config view --kubeconfig=my-custom-config
+  $ kubectl config use-context <context-name>
+  ex: 
+  $ kubectl config use-context prod-user@production
   ```
   
   ![kc7](../../images/kc7.PNG)
