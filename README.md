@@ -14,7 +14,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
   - [01-Core-Concepts-Section-Introduction](docs/02-Core-Concepts/01-Core-Concepts-Section-Introduction.md)
   - [02-Cluster-Architecture](docs/02-Core-Concepts/02-Cluster-Architecture.md)
-  - [03-Docker-vs-ContainerD](/docs/02-Core-Concepts/03-Docker-vs-ContainerD.md)
+  - [03-Docker-vs-ContainerD](docs/02-Core-Concepts/03-Docker-vs-ContainerD.md)
   - [04-ETCD-For-Beginners](docs/02-Core-Concepts/04-ETCD-For-Beginners.md)
   - [05-ETCD-in-Kubernetes](docs/02-Core-Concepts/05-ETCD-in-Kubernetes.md)
   - [06-Kube-API-Server](docs/02-Core-Concepts/06-Kube-API-Server.md)
