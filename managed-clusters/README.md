@@ -8,6 +8,6 @@ We have some instructions for building managed clusters in KodeKloud playgrounds
 
 * [AWS EKS](./eks/) - Using Terraform
 * [AWS EKS](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748) - Using the console
-* [Azure AKS](https://kodekloud.com/community/t/playground-series-how-to-create-a-managed-kubernetes-cluster-on-azure-playground/224190) - Using the console
+* [Azure AKS](./aks/console/README.md) - Using the console
 * [Google GKE](https://kodekloud.com/community/t/playground-series-how-to-create-a-managed-kubernetes-cluster-with-google-kubernetes-engine/230314) - Using the console
 
