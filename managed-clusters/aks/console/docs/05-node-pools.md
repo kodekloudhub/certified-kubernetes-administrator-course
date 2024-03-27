@@ -1,8 +1,12 @@
 # Node Pools
 
-1. Select **Node Pools** from the tab strip at the top
+1. Select **Node Pools** from the tab strip at the top.
 
     ![image](../images/05-node-pools.png)
+
+    Note that this menu may also appear on the left:
+
+    ![image](../images/05-node-pools-left.png)
 
 1. To comply with playground restrictions, we need to change some configuration. Click on the value in the **Node size** column...
 
