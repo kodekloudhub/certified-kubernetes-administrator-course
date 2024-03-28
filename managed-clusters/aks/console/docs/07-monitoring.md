@@ -1,6 +1,6 @@
 # Monitoring
 
-Proceed directly to **Monitoring**. There is nothing to be set for **Networking** or **Integrations**
+Proceed directly to **Monitoring**. There is nothing to be set for **Integrations**
 
 ![image](../images/07-monitoring.png)
 
