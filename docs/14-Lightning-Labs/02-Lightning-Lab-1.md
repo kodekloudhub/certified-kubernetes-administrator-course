@@ -12,7 +12,7 @@
 
     Upgrade `controlplane` node first and drain node `node01` before upgrading it. Pods for `gold-nginx` should run on the controlplane node subsequently.
 
-    On controlplane node
+    **Upgrade `controlplane`**
 
     1.  Update package repo
 
@@ -30,14 +30,13 @@
 
     1.  Grab kubernetes 1.29 repos
 
+        For this, we need to edit the apt source file which you should find is `/etc/apt/sources.list.d/kubernetes.list`
+
         ```bash
-        mkdir -p /etc/apt/keyrings
-        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg
-        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-        apt update
+        vi /etc/apt/sources.list.d/kubernetes.list
         ```
 
-        Note that the filename `kubernetes-1.29-apt-keyring.gpg` is arbitrary. There is already an existing file `kubernetes-apt-keyring.gpg` which we don't want to overwrite. As long as the filenames in the `curl` and `echo` commands match, you're good.
+        FInd any occurrence of `1.28` in this file and change it to `1.29`, then save and exit from vi.
 
     1.  Now run madison again to find out the package version for 1.29
 
@@ -99,6 +98,8 @@
         apt-mark hold kubeadm kubelet kubectl
         ```
 
+    **Upgrade `node01`**
+
     1. Drain the worker node
 
         ```
@@ -113,12 +114,7 @@
 
     1. As before, you will need to update the package caches for v1.29
 
-        ```bash
-        mkdir -p /etc/apt/keyrings
-        curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg
-        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-1.29-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
-        apt update
-        ```
+        Follow the same steps as you did on `controlplane`
 
     1. Upgrade kubeadm
 
@@ -165,6 +161,14 @@
         ```
         kubectl get pods -o wide | grep gold-nginx
         ```
+
+    **TIP**
+
+    To do cluster upgrades faster and save at least 3 minutes, you can work on both nodes at the same time.
+
+    While `kubeadm upgrade apply` is running on `controlplane`, which takes some minutes, open a second terminal and perform steps `ii`, `iii` and `iv` of "Upgrade `node01`", so that it is ready for `kubeadm upgrade node` as soon as you have drained it.
+
+
     </details>
 
 2.  <details>
