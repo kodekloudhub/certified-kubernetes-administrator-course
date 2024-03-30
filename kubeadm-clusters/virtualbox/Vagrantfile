@@ -57,7 +57,7 @@ end
 # created in VirtualBox.
 def get_machine_id(vm_name)
   machine_id_filepath = ".vagrant/machines/#{vm_name}/virtualbox/id"
-  if not File.exist? machine_id_filepath
+  if not File.exists? machine_id_filepath
     return nil
   else
     return File.read(machine_id_filepath)
