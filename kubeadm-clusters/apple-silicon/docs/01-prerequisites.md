@@ -22,11 +22,13 @@ Additionally
     git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
     cd certified-kubernetes-administrator-course/kubeadm-clusters/apple-silicon
     ```
-We have pre-set an environment variable `PRIMARY_IP` on all VMs which is the IP address that kube components should be using. `PRIMARY_IP` is defined as the IP address of the network interface on the node that is connected to the network having the default gateway, and is the interface that a node will use to talk to the other nodes. For those interested, this variable is assigned the result of the following command
 
-```bash
-ip route | grep default | awk '{ print $9 }'
-```
+## Virtual Machine Network
+
+Due to how the virtualization works, the networking for each VM requires two network adapters; one used by Multipass and one used by everything else. Kubernetes components may by default bind to the Multipass adapter, which is *not* what we want, therefore we have pre-set an environment variable `PRIMARY_IP` on all VMs which is the IP address that Kubernetes components should be using. In the coming labs you will see this environment variable being used to ensure Kubernetes components bind to the correct network interface.
+
+`PRIMARY_IP` is defined as the IP address of the network interface on the node that is connected to the network having the default gateway, and is the interface that a node will use to talk to the other nodes and also to the internet. In bridge mode, this is also an address on your internal broadband network and is allocated by your broadband router.
+
 
 ## Virtual Machine Network
 
