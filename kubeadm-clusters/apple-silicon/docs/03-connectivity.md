@@ -1,6 +1,6 @@
 # Connectivity
 
-We will perform most configuration tasks from the `controlplane` node. After the following steps you will be able to use ssh to log into workder nodes from the `cxontrolplane` prompt.
+We will perform most configuration tasks from the `controlplane` node. After the following steps you will be able to use ssh to log into worker nodes from the `controlplane` prompt.
 
 You can if you prefer log into worker nodes from separate terminal sessions using e.g.
 
