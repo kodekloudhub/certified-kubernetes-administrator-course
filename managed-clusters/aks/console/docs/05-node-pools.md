@@ -19,7 +19,7 @@
 
         ![image](../images/05b-node-pools.png)
 
-        And from the selection screen, choose `B2s`
+        And from the selection screen, choose `D4s_v3`
 
         ![image](../images/05c-node-pools.png)
 
