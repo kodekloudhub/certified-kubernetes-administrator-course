@@ -25,7 +25,11 @@ Do the following on `controlplane`
     curl http://node02:$PORT_NUMBER
     ```
 
-    Both should return the nginx welcome message as HTML text.
+    If you get this error:
+    ```
+    curl: (7) Failed to connect to node01 port 30659 after 0 ms: Connection refused
+    ```
+    Wait a few seconds and try again. Both should return the nginx welcome message as HTML text.
 
 Congratulations! You now have a working kubeadm cluster.
 
