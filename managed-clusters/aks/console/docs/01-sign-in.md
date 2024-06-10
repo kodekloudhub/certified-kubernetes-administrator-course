@@ -2,7 +2,7 @@
 
 Provision your Azure playground lab<br/>
 Prerequisite: Premium KodeKloud subscription<br/>
-Access this link: https://kodekloud.com/topic/playground-azure/ and click `START LAB` to request a new Azure Playground instance. After a few seconds, you will receive your temporary Azure portal account like this:
+Access this link: https://kodekloud.com/topic/playground-azure-2/ and click `START LAB` to request a new Azure Playground instance. After a few seconds, you will receive your temporary Azure portal account like this:
 
 ![image](../images/01-sign-in.jpeg)
 
