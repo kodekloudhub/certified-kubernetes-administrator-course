@@ -11,5 +11,5 @@ We have some instructions for building managed clusters in KodeKloud playgrounds
 * [AWS EKS](./eks/) - Automated build using Terraform.
 * [AWS EKS](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748) - Manual build using the console.
 * [Azure AKS](./aks/console/README.md) - Manual build using the console
-* [Google GKE](./gke/console/docs/01-sign-in.md) - Manual build using the console.
+* [Google GKE](./gke/console/README.md) - Manual build using the console.
 
