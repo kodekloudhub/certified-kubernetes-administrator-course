@@ -11,7 +11,7 @@ If using a small monitor, some top menu items may be hidden behind a vertical el
 1. Near the top right of this screen, click on `SWITCH TO STANDARD CLUSTER`, and confirm this is what you want to do in the dialog that pops up<br/><br/>![standard](../images/02-standard.png)
 1. Edit the cluster name as shown below. Other names *should* be ok, but if you have issues, use this one. Leave all other fields as defaults<br/><br/> ![basics](../images/02-cluster-basics.png)
 
-Next, we will configure the node pool.
+We've started configuring the cluster, but still have additional things we need to set, so don't click the CREATE button at the bottom of this screen just yet.  Before that, we'll configure the node pool on the next page...
 
 Prev: [Sign in](./01-sign-in.md)<br/>
 Next: [Node Setup](./03-node-setup.md)
