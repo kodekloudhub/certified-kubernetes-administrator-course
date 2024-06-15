@@ -23,7 +23,7 @@ Now we will add some *unmanaged* nodes to the cluster. AWS Playground does not s
 1. Now we fill in the parameters required to deploy the nodes
     1. `Stack Name`: `eks-cluster-stack`
     1. `ClusterName`: `demo-eks`
-    1. `ClusterControlPlaneSecurityGroup`: Click in the box and select the precreated one that should have a name containing `
+    1. `ClusterControlPlaneSecurityGroup`: Click in the box and select the one with a name that contains `eks-cluster-sg`
     1. `NodeGroupName`: `eks-demo-node`
     1. `KeyName`: (you will likely need to scroll down to find this) - `node-key-pair` as created above.
     1. `VpcId`: Click in the box and select the only entry that is there
