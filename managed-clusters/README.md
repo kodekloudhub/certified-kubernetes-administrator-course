@@ -9,7 +9,7 @@ Depending on the options chosen when creating, the worker nodes may be unmanaged
 We have some instructions for building managed clusters in KodeKloud playgrounds here:
 
 * AWS EKS
-    * [Manual build using the console](./eks/terraform/README.md)
+    * [Manual build using the console](./eks/console/README.md)
     * [Automated build using Terraform](./eks/terraform/README.md)
 * Azure AKS
     * [Manual build using the console](./aks/console/README.md)
