@@ -45,3 +45,6 @@ Now that CloudFormation has created the EC2 instances for the worker nodes, we n
 
 Congratulations! Your cluster is now up and you can create resources.
 
+Prev: [Add Cluster Nodes](./06-nodes.md)<br/>
+Next: [Accessing Node Port services](./08-node-port.md)
+

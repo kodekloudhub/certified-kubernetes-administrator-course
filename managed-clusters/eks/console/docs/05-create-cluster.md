@@ -2,7 +2,7 @@
 
 Now you should be on the Review and Create page. Here we will launch the control plane. No nodes are ready yet - this comes later.
 
-1. Review the information that you entered or selected on the previous pages. If you need to make changes, choose an `Edit` button next to the section you want to change. After that, scroll to the end and press `Create`. The Status field shows "Creating" while the cluster is provisioned. This will take *at least* 5 minutes. You may need to press the refresh button periodically (indicated by arrow) to ensure the information is up to date.
+1. Review the information that you entered or selected on the previous pages. If you need to make changes, choose an `Edit` button next to the section you want to change. After that, scroll to the end and press `Create`. The Status field shows "Creating" while the cluster is provisioned. This will take *at least* 10 minutes, so go and make a cup of tea! You may need to press the refresh button periodically (indicated by arrow) to ensure the information is up to date.
 
 1. Wait for the control plane to deploy. When the control plane is deployed, the status will change from "Creating" to "Active"
 

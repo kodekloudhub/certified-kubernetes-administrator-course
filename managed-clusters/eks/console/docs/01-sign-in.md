@@ -2,11 +2,13 @@
 
 Last updated: June 2024
 
+Be aware that of the three managed cluster types, EKS is by far the most complicated to build as in the number of steps required to complete it. Please pay special attention to each, as if you make a mistake then you will see errors. *This does work* and when it doesn't, it will be because you missed something and you will probably be best ending the lab and starting over!
+
 ### Provision your AWS playground lab
 
 Prerequisite: Premium KodeKloud subscription
 
-Access this link: https://kodekloud.com/playgrounds/playground-aws and click `LAUNCH NOW` to request a new Azure Playground instance. After a few seconds, you will receive your temporary AWS portal account like this:
+Access this link: https://kodekloud.com/playgrounds/playground-aws and click `LAUNCH NOW` to request a new AWS Playground instance. After a few seconds, you will receive your temporary AWS portal account like this:
 
 ![image](../images/01-sign-in.png)
 

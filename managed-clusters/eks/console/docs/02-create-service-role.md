@@ -1,5 +1,7 @@
 # Create the Service Role
 
+Note that various information pop-ups may appear at the top of the console screen as you do things and may obscure other items. Dismiss these when they appear.
+
 Before creating an EKS cluster you need to create a Cluster service IAM (Identity and Access Management) role. This grants permissions for the EKS service to access AWS APIs on your behalf.
 
 1. Navigate to the IAM console
