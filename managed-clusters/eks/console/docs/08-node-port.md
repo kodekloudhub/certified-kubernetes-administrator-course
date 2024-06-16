@@ -1,11 +1,11 @@
 # Accessing Node Port services
 
-In order for you to be able to see any NodePort services you create, we must edit the security group applied to the nodes in order to permit your laptop to access them. In AWS, a security group acts like a firewall. The default confiuration for this created in the prvious step only permits access between the control plane and the nodes. We will now edit this to allow your broadband public IP to also access the nodes on the port range for NodePort services.
+In order for you to be able to see any NodePort services you create, we must edit the security group applied to the nodes in order to permit your laptop to access them. In AWS, a security group acts like a firewall. The default configuration for this created in the prvious step only permits access between the control plane and the nodes. We will now edit this to allow your broadband public IP to also access the nodes on the port range for NodePort services.
 
 ## Edit the node security group
 
 1. Navigate to the EC2 console using the search box.
-1. In the menu on the left, scroll down till you fine `Security groups` and click on it.
+1. In the menu on the left, scroll down till you find `Security groups` and click on it.
 1. In the list of security groups, click on the `eks-cluster-stack-NodeSecurityGroup`.
 
     ![](../images/08-sg-list.png)
