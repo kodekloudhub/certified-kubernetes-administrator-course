@@ -4,12 +4,15 @@ Knowledge of managed clusters and how to build them is *not* part of the CKA cou
 
 Managed clusters are where part of the cluster is managed by a major cloud provider. The control plane is *always* managed in this type of cluster, meaning that you do not have to configure control plane nodes, high availability or manage etcd - all this is "managed" for you for a fixed cost per hour the cluster is in existence.
 
-Depending on the offering, the worker nodes may be unmanaged, part or fully managed.
+Depending on the options chosen when creating, the worker nodes may be unmanaged, part or fully managed. However in the KodeKloud playgrounds only unmanaged nodes are available so that is what we will be creating.
 
 We have some instructions for building managed clusters in KodeKloud playgrounds here:
 
-* [AWS EKS](./eks/) - Automated build using Terraform.
-* [AWS EKS](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748) - Manual build using the console.
-* [Azure AKS](./aks/console/README.md) - Manual build using the console
-* [Google GKE](./gke/console/README.md) - Manual build using the console.
+* AWS EKS
+    * [Manual build using the console](./eks/console/README.md)
+    * [Automated build using Terraform](./eks/terraform/README.md)
+* Azure AKS
+    * [Manual build using the console](./aks/console/README.md)
+* Google GKE
+    * [Manual build using the console](./gke/console/README.md)
 

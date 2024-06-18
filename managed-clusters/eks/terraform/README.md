@@ -19,8 +19,9 @@ From here on, all commands must be run in the CloudShell terminal
 ## Install Terraform
 
 ```bash
-curl -O https://releases.hashicorp.com/terraform/1.5.7/terraform_1.5.7_linux_amd64.zip
-unzip terraform_1.5.7_linux_amd64.zip
+terraform_version=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version')
+curl -O "https://releases.hashicorp.com/terraform/${terraform_version}/terraform_${terraform_version}_linux_amd64.zip"
+unzip terraform_${terraform_version}_linux_amd64.zip
 mkdir -p ~/bin
 mv terraform ~/bin/
 terraform version
@@ -32,10 +33,10 @@ terraform version
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
 ```
 
-Now change into the EKS directory
+Now change into the EKS terraform directory
 
 ```bash
-cd certified-kubernetes-administrator-course/managed-clusters/eks
+cd certified-kubernetes-administrator-course/managed-clusters/eks/terraform
 ```
 
 ## Provision the infrastructure
