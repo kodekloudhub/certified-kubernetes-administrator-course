@@ -56,7 +56,7 @@ Now we will add some *unmanaged* nodes to the cluster. AWS Playground does not s
 
     ![](../images/06-stack-complete.png)
 
-1. Now select the `Outputs` tab and note down the value of `NodeInstanceRole`. You need this when you configure your Amazon EKS nodes.
+1. Now select the `Outputs` tab and note down the value of `NodeInstanceRole`. You need this when you join your Amazon EKS nodes.
 
     ![](../images/06-node-role.png)
 

@@ -1,6 +1,6 @@
 # Configure Cluster
 
-Now we will configure the clustter options
+Now we will configure the cluster options
 
 1. Navigate to the EKS console
     1. Click in the search box and type `eks`
