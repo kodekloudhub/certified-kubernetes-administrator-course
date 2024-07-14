@@ -14,7 +14,7 @@ Note that you must have KodeKloud Pro subscription to run an AWS playground. If 
 
 This demo can be run from either your own laptop or from the AWS cloudshell
 * From your laptop
-    * You must have working versions of terraform, kubectl and the AWS CLI installed on your laptop.
+    * You must have working versions of [terraform](https://developer.hashicorp.com/terraform/install), [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) and the [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions) installed on your laptop. This is not a tutorial on how to install these things.
     * You will need to go to the IAM console in AWS, then create and download access keys for the playground user, then export these as `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in your terminal's environment.
 * From CloudShell
     * No special requirements.
