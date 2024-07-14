@@ -2,13 +2,13 @@
 
 In this guide, we will deploy an EKS cluster in the KodeKloud AWS Playground using Terraform. This cluster utilises an *unmanaged* node group, i.e. one we have to deploy and join manually as the playground does not support the creation of managed node groups.
 
-If you want to do this manually from the AWS console, you can follow the guide created by Raymond Bao Ly [here](https://kodekloud.com/community/t/playground-series-how-to-create-an-eks-cluster-in-kodekloud-playground/330748).
+If you want to do this manually from the AWS console, you can follow [this guide](../console/README.md).
 
 This terraform code will create an EKS cluster called `demo-eks` and will have the same properties as the manually deployed version linked above.
 
 ## Start an AWS Playground
 
-[Click here](https://kodekloud.com/topic/playground-aws/) to start a playground, and click `START LAB` to request a new AWS Cloud Playground instance. After a few seconds, you will receive your credential to access AWS Cloud console.
+[Click here](https://kodekloud.com/playgrounds/playground-aws) to start a playground, and click `START LAB` to request a new AWS Cloud Playground instance. After a few seconds, you will receive your credential to access AWS Cloud console.
 
 Note that you must have KodeKloud Pro subscription to run an AWS playground. If you have your own AWS account, this should still work, however you will bear the cost for any resources created until you delete them.
 
