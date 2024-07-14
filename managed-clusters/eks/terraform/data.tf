@@ -9,12 +9,11 @@ data "aws_vpc" "default_vpc" {
   default = true
 }
 
-# Get Public IP of your broadband account. This allows us to lock down SSH access
+# Get Public IP of where you run terraform from. This allows us to lock down SSH and node access
 # into the environment from anyone other than yourself, by inserting your public
 # IP to a security group ingress rule.
 # Try this URL in your browser!
-data "http" "cloudshell_ip" {
-  url = "https://checkip.amazonaws.com/"
+data "localos_public_ip" "users_ip" {
 }
 
 # Get the subnets to use for the cluster ti bind to and the autoscaling group

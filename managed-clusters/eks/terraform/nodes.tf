@@ -78,7 +78,7 @@ resource "aws_security_group" "node_security_group" {
 
 #
 # Now follows several rules that are applied to the node security group
-# to allow control plane to access nodes
+# for various access to nodes
 #
 
 resource "aws_vpc_security_group_ingress_rule" "node_security_group_ingress" {
@@ -86,6 +86,15 @@ resource "aws_vpc_security_group_ingress_rule" "node_security_group_ingress" {
   ip_protocol                  = "-1"
   security_group_id            = aws_security_group.node_security_group.id
   referenced_security_group_id = aws_security_group.node_security_group.id
+}
+
+resource "aws_vpc_security_group_ingress_rule" "user_ingress" {
+  description       = "Allow user to access node ports"
+  ip_protocol       = "TCP"
+  cidr_ipv4         = data.localos_public_ip.users_ip.cidr
+  from_port         = "30000"
+  to_port           = "32768"
+  security_group_id = aws_security_group.node_security_group.id
 }
 
 # CloudFormation defaults to egress all. Terraform does not.
@@ -205,7 +214,7 @@ resource "aws_launch_template" "node_launch_template" {
 resource "time_sleep" "wait_30_seconds" {
   depends_on = [
     aws_launch_template.node_launch_template
-    ]
+  ]
 
   create_duration = "30s"
 }
@@ -216,7 +225,7 @@ resource "aws_cloudformation_stack" "autoscaling_group" {
   depends_on = [
     time_sleep.wait_30_seconds
   ]
-  name = "eks-cluster-stack"
+  name          = "eks-cluster-stack"
   template_body = <<EOF
 Description: "Node autoscaler"
 Resources:
