@@ -4,6 +4,15 @@
 #
 ####################################################################
 
+terraform {
+  required_providers {
+    localos = {
+      source  = "fireflycons/localos"
+      version = "0.1.2"
+    }
+  }
+}
+
 variable "aws_region" {
   type    = string
   default = "us-east-1"
