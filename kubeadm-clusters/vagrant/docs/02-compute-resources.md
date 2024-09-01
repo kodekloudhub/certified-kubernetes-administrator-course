@@ -2,18 +2,18 @@
 
 Note: You must have VirtualBox and Vagrant configured at this point
 
-Open a terminal application (on Windows use PowerShell). All commands in this guide are executed from the terminal.
+Open a terminal application (on Windows use PowerShell, Mac use terminal or better iterm2). All commands in this guide are executed from the terminal.
 
-Download this github repository and cd into the `virtualbox` folder
+Download this github repository
 
 ```bash
 git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
 ```
 
-CD into the virtualbox directory
+CD into the vagrant directory
 
 ```bash
-cd kubeadm-clusters/virtualbox
+cd kubeadm-clusters/vagrant
 ```
 
 Run Vagrant up to create the virtual machines.
@@ -27,7 +27,7 @@ vagrant up
 
 Bridged networking makes the VMs appear as hosts directly on your local network. This means that you will be able to use your own browser to connect to any NodePort services you create in the cluster.
 
-If your workstation has more than one network interface capable of creating a bridge, Vagrant may stop and ask you which one to use if it cannot determine the best interface itself. Now it *should* work this out and not have to ask you, however if it does not, then the "best" interface is the one used to connect to your broadband router. On laptops, this would normally be the Wi-Fi adapter which should be easliy identifiable in the list. The example below is from a Windows desktop computer with a wired network adapter.
+If your workstation has more than one network interface capable of creating a bridge, Vagrant may stop and ask you which one to use if it cannot determine the best interface itself. Now it *should* work this out and not have to ask you, however if it does not, then the "best" interface is the one used to connect to your broadband router. On laptops, this would normally be the Wi-Fi adapter which should be easily identifiable in the list. The example below is from a Windows desktop computer with a wired network adapter.
 
 Which of the two choices do you think is correct?
 
@@ -52,7 +52,20 @@ Why? Because
     controlplane: Which interface should the network bridge to?
 ```
 
-At the end of the deployment, it will tell you how to access NodePort services from your browser once you have configured Kubernetes. Make a note of this.
+At the end of the deployment, it lists the IP addresses of the cluster nodes. If deploying in BRIDGE mode (the default), these addresses are directly accessible from your laptop's terminal.
+
+Example output (addresses will be different for you)
+
+```text
+--> Harvesting machine IPs
+--> Setting hosts file: controlplane
+--> Setting hosts file: node01
+--> Setting hosts file: node02
+
+192.168.230.71 controlplane
+192.168.230.72 node01
+192.168.230.155 node02
+```
 
 If you encountered issues starting the VMs, you can try NAT mode. Note that in NAT mode you will not be able to connect to your NodePort services using your browser without setting up port forwarding rules in VirtualBox UI.
 
@@ -60,7 +73,7 @@ If you encountered issues starting the VMs, you can try NAT mode. Note that in N
     ```
     vagrant destroy -f
     ```
-1. Edit `vagrantfile` and change `BUILD_MODE = "BRIDGE"` to `BUILD_MODE = "NAT"` at line 10.
+1. Edit your local copy of `vagrantfile` and change `network_type: "BRIDGE"` to `network_type: "NAT"` at line 10. Please do not submit PR for this. It will be rejected.
 
 ## SSH to the nodes
 

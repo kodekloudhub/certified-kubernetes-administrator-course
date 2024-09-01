@@ -58,7 +58,7 @@ The default configuration in this lab is to bring the VMs up on bridged interfac
 
 Should you have issues deploying bridge networking, please raise a [bug report](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/issues) and include all details including the output of `vagrant up`.
 
-Then retry the lab in NAT mode. How to do this is covered in the [next section](./02-compute-resources.md).
+Then retry the lab in NAT mode. How to do this is covered in the [next section](../../vagrant/docs/02-compute-resources.md).
 
 #### NAT Networking
 
@@ -93,7 +93,7 @@ with the new CIDR range.  This should not overlap any of the other network setti
 
 ## Running Commands in Parallel with tmux
 
-If you are running this tutorial on an x86 Mac, you can instead use iterm2 to achive this. See the iterm2 setup in the [Apple Silicon guide](../../apple-silicon/docs/01-prerequisites.md#running-commands-in-parallel-with-iterm2).
+If you are running this tutorial on an x86 Mac, you can instead use iterm2 to achieve this. See the iterm2 setup in the [Apple Silicon guide](../../apple-silicon/docs/01-prerequisites.md#running-commands-in-parallel-with-iterm2).
 
 [tmux](https://github.com/tmux/tmux/wiki) can be used to run the same commands on multiple compute instances at the same time. Labs in this tutorial may require running the same commands across multiple compute instances. In those cases you may consider using tmux and splitting a window into multiple panes with synchronize-panes enabled to speed up the provisioning process.
 
@@ -105,4 +105,4 @@ In order to use tmux, you must first connect to `controlplane` and run tmux ther
 
 > Enable synchronize-panes by pressing `CTRL+B` followed by `"` to split the window into two panes. In each pane (selectable with mouse), ssh to the host(s) you will be working with.</br>Next type `CTRL+X` at the prompt to begin sync. In sync mode, the dividing line between panes will be red. Everything you type or paste in one pane will be echoed in the other.<br>To disable synchronization type `CTRL+X` again.</br></br>Note that the `CTRL-X` key binding is provided by a `.tmux.conf` loaded onto the VM by the vagrant provisioner.<br/>To paste commands into a tmux pane, use `SHIFT-RightMouseButton`.
 
-Next: [Compute Resources](02-compute-resources.md)
+Next: [Compute Resources](../../vagrant/docs/02-compute-resources.md)

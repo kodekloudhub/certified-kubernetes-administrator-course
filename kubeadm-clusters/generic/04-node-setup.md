@@ -11,6 +11,39 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
 
 [//]: # (host:controlplane-node01-node02)
 
+1. Check if swap is enabled, and disable it if it is
+
+    1. Run the following
+
+        ```bash
+        sudo swapon -s
+        ```
+
+        Output (if any) looks like this:
+
+        ```
+        Filename    Type   Size     Used   Priority
+        /swap.img   file   2097148	264    -2
+        ```
+
+        Note the filename.
+
+        If there is no output from the `swapon` command, then swap is already disabled. Proceed to step 2
+
+    1. Disable swap now
+
+        ```bash
+        sudo swapoff -a
+        ```
+
+    1. Make the change permanent
+
+        ```bash
+        sudo vi /etc/fstab
+        ```
+
+        Find lines beginning with the filename(s) noted above. Delete any such lines. Save and exit vi.
+
 1. Update the apt package index and install packages needed to use the Kubernetes apt repository:
     ```bash
     {

@@ -1,0 +1,82 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require_relative "./utils"
+require_relative "./hypervisor"
+require_relative "./host"
+
+# Define network that the virtual machines will join.
+NETWORK_SETTINGS = {
+  network_type: "BRIDGE",              # NAT = use a private network; BRIDGE = use addresses from your broadband router's network.
+  private_network: "192.168.56.",   # Network prefix for VM network if using NAT mode. Ignored for BRIDGE.
+  ip_start: 11,                     # First IP to use for VMs on private network if using NAT mode. Ignored for BRIDGE.
+}
+
+# Define list of virtual machines to be created here.
+VIRTUAL_MACHINES = [
+  {
+    name: "controlplane",   # Name (and hostname) for the VM
+    cpu: 2,                       # Number of vCPUs to assign it
+    memory: 2048,                 # RAM in MB to assign it
+    box: Hypervisor.ubuntu,       # Operating system to run
+    packages: [
+        "tmux",
+    ]
+  },
+  {
+    name: "node01",
+    cpu: 2,
+    memory: 2048,
+    box: Hypervisor.ubuntu,
+  },
+  {
+    name: "node02",
+    cpu: 2,
+    memory: 2048,
+    box: Hypervisor.ubuntu,
+  },
+]
+
+# Deploy the VMs
+Vagrant.configure("2") do |config|
+  config.vm.box_check_update = false
+
+  # For each machine defined in VIRTUAL_MACHINES above
+  VIRTUAL_MACHINES.each_with_index do |vm, index|
+    config.vm.define vm[:name] do |node|
+      # Set the "box", i.e. operating system for guest
+      node.vm.box = vm[:box].box
+      # Get hypervisor support for the host OS
+      Hypervisor.get node: node do |hv|
+        # Deploy the VM
+        hv.deploy vm: vm, network: NETWORK_SETTINGS, index: index
+      end
+    end
+  end
+
+  # Tasks to perform before any VMs are created
+  config_shown = false
+  config.trigger.before :up do |trigger|
+    trigger.info = "Pre-start trigger"
+    trigger.ruby do |env, machine|
+      if !config_shown
+        host = Host.get()
+        show_system_info(trigger, host)
+        validate_configuration(trigger, host, VIRTUAL_MACHINES)
+        config_shown = true
+      end
+    end
+  end
+
+  # Tasks to perform after all VMs are created
+  vm_count = 0
+  config.trigger.after :up do |trigger|
+    trigger.info = "Post-provision"
+    trigger.ruby do |env, machine|
+      vm_count += 1
+      if vm_count == env.machine_names.length()
+        post_provision(env)
+      end
+    end
+  end
+end

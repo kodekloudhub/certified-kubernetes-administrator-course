@@ -1,33 +1,35 @@
 # Prerequisites
 
 * Apple Silicon System (M1/M2/M3 etc)
+* VMware Fusion
+* Vagrant and the Vagrant VMware provider
 * 8GB RAM (16GB preferred).
-    * All configurations - One control plane node will be provisioned - `controlplane`
-    * If you have less than 16GB then only one worker node will be provisioned - `node01`
-    * If you have 16GB or more then two workers will be provisioned - `node01` and `node02`
 
-You'll need to install the following first.
 
-* Multipass - https://multipass.run/install. Follow the instructions to install it and check it is working properly. You should be able to successfully create a test Ubuntu VM following their instructions. Delete the test VM when you're done.
-* JQ - https://github.com/stedolan/jq/wiki/Installation#macos
+**Install Vagrant**
 
-Additionally
+Go to the [download page](https://developer.hashicorp.com/vagrant/downloads)
 
-* Your account on your Mac must have admin privilege and be able to use `sudo`
-* Clone this repo down to your Mac. Open your Mac's terminal application. All commands in this guide are executed from the terminal.
+If you have [homebrew](https://brew.sh/) installed (you really should :smile:), follow the **Package manager** instructions, *else* download the ARM64 version for macOS which will download a DMG package which Finder can install for you.
 
-    ```bash
-    mkdir ~/kodekloud
-    cd ~/kodekloud
-    git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-course.git
-    cd certified-kubernetes-administrator-course/kubeadm-clusters/apple-silicon
-    ```
+**Install VMware Fusion**
+
+This is quite fiddly due to the fact that the Broadcom site is like a maze (Broadcom acquired VMware at the end of 2023). They keep moving it around therefore it is not practical to have specific instructions here, however the general gist is -
+
+1. Start at https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion
+1. Select Download Fusion or Workstation - you will be redirected to a login page.
+1. Register for a new account.
+1. Once your account is activated, then find your way to the Fusion Pro download page.
+1. Download it and Finder will install it for you
+
+**Install the Vagrant provider for VMware**
+
+* Follow the instructions [here](https://developer.hashicorp.com/vagrant/docs/providers/vmware/installation).
+
 
 ## Virtual Machine Network
 
-Due to how the virtualization works, the networking for each VM requires two network adapters; one used by Multipass and one used by everything else. Kubernetes components may by default bind to the Multipass adapter, which is *not* what we want, therefore we have pre-set an environment variable `PRIMARY_IP` on all VMs which is the IP address that Kubernetes components should be using. In the coming labs you will see this environment variable being used to ensure Kubernetes components bind to the correct network interface.
-
-`PRIMARY_IP` is defined as the IP address of the network interface on the node that is connected to the network having the default gateway, and is the interface that a node will use to talk to the other nodes and also to the internet. In bridge mode, this is also an address on your internal broadband network and is allocated by your broadband router.
+TO VERIFY
 
 ### Bridge Networking
 
@@ -35,13 +37,17 @@ The default configuration in this lab is to bring the VMs up on bridged interfac
 
 Should you have issues deploying bridge networking, please raise a [bug report](https://github.com/kodekloudhub/certified-kubernetes-administrator-course/issues) and include all details including the output of `deploy-virtual-machines`.
 
-Then retry the lab in NAT mode. How to do this is covered in the [next section](./02-compute-resources.md).
+Then retry the lab in NAT mode. How to do this is covered in the [next section](../../vagrant/docs/02-compute-resources.md).
 
 ### NAT Networking
 
-In NAT configuration, the network on which the VMs run is isolated from your broadband router's network by a NAT gateway managed by the hypervisor. This means that VMs can see out (and connect to Internet), but you can't see in (i.e. use browser to connect to NodePorts). It is currently not possible to set up port forwarding rules in Multipass to facilitate this.
+In NAT configuration, the network on which the VMs run is isolated from your broadband router's network by a NAT gateway managed by the hypervisor. This means that VMs can see out (and connect to Internet), but you can't see in (i.e. use browser to connect to NodePorts) without setting up individual port forwarding rules for every NodePort using the VirtualBox UI.
 
-The network used by the VMs is chosen by Multipass.
+The network used by the Virtual Box virtual machines is `192.168.56.0/24`.
+
+To change this, edit the [Vagrantfile](../Vagrantfile) in your cloned copy (do not edit directly in github), and set the new value for the network prefix at line 9. This should not overlap any of the other network settings.
+
+Note that you do not need to edit any of the other scripts to make the above change. It is all managed by shell variable computations based on the assigned VM  IP  addresses and the values in the hosts file (also computed).
 
 It is *recommended* that you leave the pod and service networks as the defaults. If you change them then you will also need to edit the Weave networking manifests to accommodate your change.
 
@@ -62,8 +68,8 @@ To set up as per the image above, do the following in iterm2
 1. In each pane, connect to a different node with `Multipass shell`
 1. From the `Session` menu at the top, select `Broadcast` -> `Broadcast imput to all panes`. The small icon at the top right of each pane indicates broadcast mode is enabled.
 
-Input typed or pased to one command prompt will be echoed to the others. Remember to turn off broadcast when you have finished a section that applies to all nodes.
+Input typed or passed to one command prompt will be echoed to the others. Remember to turn off broadcast when you have finished a section that applies to all nodes.
 
-Next: [Compute Resources](02-compute-resources.md)
+Next: [Compute Resources](../../vagrant/docs/02-compute-resources.md)
 
 [](#running-commands-in-parallel-with-iterm2)

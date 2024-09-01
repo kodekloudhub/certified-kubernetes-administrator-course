@@ -30,7 +30,7 @@ Now apply your network policy and test again.
 
 ## Slightly more advanced server
 
-Perhaps you want to set up several pods and have each serve a specific message on a configurable port so you can tell them apart by their reponses. We can do that with a pod and a config map for each. The pod is the same each time - except for giving it a unique name and mounting the appropriate config map.
+Perhaps you want to set up several pods and have each serve a specific message on a configurable port so you can tell them apart by their responses. We can do that with a pod and a config map for each. The pod is the same each time - except for giving it a unique name and mounting the appropriate config map.
 
 The following simulates a pod found in one of the Killer.sh network policy questions.
 

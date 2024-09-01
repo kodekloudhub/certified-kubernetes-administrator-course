@@ -21,8 +21,6 @@ On the `controlplane` node
     sudo kubeadm init --pod-network-cidr $POD_CIDR --service-cidr $SERVICE_CIDR --apiserver-advertise-address $PRIMARY_IP
     ```
 
-[//]: # (command:sleep 10)
-
 1.  Copy the `kubeadm join` command printed to your notepad to use on the worker nodes.
 
 1.  Set up the kubeconfig so it can be used by the user you are logged in as
