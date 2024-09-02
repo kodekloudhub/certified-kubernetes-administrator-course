@@ -17,15 +17,20 @@ kubeadm token create --print-join-command
 
 On each of `node01` and `node02` do the following
 
-1.  Become root (if you are not already)
+1.  Copy the `kubeadm join` command from `controlplane` and use `sudo` to apply it
 
     ```
-    sudo -i
+    sudo <paste join command here>
     ```
 
-1.  Join the node
+    It will look like this (the IP address and random character values will be different for you)
 
-    > Paste the `kubeadm join` command output by `kubeadm init` on the control plane
+    ```
+    sudo kubeadm join 192.168.230.143:6443 --token u1cm5e.j2zafff9h25jslsf \
+        --discovery-token-ca-cert-hash sha256:7b05dd5ed5d0cd7ef71f634a91344888458a145439aea96a01e45931823265f5
+    ```
+
+    then press ENTER to join the node
 
 ### Verify
 
