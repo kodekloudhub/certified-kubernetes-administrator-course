@@ -29,8 +29,6 @@ This is quite fiddly due to the fact that the Broadcom site is like a maze (Broa
 
 ## Virtual Machine Network
 
-TO VERIFY
-
 ### Bridge Networking
 
 The default configuration in this lab is to bring the VMs up on bridged interfaces. What this means is that your Kubernetes nodes will appear as additional machines on your local network, their IP addresses being provided dynamically by your broadband router. This facilitates the use of your browser to connect to any NodePort services you deploy.
