@@ -29,6 +29,9 @@ Vagrant provides an easier way to deploy multiple virtual machines on VirtualBox
 
 Download and Install [Vagrant](https://www.vagrantup.com/) on your platform.
 
+* For Windows download the AMD64 version which is a Windows Installer package. Open this file when it's downloaded and Windows Installer will install it.
+* For Intel Mac, if you have [homebrew](https://brew.sh/) installed (you really should :smile:), follow the **Package manager** instructions, else download the AMD64 version for MacOS which will download a DMG package which Finder should offer to install for you. If the installer doesn't start by itself, double click the downloaded DMG package.
+
 This lab was last tested with Vagrant 2.3.7, though newer versions should be ok.
 
 ## Lab Defaults

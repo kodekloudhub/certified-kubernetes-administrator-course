@@ -8,15 +8,15 @@ In this section we present various labs for building kubeadm clusters
     * [3 Node Cluster](./aws/)
     * [5 Node Highly Available Cluster](./aws-ha/)
 
-* Apple Silicon
+* Apple Silicon - Vagrant and VMware Fusion
 
-    For users of Mac with M-series processors, this is a lab that provisions a 2 or 3 node cluster (depending on how much memory your Mac has) using [Multipass](https://multipass.run/).
+    For users of Mac with M-series processors, provision a 3 node cluster on your laptop.
 
-    * [2/3 Node Cluster](./apple-silicon/)
+    * [3 Node Cluster](./apple-silicon/)
 
-* Vagrant and VirtualBox
+* Windows/Intel Mac - Vagrant and VirtualBox
 
-    For users of Windows and Mac x86, provision a 3 node cluster on your laptop.
+    For users of Windows and Intel Mac, provision a 3 node cluster on your laptop.
 
     * [3 Node Cluster](./virtualbox/)
 
