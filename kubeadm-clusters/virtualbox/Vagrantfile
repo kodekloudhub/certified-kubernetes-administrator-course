@@ -17,7 +17,7 @@ NUM_WORKER_NODES = 2
 IP_NW = "192.168.56"
 MASTER_IP_START = 11
 NODE_IP_START = 20
-# TEST
+# TEST2
 # Host operating sysem detection
 module OS
   def OS.windows?
