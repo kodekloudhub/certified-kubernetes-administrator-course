@@ -3,7 +3,7 @@
 
 In this section, we will take a look at kube-proxy.
 
-Within Kubernetes Cluster, every pod can reach every other pod, this is accomplish by deploying a pod networking cluster to the cluster. 
+Within Kubernetes Cluster, every pod can reach every other pod. Yhis is accomplished by deploying a pod networking cluster to the cluster. 
 - Kube-Proxy is a process that runs on each node in the kubernetes cluster.
   
   ![kube-proxy](../../images/kube-proxy.PNG)
