@@ -87,7 +87,9 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
 
 The primary interface is `eth0`. Note down the `inet` value for this interface which in this example is `192.37.66.3`. This is the IP address that our service needs to talk to.
 
-If we now do a `kubectl get service` on `external-webserver-cka03-svcn`, we see there's no pod selector and therefore no endpoints. So isn't "working as expected" since it doesn't have any endpoints.
+If we now do a `kubectl get service` on `external-webserver-cka03-svcn`, we see that it is associated with a *pod running inside the cluster*, which is not what is required, hence it is "not working as expected".
+
+First break the association with the internal pod by removing the selector. While editing the service, set the target port to the port of the external service.
 
 To wire up the service to the external IP, we must explicitly create an endpoint for the service. Note that the name of the endpoint (`metadata.name`) *must exactly match* the name of the service that you want to associate it to. Here's the endpoint with comments indicating what's what.
 
