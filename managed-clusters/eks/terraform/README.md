@@ -35,6 +35,20 @@ mv terraform ~/bin/
 terraform version
 ```
 
+## CloudShell Terminal Only - Create a directory to work in
+
+On the AWS CloudShell terminal, the disk partition where the home directory is, is not large enough to install the required terraform providers, therefore we will create a directory to work in on a partition that does have sufficient space
+
+```bash
+{
+sudo mkdir -p /opt/eks
+sudo chown cloudshell-user /opt/eks
+cd /opt/eks
+}
+```
+
+Now continue with the remaining steps
+
 ## Clone this repo
 
 ```bash
