@@ -4,7 +4,7 @@ Now we will add some *unmanaged* nodes to the cluster. AWS Playground does not s
 
 1. Create an SSH keypair for the nodes to use
     1. Navigate to the EC2 console by typing `ec2` in the search box at the top, and then selecting it from the list.
-    1. Scroll down the menu on the left until you see `Key Pairs`, then click that to enter the key piars console.
+    1. Scroll down the menu on the left until you see `Key Pairs`, then click that to enter the key pairs console.
     1. Click the orange `Create key pair` button at the top right
     1. Fill out the form using `node-key-pair` as name, `RSA` as key pair type and `.pem` as private key format
 
@@ -30,7 +30,7 @@ Now we will add some *unmanaged* nodes to the cluster. AWS Playground does not s
     1. `Subnets`. Sadly the drop-list does not show the AZ of the nets so it is fiddly to determine which ones to select
         1. Open the [subnets console](https://us-east-1.console.aws.amazon.com/vpcconsole/home?region=us-east-1#subnets:) in another browser tab or window.
         1. Click on each subnet to view its information in the lower pane.
-        1. Note the IPv4 CIDR for the ones that are in `us-east-1a`, `us-east-1b` annd `us-east-1c`
+        1. Note the IPv4 CIDR for the ones that are in the subnets you selected when configuring cluster networking.
 
             ![](../images/06-subnets.png)
 
