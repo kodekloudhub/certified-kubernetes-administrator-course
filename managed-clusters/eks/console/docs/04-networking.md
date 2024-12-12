@@ -2,11 +2,7 @@
 
 1. Select VPC - there should only be one choice, the Default VPC.
 
-1. Select values for the Subnets fields. When you click on `Select subnets`, a drop list will appear. All subnets will be selected.
-
-    For the availability zone `us-east-1e`, users cannot make changes or use it. So in our EKS Cluster creation, we will not select the subnet from the `us-east-1e` availability zone.
-
-    You must select at least two subnets for a cluster to be valid. In this tutorial we will use subnets from `us-east-1a`, `us-east-1b`, `us-east-1c` availability zones, so deselect the others.
+1. Select values for the Subnets fields. There needs to be at least two subnets selected. ad we don't need more than 3. Ensure that `us-east-1e` is *not* one of the selected subnets.
 
     ![](../images/04-subnets.png)
 
