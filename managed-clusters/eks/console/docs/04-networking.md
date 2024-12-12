@@ -2,7 +2,7 @@
 
 1. Select VPC - there should only be one choice, the Default VPC.
 
-1. Select values for the Subnets fields. There needs to be at least two subnets selected. ad we don't need more than 3. Ensure that `us-east-1e` is *not* one of the selected subnets.
+1. Select values for the Subnets fields. There needs to be at least two subnets selected, and we don't need more than 3. Ensure that `us-east-1e` is *not* one of the selected subnets.
 
     ![](../images/04-subnets.png)
 
