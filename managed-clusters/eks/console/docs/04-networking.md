@@ -2,7 +2,7 @@
 
 1. Select VPC - there should only be one choice, the Default VPC.
 
-1. Select values for the Subnets fields. There needs to be at least two subnets selected, and we don't need more than 3. Ensure that `us-east-1e` is *not* one of the selected subnets.
+1. Select values for the Subnets fields. There needs to be at least two subnets selected, and we don't need more than 3. Ensure that `us-east-1e` is *not* one of the selected subnets. If there are less than 2 subnets available, you will either need to go to VPC console and add some (beyond scope of this guide), or restart the playground until you get 2 or more subnets.
 
     ![](../images/04-subnets.png)
 
