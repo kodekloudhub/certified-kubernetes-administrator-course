@@ -1,6 +1,6 @@
 # Provision lab
 
-Last updated: June 2024
+Last updated: December 2024
 
 Be aware that of the three managed cluster types, EKS is by far the most complicated to build as in the number of steps required to complete it. Please pay special attention to each, as if you make a mistake then you will see errors. *This does work* and when it doesn't, it will be because you missed something and you will probably be best ending the lab and starting over! Having said that, AWS do from time to time reorganize the console screens and workflow. If you find that what you see in the console deviates from what is in this guide, then please do call it out on Discord or the [Community Forum](https://kodekloud.com/community/c/kubernetes/6).
 
