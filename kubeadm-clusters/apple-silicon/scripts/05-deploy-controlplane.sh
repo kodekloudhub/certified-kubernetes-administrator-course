@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-ip=$(ip route | grep default | awk '{ print $9 }')
-sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=$ip
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=${PRIMARY_IP}
 
-mkdir ~/.kube
+mkdir -p ~/.kube
 sudo cp /etc/kubernetes/admin.conf ~/.kube/config
 sudo chown $(id -u):$(id -g) ~/.kube/config
 chmod 600 ~/.kube/config
