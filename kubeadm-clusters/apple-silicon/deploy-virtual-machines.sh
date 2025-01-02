@@ -159,7 +159,7 @@ then
         echo -e "${BLUE}- ${node}${NC}"
         multipass transfer $hostentries $node:/tmp/
         multipass transfer $SCRIPT_DIR/*.sh $node:/tmp/
-        for script in 02-setup-kernel.sh 03-setup-cri.sh 04-kube-components.sh
+        for script in 02-setup-kernel.sh 03-setup-nodes.sh 04-kube-components.sh
         do
             multipass exec $node -- /tmp/$script
         done
