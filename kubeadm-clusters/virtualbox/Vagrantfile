@@ -18,7 +18,7 @@ IP_NW = "192.168.56"
 MASTER_IP_START = 11
 NODE_IP_START = 20
 
-# Host operating sysem detection
+# Host operating system detection
 module OS
   def OS.windows?
     (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
@@ -41,7 +41,7 @@ module OS
   end
 end
 
-# Determine host adpater for bridging in BRIDGE mode
+# Determine host adapter for bridging in BRIDGE mode
 def get_bridge_adapter()
   if OS.windows?
     return %x{powershell -Command "Get-NetRoute -DestinationPrefix 0.0.0.0/0 | Get-NetAdapter | Select-Object -ExpandProperty InterfaceDescription"}.chomp
