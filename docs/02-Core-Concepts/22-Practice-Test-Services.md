@@ -42,7 +42,7 @@
     --- OR ---
 
     ```
-    kubectl describe service --show-labels
+    kubectl get service --show-labels
     ```
 
     </details>
