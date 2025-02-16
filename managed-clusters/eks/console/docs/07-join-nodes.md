@@ -1,6 +1,6 @@
 # Join Worker Nodes
 
-Now that CloudFormation has created the EC2 instances for the worker nodes, we need to join them to the cluster.
+Now that CloudFormation has created the EC2 instances for the worker nodes, we need to join them to the cluster. Once again, if this is a lab or KKE task, the following must be done at the *lab* terminal.
 
 1. Return to the CloudShell terminal. If you closed it, press the button at the top to reopen it. If it tells you the session is closed due to inactivity, hit Enter to restart it.
 1. Download the node configmap
