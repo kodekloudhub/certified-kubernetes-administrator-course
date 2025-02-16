@@ -8,7 +8,7 @@ Now you should be on the Review and Create page. Here we will launch the control
 
     ![](../images/05-creating.png)
 
-1. Once the cluster is created, enable kubectl to communicate with your cluster by adding a new context to the kubectl config file by executing the following command in CloudShell, which you can invoke by pressing the cloudshell button indicated by the number `3` in the image above. This will open a cloudshell prompt below the EKS console into which you can paste and run the following:
+1. **IMPORTANT**: if you are building the cluster as part of a lab or KKE task, you must enter all the following commands at the *lab* terminal, not CloudShell, or the grader will not be able to connect to your cluster.<br/><br/>Once the cluster is created, enable kubectl to communicate with your cluster by adding a new context to the kubectl config file by executing the following command in CloudShell, which you can invoke by pressing the cloudshell button indicated by the number `3` in the image above. This will open a cloudshell prompt below the EKS console into which you can paste and run the following:
 
     ```
     aws eks update-kubeconfig --region us-east-1 --name demo-eks
