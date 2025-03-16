@@ -251,3 +251,5 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
   - [01-Server for testing network policies](docs/17-tips-and-tricks/docs/01-server-for-testing-network-policies.md)
   - [02-Client-for-testing-network-things](docs/17-tips-and-tricks/docs/02-client--for-testing-network-things.md)
 
+
+# test
