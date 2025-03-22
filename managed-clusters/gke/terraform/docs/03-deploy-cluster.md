@@ -14,7 +14,7 @@
     terraform apply
     ```
 
-    This will take at least 5 miuntes to complete. In the console, if you navigate to `Kubernetes Engine` you can see it creating.
+    This will take at least 5 minutes to complete. In the console, if you navigate to `Kubernetes Engine` you can see it creating.
 
 1. Connect to the cluster.
 
@@ -30,6 +30,6 @@
     kubectl get nodes
     ```
 
-The cluster should now be ready to use!
+Once all nodes are showing ready, the cluster is ready to use!
 
 Prev: [Install terraform](./02-install-terraform.md)
