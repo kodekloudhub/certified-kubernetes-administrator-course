@@ -28,3 +28,5 @@ git clone https://github.com/kodekloudhub/certified-kubernetes-administrator-cou
 cd certified-kubernetes-administrator-course/managed-clusters/gke/terraform
 ```
 
+Next: [Deploy Cluster](./03-deploy-cluster.md)</br>
+Prev: [Sign in](./01-sign-in.md)

@@ -30,3 +30,4 @@
     kubectl get nodes
     ```
 
+Prev: [Install terraform](./02-install-terraform.md)
