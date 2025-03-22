@@ -30,4 +30,6 @@
     kubectl get nodes
     ```
 
+The cluster should now be ready to use!
+
 Prev: [Install terraform](./02-install-terraform.md)
