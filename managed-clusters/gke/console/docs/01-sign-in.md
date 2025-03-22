@@ -1,6 +1,8 @@
 # Provision lab
 
-Last updated: June 2024
+Last updated: March 2025
+
+In this guide, we will deploy a GKE cluster which is compliant with the KodeKloud playground security and usage policies. Note that you must follow this guide *precisely* or you may get permission errors.
 
 Since this is a Google product, it will work best in Chrome browser. Other mainstream browsers *should* be fine.
 
