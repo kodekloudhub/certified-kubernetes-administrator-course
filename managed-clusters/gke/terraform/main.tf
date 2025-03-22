@@ -16,8 +16,9 @@ resource "google_container_cluster" "primary" {
   name     = "kodekloud-demo-cluster"
   location = "us-west1"
 
-  initial_node_count = 1 # Number of nodes per zone
-
+  initial_node_count  = 1 # Number of nodes per zone
+  deletion_protection = false
+  
   node_config {
     machine_type = "e2-medium"
     disk_size_gb = 20
