@@ -1,10 +1,5 @@
 # Provision lab
 
-Last updated: March 2025
-
-In this guide, we will deploy a GKE cluster which is compliant with the KodeKloud playground security and usage policies. Note that you must follow this guide *precisely* or you may get permission errors.
-
-Since this is a Google product, it will work best in Chrome browser. Other mainstream browsers *should* be fine.
 
 ### IMPORTANT
 
@@ -22,7 +17,7 @@ Copy the **Console Link** by pressing the copy button to the right of it, paste 
 
 In the dialog box that follows, select your country and agree to terms of service. Leave **Email updates** unchecked.
 
-Next: [Provisioning the Cluster](./02-create-cluster.md)
+Next: [Installing Terraform](./02-install-terraform.md)
 
 
 

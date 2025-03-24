@@ -15,4 +15,5 @@ We have some instructions for building managed clusters in KodeKloud playgrounds
     * [Manual build using the console](./aks/console/README.md)
 * Google GKE
     * [Manual build using the console](./gke/console/README.md)
+    * [Automated build using Terraform](./gke/terraform/README.md)
 
