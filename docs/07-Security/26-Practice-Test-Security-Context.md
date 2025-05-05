@@ -2,7 +2,7 @@
   - Take me to [Practice Test](https://kodekloud.com/topic/practice-test-security-contexts/)
   
 Solutions to practice test - security context
-- Run the command 'kubectl exec ubuntu-sleeper whoami' and count the number of pods.
+- Run the command 'kubectl exec ubuntu-sleeper -- whoami' and count the number of pods.
 
   <details>
   
