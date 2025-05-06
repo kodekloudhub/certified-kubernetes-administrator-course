@@ -169,36 +169,49 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 <summary><strong>Security</strong></summary>
 
 
-- [01 Security Section Introduction](docs/07-Security/000-Security-Section-Introduction.md)
-- [02 Kubernetes Security Primitives](docs/07-Security/010-Kubernetes-Security-Primitives.md)
-- [03 Authentication](docs/07-Security/015-Authentication.md)
-- [04 TLS Certificates](docs/07-Security/025-TLS-Certificates.md)
-- [05 TLS Basics](docs/07-Security/030-TLS-Basics.md)
-- [06 TLS in Kubernetes](docs/07-Security/035-TLS-in-Kubernetes.md)
-- [07 TLS in Kubernetes Certificate Creation](docs/07-Security/040-TLS-in-Kubernetes-Certificate-Creation.md)
-- [08 View Certificate Details](docs/07-Security/045-View-Certificate-Details.md)
+- [01 Security Section Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Security-Section-Introduction) 🔗
+- [02 Kubernetes Security Primitives](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Kubernetes-Security-Primitives) 🔗
+- [03 Authentication](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Authentication) 🔗
+- [04 TLS Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/TLS-Introduction) 🔗
+- [05 TLS Basics](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/TLS-Basics) 🔗
+- [06 TLS in Kubernetes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/TLS-in-Kubernetes) 🔗
+- [07 TLS in Kubernetes Certificate Creation](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/TLS-in-Kubernetes-Certificate-Creation) 🔗
+- [08 View Certificate Details](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/View-Certificate-Details) 🔗
 - [09 Certificate Health Check Spreadsheet](docs/07-Security/050-Certificate-Health-Check-Spreadsheet.md)
 - [10 Practice Test View Certificate Details](docs/07-Security/055-Practice-Test-View-Certificate-Details.md)
-- [11 Certificate API](docs/07-Security/065-Certificate-API.md)
-- [12 Practice Test Certificates API](docs/07-Security/070-Practice-Test-Certificates-API.md)
-- [13 kubeconfig](docs/07-Security/080-kubeconfig.md)
-- [14 Practice Test KubeConfig](docs/07-Security/085-Practice-Test-KubeConfig.md)
-- [15 API Groups](docs/07-Security/095-API-Groups.md)
-- [16 Authorization](docs/07-Security/100-Authorization.md)
-- [17 RBAC](docs/07-Security/105-RBAC.md)
-- [18 Practice Test RBAC](docs/07-Security/110-Practice-Test-RBAC.md)
-- [19 Cluster Roles](docs/07-Security/120-Cluster-Roles.md)
-- [20 Practice Test Cluster Roles](docs/07-Security/125-Practice-Test-Cluster-Roles.md)
-- [21 Service Account](docs/07-Security/135-Service-Account.md)
-- [22 Practice Test Service Accounts](docs/07-Security/140-Practice-Test-Service-Accounts.md)
-- [23 Image Security](docs/07-Security/150-Image-Security.md)
-- [24 Practice Test Image Security](docs/07-Security/155-Practice-Test-Image-Security.md)
-- [25 Security Context](docs/07-Security/170-Security-Context.md)
-- [26 Practice Test Security Context](docs/07-Security/175-Practice-Test-Security-Context.md)
-- [27 Network Policies](docs/07-Security/185-Network-Policies.md)
-- [28 Practice Test Network Policies](docs/07-Security/195-Practice-Test-Network-Policies.md)
-- [29 kubectx and kubens commands](docs/07-Security/205-kubectx-and-kubens-commands.md)
-- [30 Download Presentation Deck](docs/07-Security/21030-Download-Presentation-Deck.md)
+- [11 Solution View Certification Details](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-View-Certification-Details) 🔗
+- [12 Certificates API](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Certificates-API) 🔗
+- [13 Practice Test Certificates API](docs/07-Security/070-Practice-Test-Certificates-API.md)
+- [14 Solution Certificates API](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Certificates-API) 🔗
+- [15 KubeConfig](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/KubeConfig) 🔗
+- [16 Practice Test KubeConfig](docs/07-Security/085-Practice-Test-KubeConfig.md)
+- [17 Solution KubeConfig](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-KubeConfig) 🔗
+- [18 API Groups](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/API-Groups) 🔗
+- [19 Authorization](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Authorization) 🔗
+- [20 Role Based Access Controls](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Role-Based-Access-Controls) 🔗
+- [21 Practice Test RBAC](docs/07-Security/110-Practice-Test-RBAC.md)
+- [22 Solution Role Based Access Controls](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Role-Based-Access-Controls) 🔗
+- [23 Cluster Roles](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Cluster-Roles) 🔗
+- [24 Practice Test Cluster Roles](docs/07-Security/125-Practice-Test-Cluster-Roles.md)
+- [25 Solution Cluster Roles](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Cluster-Roles) 🔗
+- [26 Service Accounts](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Service-Accounts) 🔗
+- [27 Practice Test Service Accounts](docs/07-Security/140-Practice-Test-Service-Accounts.md)
+- [28 Solution Service Accounts](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Service-Accounts) 🔗
+- [29 Image Security](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Image-Security) 🔗
+- [30 Practice Test Image Security](docs/07-Security/155-Practice-Test-Image-Security.md)
+- [31 Solution Image Security](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Image-Security) 🔗
+- [32 Security Contexts](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Security-Contexts) 🔗
+- [33 Practice Test Security Context](docs/07-Security/175-Practice-Test-Security-Context.md)
+- [34 Solution Security Contexts](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Security-Contexts) 🔗
+- [35 Network Policies](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Network-Policies) 🔗
+- [36 Developing network policies](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Developing-network-policies) 🔗
+- [37 Practice Test Network Policies](docs/07-Security/195-Practice-Test-Network-Policies.md)
+- [38 Solution Network Policies optional](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/Solution-Network-Policies-optional) 🔗
+- [39 kubectx and kubens commands](docs/07-Security/205-kubectx-and-kubens-commands.md)
+- [40 Download Presentation Deck](docs/07-Security/210-Download-Presentation-Deck.md)
+- [41 2025 Updates Custom Resource Definition CRD](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/2025-Updates-Custom-Resource-Definition-CRD) 🔗
+- [42 2025 Updates Custom Controllers](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/2025-Updates-Custom-Controllers) 🔗
+- [43 2025 Updates Operator Framework](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Security/2025-Updates-Operator-Framework) 🔗
 
 </details>
 
