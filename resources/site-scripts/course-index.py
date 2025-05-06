@@ -22,18 +22,21 @@ def strip_number_prefix(name):
     parts = name.split('-', 1)
     return parts[1] if len(parts) > 1 else name
 
-def format_link_text(index, filename):
-    """Format the filename into a markdown list item text."""
-    parts = filename.split('-', 1)
-    if len(parts) < 2:
-        title = parts[0]
-    else:
-        title = parts[1]
-    title = Path(title).stem.replace('-', ' ')
-    return f"* [{index:02d}. {title}]"
+def format_link_line(index, filename, url, is_external=False):
+    """Constructs the full markdown line with optional 🔗 suffix."""
+    clean_name = strip_number_prefix(filename)
+    title = Path(clean_name).stem.replace('-', ' ')
+    link = f"[{index:02d} {title}]({url})"
+    if is_external:
+        return f"- {link} 🔗"
+    return f"- {link}"
 
 def generate_index(docs_path):
-    lines = [""]
+    lines = [
+        "",
+        "🔗 suffix dentoes an external link to [notes.kodekloud.com](https://notes.kodekloud.com/)",
+        ""
+    ]
     for section_dir in sorted(docs_path.iterdir()):
         if section_dir.is_dir():
             section_files = sorted(section_dir.glob('*.*'))  # include .md and .note
@@ -49,16 +52,16 @@ def generate_index(docs_path):
                 filename = file.name
                 ext = file.suffix
 
-                link_text = format_link_text(idx, filename)
-
                 if ext == ".note":
                     clean_filename = strip_number_prefix(filename)
                     stem = Path(clean_filename).stem.replace(' ', '%20')
                     url = f"{NOTE_BASE_URL}/{clean_section_name}/{stem}"
+                    link_line = format_link_line(idx, filename, url, is_external=True)
                 else:
                     url = f"docs/{raw_section_name}/{filename}"
+                    link_line = format_link_line(idx, filename, url)
 
-                lines.append(f"{link_text}({url})")
+                lines.append(link_line)
 
             lines.append("\n</details>\n")
 
