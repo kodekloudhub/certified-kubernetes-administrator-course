@@ -6,7 +6,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
 [//]: # (BEGIN INDEX)
 
-🔗 suffix dentoes an external link to [notes.kodekloud.com](https://notes.kodekloud.com/)
+🔗 suffix denotes an external link to [notes.kodekloud.com](https://notes.kodekloud.com/)
 
 <details>
 <summary><strong>Introduction</strong></summary>

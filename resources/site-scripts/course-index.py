@@ -34,7 +34,7 @@ def format_link_line(index, filename, url, is_external=False):
 def generate_index(docs_path):
     lines = [
         "",
-        "🔗 suffix dentoes an external link to [notes.kodekloud.com](https://notes.kodekloud.com/)",
+        "🔗 suffix denotes an external link to [notes.kodekloud.com](https://notes.kodekloud.com/)",
         ""
     ]
     for section_dir in sorted(docs_path.iterdir()):
