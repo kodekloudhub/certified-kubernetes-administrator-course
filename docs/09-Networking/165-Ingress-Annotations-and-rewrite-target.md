@@ -8,7 +8,7 @@ In this section, we will take a look at **Ingress annotations and rewrite-target
 
 - Kubernetes Version 1.18
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:

@@ -241,28 +241,34 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 <summary><strong>Networking</strong></summary>
 
 
-- [01 Networking Introduction](docs/09-Networking/000-Networking-Introduction.md)
-- [02 Pre requisite Switching Routing Gateways](docs/09-Networking/010-Pre-requisite-Switching-Routing-Gateways.md)
-- [03 Pre requisite DNS](docs/09-Networking/015-Pre-requisite-DNS.md)
+- [01 Networking Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Networking-Introduction) 🔗
+- [02 Prerequisite Switching Routing Gateways CNI in kubernetes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Prerequisite-Switching-Routing-Gateways-CNI-in-kubernetes) 🔗
+- [03 Prerequisite DNS](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Prerequisite-DNS) 🔗
 - [04 Pre requisite CoreDNS](docs/09-Networking/020-Pre-requisite-CoreDNS.md)
-- [05 Pre requisite Network Namespace](docs/09-Networking/025-Pre-requisite-Network-Namespace.md)
-- [06 Pre requisite Docker Networking](docs/09-Networking/035-Pre-requisite-Docker-Networking.md)
-- [07 Pre requisite CNI](docs/09-Networking/040-Pre-requisite-CNI.md)
-- [08 Cluster Networking](docs/09-Networking/045-Cluster-Networking.md)
+- [05 Prerequisite Network Namespaces](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Prerequisite-Network-Namespaces) 🔗
+- [06 Prerequisite Docker Networking](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Prerequisite-Docker-Networking) 🔗
+- [07 Prerequisite CNI](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Prerequisite-CNI) 🔗
+- [08 Cluster Networking](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Cluster-Networking) 🔗
 - [09 Practice Test Explore Env](docs/09-Networking/055-Practice-Test-Explore-Env.md)
-- [10 Pod Networking](docs/09-Networking/065-Pod-Networking.md)
-- [11 CNI in Kubernetes](docs/09-Networking/070-CNI-in-Kubernetes.md)
-- [12 ipam weave](docs/09-Networking/105-ipam-weave.md)
-- [13 Service Networking](docs/09-Networking/120-Service-Networking.md)
-- [14 Practice Test Service Networking](docs/09-Networking/125-Practice-Test-Service-Networking.md)
-- [15 DNS in kubernetes](docs/09-Networking/135-DNS-in-kubernetes.md)
-- [16 CoreDNS in Kubernetes](docs/09-Networking/140-CoreDNS-in-Kubernetes.md)
-- [17 Practice Test CoreDNS in Kubernetes](docs/09-Networking/145-Practice-Test-CoreDNS-in-Kubernetes.md)
-- [18 Ingress](docs/09-Networking/155-Ingress.md)
-- [19 Ingress Annotations and rewrite target](docs/09-Networking/165-Ingress-Annotations-and-rewrite-target.md)
-- [20 Practice Test CKA Ingress Net 1](docs/09-Networking/170-Practice-Test-CKA-Ingress-Net-1.md)
-- [21 Practice Test CKA Ingress Net 2](docs/09-Networking/180-Practice-Test-CKA-Ingress-Net-2.md)
-- [22 Dowload Presentation Deck](docs/09-Networking/190-Dowload-Presentation-Deck.md)
+- [10 Solution Explore Environment](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Solution-Explore-Environment-optional) 🔗
+- [11 Pod Networking](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Pod-Networking) 🔗
+- [12 CNI in kubernetes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/CNI-in-kubernetes) 🔗
+- [13 ipam weave](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/ipam-weave) 🔗
+- [14 Service Networking](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Service-Networking) 🔗
+- [15 Practice Test Service Networking](docs/09-Networking/125-Practice-Test-Service-Networking.md)
+- [16 Solution Service Networking](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Solution-Service-Networking-optional) 🔗
+- [17 DNS in kubernetes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/DNS-in-kubernetes) 🔗
+- [18 CoreDNS in Kubernetes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/CoreDNS-in-Kubernetes) 🔗
+- [19 Practice Test CoreDNS in Kubernetes](docs/09-Networking/145-Practice-Test-CoreDNS-in-Kubernetes.md)
+- [20 Solution Explore DNS](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Solution-Explore-DNS-optional) 🔗
+- [21 Ingress](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Ingress) 🔗
+- [22 Ingress Annotations and rewrite target](docs/09-Networking/165-Ingress-Annotations-and-rewrite-target.md)
+- [23 Practice Test CKA Ingress Net 1](docs/09-Networking/170-Practice-Test-CKA-Ingress-Net-1.md)
+- [24 Solution Ingress Networking 1](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Solution-Ingress-Networking-1-optional) 🔗
+- [25 Practice Test CKA Ingress Net 2](docs/09-Networking/180-Practice-Test-CKA-Ingress-Net-2.md)
+- [26 Solution Ingress Networking 2](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/Solution-Ingress-Networking-2-optional) 🔗
+- [27 Dowload Presentation Deck](docs/09-Networking/190-Dowload-Presentation-Deck.md)
+- [28 2025 Updates Introduction to Gateway API](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Networking/2025-Updates-Introduction-to-Gateway-API) 🔗
 
 </details>
 
