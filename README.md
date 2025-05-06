@@ -219,19 +219,21 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 <summary><strong>Storage</strong></summary>
 
 
-- [01 Storage Section Introduction](docs/08-Storage/000-Storage-Section-Introduction.md)
-- [02 Introduction to Docker Storage](docs/08-Storage/010-Introduction-to-Docker-Storage.md)
-- [03 Storage in Docker](docs/08-Storage/015-Storage-in-Docker.md)
-- [04 Volume Driver Plugins in Docker](docs/08-Storage/020-Volume-Driver-Plugins-in-Docker.md)
-- [05 Container.Storage Interface](docs/08-Storage/025-Container.Storage-Interface.md)
-- [06 Volumes](docs/08-Storage/030-Volumes.md)
-- [07 Persistent Volumes](docs/08-Storage/035-Persistent-Volumes.md)
-- [08 Persistent Volume Claims](docs/08-Storage/040-Persistent-Volume-Claims.md)
+- [01 Storage Section Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Storage-Section-Introduction) 🔗
+- [02 Introduction to Docker Storage](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Introduction-to-Docker-Storage) 🔗
+- [03 Storage in Docker](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Storage-in-Docker) 🔗
+- [04 Volume Driver Plugins in Docker](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Volume-Driver-Plugins-in-Docker) 🔗
+- [05 Container Storage Interface](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Container-Storage-Interface) 🔗
+- [06 Volumes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Volumes) 🔗
+- [07 Persistent Volumes](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Persistent-Volumes) 🔗
+- [08 Persistent Volume Claims](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Persistent-Volume-Claims) 🔗
 - [09 Using PVC in PODs](docs/08-Storage/045-Using-PVC-in-PODs.md)
 - [10 Practice Test Persistent Volume Claims](docs/08-Storage/050-Practice-Test-Persistent-Volume-Claims.md)
-- [11 Storage Class](docs/08-Storage/060-Storage-Class.md)
-- [12 Practice Test Storage Class](docs/08-Storage/065-Practice-Test-Storage-Class.md)
-- [13 Download Presentation Deck](docs/08-Storage/075-Download-Presentation-Deck.md)
+- [11 Solution Persistent Volumes and Persistent Volume Claims optional](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Solution-Persistent-Volumes-and-Persistent-Volume-Claims-optional) 🔗
+- [12 Storage Class](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Storage-Class) 🔗
+- [13 Practice Test Storage Class](docs/08-Storage/065-Practice-Test-Storage-Class.md)
+- [14 Solution Storage Class](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Storage/Solution-Storage-Class) 🔗
+- [15 Download Presentation Deck](docs/08-Storage/075-Download-Presentation-Deck.md)
 
 </details>
 
