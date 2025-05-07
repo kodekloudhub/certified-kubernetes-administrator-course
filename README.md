@@ -289,11 +289,12 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 <summary><strong>Install Kubernetes the kubeadm way</strong></summary>
 
 
-- [01 Introduction to Deployment with kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/000-Introduction-to-Deployment-with-kubeadm.md)
+- [01 Introduction to Deployment with kubeadm](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Install-Kubernetes-the-kubeadm-way/Introduction-to-Deployment-with-kubeadm) 🔗
 - [02 Resources](docs/11-Install-Kubernetes-the-kubeadm-way/010-Resources.md)
-- [03 Provision VMs with Vagrant](docs/11-Install-Kubernetes-the-kubeadm-way/015-Provision-VMs-with-Vagrant.md)
-- [04 Demo Deployment with Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/020-Demo-Deployment-with-Kubeadm.md)
+- [03 Deploy with Kubeadm Provision VMs with Vagrant](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Install-Kubernetes-the-kubeadm-way/Deploy-with-Kubeadm-Provision-VMs-with-Vagrant) 🔗
+- [04 Demo Deployment with Kubeadm](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Install-Kubernetes-the-kubeadm-way/Demo-Deployment-with-Kubeadm) 🔗
 - [05 Practice Test Deploy Kubernetes Cluster using Kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/025-Practice-Test-Deploy-Kubernetes-Cluster-using-Kubeadm.md)
+- [06 Solution Install a Kubernetes Cluster using kubeadm](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Install-Kubernetes-the-kubeadm-way/Solution-Install-a-Kubernetes-Cluster-using-kubeadm) 🔗
 
 </details>
 
