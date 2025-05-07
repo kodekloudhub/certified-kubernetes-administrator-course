@@ -302,15 +302,15 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 <summary><strong>Troubleshooting</strong></summary>
 
 
-- [01 Troubleshooting Section Introduction](docs/12-Troubleshooting/000-Troubleshooting-Section-Introduction.md)
-- [02 Application Failure](docs/12-Troubleshooting/010-Application-Failure.md)
-- [03 Solution Application Failure](docs/12-Troubleshooting/020-Solution-Application-Failure.md)
-- [04 Control Plane Failure](docs/12-Troubleshooting/025-Control-Plane-Failure.md)
+- [01 Troubleshooting Section Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Troubleshooting-Section-Introduction) 🔗
+- [02 Application Failure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Application-Failure) 🔗
+- [03 Solution Application Failure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Solution-Application-Failure) 🔗
+- [04 Control Plane Failure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Control-Plane-Failure) 🔗
 - [05 Practice Test Control Plane Failure](docs/12-Troubleshooting/030-Practice-Test-Control-Plane-Failure.md)
-- [06 Solution Control Plane Failure](docs/12-Troubleshooting/035-Solution-Control-Plane-Failure.md)
-- [07 Worker Node Failure](docs/12-Troubleshooting/040-Worker-Node-Failure.md)
+- [06 Solution Control Plane Failure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Solution-Control-Plane-Failure) 🔗
+- [07 Worker Node Failure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Worker-Node-Failure) 🔗
 - [08 Practice Test Worker Node Failure](docs/12-Troubleshooting/045-Practice-Test-Worker-Node-Failure.md)
-- [09 Solution Worker Node Failure](docs/12-Troubleshooting/050-Solution-Worker-Node-Failure.md)
+- [09 Solutions Worker Node Failure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Troubleshooting/Solutions-Worker-Node-Failure) 🔗
 - [10 Practice Test Troubleshoot Network](docs/12-Troubleshooting/065-Practice-Test-Troubleshoot-Network.md)
 
 </details>
