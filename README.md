@@ -321,7 +321,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
 - [01 Labs JSON PATH](docs/13-Other-Topics/000-Labs-JSON-PATH.md)
 - [02 Pre Requisites JSON PATH](docs/13-Other-Topics/010-Pre-Requisites-JSON-PATH.md)
-- [03 Advance Kubectl Commands](docs/13-Other-Topics/015-Advance-Kubectl-Commands.md)
+- [03 Advanced Kubectl Commands](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Other-Topics/Advanced-Kubectl-Commands) 🔗
 - [04 Practice Test Advance Kubectl Commands](docs/13-Other-Topics/020-Practice-Test-Advance-Kubectl-Commands.md)
 
 </details>
