@@ -299,6 +299,21 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 </details>
 
 <details>
+<summary><strong>Helm Basics</strong></summary>
+
+
+- [01 What Is Helm](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/What-is-Helm) 🔗
+- [02 Installation And Configuration](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/Installation-and-configuration) 🔗
+- [03 A quick note about Helm2 vs Helm3](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/A-quick-note-about-Helm2-vs-Helm3) 🔗
+- [04 Helm Components](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/Helm-Components) 🔗
+- [05 Helm charts](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/Helm-charts) 🔗
+- [06 Working with Helm basics](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/Working-with-Helm-basics) 🔗
+- [07 Customizing chart parameters](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/Customizing-chart-parameters) 🔗
+- [08 Lifecycle management with Helm](https://notes.kodekloud.com/docs/Helm-for-Beginners/Introduction-to-Helm/Lifecycle-management-with-Helm) 🔗
+
+</details>
+
+<details>
 <summary><strong>Troubleshooting</strong></summary>
 
 
