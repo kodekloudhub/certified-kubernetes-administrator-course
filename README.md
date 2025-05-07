@@ -99,7 +99,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 </details>
 
 <details>
-<summary><strong>Logging and-Monitoring</strong></summary>
+<summary><strong>Logging and Monitoring</strong></summary>
 
 
 - [01 Logging and Monitoring Section Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Logging-and-Monitoring/Logging-and-Monitoring-Section-Introduction) 🔗
@@ -114,7 +114,7 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 </details>
 
 <details>
-<summary><strong>Application Lifecycle-Management</strong></summary>
+<summary><strong>Application Lifecycle Management</strong></summary>
 
 
 - [01 Application Lifecycle Management Section Introduction](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Application-Lifecycle-Management/Application-Lifecycle-Management-Section-Introduction) 🔗
@@ -273,20 +273,20 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 </details>
 
 <details>
-<summary><strong>Design and-Install-Kubernetes-Cluster</strong></summary>
+<summary><strong>Design and Install a Kubernetes Cluster</strong></summary>
 
 
-- [01 Designing a Kubernetes Cluster](docs/10-Design-and-Install-Kubernetes-Cluster/000-Designing-a-Kubernetes-Cluster.md)
-- [02 Choosing Kubernetes Infrastructure](docs/10-Design-and-Install-Kubernetes-Cluster/010-Choosing-Kubernetes-Infrastructure.md)
-- [03 Configure High Availability](docs/10-Design-and-Install-Kubernetes-Cluster/015-Configure-High-Availability.md)
-- [04 ETCD in HA](docs/10-Design-and-Install-Kubernetes-Cluster/020-ETCD-in-HA.md)
-- [05 Important update kubernetes the hard way](docs/10-Design-and-Install-Kubernetes-Cluster/025-Important-update-kubernetes-the-hard-way.md)
-- [06 Download Presentation Deck](docs/10-Design-and-Install-Kubernetes-Cluster/030-Download-Presentation-Deck.md)
+- [01 Design a Kubernetes Cluster](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Design-and-Install-a-Kubernetes-Cluster/Design-a-Kubernetes-Cluster) 🔗
+- [02 Choosing Kubernetes Infrastructure](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Design-and-Install-a-Kubernetes-Cluster/Choosing-Kubernetes-Infrastructure) 🔗
+- [03 Configure High Availability](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Design-and-Install-a-Kubernetes-Cluster/Configure-High-Availability) 🔗
+- [04 ETCD in HA](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Design-and-Install-a-Kubernetes-Cluster/ETCD-in-HA) 🔗
+- [05 Important update kubernetes the hard way](docs/10-Design-and-Install-a-Kubernetes-Cluster/025-Important-update-kubernetes-the-hard-way.md)
+- [06 Download Presentation Deck](docs/10-Design-and-Install-a-Kubernetes-Cluster/030-Download-Presentation-Deck.md)
 
 </details>
 
 <details>
-<summary><strong>Install Kubernetes-the-kubeadm-way</strong></summary>
+<summary><strong>Install Kubernetes the kubeadm way</strong></summary>
 
 
 - [01 Introduction to Deployment with kubeadm](docs/11-Install-Kubernetes-the-kubeadm-way/000-Introduction-to-Deployment-with-kubeadm.md)
