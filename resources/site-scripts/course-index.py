@@ -50,7 +50,7 @@ def generate_index(docs_path):
         section_files = sorted(section_dir.glob('*.*'))  # include .md and .note
         raw_section_name = section_dir.name
         clean_section_name = strip_number_prefix(raw_section_name).replace(' ', '%20')  # for URL
-        pretty_section_title = strip_number_prefix(raw_section_name).replace('-', ' ', 1)
+        pretty_section_title = strip_number_prefix(raw_section_name).replace('-', ' ')
 
         lines.append(f"<details>")
         lines.append(f"<summary><strong>{pretty_section_title}</strong></summary>\n")
