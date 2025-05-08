@@ -72,13 +72,18 @@ def generate_index(docs_path: Path) -> List[str]:
         "🔗 suffix denotes an external link to [notes.kodekloud.com](https://notes.kodekloud.com/)",
         ""
     ]
+
+    # Iterate entries in directory "docs_path" which is realistically docs/
     for section_dir in sorted(docs_path.iterdir()):
         if not section_dir.is_dir():
+            # Ignore any files in this directory
             continue
 
         if (section_dir / ".noindex").exists():
+            # Ignore this directory if it contains .noindex file
             continue
 
+        # Get all files in the directory e.g. docs/000-Introduction
         section_files = sorted(section_dir.glob('*.*'))
         raw_section_name = section_dir.name
         clean_section_name = strip_number_prefix(raw_section_name).replace(' ', '%20')
@@ -93,8 +98,10 @@ def generate_index(docs_path: Path) -> List[str]:
             ext = file.suffix
 
             if ext == ".note":
+                # File is a .note file
                 link_url = None
                 try:
+                    # Read file to see if it contains a URL to use.
                     with open(file, "r", encoding="utf-8") as f:
                         first_line = f.readline().strip()
                         if first_line:
@@ -106,12 +113,14 @@ def generate_index(docs_path: Path) -> List[str]:
                     print(f"[ERROR] Could not read .note file: {file} ({e})")
 
                 if not link_url:
+                    # No URL in file. Use filename to create a URL to CKA notes
                     clean_filename = strip_number_prefix(filename)
                     stem = Path(clean_filename).stem.replace(' ', '%20')
                     link_url = f"{NOTE_BASE_URL}/{clean_section_name}/{stem}"
 
                 link_line = format_link_line(idx, filename, link_url, is_external=True)
             else:
+                # It is a markdown file. Link directly to it
                 url = f"docs/{raw_section_name}/{filename}"
                 link_line = format_link_line(idx, filename, url)
 
