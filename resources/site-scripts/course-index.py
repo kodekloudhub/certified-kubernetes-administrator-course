@@ -54,7 +54,7 @@ def format_link_line(index, filename, url, is_external=False):
 
 def is_valid_url(url: str) -> bool:
     """
-    Test if given sring contains a valid URL
+    Test if given string contains a valid URL
     """
     try:
         parsed = urlparse(url)
