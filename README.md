@@ -364,18 +364,36 @@ These are notes from the [Certified Kubernetes Administrator Course](https://lea
 This content is not part of the course itself, but is still relevant.
 
 <details>
-<summary><strong>Ultimate Mocks</strong></summary>
+<summary><strong>Build your own cluster</strong></summary>
 
+* **Managed Clusters**
 
-- [01 README](docs/16-Ultimate-Mocks/README.md)
+    Here we provide instructions for building clusters in Cloud Playgrounds. Note that due to permissions applied to playgrounds for reasons of security and cost control, examples you may find on the web (e.g. EKS using `eksctl`) are not going to work on KodeKloud playgrounds!
+
+    To build managed clusters in the playgrounds, go [here](./managed-clusters/README.md).
+
+* **Kubeadm clusters**
+
+    In this section, we have instructions for building on your own device (Windows/x86 Mac/Apple Silicon Mac), and also how to deploy a HA cluster in the AWS Playground.
+
+    To build these, go [here](./kubeadm-clusters/README.md).
 
 </details>
 
 <details>
-<summary><strong>tips and-tricks</strong></summary>
+<summary><strong>Ultimate Mocks</strong></summary>
+
+Selected solutions to some ultimate mocks which we feel need more explanation based on responses in the community.
+
+[See Here](docs/16-Ultimate-Mocks/README.md).
+
+</details>
+
+<details>
+<summary><strong>Tips and Tricks</strong></summary>
 
 
-- [01 README](docs/17-tips-and-tricks/README.md)
+Some useful morsels [here](docs/17-tips-and-tricks/README.md).
 
 </details>
 
