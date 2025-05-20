@@ -97,7 +97,7 @@ data:
   # Flannel network configuration. Mounted into the flannel container.
   net-conf.json: |
     {
-      "Network": "10.244.0.0/16",
+      "Network": "172.17.0.0/16",
       "Backend": {
         "Type": "vxlan"
       }
