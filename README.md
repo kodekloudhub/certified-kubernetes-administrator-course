@@ -349,11 +349,11 @@ These are notes from the [Certified Kubernetes Administrator Course](https://lea
 
 - [01 Introduction](docs/150-Mock-Exams/000-Introduction.md)
 - [02 Mock Exam 1](docs/150-Mock-Exams/010-Mock-Exam-1.md)
-- [03 Solution CKA Mock Exam 1](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Mock-Exams/Solution-CKA-Mock-Exam-1-optional) 🔗
+- [03 Mock Exam 1 Step by Step Solutions](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Mock-Exams/Mock-Exam-1-Step-by-Step-Solutions) 🔗
 - [04 Mock Exam 2](docs/150-Mock-Exams/020-Mock-Exam-2.md)
-- [05 CKA MockExam 2 Solution](docs/150-Mock-Exams/025-CKA-MockExam-2-Solution.md)
+- [05 Mock Exam 2 Step by Step Solutions](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Mock-Exams/Mock-Exam-2-Step-by-Step-Solutions) 🔗
 - [06 Mock Exam 3](docs/150-Mock-Exams/030-Mock-Exam-3.md)
-- [07 Solution CKA Mock Exam 3](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Mock-Exams/Solution-CKA-Mock-Exam-3-Optional) 🔗
+- [07 Mock Exam 3 Step by Step Solutions](https://notes.kodekloud.com/docs/CKA-Certification-Course-Certified-Kubernetes-Administrator/Mock-Exams/Mock-Exam-3-Step-by-Step-Solutions) 🔗
 
 </details>
 
