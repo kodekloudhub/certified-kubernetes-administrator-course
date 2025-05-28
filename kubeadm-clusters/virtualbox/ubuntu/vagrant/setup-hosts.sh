@@ -13,8 +13,8 @@ NODE_IP_START=$5
 if [ "$BUILD_MODE" = "BRIDGE" ]
 then
     # Determine machine IP from route table -
-    # Interface that routes to default GW that isn't on the NAT network.
-    MY_IP="$(ip route | grep default | grep -Pv '10\.\d+\.\d+\.\d+' | awk '{ print $9 }')"
+    # Interface that routes to default GW that isn't enp0s3 on the vagrant NAT network.
+    MY_IP="$(ip route | grep '^default' | awk '!/enp0s3/ { print $9 }')"
 
     # From this, determine the network (which for average broadband we assume is a /24)
     MY_NETWORK=$(echo $MY_IP | awk 'BEGIN {FS="."} ; { printf("%s.%s.%s", $1, $2, $3) }')
