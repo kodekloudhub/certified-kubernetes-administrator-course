@@ -102,7 +102,7 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
         --set image-endpoint=unix:///run/containerd/containerd.sock
     ```
 
-1.  Prepare extra arguments for kubelet such that when it starts, it listens on the VM's primary network address and not any NAT one that may be present. This uses the predefined `PRIMARY_IP` environment variable discusseed earlier
+1.  Prepare extra arguments for kubelet such that when it starts, it listens on the VM's primary network address and not any NAT one that may be present. This uses the predefined `PRIMARY_IP` environment variable discussed earlier
 
     Paste the following to the terminal
 
@@ -113,6 +113,8 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     ```
 
 If you used tmux or iterm2 synchronized panes for this section, you should disable the synchronization now.
+
+[Kubernetes Documentation Link](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 Next: [Control Plane setup](./05-controlplane.md)</br>
 Prev: Connectivity ([VirtualBox](../virtualbox/docs/03-connectivity.md)) ([Apple Silicon](../apple-silicon/docs/03-connectivity.md)) [AWS](../aws/docs/03-connectivity.md)

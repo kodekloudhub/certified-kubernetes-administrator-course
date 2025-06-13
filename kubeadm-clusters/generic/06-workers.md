@@ -6,7 +6,7 @@ Ref: https://stackoverflow.com/questions/59629319/unable-to-upgrade-connection-p
 
 ## Join Workers
 
-If you did not note down the join command on the cotrolplane node after running `kubeadm`, you can recover it by running the following on `controlplane`
+If you did not note down the join command on the controlplane node after running `kubeadm`, you can recover it by running the following on `controlplane`
 
 ```bash
 kubeadm token create --print-join-command
@@ -34,6 +34,9 @@ On `controlplane` run the following. After a few seconds both nodes should be re
 ```
 kubectl get nodes
 ```
+
+[Kubernetes Documentation Link](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/adding-linux-nodes/)
+
 
 Next: [Test](./07-test.md)</br>
 Prev: [Boot controlplane](./05-controlplane.md)
