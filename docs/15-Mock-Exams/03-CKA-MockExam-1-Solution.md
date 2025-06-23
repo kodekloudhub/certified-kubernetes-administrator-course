@@ -81,3 +81,11 @@
      ```
      </details>
 
+  5. Run the below command for solution:
+
+     <details>
+     
+     ```
+     kubectl create deployment hr-web-app --image=kodekloud/webapp-color --replicas=2
+     ```
+     </details>
