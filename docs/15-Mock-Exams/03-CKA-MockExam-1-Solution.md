@@ -221,3 +221,13 @@
          port: 80
      ```
      </details>
+
+12. Run the below command for solution:
+
+     <details>
+     
+     ```
+     helm repo update
+     helm upgrade kk-mock1 kk-mock1/nginx --version 18.1.5 -n kk-ns
+     ```
+     </details>
