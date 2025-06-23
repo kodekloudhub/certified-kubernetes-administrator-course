@@ -15,32 +15,33 @@
          - name: shared-volume
            emptyDir: {}
        containers:
-       - image: nginx:1-alpine
-         name: mc-pod-1
-         env:
-           - name: NODE_NAME
-             valueFrom:
-               fieldRef:
-                 fieldPath: spec.nodeName
-       - name: mc-pod-2
-         image: busybox:1
-         command:
-           - "sh"
-           - "-c"
-           - "while true; do date >> /var/log/shared/date.log; sleep 1; done"
-         volumeMounts:
-           - name: shared-volume
-             mountPath: /var/log/shared
-       - name: mc-pod-3
-         image: busybox:1
-         command:
-           - "sh"
-           - "-c"
-           - "tail -f /var/log/shared/date.log"
-         volumeMounts:
-           - name: shared-volume
-             mountPath: /var/log/shared
-         resources: {}
+         - name: mc-pod-1
+           image: nginx:1-alpine
+           env:
+             - name: NODE_NAME
+               valueFrom:
+                 fieldRef:
+                   fieldPath: spec.nodeName
+         
+         - name: mc-pod-2
+           image: busybox:1
+           command:
+             - 'sh'
+             - '-c'
+             - 'while true; do date >> /var/log/shared/date.log; sleep 1; done'
+           volumeMounts:
+             - name: shared-volume
+               mountPath: /var/log/shared
+       
+         - name: mc-pod-3
+           image: busybox:1
+           command:
+             - 'sh'
+             - '-c'
+             - 'tail -f /var/log/shared/date.log'
+           volumeMounts:
+             - name: shared-volume
+               mountPath: /var/log/shared
        dnsPolicy: ClusterFirst
        restartPolicy: Always
      ```
@@ -121,10 +122,10 @@
        name: hr-web-app-service
      spec:
        ports:
-       - port: 8080
-         protocol: TCP
-         targetPort: 8080
-         nodePort: 30082
+         - port: 8080
+           protocol: TCP
+           targetPort: 8080
+           nodePort: 30082
        selector:
          app: hr-web-app
        type: NodePort
@@ -199,7 +200,7 @@
          kind: Deployment
          name: analytics-deployment
        updatePolicy:
-         updateMode: "Auto"
+         updateMode: 'Auto'
      ```
      </details>
 
@@ -216,9 +217,9 @@
      spec:
        gatewayClassName: nginx
        listeners:
-       - name: http
-         protocol: HTTP
-         port: 80
+         - name: http
+           protocol: HTTP
+           port: 80
      ```
      </details>
 
