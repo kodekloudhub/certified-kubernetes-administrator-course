@@ -45,3 +45,17 @@
        restartPolicy: Always
      ```
      </details>
+
+  2. Run the below command for solution:
+
+     <details>
+     
+     ```
+     ssh bob@node01
+     sudo su
+     cd /root/
+     dpkg -i ./cri-docker_0.3.16.3-0.debian.deb
+     systemctl start cri-docker
+     systemctl enable cri-docker
+     ```
+     </details>
