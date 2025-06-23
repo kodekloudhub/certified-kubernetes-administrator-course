@@ -182,3 +182,23 @@
            stabilizationWindowSeconds: 300
      ```
      </details>
+
+10. Apply below manifests:
+
+     <details>
+     
+     ```
+     apiVersion: autoscaling.k8s.io/v1
+     kind: VerticalPodAutoscaler
+     metadata:
+       name: analytics-vpa
+       namespace: default
+     spec:
+       targetRef:
+         apiVersion: apps/v1
+         kind: Deployment
+         name: analytics-deployment
+       updatePolicy:
+         updateMode: "Auto"
+     ```
+     </details>
