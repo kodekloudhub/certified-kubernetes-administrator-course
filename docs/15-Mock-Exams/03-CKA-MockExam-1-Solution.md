@@ -70,3 +70,14 @@
      verticalpodautoscalers.autoscaling.k8s.io
      ```
      </details>
+
+
+  4. Run the below command for solution:
+
+     <details>
+     
+     ```
+     kubectl expose pod messaging --port=6379 --name=messaging-service
+     ```
+     </details>
+
