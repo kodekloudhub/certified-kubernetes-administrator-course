@@ -89,3 +89,20 @@
      kubectl create deployment hr-web-app --image=kodekloud/webapp-color --replicas=2
      ```
      </details>
+
+  6. Run below command and troubleshoot step by step:
+
+     <details>
+     
+     Export the running pod using below command and correct the spelling of the command **`sleeeep`** to **`sleep`**    
+
+     ```
+     kubectl get pod orange -o yaml > question6.yaml
+     ```
+
+     Delete the running Orange pod and recreate the pod using command.
+
+     ```
+     kubectl replace -f question6.yaml --force
+     ```
+     </details>
