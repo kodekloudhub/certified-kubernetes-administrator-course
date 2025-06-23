@@ -132,3 +132,23 @@
        loadBalancer: {}
      ```
      </details>
+
+8. Apply below manifests:
+
+     <details>
+     
+     ```
+     apiVersion: v1
+     kind: PersistentVolume
+     metadata:
+       name: pv-analytics
+     spec:
+       capacity:
+         storage: 100Mi
+       volumeMode: Filesystem
+       accessModes:
+         - ReadWriteMany
+       hostPath:
+         path: /pv/data-analytics
+     ```
+     </details>
