@@ -227,7 +227,7 @@
      <details>
      
      ```
-     helm repo update
-     helm upgrade kk-mock1 kk-mock1/nginx --version 18.1.5 -n kk-ns
+     helm repo update kk-mock1 -n kk-ns
+     helm upgrade kk-mock1 kk-mock1/nginx -n kk-ns --version=18.1.15
      ```
      </details>
