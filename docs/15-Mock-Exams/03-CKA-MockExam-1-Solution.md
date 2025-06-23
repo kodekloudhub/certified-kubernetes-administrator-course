@@ -59,3 +59,14 @@
      systemctl enable cri-docker
      ```
      </details>
+
+  3. Create the required text file, save the following VerticalPodAutoscaler CRDs into `/root/vpa-crds.txt`:
+
+     
+     <details>
+
+     ```
+     verticalpodautoscalercheckpoints.autoscaling.k8s.io   
+     verticalpodautoscalers.autoscaling.k8s.io
+     ```
+     </details>
