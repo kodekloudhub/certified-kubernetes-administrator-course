@@ -104,47 +104,54 @@
   5. Run the below command for solution:
 
      <details>
- 
-     For Kubernetes Version <=1.17
- 
      ```
-     kubectl run nginx-deploy --image=nginx:1.16 --replicas=1 --record
-     kubectl rollout history deployment nginx-deploy
-     kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
-     kubectl rollout history deployment nginx-deploy
-     ```
- 
-     For Kubernetes Version >1.17
- 
-     ```
-     kubectl create deployment nginx-deploy --image=nginx:1.16 --dry-run=client -o yaml > deploy.yaml
-   
-     apiVersion: apps/v1
-     kind: Deployment
+     apiVersion: certificates.k8s.io/v1
+     kind: CertificateSigningRequest
      metadata:
-       name: nginx-deploy
+       name: john-developer
      spec:
-       replicas: 1
-       selector:
-         matchLabels:
-           app: nginx-deploy
-       strategy: {}
-       template:
-         metadata:
-           creationTimestamp: null
-           labels:
-             app: nginx-deploy
-         spec:
-           containers:
-           - image: nginx:1.16
-             name: nginx
+       contents of myuser.csr
+       request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ1ZEQ0NBVHdDQVFBd0R6RU5NQXNHQTFVRUF3d0VhbTlvYmpDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRApnZ0VQQURDQ0FRb0NnZ0VCQU16cFhHNUVnenFkNUdWMC9BZ1F3SEJDSDhpUy8yOE5rWVpudTU3dHN6VktIV0x2Cm9jOERlaCtOc3JQdmRMVlN0ei9ac0dOV21TZEpKc2RPTWZRblR4ckxtRUlhZXNRMHFTbElzd0M3RnF2Qk5CRCsKbVh2azNlVVVWVGIxZWRVTEVxY2prRENtdGVubHFERm5mcmtCQ3VweXd5OUt4VTJQNWVoZHllSXZTWlZ5NGlXbgpFbXVXNC9hR245WlFGa3NORUhLQSswMUtUSExoK2plaW5xNURFWlkvSDhMY0hpYmNHdkZycGp6TGN4SElwd1pVCkxyZHRpNzNaeHJtU2dxektDUGdBQ3M3K1MzSHZZamE2Z1dCRG1USXpsZkV3aXpYeTU3dmMrQklIRlBHY1FuN3MKMkdmZ3lrem9WdkwxWmZGRitNaHNSc3ZDdmN2S1Zzb293bE5WQnpFQ0F3RUFBYUFBTUEwR0NTcUdTSWIzRFFFQgpDd1VBQTRJQkFRQmkwNXBuTkdpa3ZqcGtScTZ5TUZHRnlNZmppb3o4YXRXTW1ReHhrUEF2ZkNBQzVlbzBHS29JCldOVkQrQkRsNmp2SG5VcUlzZkFUZHZpYkhpMGFaTml6TmtQTjAwd2dTQTZQN3BGSW5zam1sSDE3bmdsNXJZUmkKTGo5U1FjY2plVktJZ3Y4OUtpTlZVRjBKZTc3N1Ruc24zQUIvUDVJSlhQeXRKSy9GRUxYRXhKZTZTa3NMdnBCNgpRQ3Z3NzI0Yzg1THErQlV5c0pkUnh2ZUwxQy85cVZWN2tMTmUxY3pXUFFHU3dYc3lPaTB1M3lhRjRjaWdCa2h5CmdzczJYdkFaUnJkNTM2Ry9ZdWc3emRuNnNvN0ZOeVdGMUhxTEdueHpoSFV5c2k1dGtxbmhCbDF2K1VtOW9Rd0MKNTZjQ1NoR1Y4ZzlLazF0Ykl2UDlXSGVCSEorY1F4VkIKLS0tLS1FTkQgQ0VSVElGSUNBVEUgUkVRVUVTVC0tLS0tCg==
+       signerName: kubernetes.io/kube-apiserver-client
+       expirationSeconds: 86400  # one day
+       usages:
+         - digital signature
+         - key encipherment
+         - client auth
      ```
-     
+
      ```
-     kubectl create -f deploy.yaml --record
-     kubectl rollout history deployment nginx-deploy
-     kubectl set image deployment/nginx-deploy nginx=nginx:1.17 --record
-     kubectl rollout history deployment nginx-deploy
+     kubectl certificate approve john-developer
+     ```
+
+     ```
+     apiVersion: rbac.authorization.k8s.io/v1
+     kind: Role
+     metadata:
+       namespace: development
+       name: developer
+     rules:
+       - apiGroups: [""]
+         resources: ["pods"]
+         verbs: ["create", "list", get", "update", "delete"]
+     ---
+     apiVersion: rbac.authorization.k8s.io/v1
+     kind: RoleBinding
+     metadata:
+       name: john-developer-role-binding
+       namespace: development
+     subjects:
+       - kind: User
+         name: john
+         apiGroup: rbac.authorization.k8s.io
+     roleRef:
+       kind: Role
+       name: developer
+       apiGroup: rbac.authorization.k8s.io
+     ```
+
+     ```
+     kubectl auth can-i create pods --as=john -n development
      ```
      </details>
   
