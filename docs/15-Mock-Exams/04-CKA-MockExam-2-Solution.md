@@ -63,24 +63,31 @@
      ```
      </details>
  
-  3. Run the below command for solution:
+  3. Apply below manifests:
 
      <details>
 
      ```
-     apiVersion: v1
-     kind: Pod
+     apiVersion: networking.k8s.io/v1
+     kind: Ingress
      metadata:
-       creationTimestamp: null
-       name: super-user-pod
+       name: webapp-ingress
+       namespcae: ingress-ns
+       annotations:
+         nginx.ingress.kubernetes.io/rewrite-target: /
      spec:
-       containers:
-       - image: busybox:1.28
-         name: super-user-pod
-         command: ["sleep", "4800"]
-         securityContext:
-           capabilities:
-             add: ["SYS_TIME"]
+       ingressClassName: nginx
+       rules:
+         - host: kodekloud-ingress.app
+           http:
+             paths:
+               - path: /
+                 pathType: Prefix
+                 backend:
+                   service:
+                     name: webapp-svc
+                     port:
+                       number: 80
      ```
      </details>
 
