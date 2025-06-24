@@ -259,3 +259,12 @@
      helm uninstall atlanta-page-apd -n atlanta-page-04
      ```
      </details>
+
+  12. Run the below command for solution:
+
+     <details>
+
+     ```
+     kubectl apply -f net-pol-3.yaml
+     ```
+     </details>
