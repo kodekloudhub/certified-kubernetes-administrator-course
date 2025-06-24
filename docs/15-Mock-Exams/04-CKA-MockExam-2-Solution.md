@@ -247,4 +247,15 @@
 
      Save(:wq) and Run 'kubectl apply -f question10.yaml'
      ```
-     </details>  
+     </details>
+  
+  11. Run the below command for solution:
+
+     <details>
+
+     ```
+     helm list -A
+     helm get manifest atlanta-page-apd -n atlanta-page-04 | grep -i webapp-color:v1
+     helm uninstall atlanta-page-apd -n atlanta-page-04
+     ```
+     </details>
