@@ -96,37 +96,8 @@
      <details>
      
      ```
-     apiVersion: v1
-     kind: PersistentVolumeClaim
-     metadata:
-       name: my-pvc
-     spec:
-       accessModes:
-         - ReadWriteOnce
-       resources:
-         requests:
-           storage: 10Mi      
-     ```
-    
-     ```
-     apiVersion: v1
-     kind: Pod
-     metadata:
-       creationTimestamp: null
-       labels:
-         run: use-pv
-       name: use-pv
-     spec:
-       containers:
-       - image: nginx
-         name: use-pv
-         volumeMounts:
-         - mountPath: "/data"
-           name: mypod
-       volumes:
-       - name: mypod
-         persistentVolumeClaim:
-           claimName: my-pvc
+     kubectl create deployment nginx-deploy --image=nginx:1.16 --replicas=1
+     kubectl set image deployment/nginx-deploy nginx=nginx:1.17
      ```
      </details>
 
