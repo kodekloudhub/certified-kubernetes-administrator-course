@@ -17,33 +17,49 @@
      ```
      </details>
 
-  2. Run the below command for solution:
+  2. Apply below manifests:
 
      <details>
  
      ```
-     apiVersion: v1
-     kind: Pod
+     apiVersion: apps/v1
+     kind: Deployment
      metadata:
-        creationTimestamp: null
-        labels:
-          run: redis-storage
-        name: redis-storage
+       name: logging-deployment
+       namespace: logging-ns
      spec:
-      volumes:
-      - name: redis-storage
-        emptyDir: {}
-      
-      containers:
-      - image: redis:alpine
-        name: redis-storage
-        resources: {}
-        volumeMounts:
-        - name: redis-storage
-          mountPath: /data/redis
-      dnsPolicy: ClusterFirst
-      restartPolicy: Always
-     status: {}
+       replicas: 1
+       selector:
+         matchLabels:
+           app: logger
+         template:
+           metadata:
+             labels:
+               app: logger
+           spec:
+             volumes:
+               - name: log-volume
+                 emptyDir: {}
+             containers:
+               - name: app-container
+                 image: busybox
+                 command:
+                   - 'sh'
+                   - '-c'
+                   - 'while true; do echo "Log entry" >> /var/log/app/app.log; sleep 5; done'
+                 volumeMounts:
+                   name: log-volume
+                   mountPath: /var/log/app
+               
+               - name: log-agent
+                 image: busybox
+                 command:
+                   - 'sh'
+                   - '-c'
+                   - 'tail -f /var/log/app/app.log'
+                 volumeMounts:
+                   name: log-volume
+                   mountPath: /var/log/app 
      ```
      </details>
  
