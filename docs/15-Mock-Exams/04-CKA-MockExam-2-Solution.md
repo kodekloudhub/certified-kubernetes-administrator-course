@@ -201,5 +201,29 @@
  
      </details>
 
-  
+  8. Apply below manifests:
 
+     <details>
+
+     ```
+     apiVersion: autoscaling/v2
+     kind: HorizontalPodAutoscaler
+     metadata:
+       name: backend-hpa
+       namespace: backend
+     spec:
+       scaleTargetRef:
+         apiVersion: apps/v1
+         kind: Deployment
+         name: backend-deployment
+       minReplicas: 3
+       maxReplicas: 15
+       metrics:
+         - type: Resource
+           resource:
+             name: memory
+             target:
+               type: Utilization
+               averageUtilization: 65
+     ```
+     </details>  
