@@ -176,25 +176,6 @@
      <details>
  
      ```
-     kubectl run nginx-resolver --image=nginx
-     kubectl expose pod nginx-resolver --name=nginx-resolver-service --port=80 --target-port=80 --type=ClusterIP
-     kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup nginx-resolver-service
-     kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup nginx-resolver-service > /root/CKA/nginx.svc
- 
-     Get the IP of the nginx-resolver pod and replace the dots(.) with hyphon(-) which will be used below.
- 
-     kubectl get pod nginx-resolver -o wide
-     kubectl run test-nslookup --image=busybox:1.28 --rm -it --restart=Never -- nslookup <P-O-D-I-P.default.pod> > /root/CKA/nginx.pod
- 
-     ```
- 
-     </details>
-
-  8. Run the below command for solution:
-
-     <details>
- 
-     ```
      kubectl run nginx-critical --image=nginx --dry-run=client -o yaml > static.yaml
      
      cat static.yaml - Copy the contents of this file.
