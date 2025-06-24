@@ -227,3 +227,24 @@
                averageUtilization: 65
      ```
      </details>  
+  
+  9. Run the below command for solution:
+
+     <details>
+
+     ```
+     kubectl get gateway -n cka5673 -o yaml > question10.yaml
+     vi question10.yaml
+     
+     Change below values
+       - spec.listeners[].name: https
+         spec.listeners[].port: 443
+         spec.listeners[].protocol: HTTPS 
+     
+     Add below values
+       - spec.listeners[].hostname: kodekloud.com
+         spec.listeners[].tls.certificateRefs[].name: kodekloud-tls
+
+     Save(:wq) and Run 'kubectl apply -f question10.yaml'
+     ```
+     </details>  
