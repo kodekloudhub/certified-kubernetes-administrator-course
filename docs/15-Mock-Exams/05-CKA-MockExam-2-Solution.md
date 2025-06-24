@@ -1,12 +1,19 @@
 # Mock Exam 2 Solution
   
   
-  1. Run the below command for solution:
+  1. Apply below manifests:
 
      <details>
-
      ```
-     ETCDCTL_API=3 etcdctl snapshot save --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key --endpoints=127.0.0.1:2379 /opt/etcd-backup.db
+     apiVersion: storage.k8s.io/v1
+     kind: StorageClass
+     metadata:
+       name: local-sc
+       annotations:
+         storageclass.kubernetes.io/is-default-class: "true"
+     provisioner: kubernetes.io/no-provisioner
+     allowVolumeExpansion: true
+     volumeBindingMode: WaitForFirstConsumer
      ```
      </details>
 
