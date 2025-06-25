@@ -6,7 +6,7 @@
 
 On the `controlplane` node
 
-1.  Set shell variables for the pod and network network CIDRs. The API server advertise address is using the predefined variable described in the [previous section](./04-node-setup.md)
+1.  Set shell variables for the pod and network network CIDRs. The API server advertise address is using the predefined variable described in the [previous section](./04-node-setup.md). Note that with bridged mode virtual machines (the default for this installation) it is important that neither of the following IP ranges overlap your home network which for nearly all broadband router default configurations is `192.168.0.0/24`
 
     ```bash
     POD_CIDR=10.244.0.0/16
@@ -44,24 +44,55 @@ On the `controlplane` node
         kubectl get pods -n kube-system
         ```
 
-1.  Install Weave networking
+1.  Install Calico CNI for cluster networking
 
-    Some of you may have noticed the announcement that WeaveWorks is no longer trading. At this time, this does not mean that Weave is not a valid CNI. WeaveWorks software has always been and remains to be open source, and as such is still useable. It just means that the company is no longer providing updates. While it continues to be compatible with Kubernetes, we will continue to use it as the other options (e.g. Calico, Cilium) require far more configuration steps.
+    Calico is a CNI that supports Network Policies. An alternative CNI that's discussed in the course is Flannel, however Flannel does not support Netowrk Policy. It provides only the basic pod networking.
 
-    ```bash
-    kubectl apply -f "https://github.com/weaveworks/weave/releases/download/v2.8.1/weave-daemonset-k8s-1.11.yaml"
+    1. Install the Tigera operator and custom resource definitions.
+
+        ```bash
+        kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.30.1/manifests/tigera-operator.yaml
+        ```
+
+    1. Install Calico by creating the necessary custom resources. If using bridge networking for your virtual machines which is the default, we are going to have to make a modification to these custom resources to agree with the POD_CIDR we set above, or else the pod network will overlap your home network and the cluster won't work.
+
+        1. Download the custom resource manifest
+
+            ```bash
+            curl -LO https://raw.githubusercontent.com/projectcalico/calico/v3.30.1/manifests/custom-resources.yaml
+            ```
+
+        1. Use `sed` to change the ipPool network in the manifest from the default of `192.168.0.0/16` to the value of `POD_IP` set above. You could do it by editing with `vi` but `sed` is faster.
+
+            ```bash
+            sed -i "s#192.168.0.0/16#$POD_CIDR#" custom-resources.yaml
+            ```
+
+        1. Apply the edited manifest
+
+            ```bash
+            kubectl apply -f custom-resources.yaml
+            ```
+
+    It will take a minute or two for all the calico resources to be up and running. You can monitor the progress with the following command
+
+    ```
+    watch kubectl get tigerastatus
     ```
 
+    Wait until all items in the list have a `True` status for available, then press `CTRL-C` to exit the `watch` command.
 
-[//]: # (command:kubectl rollout status daemonset weave-net -n kube-system --timeout=90s)
+    [Calico Installation Documentation](https://docs.tigera.io/calico/latest/getting-started/kubernetes/quickstart)
+
+[//]: # (command:sleep 120)
 
 1.  Verify controlplane
-
-    It may take around 30 seconds for Weave to become stable.
 
     ```bash
     kubectl get pods -n kube-system
     ```
+
+[Kubernetes Documentation Link](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
 
 Next: [Join Workers](./06-workers.md)</br>
 Prev: [Node setup](./04-node-setup.md)
