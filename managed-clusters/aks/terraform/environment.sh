@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+#
+# This script is executed by terrafrom as 'data "external" "environment"'
+# to retrieve information we need from the cloudshell environment
+# in order to configure the cluster.
 
 set -eo pipefail
 

@@ -13,6 +13,7 @@ We have some instructions for building managed clusters in KodeKloud playgrounds
     * [Automated build using Terraform](https://github.com/kodekloudhub/amazon-elastic-kubernetes-service-course/blob/main/docs/playground.md)
 * Azure AKS
     * [Manual build using the console](./aks/console/README.md)
+    * [Automated build using Terraform](./aks/terraform/README.md)
 * Google GKE
     * [Manual build using the console](./gke/console/README.md)
     * [Automated build using Terraform](./gke/terraform/README.md)

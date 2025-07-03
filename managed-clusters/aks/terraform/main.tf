@@ -22,16 +22,20 @@ variable "cluster_name" {
     default = "kodekloud-demo"
 }
 
+# Retrieve information we need from the cloudshell environment
+# in order to configure the cluster.
 data "external" "environment" {
   program = ["${path.module}/environment.sh"]
 }
 
+# Configure Azure provider
 provider "azurerm" {
   subscription_id = data.external.environment.result["subscription_id"]
   resource_provider_registrations = "none"
   features {}
 }
 
+# Generate a radmon suffix for cluster's DNS prefix
 resource "random_string" "dns" {
   length  = 6
   upper   = false
@@ -40,6 +44,7 @@ resource "random_string" "dns" {
   special = false
 }
 
+# Deploy the cluster
 resource "azurerm_kubernetes_cluster" "aks" {
   name                = var.cluster_name
   location            = data.external.environment.result["location"]
@@ -68,22 +73,16 @@ resource "azurerm_kubernetes_cluster" "aks" {
     node_count         = 2                # manual scaling, fixed at 2
     os_sku             = "Ubuntu"
   }
-
-  ################################################
-  # Networking – leave profile blank for kubenet #
-  ################################################
-
 }
 
+# Output the AZ commands user needs to run in order to access cluster.
 output "commands" {
     value = join("\n", [
         "",
         "Now run the following commands to gain kubectl access to the cluster",
         "",
         "az account set --subscription ${data.external.environment.result["subscription_id"]}",
-        "az aks get-credentials --resource-group ${data.external.environment.result["resource_group_name"]} --name ${var.cluster_name} --overwrite-existing"
+        "az aks get-credentials --resource-group ${data.external.environment.result["resource_group_name"]} --name ${var.cluster_name} --overwrite-existing",
+        ""
     ])
 }
-
-#  174  az account set --subscription $ACC_USER_SUBSCRIPTION
-#  175  az aks get-credentials --resource-group kml_rg_main-17d414714c8d4cf0 --name kodekloud-demo --overwrite-existing
