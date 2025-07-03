@@ -15,8 +15,6 @@ Copy the **Console Link** by pressing the copy button to the right of it, paste 
 1. At the sign-in box, copy the `Username` and paste it there, then press Next.
 1. Now copy the `Password` and paste it as Temporary Access Pass.
 
-![image](../images/01a-sign-in.png)
-
 Skip all the usage and Start a Tour stuff, unless you're interested in that.
 
 Next: [Open a Cloud Shell](./02-cloudshell.md)
