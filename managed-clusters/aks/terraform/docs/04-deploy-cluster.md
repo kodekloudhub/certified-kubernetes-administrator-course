@@ -12,7 +12,7 @@
 
 1. Connect to the cluster.
 
-    When the terraform completes, you will see someting like the following. Copy the two `az` commands it is displaying and paste them to the terminal. Note that the subscription ID and resource group name will be diffrerent to what is displayed on this page.
+    When the terraform completes, you will see someting like the following. Copy the two `az` commands it is displaying and paste them to the terminal. Note that the subscription ID and resource group name will be different to what is displayed on this page.
 
     ```
     Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
