@@ -35,7 +35,7 @@ provider "azurerm" {
   features {}
 }
 
-# Generate a radmon suffix for cluster's DNS prefix
+# Generate a random suffix for cluster's DNS prefix
 resource "random_string" "dns" {
   length  = 6
   upper   = false
