@@ -4,7 +4,7 @@ Here we will install terraform and pull the configuration we are going to use do
 
 Perform the following commands in the local machine
 
-```Windows
+
 Step 1: Download Terraform
 1. Go to: https://developer.hashicorp.com/terraform/install#windows
 2. Under the Windows section, find Binary Download.
@@ -15,7 +15,7 @@ Step 1: Download Terraform
 Step 2: Unzip the Binary
 1. Unzip the downloaded .zip file.
 2. Inside, you'll find a single file: terraform.exe.
-```
+
 Step 3: Move and Set the PATH
 1. Move terraform.exe to a permanent location, like:
    C:\Terraform
