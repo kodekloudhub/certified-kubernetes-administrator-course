@@ -24,17 +24,18 @@ export ARM_CLIENT_SECRET=<Paste the value>
 export ARM_TENANT_ID=<Paste the value>
 export ARM_SUBSCRIPTION_ID=<Paste the value>
 ```
-```###  Using **Powershell**
+###  Using **Powershell**
 
 Run the following commands (quotes required):
-
+```
 $env:ARM_CLIENT_ID = "<Paste the value>"
 $env:ARM_CLIENT_SECRET = "<Paste the value>"
 $env:ARM_TENANT_ID = "<Paste the value>"
 $env:ARM_SUBSCRIPTION_ID = "<Paste the value>"
 ```
 ---
-🛠 Step 3: Configure main.tf for Your Shell
+## 🧰 Step 3: Configure main.tf for Your Shell
+
 Terraform uses the external data source to fetch environment variables via a script. Use the block corresponding to your shell.
 
 ✅ If Using Git Bash
