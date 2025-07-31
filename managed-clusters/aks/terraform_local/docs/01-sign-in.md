@@ -22,4 +22,4 @@ Skip all the usage and Start a Tour stuff, unless you're interested in that.
 1. Copy `ARM_SUBSCRIPTION_ID` → Found in Azure Portal → Subscriptions → Subscription ID
 2. Copy `ARM_TENANT_ID` → Found in Azure Portal → Microsoft Entra ID → Overview → Tenant ID
 
-Next: [Install Terraform](./02-install-terraform.md)
+Next: [Install softwares](./02-install-softwares.md)
