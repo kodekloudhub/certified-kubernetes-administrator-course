@@ -37,7 +37,7 @@ variable "cluster_name" {
 
 
 locals {
-  subscription_id     = data.external.environment.result["subscription_id"]  
+  subscription_id     = var.ARM_SUBSCRIPTION_ID
   location            = data.external.environment.result["location"]
   resource_group_name = data.external.environment.result["resource_group_name"]
 }
@@ -56,11 +56,34 @@ output "location" {
 
 # For KodeKloud Connections - Ending
 
+variable "ARM_CLIENT_ID" {
+  type        = string
+  description = "Azure Client ID"
+}
+
+variable "ARM_CLIENT_SECRET" {
+  type        = string
+  description = "Azure Client Secret"
+}
+
+variable "ARM_TENANT_ID" {
+  type        = string
+  description = "Azure Tenant ID"
+}
+
+variable "ARM_SUBSCRIPTION_ID" {
+  type        = string
+  description = "Azure Subscription ID"
+}
+
 # Configure Azure provider
 provider "azurerm" {
-  subscription_id = local.subscription_id
   resource_provider_registrations = "none"
   features {}
+  client_id       = var.ARM_CLIENT_ID
+  client_secret   = var.ARM_CLIENT_SECRET
+  tenant_id       = var.ARM_TENANT_ID
+  subscription_id = var.ARM_SUBSCRIPTION_ID
 }
 
 # Generate a random suffix for cluster's DNS prefix
