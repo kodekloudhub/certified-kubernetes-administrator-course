@@ -14,12 +14,12 @@ Copy the **Console Link** by pressing the copy button to the right of it, paste 
 
 1. At the sign-in box, copy the `Username` and paste it there, then press Next.
 1. Now copy the `Password` and paste it as Temporary Access Pass.
-1. Copy the `Application Client ID`, this value need to be set as variable `TF_VAR_ARM_CLIENT_ID`
-1. Copy the `Client Secret`, this value need to be set as variable `TF_VAR_ARM_CLIENT_SECRET`
+1. Copy the `Application Client ID`, this value need to be set for variable `TF_VAR_ARM_CLIENT_ID`
+1. Copy the `Client Secret`, this value need to be set for variable `TF_VAR_ARM_CLIENT_SECRET`
 
 Skip all the usage and Start a Tour stuff, unless you're interested in that.
 
-1. Copy `Subscription ID` → Found in Azure Portal → Subscriptions → Subscription ID, this value need to be set as variable `TF_VAR_ARM_SUBSCRIPTION_ID`
-2. Copy `Tenant ID` → Found in Azure Portal → Microsoft Entra ID → Overview → Tenant ID, this value need to be set as variable `TF_VAR_ARM_TENANT_ID`
+1. Copy `Subscription ID` → Found in Azure Portal → Subscriptions → Subscription ID, this value need to be set for variable `TF_VAR_ARM_SUBSCRIPTION_ID`
+2. Copy `Tenant ID` → Found in Azure Portal → Microsoft Entra ID → Overview → Tenant ID, this value need to be set for variable `TF_VAR_ARM_TENANT_ID`
 
 Next: [Install softwares](./02-install-softwares.md)
