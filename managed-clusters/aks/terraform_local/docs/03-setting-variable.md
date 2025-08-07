@@ -14,7 +14,7 @@ Open a terminal (Git Bash or PowerShell) in the folder where this repository has
 
 These variables are required for authenticating with Azure.
 
-### Using **Git Bash**
+### **Linux, MacOS or Git Bash on Windows**
 
 Run the following commands (replace values with your actual credentials):
 
@@ -24,7 +24,7 @@ export TF_VAR_ARM_CLIENT_SECRET=<Paste the value>
 export TF_VAR_ARM_TENANT_ID=<Paste the value>
 export TF_VAR_ARM_SUBSCRIPTION_ID=<Paste the value>
 ```
-###  Using **Powershell**
+###  Using **Powershell (Windows)**
 
 Run the following commands (quotes required):
 ```
@@ -38,14 +38,14 @@ $env:TF_VAR_ARM_SUBSCRIPTION_ID = "<Paste the value>"
 
 Terraform uses the external data source to fetch environment variables via a script. Use the block corresponding to your shell.
 
-✅ If Using Git Bash
+✅ If Using Linux, MacOS or Git Bash on Windows
 Uncomment the following block in main.tf & ☑️ Comment out the PowerShell block if present.:
 ```
 data "external" "environment" {
   program = ["bash", "${path.module}/environment.sh"]
 }
 ```
-✅ If Using PowerShell
+✅ If Using PowerShell (Windows)
 Uncomment the following block in main.tf & ☑️ Comment out the Bash block if present.:
 ```
 data "external" "environment" {

@@ -25,7 +25,7 @@ variable "cluster_name" {
 
 # For KodeKloud Connections - Starting
 
-# If running on Git bash on Windows, use the below block , else comment this section. 
+# If running on Linux, MacOS or Git Bash on Windows, use the below block , else comment this section. 
 #data "external" "environment" {
 #  program = ["bash", "${path.module}/environment.sh"]
 #}

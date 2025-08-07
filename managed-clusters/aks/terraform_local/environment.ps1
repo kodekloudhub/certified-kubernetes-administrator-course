@@ -1,9 +1,9 @@
 # Login to Azure using Service Principal
 
 $null = az login --service-principal `
-    --username $TF_VAR_ARM_CLIENT_ID `
-    --password $TF_VAR_ARM_CLIENT_SECRET `
-    --tenant $TF_VAR_ARM_TENANT_ID
+    --username $env:TF_VAR_ARM_CLIENT_ID `
+    --password $env:TF_VAR_ARM_CLIENT_SECRET `
+    --tenant $env:TF_VAR_ARM_TENANT_ID
 
 # Get first resource group starting with "kml"
 $rgName = az group list --query "[?starts_with(name, 'kml')].name | [0]" -o tsv

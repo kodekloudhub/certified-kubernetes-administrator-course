@@ -17,6 +17,12 @@ terraform version
 kubectl version --client
 ```
 
+3. To verify Azure CLI version, open powershell and type
+
+```
+az version
+```
+
 # Clone the repository
 
 ```bash
