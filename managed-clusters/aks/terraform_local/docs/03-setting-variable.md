@@ -14,7 +14,7 @@ Open a terminal (Git Bash or PowerShell) in the folder where this repository has
 
 These variables are required for authenticating with Azure.
 
-### **Linux, MacOS or Git Bash on Windows**
+### **Using Linux, MacOS or Git Bash on Windows**
 
 Run the following commands (replace values with your actual credentials):
 
