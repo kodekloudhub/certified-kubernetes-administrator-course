@@ -1,6 +1,5 @@
 # Login to Azure using Service Principal
 
-az login --service-principal `
 $null = az login --service-principal `
     --username $TF_VAR_ARM_CLIENT_ID `
     --password $TF_VAR_ARM_CLIENT_SECRET `
