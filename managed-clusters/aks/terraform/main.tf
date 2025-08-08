@@ -72,6 +72,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
     vm_size            = "Standard_D2s_v3"
     node_count         = 2                # manual scaling, fixed at 2
     os_sku             = "Ubuntu"
+    upgrade_settings {
+      drain_timeout_in_minutes      = "0"
+      max_surge                     = "10%"
+      node_soak_duration_in_minutes = "0"
+    }    
   }
 }
 
