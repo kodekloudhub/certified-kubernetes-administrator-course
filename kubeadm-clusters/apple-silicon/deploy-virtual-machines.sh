@@ -108,7 +108,7 @@ do
 
 
     echo -e "${BLUE}Launching ${node}${NC}"
-    if ! multipass launch $bridge_arg --disk 5G --memory $VM_MEM_GB --cpus 2 --name $node jammy 2>/dev/null
+    if ! multipass launch $bridge_arg --disk 10G --memory $VM_MEM_GB --cpus 2 --name $node jammy 2>/dev/null
     then
         # Did it actually launch?
         sleep 1
