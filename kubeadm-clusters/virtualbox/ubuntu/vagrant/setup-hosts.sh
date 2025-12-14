@@ -14,7 +14,10 @@ if [ "$BUILD_MODE" = "BRIDGE" ]
 then
     # Determine machine IP from route table -
     # Interface that routes to default GW that isn't on the NAT network.
-    MY_IP="$(ip route | grep default | grep -Pv '10\.\d+\.\d+\.\d+' | awk '{ print $9 }')"
+    MY_IP=""
+    while [ -z "$MY_IP" ]; do
+        MY_IP="$(ip route | grep default | grep -Pv '10\.\d+\.\d+\.\d+' | awk '{ print $9 }')"
+    done
 
     # From this, determine the network (which for average broadband we assume is a /24)
     MY_NETWORK=$(echo $MY_IP | awk 'BEGIN {FS="."} ; { printf("%s.%s.%s", $1, $2, $3) }')
