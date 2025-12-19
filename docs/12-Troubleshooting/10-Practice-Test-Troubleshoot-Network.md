@@ -25,9 +25,9 @@ Note that this lab is sequential. You must solve test 1 completely before you ca
 
    Now we see that the `webapp` and `mysql` pods are stuck at `ContainerCreating`. We need to describe the pods and check the errors.
 
-   You will note that they are complaining about `network: unable to allocate IP address`, so clearly we have a networking issue.
+   You will note that they are complaining about `plugin type="weave-net" name="weave" failed (add): unable to allocate IP address`, so clearly we have a networking issue and it's related to Weave.
 
-   When you did the `get pods` above, did you see any evidence of network support containers, like `flannel` or `weave`?
+   When you did the `get pods` above, did you see any evidence of network support containers, like `weave`?
 
    No - so we need to install networking support.
 
