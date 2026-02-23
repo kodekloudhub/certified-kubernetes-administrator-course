@@ -23,7 +23,7 @@
   - To get the names of node in the cluster:
 
     ```
-    kubectl get pods -o=jsonpath='{.items[*].metadata.name}'
+    kubectl get nodes -o=jsonpath='{.items[*].metadata.name}'
     ```
 
     ![node](../../images/jnode.PNG)
@@ -32,13 +32,13 @@
   - To get the architecture of node in the cluster:
 
     ```
-    kubectl get pods -o=jsonpath='{.items[*].status.nodeInfo.architecture}'
+    kubectl get nodes -o=jsonpath='{.items[*].status.nodeInfo.architecture}'
     ```
 
   - To get the count of the cpu of node in the cluster:
 
     ```
-    kubectl get pods -o=jsonpath='{.items[*].status.status.capacity.cpu}'
+    kubectl get nodes -o=jsonpath='{.items[*].status.status.capacity.cpu}'
     ```
 
   #### Loops - Range
