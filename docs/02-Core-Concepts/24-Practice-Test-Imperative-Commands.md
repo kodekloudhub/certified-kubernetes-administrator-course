@@ -69,4 +69,74 @@ Solutions for Practice Test - Imperative Commands
     ```
     </details>
 
+1.  <details>
+    <summary>Which command would you use to display a list of all available API resources in your cluster?</summary>
 
+    ```
+    kubectl api-resources
+    ```
+    </details>
+
+1.  <details>
+    <summary>What is the SHORTNAME for horizontalpodautoscalers?</summary>
+
+    ```
+    hpa
+    ```
+    </details>
+
+1.  <details>
+    <summary>Which of the following resources is NOT namespaced (i.e., cluster-scoped)?</summary>
+
+    ```
+    nodes
+    ```
+    </details>
+
+1.  <details>
+    <summary>Which command would you use to get a description and details of the Pod resource?</summary>
+
+    ```
+    kubectl explain pod
+    ```
+    </details>
+
+1.  <details>
+    <summary>When writing a YAML manifest for a Pod, you want to understand what fields are available under containers. Which command would you use to explore the structure of the containers field?</summary>
+
+    ```
+    kubectl explain pod.spec.containers
+    ```
+    </details>
+
+1.  <details>
+    <summary>You can drill down into nested fields using dot notation. Use kubectl explain to explore the spec field of a Pod. What is the TYPE of the containers field?</summary>
+
+    ```
+    []Object
+    ```
+    </details>
+
+1.  <details>
+    <summary>Let's explore the Deployment resource. What is the TYPE of the replicas field?</summary>
+
+    ```
+    integer
+    ```
+    </details>
+
+1.  <details>
+    <summary>What does the --recursive flag do when used with kubectl explain?</summary>
+
+    ```
+    Shows all nested fields recursively in a single output
+    ```
+    </details>
+
+1.  <details>
+    <summary>Use kubectl explain with the --recursive flag to explore the service.spec.ports structure. Looking at the recursive output, which of these fields is not available under service.spec.ports?</summary>
+
+    ```
+    hostNetwork
+    ```
+    </details>
