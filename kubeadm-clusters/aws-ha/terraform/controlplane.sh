@@ -42,8 +42,8 @@ curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/Release.key | gp
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${KUBE_LATEST}/deb/ /" > /etc/apt/sources.list.d/kubernetes.list
 
 apt-get update
-apt-get install -y kubelet kubeadm kubectl
-apt-mark hold kubelet kubeadm kubectl
+apt-get install -y kubelet kubeadm kubectl cri-tools
+apt-mark hold kubelet kubeadm kubectl cri-tools
 
 crictl config \
         --set runtime-endpoint=unix:///run/containerd/containerd.sock \

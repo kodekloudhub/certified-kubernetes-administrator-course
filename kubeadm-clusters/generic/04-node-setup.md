@@ -90,8 +90,8 @@ Perform all the following steps on each of `controlplane`, `node01` and `node02`
     ```bash
     {
         sudo apt-get update
-        sudo apt-get install -y kubelet kubeadm kubectl
-        sudo apt-mark hold kubelet kubeadm kubectl
+        sudo apt-get install -y kubelet kubeadm kubectl cri-tools
+        sudo apt-mark hold kubelet kubeadm kubectl cri-tools
     }
     ```
 

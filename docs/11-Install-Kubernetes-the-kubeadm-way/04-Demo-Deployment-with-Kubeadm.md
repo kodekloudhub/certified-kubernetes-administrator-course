@@ -139,8 +139,8 @@ Docker is no longer supported as a container driver. Instead we will install the
 
         sudo apt update
 
-        sudo apt-get install -y kubelet kubeadm kubectl
-        sudo apt-mark hold kubelet kubeadm kubectl
+        sudo apt-get install -y kubelet kubeadm kubectl cri-tools
+        sudo apt-mark hold kubelet kubeadm kubectl cri-tools
 
         # Configure crictl so it doesn't print ugly warning messages
         sudo crictl config \
