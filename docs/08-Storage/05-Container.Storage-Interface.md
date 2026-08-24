@@ -1,5 +1,9 @@
 # Container Storage Interface
 
+> **See also:** CRI, CNI and CSI side by side, with the `crictl` commands you need when the API server
+> is down —
+> [docs/18-2025-Curriculum-Additions/07-Extension-Interfaces-CNI-CSI-CRI.md](../18-2025-Curriculum-Additions/07-Extension-Interfaces-CNI-CSI-CRI.md).
+
   - Take me to [Lecture](https://kodekloud.com/topic/container-storage-interface/)
 
 In this section, we will take a look at **Container Storage Interface**

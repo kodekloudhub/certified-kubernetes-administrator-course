@@ -7,7 +7,7 @@ Solutions to practice test - security context
   <details>
   
   ```
-  $ kubectl exec ubuntu-sleeper whoami
+  $ kubectl exec ubuntu-sleeper -- whoami
   ```
   
   </details>

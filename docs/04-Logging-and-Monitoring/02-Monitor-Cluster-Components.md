@@ -23,13 +23,24 @@ In this section, we will take a look at monitoring kubernetes cluster
 
   ![msg](../../images/msg.PNG)
   
-- Clone the metric server from github repo
+> **Fork correction:** `kubernetes-incubator/metrics-server` and its `deploy/1.8+/` directory no longer
+> exist. The project moved to **`kubernetes-sigs/metrics-server`** and ships a single `components.yaml`.
+> See [FORK-CHANGES.md](../../FORK-CHANGES.md).
+
+- Deploy the metrics server — one manifest, no clone required
   ```
-  $ git clone https://github.com/kubernetes-incubator/metrics-server.git
+  $ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
   ```
-- Deploy the metric server
+- On a kubeadm lab cluster the kubelet's serving certificate is self-signed, so metrics-server sits at
+  `0/1 Running` with `x509: cannot validate certificate`. Add the insecure flag:
   ```
-  $ kubectl create -f metric-server/deploy/1.8+/
+  $ kubectl -n kube-system patch deployment metrics-server --type=json \
+      -p='[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--kubelet-insecure-tls"}]'
+  ```
+- Confirm the aggregated API is registered before trusting `kubectl top` (it takes ~60s to populate):
+  ```
+  $ kubectl get apiservices | grep metrics
+  v1beta1.metrics.k8s.io   kube-system/metrics-server   True
   ```
   
 - View the cluster performance

@@ -1,5 +1,9 @@
 # Storage Class
 
+> **See also:** reclaim policies, `volumeBindingMode`, volume expansion and the failure modes of
+> dynamic provisioning —
+> [docs/18-2025-Curriculum-Additions/08-Dynamic-Volume-Provisioning.md](../18-2025-Curriculum-Additions/08-Dynamic-Volume-Provisioning.md).
+
   - Take me to [Lecture](https://kodekloud.com/topic/storage-class/)
 
 In this section, we will take a look at **Storage Class**

@@ -1,4 +1,8 @@
 # Security Context
+
+> **See also:** `securityContext` is the field a **Pod Security Standard** checks. PodSecurityPolicy was
+> removed in Kubernetes 1.25 and Pod Security Admission replaced it — see
+> [docs/18-2025-Curriculum-Additions/05-Pod-Security-Standards.md](../18-2025-Curriculum-Additions/05-Pod-Security-Standards.md).
   - Take me to [Video Tutorial](https://kodekloud.com/topic/security-contexts-2/)
   
 In this section, we will take a look at security context

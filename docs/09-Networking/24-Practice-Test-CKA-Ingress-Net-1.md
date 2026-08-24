@@ -132,10 +132,14 @@
     
         OR
  
+        > **Fork correction:** this solution used `extensions/v1beta1` with `serviceName`/`servicePort`,
+        > removed in Kubernetes 1.22 — and it contradicted the correct `networking.k8s.io/v1` form used
+        > elsewhere in this same file. Updated below. See [FORK-CHANGES.md](../../FORK-CHANGES.md).
+
         ```yaml
         apiVersion: v1
         items:
-        - apiVersion: extensions/v1beta1
+        - apiVersion: networking.k8s.io/v1
           kind: Ingress
           metadata:
             annotations:
@@ -148,15 +152,19 @@
             - http:
                 paths:
                 - backend:
-                    serviceName: wear-service
-                    servicePort: 8080
+                    service:
+                      name: wear-service
+                      port:
+                        number: 8080
                   path: /wear
-                  pathType: ImplementationSpecific
+                  pathType: Prefix
                 - backend:
-                    serviceName: video-service
-                    servicePort: 8080
+                    service:
+                      name: video-service
+                      port:
+                        number: 8080
                   path: /stream
-                  pathType: ImplementationSpecific
+                  pathType: Prefix
           status:
             loadBalancer:
               ingress:
@@ -203,10 +211,13 @@
 
         OR
 
+       > **Fork correction:** updated from the removed `extensions/v1beta1` schema to
+       > `networking.k8s.io/v1`. See [FORK-CHANGES.md](../../FORK-CHANGES.md).
+
        ```yaml
        apiVersion: v1
        items:
-       - apiVersion: extensions/v1beta1
+       - apiVersion: networking.k8s.io/v1
          kind: Ingress
          metadata:
            annotations:
@@ -219,20 +230,26 @@
            - http:
                paths:
                - backend:
-                   serviceName: wear-service
-                   servicePort: 8080
+                   service:
+                     name: wear-service
+                     port:
+                       number: 8080
                  path: /wear
-                 pathType: ImplementationSpecific
+                 pathType: Prefix
                - backend:
-                   serviceName: video-service
-                   servicePort: 8080
+                   service:
+                     name: video-service
+                     port:
+                       number: 8080
                  path: /stream
-                 pathType: ImplementationSpecific
+                 pathType: Prefix
                - backend:
-                   serviceName: food-service
-                   servicePort: 8080
+                   service:
+                     name: food-service
+                     port:
+                       number: 8080
                  path: /eat
-                 pathType: ImplementationSpecific
+                 pathType: Prefix
          status:
            loadBalancer:
              ingress:

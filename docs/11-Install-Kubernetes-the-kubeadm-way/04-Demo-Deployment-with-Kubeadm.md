@@ -114,8 +114,6 @@ Docker is no longer supported as a container driver. Instead we will install the
         {
             sudo apt update
             sudo apt install -y apt-transport-https ca-certificates curl
-            sudo curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
-            echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list
             sudo apt-get install -y containerd
             #sudo mkdir -p /opt/cni/bin
             #wget -q --https-only \
@@ -129,13 +127,25 @@ Docker is no longer supported as a container driver. Instead we will install the
     1. Install Kubernetes software
 
         <details>
-        This will install the latest version
+
+        > **Fork correction:** this section used to install from `https://apt.kubernetes.io/`
+        > (`kubernetes-xenial`) signed by the `packages.cloud.google.com` key. **That repository was
+        > frozen in September 2023 and shut down in early 2024** — the commands simply fail now. Packages
+        > come from the community-owned `pkgs.k8s.io` repos, which are **versioned per minor release**:
+        > there is no "latest" channel, you pick `v1.31`, `v1.32`, etc. and change the URL to upgrade.
+        > (The practice-test file `05-...` in this same folder already used the correct repo — the two
+        > contradicted each other.) See [FORK-CHANGES.md](../../FORK-CHANGES.md).
 
         ```bash
         {
-        sudo  curl -fsSLo /usr/share/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
+        KUBE_MINOR=v1.31      # <- pick the minor release you want; there is no "latest" channel
 
-        echo "deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.
+        sudo mkdir -p /etc/apt/keyrings
+        curl -fsSL https://pkgs.k8s.io/core:/stable:/${KUBE_MINOR}/deb/Release.key \
+          | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+        echo "deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/${KUBE_MINOR}/deb/ /" \
+          | sudo tee /etc/apt/sources.list.d/kubernetes.list
 
         sudo apt update
 
@@ -168,9 +178,12 @@ Docker is no longer supported as a container driver. Instead we will install the
       1. Create a config file for `kubeadm` to get settings from 
 
           ```yaml
+          # Fork correction: v1beta3 was the config API for 1.22-1.30. From Kubernetes 1.31 the current
+          # version is v1beta4 — run `kubeadm config print init-defaults` on the node to see which
+          # apiVersion YOUR kubeadm emits, and use that rather than copying a version out of a note.
           kind: ClusterConfiguration
-          apiVersion: kubeadm.k8s.io/v1beta3
-          kubernetesVersion: v1.25.4          # <- At time of writing. Change as appropriate
+          apiVersion: kubeadm.k8s.io/v1beta4
+          kubernetesVersion: v1.31.0          # <- must match the kubeadm/kubelet packages you installed
           controlPlaneEndpoint: 192.168.56.11:6443
           networking:
             serviceSubnet: "10.96.0.0/16"

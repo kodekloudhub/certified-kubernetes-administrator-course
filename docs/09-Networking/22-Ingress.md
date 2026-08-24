@@ -40,7 +40,9 @@ spec:
       serviceAccountName: ingress-serviceaccount
       containers:
         - name: nginx-ingress-controller
-          image: quay.io/kubernetes-ingress-controller/nginx-ingress-controller:0.21.0
+          # Fork correction: quay.io/kubernetes-ingress-controller/... is a dead registry path.
+          # The image is now published under registry.k8s.io/ingress-nginx/controller.
+          image: registry.k8s.io/ingress-nginx/controller:v1.11.2
           args:
             - /nginx-ingress-controller
             - --configmap=$(POD_NAMESPACE)/nginx-configuration
@@ -106,23 +108,39 @@ $ kubectl get service
 
 ## Ingress Resources
 
-```
-Ingress-wear.yaml
+> **Fork correction:** every Ingress manifest in this lecture originally used `extensions/v1beta1` with
+> `backend.serviceName` / `backend.servicePort`. **That API was removed in Kubernetes 1.22** and is
+> rejected by any cluster you will meet today. The current schema is **`networking.k8s.io/v1`**, which:
+> requires **`pathType`** on every path, nests the backend under **`backend.service.name`** /
+> **`backend.service.port.number`**, renames the top-level `backend:` to **`defaultBackend:`**, and
+> selects the controller with **`ingressClassName`** instead of the `kubernetes.io/ingress.class`
+> annotation. See [FORK-CHANGES.md](../../FORK-CHANGES.md).
 
-apiVersion: extensions/v1beta1
+```yaml
+# Ingress-wear.yaml
+
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-wear
 spec:
-     backend:
-        serviceName: wear-service
-        servicePort: 80
+  ingressClassName: nginx
+  defaultBackend:
+    service:
+      name: wear-service
+      port:
+        number: 80
 ```
 
 - To create the ingress resource
 ```
 $ kubectl create -f Ingress-wear.yaml
-ingress.extensions/ingress-wear created
+ingress.networking.k8s.io/ingress-wear created
+```
+
+- Or imperatively, which is what you want under exam time pressure:
+```
+$ kubectl create ingress ingress-wear --rule="/wear=wear-service:80"
 ```
 
 - To get the ingress
@@ -136,24 +154,46 @@ ingress-wear   <none>   *                 80      18s
 
 - 1 Rule and 2 Paths.
 
-```
-apiVersion: extensions/v1beta1
+```yaml
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-wear-watch
 spec:
+  ingressClassName: nginx
   rules:
   - http:
       paths:
       - path: /wear
+        pathType: Prefix
         backend:
-          serviceName: wear-service
-          servicePort: 80
+          service:
+            name: wear-service
+            port:
+              number: 80
       - path: /watch
+        pathType: Prefix
         backend:
-          serviceName: watch-service
-          servicePort: 80
+          service:
+            name: watch-service
+            port:
+              number: 80
 ```
+
+- Imperative equivalent:
+```
+$ kubectl create ingress ingress-wear-watch \
+    --rule="/wear=wear-service:80" \
+    --rule="/watch=watch-service:80"
+```
+
+#### `pathType` is mandatory in v1
+
+| value | matches |
+| --- | --- |
+| `Prefix` | path elements split on `/` — `/wear` matches `/wear` and `/wear/x`, but not `/wearing` |
+| `Exact` | the URL path exactly, case sensitive |
+| `ImplementationSpecific` | left to the controller. This is what `kubectl create ingress` and auto-converted v1beta1 objects produce |
 - Describe the earlier created ingress resource
 
 ```
@@ -177,36 +217,79 @@ Events:
 ```
 
 - 2 Rules and 1 Path each.
-```
+```yaml
 # Ingress-wear-watch.yaml
 
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-wear-watch
 spec:
+  ingressClassName: nginx
   rules:
   - host: wear.my-online-store.com
     http:
       paths:
-      - backend:
-          serviceName: wear-service
-          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: wear-service
+            port:
+              number: 80
   - host: watch.my-online-store.com
     http:
       paths:
-      - backend:
-          serviceName: watch-service
-          servicePort: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: watch-service
+            port:
+              number: 80
 ```
 
+- Host-based rules imperatively:
+```
+$ kubectl create ingress ingress-wear-watch \
+    --rule="wear.my-online-store.com/*=wear-service:80" \
+    --rule="watch.my-online-store.com/*=watch-service:80"
+```
+
+## IngressClass
+
+In `networking.k8s.io/v1` the controller is chosen by `spec.ingressClassName`, which references an
+`IngressClass` object. The old `kubernetes.io/ingress.class` annotation is deprecated.
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: IngressClass
+metadata:
+  name: nginx
+  annotations:
+    ingressclass.kubernetes.io/is-default-class: "true"   # used when ingressClassName is omitted
+spec:
+  controller: k8s.io/ingress-nginx
+```
+
+```
+$ kubectl get ingressclass
+```
+
+If an Ingress has no `ingressClassName` and there is no default IngressClass, **no controller will
+pick it up** and it will sit there with no address. That is a common lab failure mode.
 
 
 
 
+
+
+> **See also:** the 2025 CKA curriculum adds the **Gateway API** alongside classic Ingress —
+> [docs/18-2025-Curriculum-Additions/04-Gateway-API.md](../18-2025-Curriculum-Additions/04-Gateway-API.md).
 
 #### References Docs
 
 - https://kubernetes.io/docs/concepts/services-networking/ingress/
+- https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 - https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/
 - https://thenewstack.io/kubernetes-ingress-for-beginners/

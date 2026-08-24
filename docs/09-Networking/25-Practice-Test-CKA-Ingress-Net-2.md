@@ -221,6 +221,11 @@
 
      <details>
 
+      > **Fork correction:** `name:` and `port:` were indented level with `service:` instead of nested
+      > underneath it, so this manifest would have been rejected with
+      > `unknown field "spec.rules[0].http.paths[0].backend.name"`. Fixed below.
+      > See [FORK-CHANGES.md](../../FORK-CHANGES.md).
+
       ```yaml
       apiVersion: networking.k8s.io/v1
       kind: Ingress
@@ -238,16 +243,16 @@
               pathType: Prefix
               backend:
                 service:
-                name: wear-service
-                port: 
-                  number: 8080
+                  name: wear-service
+                  port:
+                    number: 8080
             - path: /watch
               pathType: Prefix
               backend:
                 service:
-                name: video-service
-                port:
-                  number: 8080
+                  name: video-service
+                  port:
+                    number: 8080
       ```
      </details>
 
