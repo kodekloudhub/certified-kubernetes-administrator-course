@@ -2,6 +2,18 @@
 
 These are notes from the [Certified Kubernetes Administrator Course](https://kodekloud.com/courses/certified-kubernetes-administrator-cka/) hosted on KodeKloud.
 
+> **This is a fork.** The upstream lecture notes in `docs/01`–`docs/13` are largely frozen around
+> Kubernetes 1.18–1.25. This fork corrects the parts that are factually wrong or that fail against a
+> modern cluster (the removed `extensions/v1beta1` Ingress API, the dead `apt.kubernetes.io` repo, the
+> non-existent default resource requests, and more), and adds
+> [**docs/18-2025-Curriculum-Additions**](docs/18-2025-Curriculum-Additions) covering the topics the
+> **2025 CKA revision** made explicitly testable — Helm, Kustomize, CRDs/operators, Gateway API, Pod
+> Security Standards, autoscaling, the CRI/CNI/CSI extension interfaces and dynamic volume
+> provisioning.
+>
+> **Read [FORK-CHANGES.md](FORK-CHANGES.md) for the full list of what changed and why.** Every
+> in-place correction is also marked inside the file it applies to with a `Fork correction:` note.
+
 # Sections
 
 - [01-Introduction](docs/01-Introduction)
@@ -250,4 +262,16 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 - [17-Tips-and-Tricks](docs/17-tips-and-tricks/)
   - [01-Server for testing network policies](docs/17-tips-and-tricks/docs/01-server-for-testing-network-policies.md)
   - [02-Client-for-testing-network-things](docs/17-tips-and-tricks/docs/02-client--for-testing-network-things.md)
+
+
+- [18-2025-Curriculum-Additions](docs/18-2025-Curriculum-Additions) *(fork-local — not upstream)*
+
+  - [01-Helm](docs/18-2025-Curriculum-Additions/01-Helm.md)
+  - [02-Kustomize](docs/18-2025-Curriculum-Additions/02-Kustomize.md)
+  - [03-CRDs-and-Operators](docs/18-2025-Curriculum-Additions/03-CRDs-and-Operators.md)
+  - [04-Gateway-API](docs/18-2025-Curriculum-Additions/04-Gateway-API.md)
+  - [05-Pod-Security-Standards](docs/18-2025-Curriculum-Additions/05-Pod-Security-Standards.md)
+  - [06-Horizontal-Pod-Autoscaling](docs/18-2025-Curriculum-Additions/06-Horizontal-Pod-Autoscaling.md)
+  - [07-Extension-Interfaces-CNI-CSI-CRI](docs/18-2025-Curriculum-Additions/07-Extension-Interfaces-CNI-CSI-CRI.md)
+  - [08-Dynamic-Volume-Provisioning](docs/18-2025-Curriculum-Additions/08-Dynamic-Volume-Provisioning.md)
 
