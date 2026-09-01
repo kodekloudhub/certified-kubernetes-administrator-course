@@ -14,6 +14,8 @@ Here is a summary of settings you should have configured in each of the UI secti
     There should only be `agentpool` here. If there is also `userpool`, select and delete it.
 
     * **Node size**: [Change](./05-node-pools.md) it to `Standard D2s_v3`
+    * **Scale method**: `manual`
+    * **Node count**: `2`
 1. **Networking**
     * **DNS name prefix**: Must be globally unique. Set to `kodekloud-demo-` followed by a few random digits of your choice, e.g. `kodekloud-demo-321435423`
 1. **Integrations**
