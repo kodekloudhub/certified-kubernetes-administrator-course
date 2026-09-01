@@ -1,6 +1,6 @@
 # Provision lab
 
-Last updated: March 2024
+Last updated: September 2026
 
 ### Provision your Azure playground lab
 

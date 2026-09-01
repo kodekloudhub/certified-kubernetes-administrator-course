@@ -1,6 +1,6 @@
 # Create Cluster
 
-Then select “Create a Kubernetes cluster”
+Then select "Kubernetes cluster". Do not select "Automatic Kubernetes Cluster" - these are not supported on playground.
 
 ![image](../images/03-create-cluster.png)
 

@@ -1,5 +1,34 @@
 # Review and Create
 
+## Final Checklist
+
+Here is a summary of settings you should have configured in each of the UI sections. Where a form field is not mentioned, then you should not change it, leaving it with its default setting.
+
+1. **Basics**
+    * **Resource Group**: Choose the only available option in the list
+    * **Cluster Preset Configuration**: `Dev/Test`
+    * **Kubernetes Cluster Name**: `kodekloud-demo`
+    * **Region**: `(US) East US`
+1. **Node Pools**
+
+    There should only be `agentpool` here. If there is also `userpool`, select and delete it.
+
+    * **Node size**: [Change](./05-node-pools.md) it to `Standard D2s_v3`
+1. **Networking**
+    * **DNS name prefix**: Must be globally unique. Set to `kodekloud-demo-` followed by a few random digits of your choice, e.g. `kodekloud-demo-321435423`
+1. **Integrations**
+    * All options here should be un-checked.
+1. **Monitoring**
+    * All options here should be un-checked.
+1. **Security**
+    * All options here should be un-checked.
+1. **Advanced**
+    * Change nothing here.
+1. **Tags**
+    * You should be able to add tags if you want, but they are not required.
+
+## Deploy
+
 Press the `Review and Create` button at the bottom of the browser window. It should think about it for a few seconds then produce a summary screen with a `Create` button at the bottom.
 
 Press the `Create` button. It will take several minutes to provision, so go and make tea/coffee :smile:!

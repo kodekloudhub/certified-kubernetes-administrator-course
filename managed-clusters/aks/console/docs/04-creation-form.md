@@ -7,7 +7,7 @@ Now fill in the configuration form
 | Field | Value |
 |-------|-------|
 | Subscription | *Leave unchanged* |
-| Resource Group | From the drop-list choose the only available option, which starts with `ODL-azure` |
+| Resource Group | From the drop-list choose the only available option |
 
 ### Cluster Details
 
