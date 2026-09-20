@@ -30,8 +30,25 @@ In this section, we will take a look at PODS.
 Lets now take a look to create a nginx pod using **`kubectl`**.
 
 - To deploy a docker container by creating a POD.
-  ```
+  ```bash
   $ kubectl run nginx --image nginx
+  ```
+- Using yaml file (pod-definition.yml)
+  ```yaml
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: myapp-pod
+    labels:
+      app: myapp
+      type: front-end
+  spec:
+    containers:
+    - name: nginx-container
+      image: nginx
+  ```
+  ```bash
+  kubectl apply -f pod-definition.yml
   ```
 
 - To get the list of pods
