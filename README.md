@@ -240,10 +240,11 @@ These are notes from the [Certified Kubernetes Administrator Course](https://kod
 
   - [01-Introduction](docs/15-Mock-Exams/01-Introduction.md)
   - [02-Mock-Exam-1](docs/15-Mock-Exams/02-Mock-Exam-1.md)
-  - [03-Mock-Exam-2](docs/15-Mock-Exams/03-Mock-Exam-2.md)
-  - [04-CKA-MockExam-2-Solution](docs/15-Mock-Exams/04-CKA-MockExam-2-Solution.md)
-  - [05-Mock-Exam-3](docs/15-Mock-Exams/05-Mock-Exam-3.md)
-  - [06-CKA-MockExam-3-Solution](docs/15-Mock-Exams/06-CKA-MockExam-3-Solution.md)
+  - [03-CKA-MockExam-1-Solution](docs/15-Mock-Exams/03-CKA-MockExam-1-Solution.md)
+  - [04-Mock-Exam-2](docs/15-Mock-Exams/03-Mock-Exam-2.md)
+  - [05-CKA-MockExam-2-Solution](docs/15-Mock-Exams/04-CKA-MockExam-2-Solution.md)
+  - [06-Mock-Exam-3](docs/15-Mock-Exams/05-Mock-Exam-3.md)
+  - [07-CKA-MockExam-3-Solution](docs/15-Mock-Exams/06-CKA-MockExam-3-Solution.md)
 
 - [16-Ultimate-Mocks](docs/16-Ultimate-Mocks/)
 
