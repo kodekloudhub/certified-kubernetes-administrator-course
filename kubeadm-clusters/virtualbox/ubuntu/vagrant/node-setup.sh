@@ -1,6 +1,6 @@
 {
 apt-get update
-apt-get install -y apt-transport-https ca-certificates curl
+apt-get install -y apt-transport-https ca-certificates curl gpg
 
 cat <<EOF > /etc/modules-load.d/k8s.conf
 overlay
